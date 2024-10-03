@@ -1,12 +1,8 @@
 #include "Application.h"
+#include "SimpleTriangleObject.h"
+
 #include <stdio.h>
 #include <cstdlib>
-
-float points[] = {
-   -0.5f, 0.5f, 0.0f,
-	0.5f, -0.5f, 0.0f,
-   -0.5f, -0.5f, 0.0f
-};
 
 const char* vertex_shader =
 "#version 330\n"
@@ -38,19 +34,7 @@ void Application::Init()
 
 void Application::AddObjects()
 {
-	//vertex buffer object (VBO)
-
-	glGenBuffers(1, &VBO); // generate the VBO
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
-
-	//Vertex Array Object (VAO)
-
-	glGenVertexArrays(1, &VAO); //generate the VAO
-	glBindVertexArray(VAO); //bind the VAO
-	glEnableVertexAttribArray(0); //enable vertex attributes
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	triangle = new SimpleTriangleObject();
 }
 
 void Application::AddShaders()
@@ -86,9 +70,9 @@ void Application::Run()
 		// clear color and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(shaderProgram);
-		glBindVertexArray(VAO);
-		// draw triangles
-		glDrawArrays(GL_TRIANGLES, 0, 3); //mode,first,count
+		
+		triangle->DrawObject();
+
 		// update other events like input handling
 		glfwPollEvents();
 		// put the stuff we’ve been drawing onto the display

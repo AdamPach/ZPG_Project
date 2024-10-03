@@ -3,6 +3,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "Object.h"
+#include "SimpleTriangleObject.h"
+
 class Application
 {
 public:
@@ -12,7 +15,7 @@ public:
 	void Run();
 private:
 	GLFWwindow* window;
-	GLuint VBO, VAO;
+	Object* triangle;
 	GLuint shaderProgram;
 	static void error_callback(int error, const char* description);
 	void InitWindow();
