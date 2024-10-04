@@ -36,23 +36,22 @@ void Application::Init()
 	InitWindow();
 	InitGLEW();
 	PrintVersionInfo();
+
+	shader_program = new ShaderProgram();
 }
 
 void Application::AddObjects()
 {
 	triangle = new SimpleTriangleObject(points, sizeof(points), 3);
+	triangle->AddShaderProgram(shader_program);
 }
 
 void Application::AddShaders()
 {
-	shader_program = new ShaderProgram();
-
 	shader_program->AddShader(new VertexShader(vertex_shader));
 	shader_program->AddShader(new FragmentShader(fragment_shader));
 	
 	shader_program->Compile();
-
-	
 }
 
 void Application::Run()
@@ -60,8 +59,7 @@ void Application::Run()
 	while (!glfwWindowShouldClose(window)) {
 		// clear color and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		shader_program->Use();
-		
+
 		triangle->DrawObject();
 
 		// update other events like input handling

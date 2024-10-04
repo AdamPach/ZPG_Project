@@ -18,6 +18,8 @@ SimpleTriangleObject::SimpleTriangleObject(float points[], int length, int attri
 
 void SimpleTriangleObject::DrawObject()
 {
+	shader->Use();
+
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLES, 0, points_to_draw);
 }
