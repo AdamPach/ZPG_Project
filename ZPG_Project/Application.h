@@ -18,8 +18,8 @@ public:
 	void Run();
 private:
 	GLFWwindow* window;
-	Object* triangle;
-	ShaderProgram* shader_program;
+	Object* triangle, *square;
+	ShaderProgram* shader_program, *shader_program_2;
 	static void error_callback(int error, const char* description);
 	void InitWindow();
 	void InitGLEW();

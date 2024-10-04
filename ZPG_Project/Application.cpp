@@ -10,6 +10,15 @@ float points[] = {
    -0.5f, -0.5f, 0.0f
 };
 
+float points_2[] = {
+	0.8f, 0.8f, 0.0f,
+	0.8f, 0.5f, 0.0f,
+	0.5f, 0.8f, 0.0f,
+	0.5f, 0.5f, 0.0f,
+	0.8f, 0.5f, 0.0f,
+	0.5f, 0.8f, 0.0f
+};
+
 const char* vertex_shader =
 "#version 330\n"
 "layout(location=0) in vec3 vp;"
@@ -17,12 +26,18 @@ const char* vertex_shader =
 "     gl_Position = vec4 (vp, 1.0);"
 "}";
 
-
 const char* fragment_shader =
 "#version 330\n"
 "out vec4 frag_colour;"
 "void main () {"
 "     frag_colour = vec4 (0.5, 0.5, 0.0, 1.0);"
+"}";
+
+const char* fragment_shader_2 =
+"#version 330\n"
+"out vec4 frag_colour;"
+"void main () {"
+"     frag_colour = vec4 (0.5, 0.0, 0.5, 1.0);"
 "}";
 
 void Application::Init()
@@ -38,20 +53,33 @@ void Application::Init()
 	PrintVersionInfo();
 
 	shader_program = new ShaderProgram();
+	shader_program_2 = new ShaderProgram();
 }
 
 void Application::AddObjects()
 {
 	triangle = new SimpleTriangleObject(points, sizeof(points), 3);
 	triangle->AddShaderProgram(shader_program);
+
+	square = new SimpleTriangleObject(points_2, sizeof(points_2), 3);
+	square->AddShaderProgram(shader_program_2);
 }
 
 void Application::AddShaders()
 {
-	shader_program->AddShader(new VertexShader(vertex_shader));
+	VertexShader* v_shader = new VertexShader(vertex_shader);
+
+	shader_program->AddShader(v_shader);
 	shader_program->AddShader(new FragmentShader(fragment_shader));
+
+	shader_program_2->AddShader(v_shader);
+	shader_program_2->AddShader(new FragmentShader(fragment_shader_2));
 	
 	shader_program->Compile();
+	shader_program_2->Compile();
+
+	shader_program->Check();
+	shader_program_2->Check();
 }
 
 void Application::Run()
@@ -61,6 +89,7 @@ void Application::Run()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		triangle->DrawObject();
+		square->DrawObject();
 
 		// update other events like input handling
 		glfwPollEvents();
