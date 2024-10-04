@@ -1,30 +1,23 @@
 #include "SimpleTriangleObject.h"
 
-float points[] = {
-   -0.5f, 0.5f, 0.0f,
-	0.5f, -0.5f, 0.0f,
-   -0.5f, -0.5f, 0.0f
-};
-
-SimpleTriangleObject::SimpleTriangleObject()
+SimpleTriangleObject::SimpleTriangleObject(float points[], int length, int attribute_length)
 {
-	//vertex buffer object (VBO)
+	triangle_points = points;
+	this->points_to_draw = length / attribute_length;
 
 	glGenBuffers(1, &VBO); // generate the VBO
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
-
-	//Vertex Array Object (VAO)
+	glBufferData(GL_ARRAY_BUFFER, length, triangle_points, GL_STATIC_DRAW);
 
 	glGenVertexArrays(1, &VAO); //generate the VAO
 	glBindVertexArray(VAO); //bind the VAO
 	glEnableVertexAttribArray(0); //enable vertex attributes
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(0, attribute_length, GL_FLOAT, GL_FALSE, 0, NULL);
 }
 
 void SimpleTriangleObject::DrawObject()
 {
 	glBindVertexArray(VAO);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, points_to_draw);
 }

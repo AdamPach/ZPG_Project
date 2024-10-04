@@ -4,6 +4,12 @@
 #include <stdio.h>
 #include <cstdlib>
 
+float points[] = {
+   -0.5f, 0.5f, 0.0f,
+	0.5f, -0.5f, 0.0f,
+   -0.5f, -0.5f, 0.0f
+};
+
 const char* vertex_shader =
 "#version 330\n"
 "layout(location=0) in vec3 vp;"
@@ -34,7 +40,7 @@ void Application::Init()
 
 void Application::AddObjects()
 {
-	triangle = new SimpleTriangleObject();
+	triangle = new SimpleTriangleObject(points, sizeof(points), 3);
 }
 
 void Application::AddShaders()
