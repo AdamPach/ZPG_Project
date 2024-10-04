@@ -5,6 +5,9 @@
 
 #include "Object.h"
 #include "SimpleTriangleObject.h"
+#include "VertexShader.h"
+#include "FragmentShader.h"
+#include "ShaderProgram.h"
 
 class Application
 {
@@ -16,7 +19,7 @@ public:
 private:
 	GLFWwindow* window;
 	Object* triangle;
-	GLuint shaderProgram;
+	ShaderProgram* shader_program;
 	static void error_callback(int error, const char* description);
 	void InitWindow();
 	void InitGLEW();
