@@ -11,9 +11,11 @@ SimpleTriangleObject::SimpleTriangleObject(float points[], int length, int attri
 
 	glGenVertexArrays(1, &VAO); //generate the VAO
 	glBindVertexArray(VAO); //bind the VAO
-	glEnableVertexAttribArray(0); //enable vertex attributes
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glVertexAttribPointer(0, attribute_length, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, attribute_length * sizeof(float), (GLvoid*)0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, attribute_length * sizeof(float), (GLvoid*)(sizeof(float) * 3));
 }
 
 void SimpleTriangleObject::DrawObject()
