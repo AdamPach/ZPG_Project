@@ -14,6 +14,7 @@ class Transformation
 public:
 	Transformation(GLint unimform_id);
 	Transformation(GLint unimform_id, std::vector<TransformationPart*> parts);
+	~Transformation();
 	void AddPart(TransformationPart* part);
 	void Use();
 private:

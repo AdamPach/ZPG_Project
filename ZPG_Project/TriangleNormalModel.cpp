@@ -2,12 +2,11 @@
 
 TriangleNormalModel::TriangleNormalModel(float* points, int length)
 {
-	model_points = points;
-	model_points_length = length;
+	this->length = length;
 
-	glGenBuffers(1, &VBO); // generate the VBO
+	glGenBuffers(1, &VBO); 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, length, model_points, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, length, points, GL_STATIC_DRAW);
 
 	glGenVertexArrays(1, &VAO); 
 	glBindVertexArray(VAO); 
@@ -18,8 +17,14 @@ TriangleNormalModel::TriangleNormalModel(float* points, int length)
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (GLvoid*)(sizeof(float) * 3));
 }
 
+TriangleNormalModel::~TriangleNormalModel()
+{
+	glDeleteBuffers(1, &VBO);
+	glDeleteVertexArrays(1, &VAO);
+}
+
 void TriangleNormalModel::DrawModel()
 {
 	glBindVertexArray(VAO);
-	glDrawArrays(GL_TRIANGLES, 0, model_points_length / 6);
+	glDrawArrays(GL_TRIANGLES, 0, length / 6);
 }

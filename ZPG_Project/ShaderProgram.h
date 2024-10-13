@@ -8,7 +8,6 @@
 class ShaderProgram
 {
 public:
-	ShaderProgram(int count_of_shaders = 2);
 	~ShaderProgram();
 
 	void AddShader(Shader* shader);
@@ -17,7 +16,20 @@ public:
 	void Check();
 
 	GLint GetUniformLocation(const char* name);
+
+	class ShaderProgramBuilder
+	{
+	public:
+		ShaderProgramBuilder* AddVertexShader(const char* shader);
+		ShaderProgramBuilder* AddFragmentShader(const char* shader);
+
+		ShaderProgram* Build();
+	private:
+		std::vector<Shader*> shaders;
+	};
 private:
+	ShaderProgram(int count_of_shaders = 2);
+
 	std::vector<Shader*> shaders;
 	GLuint shader_program;
 };

@@ -7,6 +7,13 @@ DrawableObject::DrawableObject(Model* model, ShaderProgram* shader, Transformati
 	this->transformation = transformation;
 }
 
+DrawableObject::~DrawableObject()
+{
+	delete model;
+	delete shader;
+	delete transformation;
+}
+
 void DrawableObject::DrawObject()
 {
 	shader->Use();

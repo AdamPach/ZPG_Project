@@ -8,6 +8,7 @@ class DrawableObject
 {
 public:
 	DrawableObject(Model* model, ShaderProgram* shader, Transformation* transformation);
+	~DrawableObject();
 	void DrawObject();
 private:
 	Model* model;

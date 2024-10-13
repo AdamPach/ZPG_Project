@@ -1,4 +1,6 @@
 #include "ShaderProgram.h"
+#include "VertexShader.h"
+#include "FragmentShader.h"
 
 ShaderProgram::ShaderProgram(int count_of_shaders)
 {
@@ -53,4 +55,35 @@ void ShaderProgram::Check()
 GLint ShaderProgram::GetUniformLocation(const char* name)
 {
 	return glGetUniformLocation(shader_program, name);
+}
+
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddVertexShader(const char* shader)
+{
+	shaders.push_back(new VertexShader(shader));
+	
+	return this;
+}
+
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddFragmentShader(const char* shader)
+{
+	shaders.push_back(new FragmentShader(shader));
+
+	return this;
+}
+
+ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
+{
+	ShaderProgram* shaderProgram =  new ShaderProgram(this->shaders.size());
+
+	for (auto shader : shaders)
+	{
+		shaderProgram->AddShader(shader);
+	}
+
+	shaderProgram->Compile();
+	shaderProgram->Check();
+
+	shaders.clear();
+
+	return shaderProgram;
 }

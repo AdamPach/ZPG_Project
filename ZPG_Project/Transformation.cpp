@@ -15,6 +15,14 @@ Transformation::Transformation(GLint unimform_id, std::vector<TransformationPart
 	}
 }
 
+Transformation::~Transformation()
+{
+	for (auto part : parts)
+	{
+		delete part;
+	}
+}
+
 void Transformation::AddPart(TransformationPart* part)
 {
 	parts.push_back(part);

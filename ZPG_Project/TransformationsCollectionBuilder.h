@@ -1,0 +1,22 @@
+#pragma once
+
+#include <vector>
+
+#include "ScalePart.h"
+#include "TranslationPart.h"
+#include "RotationPart.h"
+
+class TransformationsCollectionBuilder
+{
+public:
+	enum Axis { X, Y, Z };
+
+	TransformationsCollectionBuilder* AddScalePart(float scale);
+	TransformationsCollectionBuilder* AddTranslationPart(float x_move, float y_move, float z_move);
+	TransformationsCollectionBuilder* AddRotationPart(float angle, Axis axis);
+
+	std::vector<TransformationPart*> Build();
+private:
+	std::vector<TransformationPart*> transformations;
+};
+

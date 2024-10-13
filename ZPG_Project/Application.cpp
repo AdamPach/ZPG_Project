@@ -1,8 +1,7 @@
 #include "Application.h"
 #include "TriangleNormalModel.h"
+#include "TransformationsCollectionBuilder.h"
 #include "sphere.h"
-#include "RotationPart.h"
-#include "ScalePart.h"
 
 #include <stdio.h>
 #include <cstdlib>
@@ -67,31 +66,29 @@ void Application::Init()
 	InitGLEW();
 	PrintVersionInfo();
 
-	shader_program = new ShaderProgram();
-
 	glEnable(GL_DEPTH_TEST);
 }
 
 void Application::AddObjects()
 {
-	std::vector<TransformationPart*> parts;
+	TransformationsCollectionBuilder transformationBuilder;
 
-	parts.push_back(new RotationPart(50.0f, glm::vec3(0.0f, 1.0f, 0.0f)));
-	parts.push_back(new ScalePart(glm::vec3(0.5f)));
+	transformationBuilder.AddRotationPart(90, TransformationsCollectionBuilder::Y)->AddRotationPart(90, TransformationsCollectionBuilder::X);
 
 	objects.push_back(new DrawableObject(
 		new TriangleNormalModel(sphere, sizeof(sphere)),
 		shader_program,
-		new Transformation(shader_program->GetUniformLocation("modelMatrix"), parts)));
+		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
 }
 
 void Application::AddShaders()
 {
-	shader_program->AddShader(new VertexShader(vertex_shader_color));
-	shader_program->AddShader(new FragmentShader(fragment_shader_color));
+	ShaderProgram::ShaderProgramBuilder builder;
 
-	shader_program->Compile();
-	shader_program->Check();
+	builder.AddVertexShader(vertex_shader_color);
+	builder.AddFragmentShader(fragment_shader_color);
+
+	shader_program = builder.Build();
 }
 
 void Application::Run()

@@ -8,6 +8,6 @@ public:
 	virtual void DrawModel() = 0;
 protected:
 	float* model_points;
-	int model_points_length;
+	int length;
 	GLuint VBO, VAO;
 };
