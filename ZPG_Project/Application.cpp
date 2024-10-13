@@ -1,5 +1,5 @@
 #include "Application.h"
-#include "SimpleTriangleObject.h"
+#include "TriangleNormalModel.h"
 #include "sphere.h"
 
 #include <stdio.h>
@@ -72,9 +72,7 @@ void Application::Init()
 
 void Application::AddObjects()
 {
-	triangle = new SimpleTriangleObject(sphere, sizeof(sphere), 6);
-	triangle->AddShaderProgram(shader_program);
-
+	objects.push_back(new DrawableObject(new TriangleNormalModel(sphere, sizeof(sphere)), shader_program));
 }
 
 void Application::AddShaders()
@@ -92,7 +90,10 @@ void Application::Run()
 		// clear color and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		triangle->DrawObject();
+		for (DrawableObject* drawableObject : objects)
+		{
+			drawableObject->DrawObject();
+		}
 
 		// update other events like input handling
 		glfwPollEvents();

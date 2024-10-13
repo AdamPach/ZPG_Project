@@ -3,8 +3,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Object.h"
-#include "SimpleTriangleObject.h"
+#include <vector>
+
+#include "DrawableObject.h"
 #include "VertexShader.h"
 #include "FragmentShader.h"
 #include "ShaderProgram.h"
@@ -18,7 +19,7 @@ public:
 	void Run();
 private:
 	GLFWwindow* window;
-	Object* triangle, *square;
+	std::vector<DrawableObject*> objects;
 	ShaderProgram* shader_program, *shader_program_2;
 	static void error_callback(int error, const char* description);
 	void InitWindow();
