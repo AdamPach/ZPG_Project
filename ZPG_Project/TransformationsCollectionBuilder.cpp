@@ -34,6 +34,13 @@ TransformationsCollectionBuilder* TransformationsCollectionBuilder::AddRotationP
 	return this;
 }
 
+TransformationsCollectionBuilder* TransformationsCollectionBuilder::Clear()
+{
+	transformations.clear();
+
+	return this;
+}
+
 std::vector<TransformationPart*> TransformationsCollectionBuilder::Build()
 {
 	return transformations;

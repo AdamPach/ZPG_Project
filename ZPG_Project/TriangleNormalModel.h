@@ -5,8 +5,9 @@
 class TriangleNormalModel : public Model
 {
 public:
-	TriangleNormalModel(float* points, int length);
 	~TriangleNormalModel();
-	void DrawModel();
+	virtual void DrawModel();
+protected:
+	TriangleNormalModel(float* points, int length);
 };
 

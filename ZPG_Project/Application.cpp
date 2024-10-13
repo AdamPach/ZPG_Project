@@ -1,25 +1,11 @@
 #include "Application.h"
 #include "TriangleNormalModel.h"
 #include "TransformationsCollectionBuilder.h"
-#include "sphere.h"
+#include "PlainModel.h"
+#include "TreeModel.h"
 
 #include <stdio.h>
 #include <cstdlib>
-
-float points[] = {
-   -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-	0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-   -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
-};
-
-float points_2[] = {
-	0.8f, 0.8f, 0.0f,
-	0.8f, 0.5f, 0.0f,
-	0.5f, 0.8f, 0.0f,
-	0.5f, 0.5f, 0.0f,
-	0.8f, 0.5f, 0.0f,
-	0.5f, 0.8f, 0.0f
-};
 
 const char* vertex_shader =
 "#version 330\n"
@@ -73,10 +59,37 @@ void Application::AddObjects()
 {
 	TransformationsCollectionBuilder transformationBuilder;
 
-	transformationBuilder.AddRotationPart(90, TransformationsCollectionBuilder::Y)->AddRotationPart(90, TransformationsCollectionBuilder::X);
+	transformationBuilder.AddTranslationPart(0,0,0.99)->AddRotationPart(90, TransformationsCollectionBuilder::X);
 
 	objects.push_back(new DrawableObject(
-		new TriangleNormalModel(sphere, sizeof(sphere)),
+		PlainModel::GetInstance(),
+		shader_program,
+		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
+
+	transformationBuilder.Clear();
+
+	transformationBuilder.AddScalePart(0.2f)->AddTranslationPart(0, -5, 0);
+
+	objects.push_back(new DrawableObject(
+		TreeModel::GetInstance(),
+		shader_program,
+		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
+
+	transformationBuilder.Clear();
+
+	transformationBuilder.AddScalePart(0.125f)->AddTranslationPart(-6, -8, 0)->AddRotationPart(60, TransformationsCollectionBuilder::Y);
+
+	objects.push_back(new DrawableObject(
+		TreeModel::GetInstance(),
+		shader_program,
+		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
+
+	transformationBuilder.Clear();
+
+	transformationBuilder.AddScalePart(0.10f)->AddTranslationPart(7.5f, -10, 0)->AddRotationPart(-60, TransformationsCollectionBuilder::Y);
+
+	objects.push_back(new DrawableObject(
+		TreeModel::GetInstance(),
 		shader_program,
 		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
 }

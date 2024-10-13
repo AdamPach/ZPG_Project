@@ -15,6 +15,8 @@ public:
 	TransformationsCollectionBuilder* AddTranslationPart(float x_move, float y_move, float z_move);
 	TransformationsCollectionBuilder* AddRotationPart(float angle, Axis axis);
 
+	TransformationsCollectionBuilder* Clear();
+
 	std::vector<TransformationPart*> Build();
 private:
 	std::vector<TransformationPart*> transformations;

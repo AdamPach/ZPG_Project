@@ -135,6 +135,7 @@
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="PlainModel.cpp" />
     <ClCompile Include="RotationPart.cpp" />
     <ClCompile Include="ScalePart.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="TransformationPart.cpp" />
     <ClCompile Include="TransformationsCollectionBuilder.cpp" />
     <ClCompile Include="TranslationPart.cpp" />
+    <ClCompile Include="TreeModel.cpp" />
     <ClCompile Include="TriangleNormalModel.cpp" />
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
@@ -154,6 +156,7 @@
     <ClInclude Include="gift.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="plain.h" />
+    <ClInclude Include="PlainModel.h" />
     <ClInclude Include="RotationPart.h" />
     <ClInclude Include="ScalePart.h" />
     <ClInclude Include="Shader.h" />
@@ -166,6 +169,7 @@
     <ClInclude Include="TransformationsCollectionBuilder.h" />
     <ClInclude Include="TranslationPart.h" />
     <ClInclude Include="tree.h" />
+    <ClInclude Include="TreeModel.h" />
     <ClInclude Include="TriangleNormalModel.h" />
     <ClInclude Include="VertexShader.h" />
   </ItemGroup>
