@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "TriangleNormalModel.h"
 #include "sphere.h"
+#include "RotationPart.h"
+#include "ScalePart.h"
 
 #include <stdio.h>
 #include <cstdlib>
@@ -72,10 +74,15 @@ void Application::Init()
 
 void Application::AddObjects()
 {
+	std::vector<TransformationPart*> parts;
+
+	parts.push_back(new RotationPart(50.0f, glm::vec3(0.0f, 1.0f, 0.0f)));
+	parts.push_back(new ScalePart(glm::vec3(0.5f)));
+
 	objects.push_back(new DrawableObject(
 		new TriangleNormalModel(sphere, sizeof(sphere)),
 		shader_program,
-		new Transformation(shader_program->GetUniformLocation("modelMatrix"))));
+		new Transformation(shader_program->GetUniformLocation("modelMatrix"), parts)));
 }
 
 void Application::AddShaders()

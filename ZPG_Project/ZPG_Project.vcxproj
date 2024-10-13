@@ -135,9 +135,13 @@
     <ClCompile Include="FragmentShader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="RotationPart.cpp" />
+    <ClCompile Include="ScalePart.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Transformation.cpp" />
+    <ClCompile Include="TransformationPart.cpp" />
+    <ClCompile Include="TranslationPart.cpp" />
     <ClCompile Include="TriangleNormalModel.cpp" />
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
@@ -149,12 +153,16 @@
     <ClInclude Include="gift.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="plain.h" />
+    <ClInclude Include="RotationPart.h" />
+    <ClInclude Include="ScalePart.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="sphere.h" />
     <ClInclude Include="suzi_flat.h" />
     <ClInclude Include="suzi_smooth.h" />
     <ClInclude Include="Transformation.h" />
+    <ClInclude Include="TransformationPart.h" />
+    <ClInclude Include="TranslationPart.h" />
     <ClInclude Include="tree.h" />
     <ClInclude Include="TriangleNormalModel.h" />
     <ClInclude Include="VertexShader.h" />
