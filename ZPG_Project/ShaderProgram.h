@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Shader.h"
+#include "Transformation.h"
 
 class ShaderProgram
 {
@@ -14,8 +15,10 @@ public:
 	void Compile();
 	void Use();
 	void Check();
+
+	GLint GetUniformLocation(const char* name);
 private:
 	std::vector<Shader*> shaders;
-	GLuint shader_program;	
+	GLuint shader_program;
 };
 

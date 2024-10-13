@@ -7,9 +7,9 @@ int main(void)
 
 	app->Init();
 
-	app->AddObjects();
-
 	app->AddShaders();
+
+	app->AddObjects();
 
 	app->Run();
 

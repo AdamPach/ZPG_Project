@@ -31,9 +31,10 @@ const char* vertex_shader_color =
 "#version 330\n"
 "layout(location=0) in vec3 vp;"
 "layout(location=1) in vec3 color_in;"
+"uniform mat4 modelMatrix;"
 "out vec3 color_out;"
 "void main () {"
-"     gl_Position = vec4 (vp, 1.0);"
+"     gl_Position = modelMatrix * vec4 (vp, 1.0);"
 "     color_out = color_in;"
 "}";
 
@@ -65,14 +66,16 @@ void Application::Init()
 	PrintVersionInfo();
 
 	shader_program = new ShaderProgram();
-	shader_program_2 = new ShaderProgram();
 
 	glEnable(GL_DEPTH_TEST);
 }
 
 void Application::AddObjects()
 {
-	objects.push_back(new DrawableObject(new TriangleNormalModel(sphere, sizeof(sphere)), shader_program));
+	objects.push_back(new DrawableObject(
+		new TriangleNormalModel(sphere, sizeof(sphere)),
+		shader_program,
+		new Transformation(shader_program->GetUniformLocation("modelMatrix"))));
 }
 
 void Application::AddShaders()

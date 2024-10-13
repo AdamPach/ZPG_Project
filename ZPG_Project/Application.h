@@ -20,7 +20,7 @@ public:
 private:
 	GLFWwindow* window;
 	std::vector<DrawableObject*> objects;
-	ShaderProgram* shader_program, *shader_program_2;
+	ShaderProgram* shader_program;
 	static void error_callback(int error, const char* description);
 	void InitWindow();
 	void InitGLEW();

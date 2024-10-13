@@ -49,3 +49,8 @@ void ShaderProgram::Check()
 		delete[] strInfoLog;
 	}
 }
+
+GLint ShaderProgram::GetUniformLocation(const char* name)
+{
+	return glGetUniformLocation(shader_program, name);
+}

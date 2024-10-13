@@ -137,6 +137,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="Transformation.cpp" />
     <ClCompile Include="TriangleNormalModel.cpp" />
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="sphere.h" />
     <ClInclude Include="suzi_flat.h" />
     <ClInclude Include="suzi_smooth.h" />
+    <ClInclude Include="Transformation.h" />
     <ClInclude Include="tree.h" />
     <ClInclude Include="TriangleNormalModel.h" />
     <ClInclude Include="VertexShader.h" />

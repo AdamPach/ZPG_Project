@@ -2,13 +2,15 @@
 
 #include "Model.h"
 #include "ShaderProgram.h"
+#include "Transformation.h"
 
 class DrawableObject
 {
 public:
-	DrawableObject(Model* model, ShaderProgram* shader);
+	DrawableObject(Model* model, ShaderProgram* shader, Transformation* transformation);
 	void DrawObject();
 private:
 	Model* model;
 	ShaderProgram* shader;
+	Transformation* transformation;
 };
