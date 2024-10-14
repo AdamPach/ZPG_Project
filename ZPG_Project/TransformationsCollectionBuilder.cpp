@@ -34,6 +34,13 @@ TransformationsCollectionBuilder* TransformationsCollectionBuilder::AddRotationP
 	return this;
 }
 
+TransformationsCollectionBuilder* TransformationsCollectionBuilder::AddPart(TransformationPart* part)
+{
+	transformations.push_back(part);
+
+	return this;
+}
+
 TransformationsCollectionBuilder* TransformationsCollectionBuilder::Clear()
 {
 	transformations.clear();
@@ -41,7 +48,16 @@ TransformationsCollectionBuilder* TransformationsCollectionBuilder::Clear()
 	return this;
 }
 
-std::vector<TransformationPart*> TransformationsCollectionBuilder::Build()
+TransformationPartContainer* TransformationsCollectionBuilder::Build()
 {
-	return transformations;
+	TransformationPartContainer* container = new TransformationPartContainer();
+
+	for (TransformationPart* transformation : transformations)
+	{
+		container->AddTransformationPartAtEnd(transformation);
+	}
+
+	transformations.clear();
+
+	return container;
 }

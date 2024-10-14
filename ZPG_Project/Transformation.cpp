@@ -5,23 +5,20 @@ Transformation::Transformation()
 	M = nullptr;
 }
 
-Transformation::Transformation(std::vector<TransformationPart*> parts)
+Transformation::Transformation(TransformationPartContainer* container)
 {
 	M = nullptr;
-	this->parts = parts;
+	transformationPartContainer = container;
 }
 
 Transformation::~Transformation()
 {
-	for (auto part : parts)
-	{
-		delete part;
-	}
+	delete transformationPartContainer;
 }
 
 void Transformation::AddPart(TransformationPart* part)
 {
-	parts.push_back(part);
+	transformationPartContainer->AddTransformationPartAtEnd(part);
 }
 
 glm::mat4 Transformation::GetTransformation()
@@ -33,9 +30,9 @@ glm::mat4 Transformation::GetTransformation()
 
 	M = new glm::mat4(1.0f);
 
-	for (auto part : parts)
+	if (transformationPartContainer != nullptr)
 	{
-		*M = part->GetTransformation(*M);
+		*M = transformationPartContainer->GetTransformation(*M);
 	}
 
 	return glm::mat4(*M);

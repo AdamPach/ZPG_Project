@@ -3,6 +3,7 @@
 #include "TransformationsCollectionBuilder.h"
 #include "PlainModel.h"
 #include "TreeModel.h"
+#include "BushesModel.h"
 
 #include <stdio.h>
 #include <cstdlib>
@@ -83,44 +84,96 @@ void Application::AddObjects()
 {
 	TransformationsCollectionBuilder transformationBuilder;
 
-	transformationBuilder.AddTranslationPart(0,0,0.99)->AddRotationPart(90, TransformationsCollectionBuilder::X);
+	transformationBuilder.AddTranslationPart(0,0,0.99)
+		->AddRotationPart(90, TransformationsCollectionBuilder::X);
 
 	scenes[0]->AddObject(new DrawableObject(
 		PlainModel::GetInstance(),
 		shader_program,
 		new Transformation(transformationBuilder.Build())));
 
-	transformationBuilder.Clear();
+	transformationBuilder.AddRotationPart(30, TransformationsCollectionBuilder::Y)
+		->AddScalePart(0.05f);
 
-	transformationBuilder.AddScalePart(0.2f)->AddTranslationPart(0, -5, 0);
+	auto baseTransformation = transformationBuilder.Build();
+	auto baseRotated = transformationBuilder.AddPart(baseTransformation)
+		->AddRotationPart(10, TransformationsCollectionBuilder::X)->Build();
 
-	scenes[0]->AddObject(new DrawableObject(
-		TreeModel::GetInstance(),
-		shader_program,
-		new Transformation(transformationBuilder.Build())));
-
-	transformationBuilder.Clear();
-
-	transformationBuilder.AddScalePart(0.125f)->AddTranslationPart(-6, -8, 0)->AddRotationPart(60, TransformationsCollectionBuilder::Y);
+	transformationBuilder.AddPart(baseTransformation)
+		->AddTranslationPart(8, 0, 0);
 
 	scenes[0]->AddObject(new DrawableObject(
 		TreeModel::GetInstance(),
 		shader_program,
 		new Transformation(transformationBuilder.Build())));
 
-	transformationBuilder.Clear();
-
-	transformationBuilder.AddScalePart(0.10f)->AddTranslationPart(7.5f, -10, 0)->AddRotationPart(-60, TransformationsCollectionBuilder::Y);
+	transformationBuilder.AddPart(baseRotated)
+		->AddScalePart(1.5f)
+		->AddTranslationPart(-6, 5, 0);
 
 	scenes[0]->AddObject(new DrawableObject(
 		TreeModel::GetInstance(),
 		shader_program,
 		new Transformation(transformationBuilder.Build())));
+
+	transformationBuilder.AddPart(baseRotated)
+		->AddScalePart(1.3f)
+		->AddTranslationPart(-8, -5, 0);
+
+	scenes[0]->AddObject(new DrawableObject(
+		TreeModel::GetInstance(),
+		shader_program,
+		new Transformation(transformationBuilder.Build())));
+
+	transformationBuilder.AddPart(baseTransformation)
+		->AddScalePart(1.2f)
+		->AddTranslationPart(4, -8, 0);
+
+	scenes[0]->AddObject(new DrawableObject(
+		TreeModel::GetInstance(),
+		shader_program,
+		new Transformation(transformationBuilder.Build())));
+
+	transformationBuilder.AddPart(baseTransformation)
+		->AddScalePart(4.0f)
+		->AddTranslationPart(2, -4, 0);
+
+	scenes[0]->AddObject(new DrawableObject(
+		BushesModel::GetInstance(),
+		shader_program,
+		new Transformation(transformationBuilder.Build())));
+
+	transformationBuilder.AddPart(baseTransformation)
+		->AddScalePart(4.0f)
+		->AddTranslationPart(-2, -4, 0)
+		->AddRotationPart(60, TransformationsCollectionBuilder::X);
+
+	scenes[0]->AddObject(new DrawableObject(
+		BushesModel::GetInstance(),
+		shader_program,
+		new Transformation(transformationBuilder.Build())));
+
+	transformationBuilder.AddPart(baseTransformation)
+		->AddScalePart(4.0f)
+		->AddTranslationPart(2, 4, 0)
+		->AddRotationPart(40, TransformationsCollectionBuilder::X)
+		->AddRotationPart(40, TransformationsCollectionBuilder::Z);
+
+	scenes[0]->AddObject(new DrawableObject(
+		BushesModel::GetInstance(),
+		shader_program,
+		new Transformation(transformationBuilder.Build())));
+
+	transformationBuilder.AddScalePart(0.6f)
+		->AddRotationPart(60, TransformationsCollectionBuilder::X)
+		->AddRotationPart(60, TransformationsCollectionBuilder::Y)
+		->AddRotationPart(60, TransformationsCollectionBuilder::Z);
 
 	scenes[1]->AddObject(new DrawableObject(
-		TreeModel::GetInstance(),
+		PlainModel::GetInstance(),
 		shader_program,
 		new Transformation(transformationBuilder.Build())));
+		
 }
 
 void Application::AddShaders()
