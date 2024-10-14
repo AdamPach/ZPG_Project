@@ -12,13 +12,13 @@
 class Transformation
 {
 public:
-	Transformation(GLint unimform_id);
-	Transformation(GLint unimform_id, std::vector<TransformationPart*> parts);
+	Transformation();
+	Transformation(std::vector<TransformationPart*> parts);
 	~Transformation();
 	void AddPart(TransformationPart* part);
-	void Use();
+	glm::mat4 GetTransformation();
 private:
-	GLint unimform_id;
+	glm::mat4* M;
 	std::vector<TransformationPart*> parts;
 };
 

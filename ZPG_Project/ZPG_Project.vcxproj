@@ -138,6 +138,7 @@
     <ClCompile Include="PlainModel.cpp" />
     <ClCompile Include="RotationPart.cpp" />
     <ClCompile Include="ScalePart.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Transformation.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="PlainModel.h" />
     <ClInclude Include="RotationPart.h" />
     <ClInclude Include="ScalePart.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="sphere.h" />

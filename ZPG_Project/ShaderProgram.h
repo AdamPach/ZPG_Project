@@ -13,6 +13,7 @@ public:
 	void AddShader(Shader* shader);
 	void Compile();
 	void Use();
+	void Use(Transformation* transformation, const char * variable_name);
 	void Check();
 
 	GLint GetUniformLocation(const char* name);
@@ -27,6 +28,8 @@ public:
 	private:
 		std::vector<Shader*> shaders;
 	};
+
+	static ShaderProgramBuilder* CreateBuilder();
 private:
 	ShaderProgram(int count_of_shaders = 2);
 

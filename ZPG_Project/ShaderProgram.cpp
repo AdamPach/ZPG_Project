@@ -2,6 +2,11 @@
 #include "VertexShader.h"
 #include "FragmentShader.h"
 
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::CreateBuilder()
+{
+	return new ShaderProgramBuilder();
+}
+
 ShaderProgram::ShaderProgram(int count_of_shaders)
 {
 	shaders.reserve(count_of_shaders);
@@ -35,6 +40,13 @@ void ShaderProgram::Compile()
 void ShaderProgram::Use()
 {
 	glUseProgram(shader_program);
+}
+
+void ShaderProgram::Use(Transformation* transformation, const char* variable_name)
+{
+	glUseProgram(shader_program);
+	GLint location = GetUniformLocation(variable_name);
+	glUniformMatrix4fv(location, 1, GL_FALSE, &transformation->GetTransformation()[0][0]);
 }
 
 void ShaderProgram::Check()

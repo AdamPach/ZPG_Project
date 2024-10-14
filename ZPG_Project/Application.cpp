@@ -40,6 +40,22 @@ const char* fragment_shader_color =
 "     frag_colour = vec4 (color_out, 1.0);"
 "}";
 
+void Application::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (action == GLFW_PRESS)
+	{
+		Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+		if (key == GLFW_KEY_1)
+		{
+			app->scene_index = 0;
+		}
+		else if (key == GLFW_KEY_2)
+		{
+			app->scene_index = 1;
+		}
+	}
+}
+
 void Application::Init()
 {
 	glfwSetErrorCallback(error_callback);
@@ -52,6 +68,14 @@ void Application::Init()
 	InitGLEW();
 	PrintVersionInfo();
 
+	glfwSetWindowUserPointer(window, this);
+	glfwSetKeyCallback(window, key_callback);
+
+	scenes.push_back(new Scene());
+	scenes.push_back(new Scene());
+
+	this->scene_index = 0;
+
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -61,37 +85,42 @@ void Application::AddObjects()
 
 	transformationBuilder.AddTranslationPart(0,0,0.99)->AddRotationPart(90, TransformationsCollectionBuilder::X);
 
-	objects.push_back(new DrawableObject(
+	scenes[0]->AddObject(new DrawableObject(
 		PlainModel::GetInstance(),
 		shader_program,
-		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
+		new Transformation(transformationBuilder.Build())));
 
 	transformationBuilder.Clear();
 
 	transformationBuilder.AddScalePart(0.2f)->AddTranslationPart(0, -5, 0);
 
-	objects.push_back(new DrawableObject(
+	scenes[0]->AddObject(new DrawableObject(
 		TreeModel::GetInstance(),
 		shader_program,
-		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
+		new Transformation(transformationBuilder.Build())));
 
 	transformationBuilder.Clear();
 
 	transformationBuilder.AddScalePart(0.125f)->AddTranslationPart(-6, -8, 0)->AddRotationPart(60, TransformationsCollectionBuilder::Y);
 
-	objects.push_back(new DrawableObject(
+	scenes[0]->AddObject(new DrawableObject(
 		TreeModel::GetInstance(),
 		shader_program,
-		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
+		new Transformation(transformationBuilder.Build())));
 
 	transformationBuilder.Clear();
 
 	transformationBuilder.AddScalePart(0.10f)->AddTranslationPart(7.5f, -10, 0)->AddRotationPart(-60, TransformationsCollectionBuilder::Y);
 
-	objects.push_back(new DrawableObject(
+	scenes[0]->AddObject(new DrawableObject(
 		TreeModel::GetInstance(),
 		shader_program,
-		new Transformation(shader_program->GetUniformLocation("modelMatrix"), transformationBuilder.Build())));
+		new Transformation(transformationBuilder.Build())));
+
+	scenes[1]->AddObject(new DrawableObject(
+		TreeModel::GetInstance(),
+		shader_program,
+		new Transformation(transformationBuilder.Build())));
 }
 
 void Application::AddShaders()
@@ -102,6 +131,9 @@ void Application::AddShaders()
 	builder.AddFragmentShader(fragment_shader_color);
 
 	shader_program = builder.Build();
+
+	scenes[0]->AddShaderProgram(shader_program);
+	scenes[1]->AddShaderProgram(shader_program);
 }
 
 void Application::Run()
@@ -110,10 +142,7 @@ void Application::Run()
 		// clear color and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		for (DrawableObject* drawableObject : objects)
-		{
-			drawableObject->DrawObject();
-		}
+		scenes[scene_index]->Draw();
 
 		// update other events like input handling
 		glfwPollEvents();

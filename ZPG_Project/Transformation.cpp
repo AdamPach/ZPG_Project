@@ -1,18 +1,14 @@
 #include "Transformation.h"
 
-Transformation::Transformation(GLint unimform_id)
+Transformation::Transformation()
 {
-	this->unimform_id = unimform_id;
+	M = nullptr;
 }
 
-Transformation::Transformation(GLint unimform_id, std::vector<TransformationPart*> parts)
+Transformation::Transformation(std::vector<TransformationPart*> parts)
 {
-	this->unimform_id = unimform_id;
-
-	for (auto part : parts)
-	{
-		AddPart(part);
-	}
+	M = nullptr;
+	this->parts = parts;
 }
 
 Transformation::~Transformation()
@@ -28,14 +24,19 @@ void Transformation::AddPart(TransformationPart* part)
 	parts.push_back(part);
 }
 
-void Transformation::Use()
+glm::mat4 Transformation::GetTransformation()
 {
-	glm::mat4 M = glm::mat4(1.0f);
+	if (M != nullptr)
+	{
+		return glm::mat4(*M);
+	}
+
+	M = new glm::mat4(1.0f);
 
 	for (auto part : parts)
 	{
-		M = part->GetTransformation(M);
+		*M = part->GetTransformation(*M);
 	}
 
-	glUniformMatrix4fv(unimform_id, 1, GL_FALSE, &M[0][0]);
+	return glm::mat4(*M);
 }

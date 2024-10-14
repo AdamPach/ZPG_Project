@@ -9,6 +9,7 @@
 #include "VertexShader.h"
 #include "FragmentShader.h"
 #include "ShaderProgram.h"
+#include "Scene.h"
 
 class Application
 {
@@ -19,9 +20,11 @@ public:
 	void Run();
 private:
 	GLFWwindow* window;
-	std::vector<DrawableObject*> objects;
+	int scene_index;
+	std::vector<Scene*> scenes;
 	ShaderProgram* shader_program;
 	static void error_callback(int error, const char* description);
+	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void InitWindow();
 	void InitGLEW();
 	void PrintVersionInfo();
