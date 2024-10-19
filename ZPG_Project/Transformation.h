@@ -5,19 +5,19 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLFW/glfw3.h>
 
-#include "TransformationPartContainer.h"
-#include "TransformationPart.h"
+#include "TransformationComposite.h"
+#include "TransformationBasic.h"
 
 class Transformation
 {
 public:
 	Transformation();
-	Transformation(TransformationPartContainer* container);
+	Transformation(TransformationComposite* container);
 	~Transformation();
-	void AddPart(TransformationPart* part);
+	void AddPart(TransformationBasic* part);
 	glm::mat4 GetTransformation();
 private:
 	glm::mat4* M;
-	TransformationPartContainer* transformationPartContainer;
+	TransformationComposite* transformationPartContainer;
 };
 

@@ -4,7 +4,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 
-class TransformationPart
+class TransformationBasic
 {
 public:
 	virtual glm::mat4 GetTransformation(glm::mat4 M) = 0;

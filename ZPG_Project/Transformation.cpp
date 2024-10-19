@@ -5,7 +5,7 @@ Transformation::Transformation()
 	M = nullptr;
 }
 
-Transformation::Transformation(TransformationPartContainer* container)
+Transformation::Transformation(TransformationComposite* container)
 {
 	M = nullptr;
 	transformationPartContainer = container;
@@ -16,9 +16,9 @@ Transformation::~Transformation()
 	delete transformationPartContainer;
 }
 
-void Transformation::AddPart(TransformationPart* part)
+void Transformation::AddPart(TransformationBasic* part)
 {
-	transformationPartContainer->AddTransformationPartAtEnd(part);
+	transformationPartContainer->AddTransformation(part);
 }
 
 glm::mat4 Transformation::GetTransformation()

@@ -9,8 +9,6 @@ DrawableObject::DrawableObject(Model* model, ShaderProgram* shader, Transformati
 
 DrawableObject::~DrawableObject()
 {
-	delete model;
-	delete shader;
 	delete transformation;
 }
 

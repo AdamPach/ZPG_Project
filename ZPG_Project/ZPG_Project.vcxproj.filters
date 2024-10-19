@@ -45,22 +45,19 @@
     <ClCompile Include="PlainModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RotationPart.cpp">
+    <ClCompile Include="Rotation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScalePart.cpp">
+    <ClCompile Include="Scale.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Transformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TransformationPart.cpp">
+    <ClCompile Include="TransformationsBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TransformationsCollectionBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TranslationPart.cpp">
+    <ClCompile Include="Translation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TreeModel.cpp">
@@ -75,7 +72,7 @@
     <ClCompile Include="BushesModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TransformationPartContainer.cpp">
+    <ClCompile Include="TransformationComposite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,22 +122,22 @@
     <ClInclude Include="PlainModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RotationPart.h">
+    <ClInclude Include="Rotation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScalePart.h">
+    <ClInclude Include="Scale.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Transformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransformationPart.h">
+    <ClInclude Include="TransformationBasic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransformationsCollectionBuilder.h">
+    <ClInclude Include="TransformationsBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TranslationPart.h">
+    <ClInclude Include="Translation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TreeModel.h">
@@ -155,7 +152,7 @@
     <ClInclude Include="BushesModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransformationPartContainer.h">
+    <ClInclude Include="TransformationComposite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
