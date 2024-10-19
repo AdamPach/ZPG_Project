@@ -11,13 +11,11 @@
 class Transformation
 {
 public:
-	Transformation();
 	Transformation(TransformationComposite* container);
 	~Transformation();
 	void AddPart(TransformationBasic* part);
-	glm::mat4 GetTransformation();
+	glm::mat4 GetTransformationMatrix();
 private:
-	glm::mat4* M;
 	TransformationComposite* transformationPartContainer;
 };
 

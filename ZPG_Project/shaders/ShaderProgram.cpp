@@ -53,7 +53,7 @@ void ShaderProgram::Use(Transformation* transformation)
 
 	if (uniform_location != -1)
 	{
-		glUniformMatrix4fv(uniform_location, 1, GL_FALSE, &transformation->GetTransformation()[0][0]);
+		glUniformMatrix4fv(uniform_location, 1, GL_FALSE, &transformation->GetTransformationMatrix()[0][0]);
 	}
 }
 

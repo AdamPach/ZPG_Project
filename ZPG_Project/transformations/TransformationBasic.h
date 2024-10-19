@@ -7,6 +7,8 @@
 class TransformationBasic
 {
 public:
-	virtual glm::mat4 GetTransformation(glm::mat4 M) = 0;
+	virtual glm::mat4 GetMatrix();
+protected:
+	glm::mat4 transformationMatrix;
 };
 

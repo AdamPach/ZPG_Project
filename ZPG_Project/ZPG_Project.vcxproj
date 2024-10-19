@@ -138,6 +138,7 @@
     <ClCompile Include="objects\PlainModel.cpp" />
     <ClCompile Include="transformations\Rotation.cpp" />
     <ClCompile Include="transformations\Scale.cpp" />
+    <ClCompile Include="transformations\TransformationBasic.cpp" />
     <ClCompile Include="world\Scene.cpp" />
     <ClCompile Include="shaders\Shader.cpp" />
     <ClCompile Include="shaders\ShaderProgram.cpp" />

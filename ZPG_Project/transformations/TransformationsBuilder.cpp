@@ -1,22 +1,23 @@
 #include "TransformationsBuilder.h"
 
-TransformationsBuilder* TransformationsBuilder::AddScalePart(float scale)
+TransformationsBuilder* TransformationsBuilder::AddScale(float scale)
 {
 	transformations.push_back(new Scale(glm::vec3(scale)));
 
 	return this;
 }
 
-TransformationsBuilder* TransformationsBuilder::AddTranslationPart(float x_move, float y_move, float z_move)
+TransformationsBuilder* TransformationsBuilder::AddTranslation(float x_move, float y_move, float z_move)
 {
 	transformations.push_back(new Translation(glm::vec3(x_move, y_move, z_move)));
 
 	return this;
 }
 
-TransformationsBuilder* TransformationsBuilder::AddRotationPart(float angle, Axis axis)
+TransformationsBuilder* TransformationsBuilder::AddRotation(float angle, Axis axis)
 {
-	glm::vec3 axisVec;
+	glm::vec3 axisVec{};
+
 	switch (axis)
 	{
 	case X:
@@ -51,14 +52,14 @@ TransformationsBuilder* TransformationsBuilder::Clear()
 
 TransformationComposite* TransformationsBuilder::Build()
 {
-	TransformationComposite* container = new TransformationComposite();
+	TransformationComposite* composite = new TransformationComposite();
 
 	for (TransformationBasic* transformation : transformations)
 	{
-		container->AddTransformation(transformation);
+		composite->AddTransformation(transformation);
 	}
 
 	transformations.clear();
 
-	return container;
+	return composite;
 }

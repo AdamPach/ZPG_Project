@@ -2,10 +2,5 @@
 
 Translation::Translation(glm::vec3 direction)
 {
-	this->direction = direction;
-}
-
-glm::mat4 Translation::GetTransformation(glm::mat4 M)
-{
-	return glm::translate(M, direction);
+	transformationMatrix = glm::translate(glm::mat4(1.0f), direction);
 }

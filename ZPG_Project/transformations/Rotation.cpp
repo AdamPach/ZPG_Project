@@ -2,11 +2,5 @@
 
 Rotation::Rotation(float angle, glm::vec3 axis)
 {
-	this->angle = angle;
-	this->axis = axis;
-}
-
-glm::mat4 Rotation::GetTransformation(glm::mat4 M)
-{
-	return glm::rotate(M, glm::radians(angle), axis);
+	transformationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
 }

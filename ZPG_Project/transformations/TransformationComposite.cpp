@@ -1,5 +1,10 @@
 #include "TransformationComposite.h"
 
+TransformationComposite::TransformationComposite()
+{
+	transformationMatrix = glm::mat4(1.0f);
+}
+
 void TransformationComposite::AddTransformation(TransformationBasic* transformationPart)
 {
 	transformationParts.push_back(transformationPart);
@@ -10,13 +15,21 @@ void TransformationComposite::RemoveTransformation(TransformationBasic* transfor
 	transformationParts.erase(std::remove(transformationParts.begin(), transformationParts.end(), transformationPart), transformationParts.end());
 }
 
-glm::mat4 TransformationComposite::GetTransformation(glm::mat4 M)
+glm::mat4 TransformationComposite::GetMatrix()
 {
-	glm::mat4 result = M;
+	if (transformationMatrix != glm::mat4(1.0f))
+	{
+		return transformationMatrix;
+	}
+
+	glm::mat4 matrix = glm::mat4(1.0f);
 
 	for (TransformationBasic* transformationPart : transformationParts)
 	{
-		result = transformationPart->GetTransformation(result);
+		matrix = transformationPart->GetMatrix() * matrix;
 	}
-	return result;
+
+	transformationMatrix = matrix;
+
+	return transformationMatrix;
 }

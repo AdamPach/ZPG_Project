@@ -1,13 +1,7 @@
 #include "Transformation.h"
 
-Transformation::Transformation()
-{
-	M = nullptr;
-}
-
 Transformation::Transformation(TransformationComposite* container)
 {
-	M = nullptr;
 	transformationPartContainer = container;
 }
 
@@ -21,19 +15,7 @@ void Transformation::AddPart(TransformationBasic* part)
 	transformationPartContainer->AddTransformation(part);
 }
 
-glm::mat4 Transformation::GetTransformation()
+glm::mat4 Transformation::GetTransformationMatrix()
 {
-	if (M != nullptr)
-	{
-		return glm::mat4(*M);
-	}
-
-	M = new glm::mat4(1.0f);
-
-	if (transformationPartContainer != nullptr)
-	{
-		*M = transformationPartContainer->GetTransformation(*M);
-	}
-
-	return glm::mat4(*M);
+	return transformationPartContainer->GetMatrix();
 }
