@@ -180,8 +180,9 @@ void Application::AddShaders()
 {
 	ShaderProgram::ShaderProgramBuilder builder;
 
-	builder.AddVertexShader(vertex_shader_color);
-	builder.AddFragmentShader(fragment_shader_color);
+	builder.AddVertexShader(vertex_shader_color)
+		->AddFragmentShader(fragment_shader_color)
+		->AddUniform("modelMatrix");
 
 	shader_program = builder.Build();
 

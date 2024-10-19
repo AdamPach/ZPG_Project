@@ -14,7 +14,7 @@ DrawableObject::~DrawableObject()
 
 void DrawableObject::DrawObject()
 {
-	shader->Use(transformation, "modelMatrix");
+	shader->Use(transformation);
 	model->DrawModel();
 }
 

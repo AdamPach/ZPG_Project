@@ -25,6 +25,11 @@ void ShaderProgram::AddShader(Shader* shader)
 	shaders.push_back(shader);
 }
 
+void ShaderProgram::AddUniform(std::string uniform)
+{
+	uniform_location = glGetUniformLocation(shader_program, uniform.c_str());
+}
+
 void ShaderProgram::Compile()
 {
 	shader_program = glCreateProgram();
@@ -42,11 +47,14 @@ void ShaderProgram::Use()
 	glUseProgram(shader_program);
 }
 
-void ShaderProgram::Use(Transformation* transformation, const char* variable_name)
+void ShaderProgram::Use(Transformation* transformation)
 {
 	glUseProgram(shader_program);
-	GLint location = GetUniformLocation(variable_name);
-	glUniformMatrix4fv(location, 1, GL_FALSE, &transformation->GetTransformation()[0][0]);
+
+	if (uniform_location != -1)
+	{
+		glUniformMatrix4fv(uniform_location, 1, GL_FALSE, &transformation->GetTransformation()[0][0]);
+	}
 }
 
 void ShaderProgram::Check()
@@ -64,11 +72,6 @@ void ShaderProgram::Check()
 	}
 }
 
-GLint ShaderProgram::GetUniformLocation(const char* name)
-{
-	return glGetUniformLocation(shader_program, name);
-}
-
 ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddVertexShader(const char* shader)
 {
 	shaders.push_back(new VertexShader(shader));
@@ -79,6 +82,13 @@ ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddVer
 ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddFragmentShader(const char* shader)
 {
 	shaders.push_back(new FragmentShader(shader));
+
+	return this;
+}
+
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddUniform(const char* uniform)
+{
+	this->uniform = uniform;
 
 	return this;
 }
@@ -94,6 +104,11 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 
 	shaderProgram->Compile();
 	shaderProgram->Check();
+
+	if (this->uniform != "")
+	{
+		shaderProgram->AddUniform(this->uniform);
+	}
 
 	shaders.clear();
 
