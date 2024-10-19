@@ -1,9 +1,9 @@
 #include "Application.h"
-#include "TriangleNormalModel.h"
-#include "TransformationsBuilder.h"
-#include "PlainModel.h"
-#include "TreeModel.h"
-#include "BushesModel.h"
+#include "objects/TriangleNormalModel.h"
+#include "transformations/TransformationsBuilder.h"
+#include "objects/PlainModel.h"
+#include "objects/TreeModel.h"
+#include "objects/BushesModel.h"
 
 #include <stdio.h>
 #include <cstdlib>

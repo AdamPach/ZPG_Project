@@ -24,55 +24,52 @@
     <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FragmentShader.cpp">
+    <ClCompile Include="shaders\FragmentShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
+    <ClCompile Include="shaders\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProgram.cpp">
+    <ClCompile Include="shaders\ShaderProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VertexShader.cpp">
+    <ClCompile Include="shaders\VertexShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DrawableObject.cpp">
+    <ClCompile Include="objects\DrawableObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
+    <ClCompile Include="objects\PlainModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlainModel.cpp">
+    <ClCompile Include="transformations\Rotation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Rotation.cpp">
+    <ClCompile Include="transformations\Scale.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scale.cpp">
+    <ClCompile Include="transformations\Transformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transformation.cpp">
+    <ClCompile Include="transformations\TransformationsBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TransformationsBuilder.cpp">
+    <ClCompile Include="transformations\Translation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Translation.cpp">
+    <ClCompile Include="objects\TreeModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TreeModel.cpp">
+    <ClCompile Include="objects\TriangleNormalModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TriangleNormalModel.cpp">
+    <ClCompile Include="world\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
+    <ClCompile Include="objects\BushesModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BushesModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TransformationComposite.cpp">
+    <ClCompile Include="transformations\TransformationComposite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,79 +77,79 @@
     <ClInclude Include="Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FragmentShader.h">
+    <ClInclude Include="shaders\FragmentShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
+    <ClInclude Include="shaders\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderProgram.h">
+    <ClInclude Include="shaders\ShaderProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VertexShader.h">
+    <ClInclude Include="shaders\VertexShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bushes.h">
+    <ClInclude Include="objects\models\bushes.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="gift.h">
+    <ClInclude Include="objects\models\gift.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="plain.h">
+    <ClInclude Include="objects\models\plain.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="sphere.h">
+    <ClInclude Include="objects\models\sphere.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="suzi_flat.h">
+    <ClInclude Include="objects\models\suzi_flat.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="suzi_smooth.h">
+    <ClInclude Include="objects\models\suzi_smooth.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="tree.h">
+    <ClInclude Include="objects\models\tree.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="DrawableObject.h">
+    <ClInclude Include="objects\DrawableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
+    <ClInclude Include="objects\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlainModel.h">
+    <ClInclude Include="objects\PlainModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Rotation.h">
+    <ClInclude Include="transformations\Rotation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scale.h">
+    <ClInclude Include="transformations\Scale.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transformation.h">
+    <ClInclude Include="transformations\Transformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransformationBasic.h">
+    <ClInclude Include="transformations\TransformationBasic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransformationsBuilder.h">
+    <ClInclude Include="transformations\TransformationsBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Translation.h">
+    <ClInclude Include="transformations\Translation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TreeModel.h">
+    <ClInclude Include="objects\TreeModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TriangleNormalModel.h">
+    <ClInclude Include="objects\TriangleNormalModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="world\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BushesModel.h">
+    <ClInclude Include="objects\BushesModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransformationComposite.h">
+    <ClInclude Include="transformations\TransformationComposite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

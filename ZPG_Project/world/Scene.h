@@ -2,8 +2,8 @@
 
 #include <vector>
 
-#include "DrawableObject.h"
-#include "ShaderProgram.h"
+#include "../objects/DrawableObject.h"
+#include "../shaders/ShaderProgram.h"
 
 class Scene
 {

@@ -5,11 +5,11 @@
 
 #include <vector>
 
-#include "DrawableObject.h"
-#include "VertexShader.h"
-#include "FragmentShader.h"
-#include "ShaderProgram.h"
-#include "Scene.h"
+#include "objects/DrawableObject.h"
+#include "shaders/VertexShader.h"
+#include "shaders/FragmentShader.h"
+#include "shaders/ShaderProgram.h"
+#include "world/Scene.h"
 
 class Application
 {
