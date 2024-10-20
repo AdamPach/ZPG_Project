@@ -100,29 +100,28 @@ void Application::Init()
 void Application::AddObjects()
 {
 	TransformationsBuilder transformationBuilder;
-	auto baseForrestTransformation = transformationBuilder.AddRotation(-45, Axis::X)
-		->Build();
+
+	transformationBuilder.AddScale(10.0f)
+		->AddTranslation(0, -0.5f, 0);
 
 	scenes[0]->AddObject(new DrawableObject(
 		PlainModel::GetInstance(),
 		shader_program,
-		new Transformation(baseForrestTransformation)));
+		new Transformation(transformationBuilder.Build())));
 
-	transformationBuilder.AddRotation(0, Axis::Y)
-		->AddTranslation(5, 2, 0)
-		->AddScale(0.1)
-		->AddTransformation(baseForrestTransformation);
+	auto baseForrestTransformation = transformationBuilder.AddRotation(30.0f, Axis::Y)
+		->AddScale(0.1f)
+		->AddTranslation(0, -0.5f, 0)
+		->Build();
 
 	scenes[0]->AddObject(new DrawableObject(
 		TreeModel::GetInstance(),
 		shader_program,
-		new Transformation(transformationBuilder.Build())));
+		new Transformation(baseForrestTransformation)));
 
-	transformationBuilder.AddRotation(10, Axis::Y)
-		->AddTranslation(-5, 1, 0)
-		->AddScale(0.12)
-		->AddTransformation(baseForrestTransformation);
-		
+	transformationBuilder.AddTransformation(baseForrestTransformation)
+		->AddTranslation(-0.5f, 0, -2.0f);
+
 	scenes[0]->AddObject(new DrawableObject(
 		TreeModel::GetInstance(),
 		shader_program,
