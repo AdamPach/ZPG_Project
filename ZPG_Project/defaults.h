@@ -7,5 +7,5 @@
 #define DEFAULT_CAMERA_Y 0.0f
 #define DEFAULT_CAMERA_Z 3.0f
 
-#define DEFAULT_SPEED 0.2f
+#define DEFAULT_SPEED 0.4f
 #define DEFAULT_SENSITIVITY 0.2f

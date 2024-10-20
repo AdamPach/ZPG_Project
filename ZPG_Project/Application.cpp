@@ -61,6 +61,11 @@ void Application::key_callback(GLFWwindow* window, int key, int scancode, int ac
 			app->scene_index = 1;
 			return;
 		}
+		else if (key == GLFW_KEY_ESCAPE)
+		{
+			glfwSetWindowShouldClose(window, GLFW_TRUE);
+			return;
+		}
 	}
 
 	app->keyboard_handler.HandleKeyboardInput(key, scancode, action, mods);
@@ -103,7 +108,7 @@ void Application::AddObjects()
 {
 	TransformationsBuilder transformationBuilder;
 
-	transformationBuilder.AddScale(10.0f)
+	transformationBuilder.AddScale(20.0f)
 		->AddTranslation(0, -0.5f, 0);
 
 	scenes[0]->AddObject(new DrawableObject(
@@ -111,23 +116,41 @@ void Application::AddObjects()
 		shader_program,
 		new Transformation(transformationBuilder.Build())));
 
-	auto baseForrestTransformation = transformationBuilder.AddRotation(30.0f, Axis::Y)
-		->AddScale(0.1f)
-		->AddTranslation(0, -0.5f, 0)
-		->Build();
+	for (int i = 0; i < 10; i++)
+	{
+		auto base = transformationBuilder
+			.AddRotation(20 * i, Axis::Y)
+			->AddScale(i * 0.01f + 0.1f)
+			->AddTranslation(0, -0.5f, 0)
+			->Build();
 
-	scenes[0]->AddObject(new DrawableObject(
-		TreeModel::GetInstance(),
-		shader_program,
-		new Transformation(baseForrestTransformation)));
+		for (int j = 0; j < 10; j++)
+		{
+			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 38 - 19, 0, rand() % 38 - 19);
+			scenes[0]->AddObject(new DrawableObject(
+				TreeModel::GetInstance(),
+				shader_program,
+				new Transformation(transformationBuilder.Build())));
+		}
+	}
 
-	transformationBuilder.AddTransformation(baseForrestTransformation)
-		->AddTranslation(-0.5f, 0, -2.0f);
+	for (int i = 0; i < 10; i++)
+	{
+		auto base = transformationBuilder
+			.AddRotation(20 * i, Axis::Y)
+			->AddScale(i * 0.05f + 0.1f)
+			->AddTranslation(0, -0.5f, 0)
+			->Build();
 
-	scenes[0]->AddObject(new DrawableObject(
-		TreeModel::GetInstance(),
-		shader_program,
-		new Transformation(transformationBuilder.Build())));
+		for (int j = 0; j < 10; j++)
+		{
+			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 38 - 19, 0, rand() % 38 - 19);
+			scenes[0]->AddObject(new DrawableObject(
+				BushesModel::GetInstance(),
+				shader_program,
+				new Transformation(transformationBuilder.Build())));
+		}
+	}
 		
 }
 
