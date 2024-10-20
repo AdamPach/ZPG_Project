@@ -25,9 +25,14 @@ void ShaderProgram::AddShader(Shader* shader)
 	shaders.push_back(shader);
 }
 
-void ShaderProgram::AddUniform(std::string uniform)
+void ShaderProgram::AddTransformationUniform(std::string uniform)
 {
-	uniform_location = glGetUniformLocation(shader_program, uniform.c_str());
+	uniform_transformation_location = glGetUniformLocation(shader_program, uniform.c_str());
+}
+
+void ShaderProgram::AddViewUniform(std::string uniform)
+{
+	uniform_view_location = glGetUniformLocation(shader_program, uniform.c_str());
 }
 
 void ShaderProgram::Compile()
@@ -51,10 +56,27 @@ void ShaderProgram::Use(Transformation* transformation)
 {
 	glUseProgram(shader_program);
 
-	if (uniform_location != -1)
+	if (uniform_transformation_location != -1)
 	{
-		glUniformMatrix4fv(uniform_location, 1, GL_FALSE, &transformation->GetTransformationMatrix()[0][0]);
+		glUniformMatrix4fv(uniform_transformation_location, 1, GL_FALSE, &transformation->GetTransformationMatrix()[0][0]);
 	}
+}
+
+void ShaderProgram::Update()
+{
+	view_matrix = camera->GetViewMatrix();
+}
+
+void ShaderProgram::SetCamera(Camera* camera)
+{
+	if (this->camera != nullptr)
+	{
+		camera->Unsubcribe(this);
+	}
+
+	this->camera = camera;
+	camera->Subcribe(this);
+	Update();
 }
 
 void ShaderProgram::Check()
@@ -86,9 +108,16 @@ ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddFra
 	return this;
 }
 
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddUniform(const char* uniform)
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddTransformationUniform(const char* uniform)
 {
-	this->uniform = uniform;
+	this->transformationUniform = uniform;
+
+	return this;
+}
+
+ShaderProgram::ShaderProgramBuilder * ShaderProgram::ShaderProgramBuilder::AddViewUniform(const char* uniform)
+{
+	this->viewUniform = uniform;
 
 	return this;
 }
@@ -105,9 +134,14 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 	shaderProgram->Compile();
 	shaderProgram->Check();
 
-	if (this->uniform != "")
+	if (this->transformationUniform != "")
 	{
-		shaderProgram->AddUniform(this->uniform);
+		shaderProgram->AddTransformationUniform(this->transformationUniform);
+	}
+
+	if (this->viewUniform != "")
+	{
+		shaderProgram->AddViewUniform(this->viewUniform);
 	}
 
 	shaders.clear();

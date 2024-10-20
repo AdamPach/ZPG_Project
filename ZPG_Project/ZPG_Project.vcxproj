@@ -130,7 +130,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="abstraction\Observer.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="world\Camera.cpp" />
     <ClCompile Include="objects\BushesModel.cpp" />
     <ClCompile Include="objects\DrawableObject.cpp" />
     <ClCompile Include="shaders\FragmentShader.cpp" />
@@ -151,7 +153,9 @@
     <ClCompile Include="shaders\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="abstraction\Observer.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="world\Camera.h" />
     <ClInclude Include="objects\models\bushes.h" />
     <ClInclude Include="objects\BushesModel.h" />
     <ClInclude Include="objects\DrawableObject.h" />

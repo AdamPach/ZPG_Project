@@ -1,5 +1,10 @@
 #include "Scene.h"
 
+Scene::Scene()
+{
+	Camera* camera = new Camera();
+}
+
 Scene::~Scene()
 {
 	for (auto object : objects)
@@ -11,6 +16,8 @@ Scene::~Scene()
 	{
 		delete shaderProgram;
 	}
+
+	delete camera;
 }
 
 void Scene::AddObject(DrawableObject* object)
@@ -21,6 +28,7 @@ void Scene::AddObject(DrawableObject* object)
 void Scene::AddShaderProgram(ShaderProgram* shaderProgram)
 {
 	shaderPrograms.push_back(shaderProgram);
+	shaderProgram->SetCamera(this->camera);
 }
 
 void Scene::Draw()

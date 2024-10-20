@@ -7,11 +7,11 @@
 #include "TransformationComposite.h"
 #include "Rotation.h"
 
+enum Axis { X, Y, Z };
+
 class TransformationsBuilder
 {
 public:
-	enum Axis { X, Y, Z };
-
 	TransformationsBuilder* AddScale(float scale);
 	TransformationsBuilder* AddTranslation(float x_move, float y_move, float z_move);
 	TransformationsBuilder* AddRotation(float angle, Axis axis);

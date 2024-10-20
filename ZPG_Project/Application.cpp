@@ -83,8 +83,7 @@ void Application::Init()
 void Application::AddObjects()
 {
 	TransformationsBuilder transformationBuilder;
-
-	auto baseForrestTransformation = transformationBuilder.AddRotation(-45, TransformationsBuilder::X)
+	auto baseForrestTransformation = transformationBuilder.AddRotation(-45, Axis::X)
 		->Build();
 
 	scenes[0]->AddObject(new DrawableObject(
@@ -92,7 +91,7 @@ void Application::AddObjects()
 		shader_program,
 		new Transformation(baseForrestTransformation)));
 
-	transformationBuilder.AddRotation(0, TransformationsBuilder::Y)
+	transformationBuilder.AddRotation(0, Axis::Y)
 		->AddTranslation(5, 2, 0)
 		->AddScale(0.1)
 		->AddTransformation(baseForrestTransformation);
@@ -102,7 +101,7 @@ void Application::AddObjects()
 		shader_program,
 		new Transformation(transformationBuilder.Build())));
 
-	transformationBuilder.AddRotation(10, TransformationsBuilder::Y)
+	transformationBuilder.AddRotation(10, Axis::Y)
 		->AddTranslation(-5, 1, 0)
 		->AddScale(0.12)
 		->AddTransformation(baseForrestTransformation);
@@ -120,7 +119,7 @@ void Application::AddShaders()
 
 	builder.AddVertexShader(vertex_shader_color)
 		->AddFragmentShader(fragment_shader_color)
-		->AddUniform("modelMatrix");
+		->AddTransformationUniform("modelMatrix");
 
 	shader_program = builder.Build();
 

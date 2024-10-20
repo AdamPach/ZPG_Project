@@ -6,26 +6,32 @@
 
 #include "Shader.h"
 #include "../transformations/Transformation.h"
+#include "../abstraction/Observer.h" 
+#include "../world/Camera.h"
 
-class ShaderProgram
+class ShaderProgram : public Observer
 {
 public:
 	~ShaderProgram();
 
 	void Use();
 	void Use(Transformation* transformation);
+	void Update() override;
+	void SetCamera(Camera* camera);
 
 	class ShaderProgramBuilder
 	{
 	public:
 		ShaderProgramBuilder* AddVertexShader(const char* shader);
 		ShaderProgramBuilder* AddFragmentShader(const char* shader);
-		ShaderProgramBuilder* AddUniform(const char* uniform);
+		ShaderProgramBuilder* AddTransformationUniform(const char* uniform);
+		ShaderProgramBuilder* AddViewUniform(const char* uniform);
 
 		ShaderProgram* Build();
 	private:
 		std::vector<Shader*> shaders;
-		std::string uniform = "";
+		std::string transformationUniform = "";
+		std::string viewUniform = "";
 	};
 
 	static ShaderProgramBuilder* CreateBuilder();
@@ -33,12 +39,17 @@ private:
 	ShaderProgram(int count_of_shaders = 2);
 
 	void AddShader(Shader* shader);
-	void AddUniform(std::string uniform);
+	void AddTransformationUniform(std::string uniform);
+	void AddViewUniform(std::string uniform);
 	void Compile();
 	void Check();
 
 	std::vector<Shader*> shaders;
+
 	GLuint shader_program;
-	GLint uniform_location = -1;
+	GLint uniform_transformation_location = -1, uniform_view_location = -1;
+
+	Camera* camera = nullptr;
+	glm::mat4 view_matrix;
 };
 
