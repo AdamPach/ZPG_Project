@@ -50,11 +50,16 @@ void ShaderProgram::Compile()
 void ShaderProgram::Use()
 {
 	glUseProgram(shader_program);
+
+	if (uniform_view_location != -1)
+	{
+		glUniformMatrix4fv(uniform_view_location, 1, GL_FALSE, &view_matrix[0][0]);
+	}
 }
 
 void ShaderProgram::Use(Transformation* transformation)
 {
-	glUseProgram(shader_program);
+	Use();
 
 	if (uniform_transformation_location != -1)
 	{
@@ -76,6 +81,7 @@ void ShaderProgram::SetCamera(Camera* camera)
 
 	this->camera = camera;
 	camera->Subcribe(this);
+
 	Update();
 }
 

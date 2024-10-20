@@ -20,9 +20,10 @@ const char* vertex_shader_color =
 "layout(location=0) in vec3 vp;"
 "layout(location=1) in vec3 color_in;"
 "uniform mat4 modelMatrix;"
+"uniform mat4 viewMatrix;"
 "out vec3 color_out;"
 "void main () {"
-"     gl_Position = modelMatrix * vec4 (vp, 1.0);"
+"     gl_Position = viewMatrix * modelMatrix * vec4 (vp, 1.0);"
 "     color_out = color_in;"
 "}";
 
@@ -119,12 +120,12 @@ void Application::AddShaders()
 
 	builder.AddVertexShader(vertex_shader_color)
 		->AddFragmentShader(fragment_shader_color)
-		->AddTransformationUniform("modelMatrix");
+		->AddTransformationUniform("modelMatrix")
+		->AddViewUniform("viewMatrix");
 
 	shader_program = builder.Build();
 
 	scenes[0]->AddShaderProgram(shader_program);
-	scenes[1]->AddShaderProgram(shader_program);
 }
 
 void Application::Run()

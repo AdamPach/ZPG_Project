@@ -14,6 +14,7 @@ public:
 
 	void AddObject(DrawableObject* object);
 	void AddShaderProgram(ShaderProgram* shaderProgram);
+	void HandleMovement(CameraMovement movement);
 	void Draw();
 
 private:

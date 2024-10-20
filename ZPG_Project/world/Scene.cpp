@@ -2,7 +2,7 @@
 
 Scene::Scene()
 {
-	Camera* camera = new Camera();
+	camera = new Camera();
 }
 
 Scene::~Scene()
@@ -29,6 +29,11 @@ void Scene::AddShaderProgram(ShaderProgram* shaderProgram)
 {
 	shaderPrograms.push_back(shaderProgram);
 	shaderProgram->SetCamera(this->camera);
+}
+
+void Scene::HandleMovement(CameraMovement movement)
+{
+	camera->ProcessKeyboardMovement(movement);
 }
 
 void Scene::Draw()
