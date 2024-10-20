@@ -44,18 +44,32 @@ const char* fragment_shader_color =
 
 void Application::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+
 	if (action == GLFW_PRESS)
 	{
-		Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+		
 		if (key == GLFW_KEY_1)
 		{
 			app->scene_index = 0;
+			return;
 		}
 		else if (key == GLFW_KEY_2)
 		{
 			app->scene_index = 1;
+			return;
 		}
 	}
+
+	app->keyboard_handler.HandleKeyboardInput(key, scancode, action, mods);
+}
+
+void Application::mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+
+	app->mouse_handler.HandleMouseMove(xpos, ypos);
+
 }
 
 void Application::Init()
@@ -72,9 +86,11 @@ void Application::Init()
 
 	glfwSetWindowUserPointer(window, this);
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetCursorPosCallback(window, mouse_move_callback);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-	scenes.push_back(new Scene());
-	scenes.push_back(new Scene());
+	scenes.push_back(new Scene(&keyboard_handler, &mouse_handler));
+	scenes.push_back(new Scene(&keyboard_handler, &mouse_handler));
 
 	this->scene_index = 0;
 

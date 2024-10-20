@@ -81,8 +81,6 @@ void ShaderProgram::SetCamera(Camera* camera)
 
 	this->camera = camera;
 	camera->Subcribe(this);
-
-	Update();
 }
 
 void ShaderProgram::Check()

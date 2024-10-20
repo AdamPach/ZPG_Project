@@ -1,8 +1,11 @@
 #include "Scene.h"
 
-Scene::Scene()
+Scene::Scene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler)
 {
 	camera = new Camera();
+
+	this->keyboardHandler = keyboardHander;
+	this->mouseHandler = mouseHandler;
 }
 
 Scene::~Scene()
@@ -28,16 +31,41 @@ void Scene::AddObject(DrawableObject* object)
 void Scene::AddShaderProgram(ShaderProgram* shaderProgram)
 {
 	shaderPrograms.push_back(shaderProgram);
+	
 	shaderProgram->SetCamera(this->camera);
+
+	shaderProgram->Update();
 }
 
-void Scene::HandleMovement(CameraMovement movement)
+void Scene::HandleMovement()
 {
-	camera->ProcessKeyboardMovement(movement);
+	for (auto key : keyboardHandler->GetPressedKeys())
+	{
+		if (key == W)
+		{
+			camera->ProcessKeyboardMovement(FORWARD);
+		}
+		else if (key == A)
+		{
+			camera->ProcessKeyboardMovement(LEFT);
+		}
+		else if (key == S)
+		{
+			camera->ProcessKeyboardMovement(BACKWARD);
+		}
+		else if (key == D)
+		{
+			camera->ProcessKeyboardMovement(RIGHT);
+		}
+	}
+
+	camera->ProcessMouseMovement(mouseHandler->GetXOffset(), mouseHandler->GetYOffset());
 }
 
 void Scene::Draw()
 {
+	HandleMovement();
+
 	for (auto object : objects)
 	{
 		object->DrawObject();
