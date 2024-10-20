@@ -1,8 +1,10 @@
 #include "Scene.h"
+#include "PrespectiveProjection.h"
+#include "../defaults.h"
 
 Scene::Scene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler)
 {
-	camera = new Camera();
+	camera = new Camera(new PrespectiveProjection(45, WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 400));
 
 	this->keyboardHandler = keyboardHander;
 	this->mouseHandler = mouseHandler;

@@ -1,0 +1,11 @@
+#pragma once
+
+#define WINDOW_WIDTH 1000
+#define WINDOW_HEIGHT 800
+
+#define DEFAULT_CAMERA_X 0.0f
+#define DEFAULT_CAMERA_Y 0.0f
+#define DEFAULT_CAMERA_Z 3.0f
+
+#define DEFAULT_SPEED 0.2f
+#define DEFAULT_SENSITIVITY 0.2f

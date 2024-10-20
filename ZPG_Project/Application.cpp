@@ -4,6 +4,7 @@
 #include "objects/PlainModel.h"
 #include "objects/TreeModel.h"
 #include "objects/BushesModel.h"
+#include "defaults.h"
 
 #include <stdio.h>
 #include <cstdlib>
@@ -21,9 +22,10 @@ const char* vertex_shader_color =
 "layout(location=1) in vec3 color_in;"
 "uniform mat4 modelMatrix;"
 "uniform mat4 viewMatrix;"
+"uniform mat4 projectionMatrix;"
 "out vec3 color_out;"
 "void main () {"
-"     gl_Position = viewMatrix * modelMatrix * vec4 (vp, 1.0);"
+"     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4 (vp, 1.0);"
 "     color_out = color_in;"
 "}";
 
@@ -136,7 +138,8 @@ void Application::AddShaders()
 	builder.AddVertexShader(vertex_shader_color)
 		->AddFragmentShader(fragment_shader_color)
 		->AddTransformationUniform("modelMatrix")
-		->AddViewUniform("viewMatrix");
+		->AddViewUniform("viewMatrix")
+		->AddProjectionUniform("projectionMatrix");
 
 	shader_program = builder.Build();
 
@@ -169,7 +172,7 @@ void Application::error_callback(int error, const char* description)
 
 void Application::InitWindow()
 {
-	window = glfwCreateWindow(800, 600, "ZPG", NULL, NULL);
+	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "ZPG", NULL, NULL);
 
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);

@@ -1,7 +1,7 @@
 #include "Camera.h"
 #include <glm/ext/matrix_transform.hpp>
 
-Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch)
+Camera::Camera(Projection* projection, glm::vec3 position, glm::vec3 up, float yaw, float pitch)
 {
 	Front = glm::vec3(0.0f, 0.0f, -1.0f);
 	Speed = SPEED;
@@ -11,7 +11,13 @@ Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch)
 	Yaw = yaw;
 	Pitch = pitch;
 
+	this->projection = projection;
 	UpdateCameraVectors();
+}
+
+Camera::~Camera()
+{
+	delete projection;
 }
 
 void Camera::ProcessKeyboardMovement(CameraMovement direction)
@@ -57,6 +63,11 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset)
 glm::mat4 Camera::GetViewMatrix()
 {
 	return glm::lookAt(Position, Position + Front, Up);
+}
+
+glm::mat4 Camera::GetProjectionMatrix()
+{
+	return projection->GetProjectionMatrix();
 }
 
 void Camera::UpdateCameraVectors()

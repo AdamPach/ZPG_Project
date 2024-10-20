@@ -35,6 +35,11 @@ void ShaderProgram::AddViewUniform(std::string uniform)
 	uniform_view_location = glGetUniformLocation(shader_program, uniform.c_str());
 }
 
+void ShaderProgram::AddProjectionUniform(std::string uniform)
+{
+	uniform_projection_location = glGetUniformLocation(shader_program, uniform.c_str());
+}
+
 void ShaderProgram::Compile()
 {
 	shader_program = glCreateProgram();
@@ -55,6 +60,11 @@ void ShaderProgram::Use()
 	{
 		glUniformMatrix4fv(uniform_view_location, 1, GL_FALSE, &view_matrix[0][0]);
 	}
+
+	if (uniform_projection_location != -1)
+	{
+		glUniformMatrix4fv(uniform_projection_location, 1, GL_FALSE, &projection_matrix[0][0]);
+	}
 }
 
 void ShaderProgram::Use(Transformation* transformation)
@@ -70,6 +80,7 @@ void ShaderProgram::Use(Transformation* transformation)
 void ShaderProgram::Update()
 {
 	view_matrix = camera->GetViewMatrix();
+	projection_matrix = camera->GetProjectionMatrix();
 }
 
 void ShaderProgram::SetCamera(Camera* camera)
@@ -126,6 +137,13 @@ ShaderProgram::ShaderProgramBuilder * ShaderProgram::ShaderProgramBuilder::AddVi
 	return this;
 }
 
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddProjectionUniform(const char* uniform)
+{
+	this->projectionUniform = uniform;
+
+	return this;
+}
+
 ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 {
 	ShaderProgram* shaderProgram =  new ShaderProgram(this->shaders.size());
@@ -146,6 +164,11 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 	if (this->viewUniform != "")
 	{
 		shaderProgram->AddViewUniform(this->viewUniform);
+	}
+
+	if (this->projectionUniform != "")
+	{
+		shaderProgram->AddProjectionUniform(this->projectionUniform);
 	}
 
 	shaders.clear();

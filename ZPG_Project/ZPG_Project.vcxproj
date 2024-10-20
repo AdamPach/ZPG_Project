@@ -143,6 +143,8 @@
     <ClCompile Include="transformations\Rotation.cpp" />
     <ClCompile Include="transformations\Scale.cpp" />
     <ClCompile Include="transformations\TransformationBasic.cpp" />
+    <ClCompile Include="world\OrthoProjection.cpp" />
+    <ClCompile Include="world\PrespectiveProjection.cpp" />
     <ClCompile Include="world\Scene.cpp" />
     <ClCompile Include="shaders\Shader.cpp" />
     <ClCompile Include="shaders\ShaderProgram.cpp" />
@@ -157,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="abstraction\Observer.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="defaults.h" />
     <ClInclude Include="handlers\KeyboardHandler.h" />
     <ClInclude Include="handlers\MouseHandler.h" />
     <ClInclude Include="world\Camera.h" />
@@ -170,6 +173,9 @@
     <ClInclude Include="objects\PlainModel.h" />
     <ClInclude Include="transformations\Rotation.h" />
     <ClInclude Include="transformations\Scale.h" />
+    <ClInclude Include="world\OrthoProjection.h" />
+    <ClInclude Include="world\PrespectiveProjection.h" />
+    <ClInclude Include="world\Projection.h" />
     <ClInclude Include="world\Scene.h" />
     <ClInclude Include="shaders\Shader.h" />
     <ClInclude Include="shaders\ShaderProgram.h" />
