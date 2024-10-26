@@ -1,4 +1,4 @@
-#include "Observer.h"
+#include "Subject.h"
 
 void Subject::Subcribe(Observer* observer)
 {

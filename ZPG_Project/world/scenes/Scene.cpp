@@ -36,7 +36,27 @@ void Scene::AddShaderProgram(ShaderProgram* shaderProgram)
 	
 	shaderProgram->SetCamera(this->camera);
 
+	if (lightSource != nullptr)
+	{
+		shaderProgram->AddUniformVe3Variable(lightSource, DEFAULT_LIGHT_POSITION_NAME);
+	}
+
 	shaderProgram->Update();
+}
+
+void Scene::UseLight(float x, float y, float z)
+{
+	if (lightSource == nullptr)
+	{
+		lightSource = new LightSource();
+	}
+	
+	lightSource->SetPosition(x, y, z);
+
+	for (auto shaderProgram : shaderPrograms)
+	{
+		shaderProgram->AddUniformVe3Variable(lightSource, DEFAULT_LIGHT_POSITION_NAME);
+	}
 }
 
 void Scene::HandleMovement()

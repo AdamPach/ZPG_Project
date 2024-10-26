@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-#include "../../abstraction/Observer.h"
+#include "../../abstraction/Subject.h"
 #include "../projections/Projection.h"
 #include "../../defaults.h"
 

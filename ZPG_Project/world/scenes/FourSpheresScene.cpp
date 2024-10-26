@@ -22,6 +22,8 @@ Scene* FourSpheresScene::InitScene()
 
 	AddShaderProgram(shaderProgram);
 
+	UseLight(0, 0, -1);
+
 	TransformationsBuilder transformationBuilder;
 
 	auto baseTransformation = transformationBuilder.AddScale(0.5f)->AddTranslation(0, 0, -1)->Build();

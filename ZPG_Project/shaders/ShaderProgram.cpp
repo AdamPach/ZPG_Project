@@ -26,6 +26,26 @@ void ShaderProgram::AddProjectionUniform(std::string uniform)
 	uniform_projection_location = glGetUniformLocation(shader_program, uniform.c_str());
 }
 
+void ShaderProgram::AddUniformVe3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name)
+{
+	uniformVec3Variables.push_back(new UniformVariableVec3(subject, shader_program, variable_name));
+}
+
+ShaderProgram::~ShaderProgram()
+{
+	glDeleteProgram(shader_program);
+
+	if (camera != nullptr)
+	{
+		camera->Unsubcribe(this);
+	}
+
+	for (auto observer : uniformVec3Variables)
+	{
+		delete observer;
+	}
+}
+
 void ShaderProgram::Use()
 {
 	glUseProgram(shader_program);
@@ -38,6 +58,11 @@ void ShaderProgram::Use()
 	if (uniform_projection_location != -1)
 	{
 		glUniformMatrix4fv(uniform_projection_location, 1, GL_FALSE, &projection_matrix[0][0]);
+	}
+
+	for(auto variable : uniformVec3Variables)
+	{
+		variable->Use();
 	}
 }
 

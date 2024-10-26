@@ -130,12 +130,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="abstraction\Observer.cpp" />
+    <ClCompile Include="abstraction\Subject.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="handlers\KeyboardHandler.cpp" />
     <ClCompile Include="handlers\MouseHandler.cpp" />
     <ClCompile Include="objects\SphereObject.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
+    <ClCompile Include="shaders\UniformVariableVec3.cpp" />
     <ClCompile Include="world\cameras\Camera.cpp" />
     <ClCompile Include="objects\BushesModel.cpp" />
     <ClCompile Include="objects\DrawableObject.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="transformations\Rotation.cpp" />
     <ClCompile Include="transformations\Scale.cpp" />
     <ClCompile Include="transformations\TransformationBasic.cpp" />
+    <ClCompile Include="world\lights\LightSource.cpp" />
     <ClCompile Include="world\projections\OrthoProjection.cpp" />
     <ClCompile Include="world\projections\PrespectiveProjection.cpp" />
     <ClCompile Include="world\scenes\ForestScene.cpp" />
@@ -159,12 +161,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstraction\Observer.h" />
+    <ClInclude Include="abstraction\Subject.h" />
+    <ClInclude Include="abstraction\UnifromVariableSubject.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="defaults.h" />
     <ClInclude Include="handlers\KeyboardHandler.h" />
     <ClInclude Include="handlers\MouseHandler.h" />
     <ClInclude Include="objects\SphereObject.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
+    <ClInclude Include="shaders\UniformVariableVec3.h" />
     <ClInclude Include="world\cameras\Camera.h" />
     <ClInclude Include="objects\models\bushes.h" />
     <ClInclude Include="objects\BushesModel.h" />
@@ -175,6 +180,7 @@
     <ClInclude Include="objects\PlainModel.h" />
     <ClInclude Include="transformations\Rotation.h" />
     <ClInclude Include="transformations\Scale.h" />
+    <ClInclude Include="world\lights\LightSource.h" />
     <ClInclude Include="world\projections\OrthoProjection.h" />
     <ClInclude Include="world\projections\PrespectiveProjection.h" />
     <ClInclude Include="world\projections\Projection.h" />

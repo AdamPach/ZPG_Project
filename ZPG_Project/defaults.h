@@ -11,3 +11,5 @@
 #define DEFAULT_SENSITIVITY 0.2f
 
 #define GPU_SHADER_PATH "./gpu_shaders/"
+
+#define DEFAULT_LIGHT_POSITION_NAME "lightPosition"

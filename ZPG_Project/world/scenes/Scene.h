@@ -7,6 +7,7 @@
 #include "../cameras/Camera.h"
 #include "../../handlers/KeyboardHandler.h"
 #include "../../handlers/MouseHandler.h"
+#include "../lights/LightSource.h"
 
 class Scene
 {
@@ -21,10 +22,15 @@ protected:
 	void AddObject(DrawableObject* object);
 	void AddShaderProgram(ShaderProgram* shaderProgram);
 
+	void UseLight(float x, float y, float z);
+
 private:
 	std::vector<DrawableObject*> objects;
 	std::vector<ShaderProgram*> shaderPrograms;
-	Camera* camera;
+
+	Camera* camera = nullptr;
+	LightSource* lightSource = nullptr;
+
 	KeyboardHandler* keyboardHandler;
 	MouseHandler* mouseHandler;
 
