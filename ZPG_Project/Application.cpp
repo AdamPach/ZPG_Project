@@ -5,6 +5,7 @@
 #include "objects/TreeModel.h"
 #include "objects/BushesModel.h"
 #include "world/scenes/ForestScene.h"
+#include "world/scenes/FourSpheresScene.h"
 #include "defaults.h"
 
 #include <stdio.h>
@@ -72,6 +73,7 @@ void Application::Init()
 
 void Application::AddScenes()
 {
+	scenes.push_back((new FourSpheresScene(&keyboard_handler, &mouse_handler))->InitScene());
 	scenes.push_back((new ForestScene(&keyboard_handler, &mouse_handler))->InitScene());
 }
 

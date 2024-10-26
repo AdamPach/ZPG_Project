@@ -134,6 +134,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="handlers\KeyboardHandler.cpp" />
     <ClCompile Include="handlers\MouseHandler.cpp" />
+    <ClCompile Include="objects\SphereObject.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
     <ClCompile Include="world\Camera.cpp" />
     <ClCompile Include="objects\BushesModel.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="world\OrthoProjection.cpp" />
     <ClCompile Include="world\PrespectiveProjection.cpp" />
     <ClCompile Include="world\scenes\ForestScene.cpp" />
+    <ClCompile Include="world\scenes\FourSpheresScene.cpp" />
     <ClCompile Include="world\scenes\Scene.cpp" />
     <ClCompile Include="shaders\ShaderProgram.cpp" />
     <ClCompile Include="transformations\Transformation.cpp" />
@@ -161,6 +163,7 @@
     <ClInclude Include="defaults.h" />
     <ClInclude Include="handlers\KeyboardHandler.h" />
     <ClInclude Include="handlers\MouseHandler.h" />
+    <ClInclude Include="objects\SphereObject.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
     <ClInclude Include="world\Camera.h" />
     <ClInclude Include="objects\models\bushes.h" />
@@ -176,6 +179,7 @@
     <ClInclude Include="world\PrespectiveProjection.h" />
     <ClInclude Include="world\Projection.h" />
     <ClInclude Include="world\scenes\ForestScene.h" />
+    <ClInclude Include="world\scenes\FourSpheresScene.h" />
     <ClInclude Include="world\scenes\Scene.h" />
     <ClInclude Include="shaders\ShaderProgram.h" />
     <ClInclude Include="objects\models\sphere.h" />
