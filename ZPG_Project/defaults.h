@@ -9,3 +9,5 @@
 
 #define DEFAULT_SPEED 0.4f
 #define DEFAULT_SENSITIVITY 0.2f
+
+#define GPU_SHADER_PATH "./gpu_shaders/"

@@ -1,28 +1,14 @@
 #include "ShaderProgram.h"
-#include "VertexShader.h"
-#include "FragmentShader.h"
+#include "ShaderLoader.h"
+
 
 ShaderProgram::ShaderProgramBuilder* ShaderProgram::CreateBuilder()
 {
 	return new ShaderProgramBuilder();
 }
 
-ShaderProgram::ShaderProgram(int count_of_shaders)
+ShaderProgram::ShaderProgram()
 {
-	shaders.reserve(count_of_shaders);
-}
-
-ShaderProgram::~ShaderProgram()
-{
-	for(auto shader : shaders)
-	{
-		delete shader;
-	}
-}
-
-void ShaderProgram::AddShader(Shader* shader)
-{
-	shaders.push_back(shader);
 }
 
 void ShaderProgram::AddTransformationUniform(std::string uniform)
@@ -38,18 +24,6 @@ void ShaderProgram::AddViewUniform(std::string uniform)
 void ShaderProgram::AddProjectionUniform(std::string uniform)
 {
 	uniform_projection_location = glGetUniformLocation(shader_program, uniform.c_str());
-}
-
-void ShaderProgram::Compile()
-{
-	shader_program = glCreateProgram();
-
-	for (auto shader : shaders)
-	{
-		shader->AttachShader(shader_program);
-	}
-
-	glLinkProgram(shader_program);
 }
 
 void ShaderProgram::Use()
@@ -109,16 +83,16 @@ void ShaderProgram::Check()
 	}
 }
 
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddVertexShader(const char* shader)
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddVertexShader(const char* shader_file_name)
 {
-	shaders.push_back(new VertexShader(shader));
-	
+	vertexShaderFileName = shader_file_name;
+
 	return this;
 }
 
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddFragmentShader(const char* shader)
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddFragmentShader(const char* shader_file_name)
 {
-	shaders.push_back(new FragmentShader(shader));
+	fragmentShaderFileName = shader_file_name;
 
 	return this;
 }
@@ -146,14 +120,13 @@ ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddPro
 
 ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 {
-	ShaderProgram* shaderProgram =  new ShaderProgram(this->shaders.size());
+	ShaderProgram* shaderProgram =  new ShaderProgram();
+	ShaderLoader loader;
 
-	for (auto shader : shaders)
-	{
-		shaderProgram->AddShader(shader);
-	}
+	shaderProgram->shader_program = loader.loadShader(
+		(SHADER_PATH + vertexShaderFileName).c_str(),
+		(SHADER_PATH + fragmentShaderFileName).c_str());
 
-	shaderProgram->Compile();
 	shaderProgram->Check();
 
 	if (this->transformationUniform != "")
@@ -171,7 +144,12 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 		shaderProgram->AddProjectionUniform(this->projectionUniform);
 	}
 
-	shaders.clear();
+	vertexShaderFileName = "";
+	fragmentShaderFileName = "";
+
+	transformationUniform = "";
+	viewUniform = "";
+	projectionUniform = "";
 
 	return shaderProgram;
 }

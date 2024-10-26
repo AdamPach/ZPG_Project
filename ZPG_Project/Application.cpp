@@ -4,45 +4,11 @@
 #include "objects/PlainModel.h"
 #include "objects/TreeModel.h"
 #include "objects/BushesModel.h"
+#include "world/scenes/ForestScene.h"
 #include "defaults.h"
 
 #include <stdio.h>
 #include <cstdlib>
-
-const char* vertex_shader =
-"#version 330\n"
-"layout(location=0) in vec3 vp;"
-"void main () {"
-"     gl_Position = vec4 (vp, 1.0);"
-"}";
-
-const char* vertex_shader_color =
-"#version 330\n"
-"layout(location=0) in vec3 vp;"
-"layout(location=1) in vec3 color_in;"
-"uniform mat4 modelMatrix;"
-"uniform mat4 viewMatrix;"
-"uniform mat4 projectionMatrix;"
-"out vec3 color_out;"
-"void main () {"
-"     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4 (vp, 1.0);"
-"     color_out = color_in;"
-"}";
-
-const char* fragment_shader =
-"#version 330\n"
-"out vec4 frag_colour;"
-"void main () {"
-"     frag_colour = vec4 (0.5, 0.5, 0.0, 1.0);"
-"}";
-
-const char* fragment_shader_color =
-"#version 330\n"
-"in vec3 color_out;"
-"out vec4 frag_colour;"
-"void main () {"
-"     frag_colour = vec4 (color_out, 1.0);"
-"}";
 
 void Application::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -96,77 +62,17 @@ void Application::Init()
 	glfwSetCursorPosCallback(window, mouse_move_callback);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-	scenes.push_back(new Scene(&keyboard_handler, &mouse_handler));
-	scenes.push_back(new Scene(&keyboard_handler, &mouse_handler));
+	//scenes.push_back(new Scene(&keyboard_handler, &mouse_handler));
+	//scenes.push_back(new Scene(&keyboard_handler, &mouse_handler));
 
 	this->scene_index = 0;
 
 	glEnable(GL_DEPTH_TEST);
 }
 
-void Application::AddObjects()
+void Application::AddScenes()
 {
-	TransformationsBuilder transformationBuilder;
-
-	transformationBuilder.AddScale(20.0f)
-		->AddTranslation(0, -0.5f, 0);
-
-	scenes[0]->AddObject(new DrawableObject(
-		PlainModel::GetInstance(),
-		shader_program,
-		new Transformation(transformationBuilder.Build())));
-
-	for (int i = 0; i < 10; i++)
-	{
-		auto base = transformationBuilder
-			.AddRotation(20 * i, Axis::Y)
-			->AddScale(i * 0.01f + 0.1f)
-			->AddTranslation(0, -0.5f, 0)
-			->Build();
-
-		for (int j = 0; j < 10; j++)
-		{
-			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 38 - 19, 0, rand() % 38 - 19);
-			scenes[0]->AddObject(new DrawableObject(
-				TreeModel::GetInstance(),
-				shader_program,
-				new Transformation(transformationBuilder.Build())));
-		}
-	}
-
-	for (int i = 0; i < 10; i++)
-	{
-		auto base = transformationBuilder
-			.AddRotation(20 * i, Axis::Y)
-			->AddScale(i * 0.05f + 0.1f)
-			->AddTranslation(0, -0.5f, 0)
-			->Build();
-
-		for (int j = 0; j < 10; j++)
-		{
-			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 38 - 19, 0, rand() % 38 - 19);
-			scenes[0]->AddObject(new DrawableObject(
-				BushesModel::GetInstance(),
-				shader_program,
-				new Transformation(transformationBuilder.Build())));
-		}
-	}
-		
-}
-
-void Application::AddShaders()
-{
-	ShaderProgram::ShaderProgramBuilder builder;
-
-	builder.AddVertexShader(vertex_shader_color)
-		->AddFragmentShader(fragment_shader_color)
-		->AddTransformationUniform("modelMatrix")
-		->AddViewUniform("viewMatrix")
-		->AddProjectionUniform("projectionMatrix");
-
-	shader_program = builder.Build();
-
-	scenes[0]->AddShaderProgram(shader_program);
+	scenes.push_back((new ForestScene(&keyboard_handler, &mouse_handler))->InitScene());
 }
 
 void Application::Run()

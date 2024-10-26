@@ -6,10 +6,8 @@
 #include <vector>
 
 #include "objects/DrawableObject.h"
-#include "shaders/VertexShader.h"
-#include "shaders/FragmentShader.h"
 #include "shaders/ShaderProgram.h"
-#include "world/Scene.h"
+#include "world/scenes/Scene.h"
 #include "handlers/KeyboardHandler.h"
 #include "handlers/MouseHandler.h"
 
@@ -17,8 +15,7 @@ class Application
 {
 public:
 	void Init();
-	void AddObjects();
-	void AddShaders();
+	void AddScenes();
 	void Run();
 private:
 	GLFWwindow* window;

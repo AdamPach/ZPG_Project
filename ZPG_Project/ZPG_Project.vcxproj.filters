@@ -24,16 +24,7 @@
     <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shaders\FragmentShader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="shaders\Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="shaders\ShaderProgram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="shaders\VertexShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="objects\DrawableObject.cpp">
@@ -63,7 +54,7 @@
     <ClCompile Include="objects\TriangleNormalModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world\Scene.cpp">
+    <ClCompile Include="world\scenes\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="objects\BushesModel.cpp">
@@ -93,21 +84,18 @@
     <ClCompile Include="world\OrthoProjection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="world\scenes\ForestScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shaders\ShaderLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shaders\FragmentShader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="shaders\Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="shaders\ShaderProgram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="shaders\VertexShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="objects\models\bushes.h">
@@ -164,7 +152,7 @@
     <ClInclude Include="objects\TriangleNormalModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\Scene.h">
+    <ClInclude Include="world\scenes\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="objects\BushesModel.h">
@@ -197,5 +185,19 @@
     <ClInclude Include="world\OrthoProjection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="world\scenes\ForestScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\ShaderLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gpu_shaders\vertext_position_normal__phong_static-light.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_phong_static-light.vert" />
+    <None Include="gpu_shaders\fragment_position_color.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="gpu_shaders\vertext_position_color.vert" />
   </ItemGroup>
 </Project>

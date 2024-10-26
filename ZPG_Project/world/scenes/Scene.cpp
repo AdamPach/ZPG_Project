@@ -1,6 +1,6 @@
 #include "Scene.h"
-#include "PrespectiveProjection.h"
-#include "../defaults.h"
+#include "../PrespectiveProjection.h"
+#include "../../defaults.h"
 
 Scene::Scene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler)
 {
