@@ -23,10 +23,6 @@ int main(void)
 
 	app->Init();
 
-	app->AddShaders();
-
-	app->AddObjects();
-
 	app->AddScenes();
 
 	app->Run();
