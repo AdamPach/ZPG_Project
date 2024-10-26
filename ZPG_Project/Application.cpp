@@ -53,12 +53,12 @@ void Application::key_callback(GLFWwindow* window, int key, int scancode, int ac
 		
 		if (key == GLFW_KEY_1)
 		{
-			app->scene_index = 0;
+			app->scene_index = app->scene_index <= 0 ? app->scenes.size() - 1 : app->scene_index - 1;
 			return;
 		}
 		else if (key == GLFW_KEY_2)
 		{
-			app->scene_index = 1;
+			app->scene_index = app->scene_index >= app->scenes.size() - 1 ? 0 : app->scene_index + 1;
 			return;
 		}
 		else if (key == GLFW_KEY_ESCAPE)
