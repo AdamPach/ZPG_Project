@@ -5,7 +5,7 @@
 
 #include "../transformations/Transformation.h"
 #include "../abstraction/Observer.h" 
-#include "../world/Camera.h"
+#include "../world/cameras/Camera.h"
 
 class ShaderProgram : public Observer
 {

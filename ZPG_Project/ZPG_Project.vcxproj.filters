@@ -66,7 +66,7 @@
     <ClCompile Include="transformations\TransformationBasic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world\Camera.cpp">
+    <ClCompile Include="world\cameras\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="abstraction\Observer.cpp">
@@ -78,10 +78,10 @@
     <ClCompile Include="handlers\MouseHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world\PrespectiveProjection.cpp">
+    <ClCompile Include="world\projections\PrespectiveProjection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world\OrthoProjection.cpp">
+    <ClCompile Include="world\projections\OrthoProjection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\scenes\ForestScene.cpp">
@@ -167,7 +167,7 @@
     <ClInclude Include="transformations\TransformationComposite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\Camera.h">
+    <ClInclude Include="world\cameras\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="abstraction\Observer.h">
@@ -179,16 +179,16 @@
     <ClInclude Include="handlers\MouseHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\PrespectiveProjection.h">
+    <ClInclude Include="world\projections\PrespectiveProjection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\Projection.h">
+    <ClInclude Include="world\projections\Projection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="defaults.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\OrthoProjection.h">
+    <ClInclude Include="world\projections\OrthoProjection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\scenes\ForestScene.h">

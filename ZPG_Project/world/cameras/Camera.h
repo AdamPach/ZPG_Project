@@ -2,9 +2,9 @@
 
 #include <glm/glm.hpp>
 
-#include "../abstraction/Observer.h"
-#include "Projection.h"
-#include "../defaults.h"
+#include "../../abstraction/Observer.h"
+#include "../projections/Projection.h"
+#include "../../defaults.h"
 
 enum CameraMovement
 {

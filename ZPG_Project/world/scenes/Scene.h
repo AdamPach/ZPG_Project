@@ -4,7 +4,7 @@
 
 #include "../../objects/DrawableObject.h"
 #include "../../shaders/ShaderProgram.h"
-#include "../../world/Camera.h"
+#include "../cameras/Camera.h"
 #include "../../handlers/KeyboardHandler.h"
 #include "../../handlers/MouseHandler.h"
 
