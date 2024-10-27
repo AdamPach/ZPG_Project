@@ -16,7 +16,7 @@ public:
 	void Use(Transformation* transformation);
 	void Update() override;
 	void SetCamera(Camera* camera);
-	void AddUniformVe3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
+	void AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
 
 	class ShaderProgramBuilder
 	{

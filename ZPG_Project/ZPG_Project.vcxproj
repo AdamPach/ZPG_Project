@@ -145,6 +145,7 @@
     <ClCompile Include="transformations\Rotation.cpp" />
     <ClCompile Include="transformations\Scale.cpp" />
     <ClCompile Include="transformations\TransformationBasic.cpp" />
+    <ClCompile Include="world\cameras\CameraPositionSubject.cpp" />
     <ClCompile Include="world\lights\Light.cpp" />
     <ClCompile Include="world\lights\LightColorSubject.cpp" />
     <ClCompile Include="world\lights\LightPositionSubject.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="objects\PlainModel.h" />
     <ClInclude Include="transformations\Rotation.h" />
     <ClInclude Include="transformations\Scale.h" />
+    <ClInclude Include="world\cameras\CameraPositionSubject.h" />
     <ClInclude Include="world\lights\Light.h" />
     <ClInclude Include="world\lights\LightColorSubject.h" />
     <ClInclude Include="world\lights\LightPositionSubject.h" />

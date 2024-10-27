@@ -30,6 +30,8 @@ protected:
 	void SetLigthPosition(float x, float y, float z);
 	void SetLightColor(float r, float g, float b);
 
+	void UseCameraPosition();
+
 	virtual void InitShaders() = 0;
 	virtual void InitScene() = 0;
 

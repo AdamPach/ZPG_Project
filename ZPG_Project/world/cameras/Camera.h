@@ -5,6 +5,8 @@
 #include "../../abstraction/Subject.h"
 #include "../projections/Projection.h"
 #include "../../defaults.h"
+#include "../../abstraction/UnifromVariableSubject.h"
+#include "CameraPositionSubject.h"
 
 enum CameraMovement
 {
@@ -29,6 +31,8 @@ public:
 	void ProcessMouseMovement(float xoffset, float yoffset);
 	glm::mat4 GetViewMatrix();
 	glm::mat4 GetProjectionMatrix();
+
+	UniformVariableSubject<glm::vec3>* GetPositionSubject();
 private:
 	Projection* projection;
 
@@ -46,6 +50,8 @@ private:
 	float Pitch;
 	float Yaw;
 	float Speed;
+
+	CameraPositionSubject positionSubject;
 
 	void UpdateCameraVectors();
 };

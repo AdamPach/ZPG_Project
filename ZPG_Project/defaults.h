@@ -14,3 +14,4 @@
 
 #define DEFAULT_LIGHT_POSITION_NAME "lightPosition"
 #define DEFAULT_LIGHT_COLOR_NAME "lightColor"
+#define DEFAULT_CAMERA_POSITION_NAME "cameraPosition"

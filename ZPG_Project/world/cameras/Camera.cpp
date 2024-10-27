@@ -40,6 +40,8 @@ void Camera::ProcessKeyboardMovement(CameraMovement direction)
 	{
 		Position += Right * velocity;
 	}
+
+	positionSubject.SetValue(Position);
 	Notify();
 }
 
@@ -68,6 +70,11 @@ glm::mat4 Camera::GetViewMatrix()
 glm::mat4 Camera::GetProjectionMatrix()
 {
 	return projection->GetProjectionMatrix();
+}
+
+UniformVariableSubject<glm::vec3>* Camera::GetPositionSubject()
+{
+	return &positionSubject;
 }
 
 void Camera::UpdateCameraVectors()

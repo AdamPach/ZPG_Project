@@ -56,14 +56,14 @@ void Scene::UseLight(LightSettings lightSettings)
 		switch (lightSettings)
 		{
 		case Position:
-			shaderProgram.second->AddUniformVe3Variable(light->GetPositionSubject(), DEFAULT_LIGHT_POSITION_NAME);
+			shaderProgram.second->AddUniformVec3Variable(light->GetPositionSubject(), DEFAULT_LIGHT_POSITION_NAME);
 			break;
 		case Color:
-			shaderProgram.second->AddUniformVe3Variable(light->GetColorSubject(), DEFAULT_LIGHT_COLOR_NAME);
+			shaderProgram.second->AddUniformVec3Variable(light->GetColorSubject(), DEFAULT_LIGHT_COLOR_NAME);
 			break;
 		case Both:
-			shaderProgram.second->AddUniformVe3Variable(light->GetPositionSubject(), DEFAULT_LIGHT_POSITION_NAME);
-			shaderProgram.second->AddUniformVe3Variable(light->GetColorSubject(), DEFAULT_LIGHT_COLOR_NAME);
+			shaderProgram.second->AddUniformVec3Variable(light->GetPositionSubject(), DEFAULT_LIGHT_POSITION_NAME);
+			shaderProgram.second->AddUniformVec3Variable(light->GetColorSubject(), DEFAULT_LIGHT_COLOR_NAME);
 			break;
 		default:
 			break;
@@ -79,6 +79,14 @@ void Scene::SetLigthPosition(float x, float y, float z)
 void Scene::SetLightColor(float r, float g, float b)
 {
 	light->SetColor(r, g, b);
+}
+
+void Scene::UseCameraPosition()
+{
+	for (auto shaderProgram : shaderPrograms)
+	{
+		shaderProgram.second->AddUniformVec3Variable(camera->GetPositionSubject(), DEFAULT_CAMERA_POSITION_NAME);
+	}
 }
 
 void Scene::HandleMovement()
