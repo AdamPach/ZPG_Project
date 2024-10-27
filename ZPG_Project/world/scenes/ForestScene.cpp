@@ -11,7 +11,7 @@ ForestScene::ForestScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHan
 
 }
 
-Scene* ForestScene::InitScene()
+void ForestScene::InitShaders()
 {
 	ShaderProgram::ShaderProgramBuilder builder;
 
@@ -23,7 +23,13 @@ Scene* ForestScene::InitScene()
 
 	auto color_shader_program = builder.Build();
 
-	AddShaderProgram(color_shader_program);
+	AddShaderProgram(color_shader_program, "basic_shader");
+}
+
+
+void ForestScene::InitScene()
+{
+	auto color_shader_program = GetShaderProgram("basic_shader");
 
 	TransformationsBuilder transformationBuilder;
 
@@ -70,6 +76,4 @@ Scene* ForestScene::InitScene()
 				new Transformation(transformationBuilder.Build())));
 		}
 	}
-
-	return this;
 }

@@ -73,8 +73,8 @@ void Application::Init()
 
 void Application::AddScenes()
 {
-	scenes.push_back((new FourSpheresScene(&keyboard_handler, &mouse_handler))->InitScene());
-	scenes.push_back((new ForestScene(&keyboard_handler, &mouse_handler))->InitScene());
+	scenes.push_back((new FourSpheresScene(&keyboard_handler, &mouse_handler))->Init());
+	scenes.push_back((new ForestScene(&keyboard_handler, &mouse_handler))->Init());
 }
 
 void Application::Run()

@@ -1,13 +1,16 @@
 #pragma once
 
 #include <vector>
+#include <map>
 
 #include "../../objects/DrawableObject.h"
 #include "../../shaders/ShaderProgram.h"
 #include "../cameras/Camera.h"
 #include "../../handlers/KeyboardHandler.h"
 #include "../../handlers/MouseHandler.h"
-#include "../lights/LightSource.h"
+#include "../lights/Light.h"
+
+enum LightSettings{ Position, Color, Both };
 
 class Scene
 {
@@ -16,20 +19,25 @@ public:
 	~Scene();
 
 	void Draw();
-	virtual Scene* InitScene() = 0;
+	Scene* Init();
 
 protected:
 	void AddObject(DrawableObject* object);
-	void AddShaderProgram(ShaderProgram* shaderProgram);
+	void AddShaderProgram(ShaderProgram* shaderProgram, const char * programName);
+	ShaderProgram* GetShaderProgram(const char* programName);
 
-	void UseLight(float x, float y, float z);
+	void UseLight(LightSettings lightSettings);
+	void SetLigthPosition(float x, float y, float z);
+
+	virtual void InitShaders() = 0;
+	virtual void InitScene() = 0;
 
 private:
 	std::vector<DrawableObject*> objects;
-	std::vector<ShaderProgram*> shaderPrograms;
+	std::map<std::string, ShaderProgram*> shaderPrograms;
 
 	Camera* camera = nullptr;
-	LightSource* lightSource = nullptr;
+	Light* light = nullptr;
 
 	KeyboardHandler* keyboardHandler;
 	MouseHandler* mouseHandler;

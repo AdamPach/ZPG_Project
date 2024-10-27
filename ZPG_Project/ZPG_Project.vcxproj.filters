@@ -99,7 +99,13 @@
     <ClCompile Include="shaders\UniformVariableVec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world\lights\LightSource.cpp">
+    <ClCompile Include="world\lights\Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\lights\LightPositionSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\lights\LightColorSubject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -209,7 +215,7 @@
     <ClInclude Include="objects\SphereObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\lights\LightSource.h">
+    <ClInclude Include="world\lights\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shaders\UniformVariableVec3.h">
@@ -219,6 +225,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="abstraction\UnifromVariableSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\lights\LightPositionSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\lights\LightColorSubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

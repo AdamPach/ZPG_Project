@@ -19,7 +19,7 @@ Scene::~Scene()
 
 	for (auto shaderProgram : shaderPrograms)
 	{
-		delete shaderProgram;
+		delete shaderProgram.second;
 	}
 
 	delete camera;
@@ -30,33 +30,50 @@ void Scene::AddObject(DrawableObject* object)
 	objects.push_back(object);
 }
 
-void Scene::AddShaderProgram(ShaderProgram* shaderProgram)
+void Scene::AddShaderProgram(ShaderProgram* shaderProgram, const char* programName)
 {
-	shaderPrograms.push_back(shaderProgram);
-	
-	shaderProgram->SetCamera(this->camera);
+	shaderPrograms[programName] = shaderProgram;
 
-	if (lightSource != nullptr)
-	{
-		shaderProgram->AddUniformVe3Variable(lightSource, DEFAULT_LIGHT_POSITION_NAME);
-	}
+	shaderProgram->SetCamera(this->camera);
 
 	shaderProgram->Update();
 }
 
-void Scene::UseLight(float x, float y, float z)
+ShaderProgram* Scene::GetShaderProgram(const char* programName)
 {
-	if (lightSource == nullptr)
+	return shaderPrograms[programName];
+}
+
+void Scene::UseLight(LightSettings lightSettings)
+{
+	if (light == nullptr)
 	{
-		lightSource = new LightSource();
+		light = new Light();
 	}
 	
-	lightSource->SetPosition(x, y, z);
-
 	for (auto shaderProgram : shaderPrograms)
 	{
-		shaderProgram->AddUniformVe3Variable(lightSource, DEFAULT_LIGHT_POSITION_NAME);
+		switch (lightSettings)
+		{
+		case Position:
+			shaderProgram.second->AddUniformVe3Variable(light->GetPositionSubject(), DEFAULT_LIGHT_POSITION_NAME);
+			break;
+		case Color:
+			shaderProgram.second->AddUniformVe3Variable(light->GetColorSubject(), DEFAULT_LIGHT_COLOR_NAME);
+			break;
+		case Both:
+			shaderProgram.second->AddUniformVe3Variable(light->GetPositionSubject(), DEFAULT_LIGHT_POSITION_NAME);
+			shaderProgram.second->AddUniformVe3Variable(light->GetColorSubject(), DEFAULT_LIGHT_COLOR_NAME);
+			break;
+		default:
+			break;
+		}
 	}
+}
+
+void Scene::SetLigthPosition(float x, float y, float z)
+{
+	light->SetPosition(x, y, z);
 }
 
 void Scene::HandleMovement()
@@ -92,4 +109,12 @@ void Scene::Draw()
 	{
 		object->DrawObject();
 	}
+}
+
+Scene* Scene::Init()
+{
+	InitShaders();
+	InitScene();
+
+	return this;
 }

@@ -6,7 +6,6 @@
 #include "../transformations/Transformation.h"
 #include "../abstraction/Observer.h" 
 #include "../world/cameras/Camera.h"
-#include "../world/lights/LightSource.h"
 #include "UniformVariableVec3.h"
 
 class ShaderProgram : public Observer

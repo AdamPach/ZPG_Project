@@ -13,3 +13,4 @@
 #define GPU_SHADER_PATH "./gpu_shaders/"
 
 #define DEFAULT_LIGHT_POSITION_NAME "lightPosition"
+#define DEFAULT_LIGHT_COLOR_NAME "lightColor"

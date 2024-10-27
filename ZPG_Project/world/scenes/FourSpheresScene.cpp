@@ -8,7 +8,7 @@ FourSpheresScene::FourSpheresScene(KeyboardHandler* keyboardHander, MouseHandler
 {
 }
 
-Scene* FourSpheresScene::InitScene()
+void FourSpheresScene::InitShaders()
 {
 	auto shaderBuilder = ShaderProgram::CreateBuilder();
 
@@ -18,11 +18,15 @@ Scene* FourSpheresScene::InitScene()
 		->AddViewUniform("viewMatrix")
 		->AddProjectionUniform("projectionMatrix");
 
-	auto shaderProgram = shaderBuilder->Build();
+	AddShaderProgram(shaderBuilder->Build(), "phong_shader");
+}
 
-	AddShaderProgram(shaderProgram);
+void FourSpheresScene::InitScene()
+{
+	auto shaderProgram = GetShaderProgram("phong_shader");
 
-	UseLight(0, 0, -1);
+	UseLight(Position);
+	SetLigthPosition(0, 0, -1);
 
 	TransformationsBuilder transformationBuilder;
 
@@ -43,7 +47,4 @@ Scene* FourSpheresScene::InitScene()
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, 0.8f, 0);
 
 	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
-	
-
-	return this;
 }
