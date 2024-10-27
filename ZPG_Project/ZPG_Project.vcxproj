@@ -151,6 +151,7 @@
     <ClCompile Include="world\lights\LightPositionSubject.cpp" />
     <ClCompile Include="world\projections\OrthoProjection.cpp" />
     <ClCompile Include="world\projections\PrespectiveProjection.cpp" />
+    <ClCompile Include="world\scenes\DefaultScene.cpp" />
     <ClCompile Include="world\scenes\ForestScene.cpp" />
     <ClCompile Include="world\scenes\FourSpheresScene.cpp" />
     <ClCompile Include="world\scenes\Scene.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="world\projections\OrthoProjection.h" />
     <ClInclude Include="world\projections\PrespectiveProjection.h" />
     <ClInclude Include="world\projections\Projection.h" />
+    <ClInclude Include="world\scenes\DefaultScene.h" />
     <ClInclude Include="world\scenes\ForestScene.h" />
     <ClInclude Include="world\scenes\FourSpheresScene.h" />
     <ClInclude Include="world\scenes\Scene.h" />
