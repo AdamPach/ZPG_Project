@@ -21,11 +21,11 @@ void main () {
 
     float specularStrength = 0.5;
     vec3 viewDir = normalize(cameraPosition - FragPos);
-    vec3 reflectDir = reflect(-lightDir, norm);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 16);
+    vec3 halfWayDir = normalize(lightDir + viewDir);
+    float spec = pow(max(dot(norm, halfWayDir), 0.0), 16);
     vec4 specular = specularStrength * spec * vec4(lightColor, 1.0);
 
-    vec4 objectColor = vec4(0.385 ,0.647 ,0.812 ,1.0);
+    vec4 objectColor = vec4(0.385, 0.647, 0.812, 1.0);
 
     frag_colour = (diffuse + ambient + specular) * objectColor;
 };

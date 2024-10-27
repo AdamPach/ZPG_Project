@@ -12,8 +12,8 @@ void FourSpheresScene::InitShaders()
 {
 	auto shaderBuilder = ShaderProgram::CreateBuilder();
 
-	shaderBuilder->AddVertexShader("vertext_position_normal__phong_static-light.vert")
-		->AddFragmentShader("fragment_position_normal_phong_static-light.vert")
+	shaderBuilder->AddVertexShader("vertext_position_normal_light_base.vert")
+		->AddFragmentShader("fragment_position_normal_phong.vert")
 		->AddTransformationUniform("modelMatrix")
 		->AddViewUniform("viewMatrix")
 		->AddProjectionUniform("projectionMatrix");

@@ -247,9 +247,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="gpu_shaders\vertext_position_normal__phong_static-light.vert" />
-    <None Include="gpu_shaders\fragment_position_normal_phong_static-light.vert" />
+    <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_phong.vert" />
     <None Include="gpu_shaders\fragment_position_color.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_blinn.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />
