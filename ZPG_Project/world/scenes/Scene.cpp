@@ -76,6 +76,11 @@ void Scene::SetLigthPosition(float x, float y, float z)
 	light->SetPosition(x, y, z);
 }
 
+void Scene::SetLightColor(float r, float g, float b)
+{
+	light->SetColor(r, g, b);
+}
+
 void Scene::HandleMovement()
 {
 	for (auto key : keyboardHandler->GetPressedKeys())

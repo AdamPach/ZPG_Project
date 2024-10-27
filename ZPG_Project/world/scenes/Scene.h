@@ -28,6 +28,7 @@ protected:
 
 	void UseLight(LightSettings lightSettings);
 	void SetLigthPosition(float x, float y, float z);
+	void SetLightColor(float r, float g, float b);
 
 	virtual void InitShaders() = 0;
 	virtual void InitScene() = 0;
