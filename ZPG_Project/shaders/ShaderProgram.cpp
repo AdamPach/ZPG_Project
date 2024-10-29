@@ -28,7 +28,12 @@ void ShaderProgram::AddProjectionUniform(std::string uniform)
 
 void ShaderProgram::AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name)
 {
-	uniformVec3Variables.push_back(new UniformVariableVec3(subject, shader_program, variable_name));
+	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
+
+	if (uniform_location != -1)
+	{
+		uniformVec3Variables.push_back(new UniformVariableVec3(subject, uniform_location));
+	}
 }
 
 ShaderProgram::~ShaderProgram()

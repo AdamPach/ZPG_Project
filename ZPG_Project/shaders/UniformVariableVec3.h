@@ -8,7 +8,7 @@
 class UniformVariableVec3 : public Observer
 {
 public:
-	UniformVariableVec3(UniformVariableSubject<glm::vec3>* subject, GLuint shader_program_id, const char* variable_name);
+	UniformVariableVec3(UniformVariableSubject<glm::vec3>* subject, GLint uniform_location);
 	~UniformVariableVec3();
 	void Update() override;
 	void Use();

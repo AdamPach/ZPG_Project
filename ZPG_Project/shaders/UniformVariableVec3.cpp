@@ -1,11 +1,11 @@
 #include "UniformVariableVec3.h"
 
-UniformVariableVec3::UniformVariableVec3(UniformVariableSubject<glm::vec3>* subject, GLuint shader_program_id, const char* variable_name)
+UniformVariableVec3::UniformVariableVec3(UniformVariableSubject<glm::vec3>* subject, GLint uniform_location)
 {
 	this->subject = subject;
 	this->subject->Subcribe(this);
 
-	uniform_location = glGetUniformLocation(shader_program_id, variable_name);
+	this->uniform_location = uniform_location;
 
 	Update();
 }
