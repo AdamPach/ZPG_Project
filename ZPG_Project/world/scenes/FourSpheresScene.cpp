@@ -26,8 +26,8 @@ void FourSpheresScene::InitScene()
 	auto shaderProgram = GetShaderProgram("phong_shader");
 
 	UseLight(Both);
-	SetLigthPosition(0, 0, 0);
-	SetLightColor(0.5, 0.647, 0.812);
+	SetLigthPosition(0, 0, -1.0f);
+	SetLightColor(1, 1, 1);
 
 	UseCameraPosition();
 

@@ -7,7 +7,7 @@ CameraPositionSubject::CameraPositionSubject()
 
 void CameraPositionSubject::SetValue(glm::vec3 position)
 {
-	position = glm::vec3(position);
+	this->position = glm::vec3(position);
 	Notify();
 }
 

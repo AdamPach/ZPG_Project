@@ -19,10 +19,10 @@ void main () {
     float diff = max(dot(norm, lightDir), 0.0);
     vec4 diffuse = diff * vec4(lightColor, 1.0);
 
-    float specularStrength = 0.5;
+    float specularStrength = 1;
     vec3 viewDir = normalize(cameraPosition - FragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
-    float spec = pow(max(dot(reflectDir, viewDir), 0.0), 16);
+    float spec = pow(max(dot(reflectDir, viewDir), 0.0), 4);
     vec4 specular = specularStrength * spec * vec4(lightColor, 1.0);
 
     vec4 objectColor = vec4(0.385, 0.647, 0.812, 1.0);

@@ -12,6 +12,8 @@ Camera::Camera(Projection* projection, glm::vec3 position, glm::vec3 up, float y
 	Pitch = pitch;
 
 	this->projection = projection;
+
+	positionSubject.SetValue(Position);
 	UpdateCameraVectors();
 }
 
