@@ -19,7 +19,7 @@ void main () {
     float diff = max(dot(norm, lightDir), 0.0);
     vec4 diffuse = diff * vec4(lightColor, 1.0);
 
-    float specularStrength = 0.5;
+    float specularStrength = 1;
     vec3 viewDir = normalize(cameraPosition - FragPos);
     vec3 halfWayDir = normalize(lightDir + viewDir);
     float spec = pow(max(dot(norm, halfWayDir), 0.0), 16);

@@ -7,6 +7,7 @@
 #include "world/scenes/DefaultScene.h"
 #include "world/scenes/ForestScene.h"
 #include "world/scenes/FourSpheresScene.h"
+#include "world/scenes/SuziWorldScene.h"
 #include "defaults.h"
 
 #include <stdio.h>
@@ -77,6 +78,7 @@ void Application::AddScenes()
 	scenes.push_back((new DefaultScene(&keyboard_handler, &mouse_handler))->Init());
 	scenes.push_back((new FourSpheresScene(&keyboard_handler, &mouse_handler))->Init());
 	scenes.push_back((new ForestScene(&keyboard_handler, &mouse_handler))->Init());
+	scenes.push_back((new SuziWorldScene(&keyboard_handler, &mouse_handler))->Init());
 }
 
 void Application::Run()

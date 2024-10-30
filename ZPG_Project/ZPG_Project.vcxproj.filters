@@ -114,6 +114,15 @@
     <ClCompile Include="world\scenes\DefaultScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="objects\SuziSmoothModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="objects\SuziFlatModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\scenes\SuziWorldScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -245,12 +254,24 @@
     <ClInclude Include="world\scenes\DefaultScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="objects\SuziFlatModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objects\SuziSmoothModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\scenes\SuziWorldScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />
     <None Include="gpu_shaders\fragment_position_normal_phong.vert" />
     <None Include="gpu_shaders\fragment_position_color.vert" />
     <None Include="gpu_shaders\fragment_position_normal_blinn.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_lambert.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_constant.vert" />
+    <None Include="gpu_shaders\vertex_position_normal_constant.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />

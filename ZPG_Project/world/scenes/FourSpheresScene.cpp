@@ -35,19 +35,19 @@ void FourSpheresScene::InitScene()
 
 	auto baseTransformation = transformationBuilder.AddScale(0.5f)->AddTranslation(0, 0, -1)->Build();
 
-	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(-0.8f, 0, 0);
+	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(-1, 0, 0);
 
 	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
 
-	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0.8f, 0, 0);
+	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(1, 0, 0);
 
 	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
 
-	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, -0.8f, 0);
+	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, -1, 0);
 
 	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
 
-	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, 0.8f, 0);
+	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, 1, 0);
 
 	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
 }

@@ -135,6 +135,8 @@
     <ClCompile Include="handlers\KeyboardHandler.cpp" />
     <ClCompile Include="handlers\MouseHandler.cpp" />
     <ClCompile Include="objects\SphereObject.cpp" />
+    <ClCompile Include="objects\SuziFlatModel.cpp" />
+    <ClCompile Include="objects\SuziSmoothModel.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
     <ClCompile Include="shaders\UniformVariableVec3.cpp" />
     <ClCompile Include="world\cameras\Camera.cpp" />
@@ -152,6 +154,7 @@
     <ClCompile Include="world\projections\OrthoProjection.cpp" />
     <ClCompile Include="world\projections\PrespectiveProjection.cpp" />
     <ClCompile Include="world\scenes\DefaultScene.cpp" />
+    <ClCompile Include="world\scenes\SuziWorldScene.cpp" />
     <ClCompile Include="world\scenes\ForestScene.cpp" />
     <ClCompile Include="world\scenes\FourSpheresScene.cpp" />
     <ClCompile Include="world\scenes\Scene.cpp" />
@@ -172,6 +175,8 @@
     <ClInclude Include="handlers\KeyboardHandler.h" />
     <ClInclude Include="handlers\MouseHandler.h" />
     <ClInclude Include="objects\SphereObject.h" />
+    <ClInclude Include="objects\SuziFlatModel.h" />
+    <ClInclude Include="objects\SuziSmoothModel.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
     <ClInclude Include="shaders\UniformVariableVec3.h" />
     <ClInclude Include="world\cameras\Camera.h" />
@@ -192,6 +197,7 @@
     <ClInclude Include="world\projections\PrespectiveProjection.h" />
     <ClInclude Include="world\projections\Projection.h" />
     <ClInclude Include="world\scenes\DefaultScene.h" />
+    <ClInclude Include="world\scenes\SuziWorldScene.h" />
     <ClInclude Include="world\scenes\ForestScene.h" />
     <ClInclude Include="world\scenes\FourSpheresScene.h" />
     <ClInclude Include="world\scenes\Scene.h" />
@@ -211,8 +217,11 @@
   <ItemGroup>
     <None Include="gpu_shaders\fragment_position_color.vert" />
     <None Include="gpu_shaders\fragment_position_normal_blinn.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_constant.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_lambert.vert" />
     <None Include="gpu_shaders\fragment_position_normal_phong.vert" />
     <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />
+    <None Include="gpu_shaders\vertex_position_normal_constant.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />
