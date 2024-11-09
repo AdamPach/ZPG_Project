@@ -43,6 +43,13 @@ TransformationsBuilder* TransformationsBuilder::AddTransformation(Transformation
 	return this;
 }
 
+TransformationsBuilder* TransformationsBuilder::AddRandomDynamicMovvement()
+{
+	transformations.push_back(new RandomDynamcMovement());
+
+	return this;
+}
+
 TransformationsBuilder* TransformationsBuilder::Clear()
 {
 	transformations.clear();

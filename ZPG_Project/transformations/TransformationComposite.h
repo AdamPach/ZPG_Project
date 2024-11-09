@@ -11,8 +11,10 @@ public:
 	void AddTransformation(TransformationBasic* transformationPart);
 	void RemoveTransformation(TransformationBasic* transformationPart);
 	glm::mat4 GetMatrix() override;
+	bool IsDynamic() override;
 
 private:
 	std::vector<TransformationBasic*> transformationParts;
+	bool isDynamic = false;
 };
 

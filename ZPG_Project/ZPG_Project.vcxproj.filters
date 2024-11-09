@@ -123,6 +123,9 @@
     <ClCompile Include="world\scenes\SuziWorldScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="transformations\RandomDynamicMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -261,6 +264,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\scenes\SuziWorldScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transformations\RandomDynamicMovement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -17,7 +17,7 @@ void TransformationComposite::RemoveTransformation(TransformationBasic* transfor
 
 glm::mat4 TransformationComposite::GetMatrix()
 {
-	if (transformationMatrix != glm::mat4(1.0f))
+	if (transformationMatrix != glm::mat4(1.0f) && !isDynamic)
 	{
 		return transformationMatrix;
 	}
@@ -27,9 +27,15 @@ glm::mat4 TransformationComposite::GetMatrix()
 	for (TransformationBasic* transformationPart : transformationParts)
 	{
 		matrix = transformationPart->GetMatrix() * matrix;
+		isDynamic = isDynamic || transformationPart->IsDynamic();
 	}
 
 	transformationMatrix = matrix;
 
 	return transformationMatrix;
+}
+
+bool TransformationComposite::IsDynamic()
+{
+	return isDynamic;
 }

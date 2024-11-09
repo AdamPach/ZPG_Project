@@ -6,5 +6,6 @@ class Translation : public TransformationBasic
 {
 public:
 	Translation(glm::vec3 direction);
+	bool IsDynamic() override;
 };
 

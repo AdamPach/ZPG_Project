@@ -8,6 +8,7 @@ class TransformationBasic
 {
 public:
 	virtual glm::mat4 GetMatrix();
+	virtual bool IsDynamic() = 0;
 protected:
 	glm::mat4 transformationMatrix;
 };

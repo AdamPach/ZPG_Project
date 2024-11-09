@@ -5,6 +5,7 @@
 #include "Scale.h"
 #include "Translation.h"
 #include "TransformationComposite.h"
+#include "RandomDynamicMovement.h"
 #include "Rotation.h"
 
 enum Axis { X, Y, Z };
@@ -16,6 +17,7 @@ public:
 	TransformationsBuilder* AddTranslation(float x_move, float y_move, float z_move);
 	TransformationsBuilder* AddRotation(float angle, Axis axis);
 	TransformationsBuilder* AddTransformation(TransformationBasic* part);
+	TransformationsBuilder* AddRandomDynamicMovvement();
 
 	TransformationsBuilder* Clear();
 

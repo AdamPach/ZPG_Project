@@ -4,6 +4,8 @@
 #include "../../objects/PlainModel.h"
 #include "../../objects/TreeModel.h"
 #include "../../objects/BushesModel.h"
+#include "../../objects/SphereObject.h"
+#include "../../transformations/RandomDynamicMovement.h"
 #include "../../transformations/TransformationsBuilder.h"
 
 ForestScene::ForestScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
@@ -75,5 +77,19 @@ void ForestScene::InitScene()
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())));
 		}
+	}
+
+	for (int i = 0; i < 100; i++)
+	{
+		auto base = transformationBuilder
+			.AddTranslation(0, 1, -2)
+			->AddTransformation(new RandomDynamcMovement())
+			->AddScale(0.05f);
+
+		AddObject(new DrawableObject(
+			SphereObject::GetInstance(),
+			color_shader_program,
+			new Transformation(transformationBuilder.Build())
+		));
 	}
 }

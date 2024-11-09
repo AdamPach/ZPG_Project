@@ -10,6 +10,7 @@
 #include "world/scenes/SuziWorldScene.h"
 #include "defaults.h"
 
+#include <time.h>
 #include <stdio.h>
 #include <cstdlib>
 
@@ -65,8 +66,7 @@ void Application::Init()
 	glfwSetCursorPosCallback(window, mouse_move_callback);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-	//scenes.push_back(new Scene(&keyboard_handler, &mouse_handler));
-	//scenes.push_back(new Scene(&keyboard_handler, &mouse_handler));
+	srand(time(NULL));
 
 	this->scene_index = 0;
 
