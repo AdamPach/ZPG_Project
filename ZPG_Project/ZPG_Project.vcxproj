@@ -138,6 +138,7 @@
     <ClCompile Include="objects\SuziFlatModel.cpp" />
     <ClCompile Include="objects\SuziSmoothModel.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
+    <ClCompile Include="shaders\UniformVariableMat4.cpp" />
     <ClCompile Include="shaders\UniformVariableVec3.cpp" />
     <ClCompile Include="transformations\RandomDynamicMovement.cpp" />
     <ClCompile Include="world\cameras\Camera.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="objects\SuziFlatModel.h" />
     <ClInclude Include="objects\SuziSmoothModel.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
+    <ClInclude Include="shaders\UniformVariableMat4.h" />
     <ClInclude Include="shaders\UniformVariableVec3.h" />
     <ClInclude Include="shaders\UniformVarianble.h" />
     <ClInclude Include="transformations\RandomDynamicMovement.h" />

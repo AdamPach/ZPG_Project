@@ -7,6 +7,7 @@
 #include "../abstraction/Observer.h" 
 #include "../world/cameras/Camera.h"
 #include "UniformVariableVec3.h"
+#include "UniformVariableMat4.h"
 
 class ShaderProgram : public Observer
 {
@@ -17,6 +18,7 @@ public:
 	void Update() override;
 	void SetCamera(Camera* camera);
 	void AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
+	void AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name);
 
 	class ShaderProgramBuilder
 	{
@@ -55,6 +57,6 @@ private:
 	Camera* camera = nullptr;
 	glm::mat4 view_matrix = glm::mat4(1);
 	glm::mat4 projection_matrix = glm::mat4(1);
-	std::vector<UniformVariable*> uniformVec3Variables;
+	std::vector<UniformVariable*> uniformVariables;
 };
 

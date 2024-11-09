@@ -32,7 +32,17 @@ void ShaderProgram::AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* su
 
 	if (uniform_location != -1)
 	{
-		uniformVec3Variables.push_back(new UniformVariableVec3(subject, uniform_location));
+		uniformVariables.push_back(new UniformVariableVec3(subject, uniform_location));
+	}
+}
+
+void ShaderProgram::AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name)
+{
+	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
+
+	if (uniform_location != -1)
+	{
+		uniformVariables.push_back(new UniformVariableMat4(subject, uniform_location));
 	}
 }
 
@@ -45,7 +55,7 @@ ShaderProgram::~ShaderProgram()
 		camera->Unsubcribe(this);
 	}
 
-	for (auto observer : uniformVec3Variables)
+	for (auto observer : uniformVariables)
 	{
 		delete observer;
 	}
@@ -65,7 +75,7 @@ void ShaderProgram::Use()
 		glUniformMatrix4fv(uniform_projection_location, 1, GL_FALSE, &projection_matrix[0][0]);
 	}
 
-	for(auto variable : uniformVec3Variables)
+	for(auto variable : uniformVariables)
 	{
 		variable->Use();
 	}
