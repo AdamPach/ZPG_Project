@@ -55,6 +55,6 @@ private:
 	Camera* camera = nullptr;
 	glm::mat4 view_matrix = glm::mat4(1);
 	glm::mat4 projection_matrix = glm::mat4(1);
-	std::vector<UniformVariableVec3*> uniformVec3Variables;
+	std::vector<UniformVariable*> uniformVec3Variables;
 };
 

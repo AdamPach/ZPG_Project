@@ -180,6 +180,7 @@
     <ClInclude Include="objects\SuziSmoothModel.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
     <ClInclude Include="shaders\UniformVariableVec3.h" />
+    <ClInclude Include="shaders\UniformVarianble.h" />
     <ClInclude Include="transformations\RandomDynamicMovement.h" />
     <ClInclude Include="world\cameras\Camera.h" />
     <ClInclude Include="objects\models\bushes.h" />

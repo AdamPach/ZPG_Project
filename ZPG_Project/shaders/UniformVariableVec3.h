@@ -2,18 +2,17 @@
 
 #include <glm/glm.hpp>
 
-#include "../abstraction/UnifromVariableSubject.h"
+#include "UniformVarianble.h"
 #include <GL/glew.h>
 
-class UniformVariableVec3 : public Observer
+class UniformVariableVec3 : public UniformVariable
 {
 public:
 	UniformVariableVec3(UniformVariableSubject<glm::vec3>* subject, GLint uniform_location);
 	~UniformVariableVec3();
 	void Update() override;
-	void Use();
+	void Use() override;
 private:
 	glm::vec3 value;
-	GLint uniform_location = -1;
 	UniformVariableSubject<glm::vec3>* subject;
 };
