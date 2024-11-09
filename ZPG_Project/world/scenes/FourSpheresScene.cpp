@@ -3,6 +3,7 @@
 #include "../../shaders/ShaderProgram.h"
 #include "../../transformations/TransformationsBuilder.h"
 #include "../../objects/SphereObject.h"
+#include "../../objects/MateriaDrawableObject.h"
 
 FourSpheresScene::FourSpheresScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
 {
@@ -16,7 +17,8 @@ void FourSpheresScene::InitShaders()
 		->AddFragmentShader("fragment_position_normal_phong.vert")
 		->AddTransformationUniform("modelMatrix")
 		->AddViewUniform("viewMatrix")
-		->AddProjectionUniform("projectionMatrix");
+		->AddProjectionUniform("projectionMatrix")
+		->AddMaterialColorUniform(DEFAULT_MATERIAL_COLOR_NAME);
 
 	AddShaderProgram(shaderBuilder->Build(), "phong_shader");
 }
@@ -37,7 +39,7 @@ void FourSpheresScene::InitScene()
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(-1, 0, 0);
 
-	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
+	AddObject(new MateriaDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build()), new Material(glm::vec3(0.8f, 0, 0))));
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(1, 0, 0);
 

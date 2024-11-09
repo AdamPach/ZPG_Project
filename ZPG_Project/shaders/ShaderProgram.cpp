@@ -26,6 +26,11 @@ void ShaderProgram::AddProjectionUniform(std::string uniform)
 	projectionUniform = uniform;
 }
 
+void ShaderProgram::AddMaterialColorUniform(std::string uniform)
+{
+	uniform_materialColor_location = glGetUniformLocation(shader_program, uniform.c_str());
+}
+
 void ShaderProgram::AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name)
 {
 	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
@@ -73,6 +78,14 @@ void ShaderProgram::Use(Transformation* transformation)
 	if (uniform_transformation_location != -1)
 	{
 		glUniformMatrix4fv(uniform_transformation_location, 1, GL_FALSE, &transformation->GetTransformationMatrix()[0][0]);
+	}
+}
+
+void ShaderProgram::SetMaterialColor(glm::vec3 color)
+{
+	if (uniform_materialColor_location != -1)
+	{
+		glUniform3f(uniform_materialColor_location, color.x, color.y, color.z);
 	}
 }
 
@@ -140,6 +153,13 @@ ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddPro
 	return this;
 }
 
+ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddMaterialColorUniform(const char* uniform)
+{
+	this->materialColorUniform = uniform;
+
+	return this;
+}
+
 ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 {
 	ShaderProgram* shaderProgram =  new ShaderProgram();
@@ -164,6 +184,11 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 	if (this->projectionUniform != "")
 	{
 		shaderProgram->AddProjectionUniform(this->projectionUniform);
+	}
+
+	if (this->materialColorUniform != "")
+	{
+		shaderProgram->AddMaterialColorUniform(this->materialColorUniform);
 	}
 
 	vertexShaderFileName = "";

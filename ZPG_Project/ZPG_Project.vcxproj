@@ -134,6 +134,8 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="handlers\KeyboardHandler.cpp" />
     <ClCompile Include="handlers\MouseHandler.cpp" />
+    <ClCompile Include="objects\MaterialDrawableObject.cpp" />
+    <ClCompile Include="objects\materials\Material.cpp" />
     <ClCompile Include="objects\SphereObject.cpp" />
     <ClCompile Include="objects\SuziFlatModel.cpp" />
     <ClCompile Include="objects\SuziSmoothModel.cpp" />
@@ -178,6 +180,8 @@
     <ClInclude Include="defaults.h" />
     <ClInclude Include="handlers\KeyboardHandler.h" />
     <ClInclude Include="handlers\MouseHandler.h" />
+    <ClInclude Include="objects\MaterialDrawableObject.h" />
+    <ClInclude Include="objects\materials\Material.h" />
     <ClInclude Include="objects\SphereObject.h" />
     <ClInclude Include="objects\SuziFlatModel.h" />
     <ClInclude Include="objects\SuziSmoothModel.h" />

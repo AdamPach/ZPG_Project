@@ -9,9 +9,10 @@ class DrawableObject
 public:
 	DrawableObject(Model* model, ShaderProgram* shader, Transformation* transformation);
 	~DrawableObject();
-	void DrawObject();
+	virtual void DrawObject();
+protected:
+	ShaderProgram* shader;	
 private:
 	Model* model;
-	ShaderProgram* shader;
 	Transformation* transformation;
 };

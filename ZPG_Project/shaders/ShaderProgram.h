@@ -15,6 +15,7 @@ public:
 	~ShaderProgram();
 	void Use();
 	void Use(Transformation* transformation);
+	void SetMaterialColor(glm::vec3 color);
 	void SetCamera(Camera* camera);
 	void AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
 	void AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name);
@@ -27,6 +28,7 @@ public:
 		ShaderProgramBuilder* AddTransformationUniform(const char* uniform);
 		ShaderProgramBuilder* AddViewUniform(const char* uniform);
 		ShaderProgramBuilder* AddProjectionUniform(const char* uniform);
+		ShaderProgramBuilder* AddMaterialColorUniform(const char* uniform);
 
 		ShaderProgram* Build();
 	private:
@@ -36,6 +38,7 @@ public:
 		std::string transformationUniform = "";
 		std::string viewUniform = "";
 		std::string projectionUniform = "";
+		std::string materialColorUniform = "";
 
 		const std::string SHADER_PATH = GPU_SHADER_PATH;
 	};
@@ -47,11 +50,12 @@ private:
 	void AddTransformationUniform(std::string uniform);
 	void AddViewUniform(std::string uniform);
 	void AddProjectionUniform(std::string uniform);
+	void AddMaterialColorUniform(std::string uniform);
 
 	void Check();
 
 	GLuint shader_program;
-	GLint uniform_transformation_location = -1;
+	GLint uniform_transformation_location = -1, uniform_materialColor_location;
 
 	glm::mat4 view_matrix = glm::mat4(1);
 
