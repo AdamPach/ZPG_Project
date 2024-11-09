@@ -2,16 +2,16 @@
 
 LightPositionSubject::LightPositionSubject()
 {
-	position = glm::vec3(0.0f, 0.0f, 0.0f);
+	value = glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
-void LightPositionSubject::SetValue(float x, float y, float z)
+void LightPositionSubject::SetValue(glm::vec3 value)
 {
-	position = glm::vec3(x, y, z);
+	this->value = glm::vec3(value);
 	Notify();
 }
 
 glm::vec3 LightPositionSubject::GetValue()
 {
-    return position;
+    return value;
 }

@@ -8,9 +8,6 @@ class LightColorSubject : public UniformVariableSubject<glm::vec3>
 {
 public:
 	LightColorSubject();
-	void SetValue(float r, float g, float b);
-
 	glm::vec3 GetValue() override;
-private:
-	glm::vec3 color;
+	void SetValue(glm::vec3 value) override;
 };

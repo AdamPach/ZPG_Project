@@ -8,9 +8,6 @@ class LightPositionSubject : public UniformVariableSubject<glm::vec3>
 {
 public:
 	LightPositionSubject();
-	void SetValue(float x, float y, float z);
-
+	void SetValue(glm::vec3 value) override;
 	glm::vec3 GetValue() override;
-private:
-	glm::vec3 position;
 };

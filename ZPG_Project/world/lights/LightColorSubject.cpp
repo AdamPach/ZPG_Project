@@ -2,16 +2,16 @@
 
 LightColorSubject::LightColorSubject()
 {
-	color = glm::vec3(0.0f, 0.0f, 0.0f);
-}
-
-void LightColorSubject::SetValue(float r, float g, float b)
-{
-	color = glm::vec3(r, g, b);
-	Notify();
+	value = glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
 glm::vec3 LightColorSubject::GetValue()
 {
-	return color;
+	return value;
+}
+
+void LightColorSubject::SetValue(glm::vec3 value)
+{
+	this->value = glm::vec3(value);
+	Notify();
 }

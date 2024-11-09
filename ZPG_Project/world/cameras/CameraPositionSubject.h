@@ -8,9 +8,7 @@ class CameraPositionSubject : public UniformVariableSubject<glm::vec3>
 {
 public:
 	CameraPositionSubject();
-	void SetValue(glm::vec3 position);
 
 	glm::vec3 GetValue() override;
-private:
-	glm::vec3 position;
+	void SetValue(glm::vec3 value) override;
 };

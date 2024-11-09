@@ -2,16 +2,16 @@
 
 CameraPositionSubject::CameraPositionSubject()
 {
-	position = glm::vec3(0.0f, 0.0f, 0.0f);
+	value = glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
-void CameraPositionSubject::SetValue(glm::vec3 position)
+void CameraPositionSubject::SetValue(glm::vec3 value)
 {
-	this->position = glm::vec3(position);
+	this->value = glm::vec3(value);
 	Notify();
 }
 
 glm::vec3 CameraPositionSubject::GetValue()
 {
-	return position;
+	return value;
 }
