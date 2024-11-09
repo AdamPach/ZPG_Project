@@ -3,7 +3,7 @@
 #include "../../shaders/ShaderProgram.h"
 #include "../../transformations/TransformationsBuilder.h"
 #include "../../objects/SphereObject.h"
-#include "../../objects/MateriaDrawableObject.h"
+#include "../../objects/MaterialDrawableObject.h"
 
 FourSpheresScene::FourSpheresScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
 {
@@ -39,7 +39,7 @@ void FourSpheresScene::InitScene()
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(-1, 0, 0);
 
-	AddObject(new MateriaDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build()), new Material(glm::vec3(0.8f, 0, 0))));
+	AddObject(new MaterialDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build()), new Material(glm::vec3(0.8f, 0, 0))));
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(1, 0, 0);
 
