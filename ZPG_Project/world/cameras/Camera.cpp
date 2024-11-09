@@ -12,9 +12,12 @@ Camera::Camera(Projection* projection, glm::vec3 position, glm::vec3 up, float y
 	Pitch = pitch;
 
 	this->projection = projection;
+	projectionSubject.SetValue(projection->GetProjectionMatrix());
 
 	positionSubject.SetValue(Position);
 	UpdateCameraVectors();
+
+	viewSubject.SetValue(GetViewMatrix());
 }
 
 Camera::~Camera()
@@ -44,7 +47,7 @@ void Camera::ProcessKeyboardMovement(CameraMovement direction)
 	}
 
 	positionSubject.SetValue(Position);
-	Notify();
+	viewSubject.SetValue(GetViewMatrix());
 }
 
 void Camera::ProcessMouseMovement(float xoffset, float yoffset)
@@ -61,22 +64,28 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset)
 		Pitch = -89.0f;
 
 	UpdateCameraVectors();
-	Notify();
+	viewSubject.SetValue(GetViewMatrix());
+}
+
+
+UniformVariableSubject<glm::vec3>* Camera::GetPositionSubject()
+{
+	return &positionSubject;
+}
+
+UniformVariableSubject<glm::mat4>* Camera::GetProjectionSubject()
+{
+	return &projectionSubject;
+}
+
+UniformVariableSubject<glm::mat4>* Camera::GetViewSubject()
+{
+	return &viewSubject;
 }
 
 glm::mat4 Camera::GetViewMatrix()
 {
 	return glm::lookAt(Position, Position + Front, Up);
-}
-
-glm::mat4 Camera::GetProjectionMatrix()
-{
-	return projection->GetProjectionMatrix();
-}
-
-UniformVariableSubject<glm::vec3>* Camera::GetPositionSubject()
-{
-	return &positionSubject;
 }
 
 void Camera::UpdateCameraVectors()

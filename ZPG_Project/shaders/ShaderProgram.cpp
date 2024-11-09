@@ -18,12 +18,12 @@ void ShaderProgram::AddTransformationUniform(std::string uniform)
 
 void ShaderProgram::AddViewUniform(std::string uniform)
 {
-	uniform_view_location = glGetUniformLocation(shader_program, uniform.c_str());
+	viewUniform = uniform;
 }
 
 void ShaderProgram::AddProjectionUniform(std::string uniform)
 {
-	uniform_projection_location = glGetUniformLocation(shader_program, uniform.c_str());
+	projectionUniform = uniform;
 }
 
 void ShaderProgram::AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name)
@@ -50,11 +50,6 @@ ShaderProgram::~ShaderProgram()
 {
 	glDeleteProgram(shader_program);
 
-	if (camera != nullptr)
-	{
-		camera->Unsubcribe(this);
-	}
-
 	for (auto observer : uniformVariables)
 	{
 		delete observer;
@@ -64,16 +59,6 @@ ShaderProgram::~ShaderProgram()
 void ShaderProgram::Use()
 {
 	glUseProgram(shader_program);
-
-	if (uniform_view_location != -1)
-	{
-		glUniformMatrix4fv(uniform_view_location, 1, GL_FALSE, &view_matrix[0][0]);
-	}
-
-	if (uniform_projection_location != -1)
-	{
-		glUniformMatrix4fv(uniform_projection_location, 1, GL_FALSE, &projection_matrix[0][0]);
-	}
 
 	for(auto variable : uniformVariables)
 	{
@@ -91,21 +76,18 @@ void ShaderProgram::Use(Transformation* transformation)
 	}
 }
 
-void ShaderProgram::Update()
-{
-	view_matrix = camera->GetViewMatrix();
-	projection_matrix = camera->GetProjectionMatrix();
-}
-
 void ShaderProgram::SetCamera(Camera* camera)
 {
-	if (this->camera != nullptr)
+
+	if (this->projectionUniform != "")
 	{
-		camera->Unsubcribe(this);
+		AddUniformMat4Variable(camera->GetProjectionSubject(), this->projectionUniform.c_str());
 	}
 
-	this->camera = camera;
-	camera->Subcribe(this);
+	if (this->viewUniform != "")
+	{
+		AddUniformMat4Variable(camera->GetViewSubject(), this->viewUniform.c_str());
+	}
 }
 
 void ShaderProgram::Check()

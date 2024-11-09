@@ -129,6 +129,12 @@
     <ClCompile Include="shaders\UniformVariableMat4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="world\cameras\CameraProjectionSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\cameras\CameraViewSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -276,6 +282,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shaders\UniformVariableMat4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\cameras\CameraProjectionSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\cameras\CameraViewSubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

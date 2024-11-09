@@ -7,6 +7,8 @@
 #include "../../defaults.h"
 #include "../../abstraction/UnifromVariableSubject.h"
 #include "CameraPositionSubject.h"
+#include "CameraProjectionSubject.h"
+#include "CameraViewSubject.h"
 
 enum CameraMovement
 {
@@ -22,17 +24,18 @@ const float PITCH = 0.0f;
 const float SPEED = DEFAULT_SPEED;
 const float SENSITIVITY = DEFAULT_SENSITIVITY;
 
-class Camera : public Subject
+class Camera
 {
 public:
 	Camera(Projection* projection, glm::vec3 position = glm::vec3(DEFAULT_CAMERA_X, DEFAULT_CAMERA_Y, DEFAULT_CAMERA_Z), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH);
 	~Camera();
 	void ProcessKeyboardMovement(CameraMovement direction);
 	void ProcessMouseMovement(float xoffset, float yoffset);
-	glm::mat4 GetViewMatrix();
-	glm::mat4 GetProjectionMatrix();
 
 	UniformVariableSubject<glm::vec3>* GetPositionSubject();
+	UniformVariableSubject<glm::mat4>* GetProjectionSubject();
+	UniformVariableSubject<glm::mat4>* GetViewSubject();
+
 private:
 	Projection* projection;
 
@@ -52,7 +55,10 @@ private:
 	float Speed;
 
 	CameraPositionSubject positionSubject;
+	CameraProjectionSubject projectionSubject;
+	CameraViewSubject viewSubject;
 
+	glm::mat4 GetViewMatrix();
 	void UpdateCameraVectors();
 };
 

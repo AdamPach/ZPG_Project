@@ -35,8 +35,6 @@ void Scene::AddShaderProgram(ShaderProgram* shaderProgram, const char* programNa
 	shaderPrograms[programName] = shaderProgram;
 
 	shaderProgram->SetCamera(this->camera);
-
-	shaderProgram->Update();
 }
 
 ShaderProgram* Scene::GetShaderProgram(const char* programName)

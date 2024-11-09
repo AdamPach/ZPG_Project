@@ -9,13 +9,12 @@
 #include "UniformVariableVec3.h"
 #include "UniformVariableMat4.h"
 
-class ShaderProgram : public Observer
+class ShaderProgram
 {
 public:
 	~ShaderProgram();
 	void Use();
 	void Use(Transformation* transformation);
-	void Update() override;
 	void SetCamera(Camera* camera);
 	void AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
 	void AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name);
@@ -52,11 +51,13 @@ private:
 	void Check();
 
 	GLuint shader_program;
-	GLint uniform_transformation_location = -1, uniform_view_location = -1, uniform_projection_location = -1;
+	GLint uniform_transformation_location = -1;
 
-	Camera* camera = nullptr;
 	glm::mat4 view_matrix = glm::mat4(1);
-	glm::mat4 projection_matrix = glm::mat4(1);
+
+	std::string viewUniform = "";
+	std::string projectionUniform = "";
+
 	std::vector<UniformVariable*> uniformVariables;
 };
 
