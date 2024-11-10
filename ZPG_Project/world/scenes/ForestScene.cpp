@@ -5,8 +5,10 @@
 #include "../../objects/TreeModel.h"
 #include "../../objects/BushesModel.h"
 #include "../../objects/SphereObject.h"
-#include "../../transformations/RandomDynamicMovement.h"
 #include "../../transformations/TransformationsBuilder.h"
+#include "../../objects/drawable/MaterialDrawableObjectDecorator.h"
+#include "../../objects/drawable/LightDrawableObjectDecorator.h"
+
 
 ForestScene::ForestScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
 {
@@ -17,11 +19,12 @@ void ForestScene::InitShaders()
 {
 	ShaderProgram::ShaderProgramBuilder builder;
 
-	builder.AddVertexShader("vertext_position_color.vert")
-		->AddFragmentShader("fragment_position_color.vert")
+	builder.AddVertexShader("vertext_position_normal_light_base.vert")
+		->AddFragmentShader("fragment_position_normal_phong.vert")
 		->AddTransformationUniform("modelMatrix")
 		->AddViewUniform("viewMatrix")
-		->AddProjectionUniform("projectionMatrix");
+		->AddProjectionUniform("projectionMatrix")
+		->AddMaterialColorUniform(DEFAULT_MATERIAL_COLOR_NAME);
 
 	auto color_shader_program = builder.Build();
 
@@ -33,15 +36,12 @@ void ForestScene::InitScene()
 {
 	auto color_shader_program = GetShaderProgram("basic_shader");
 
+	UseCameraPosition();
+
 	TransformationsBuilder transformationBuilder;
 
-	transformationBuilder.AddScale(20.0f)
-		->AddTranslation(0, -0.5f, 0);
-
-	AddObject(new SimpleDrawableObject(
-		PlainModel::GetInstance(),
-		color_shader_program,
-		new Transformation(transformationBuilder.Build())));
+	auto treeMaterial = new Material(glm::vec3(0, 0.5, 0));
+	auto bushMaterial = new Material(glm::vec3(0.5, 0.25, 0.05));
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -53,11 +53,13 @@ void ForestScene::InitScene()
 
 		for (int j = 0; j < 10; j++)
 		{
-			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 38 - 19, 0, rand() % 38 - 19);
-			AddObject(new SimpleDrawableObject(
-				TreeModel::GetInstance(),
-				color_shader_program,
-				new Transformation(transformationBuilder.Build())));
+			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 18 - 9, 0, rand() % 18 - 9);
+			AddObject(new MaterialDrawableObjectDecorator(
+				new SimpleDrawableObject(
+					TreeModel::GetInstance(),
+					color_shader_program,
+					new Transformation(transformationBuilder.Build())),
+				treeMaterial));
 		}
 	}
 
@@ -71,25 +73,29 @@ void ForestScene::InitScene()
 
 		for (int j = 0; j < 10; j++)
 		{
-			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 38 - 19, 0, rand() % 38 - 19);
-			AddObject(new SimpleDrawableObject(
-				BushesModel::GetInstance(),
-				color_shader_program,
-				new Transformation(transformationBuilder.Build())));
+			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 18 - 9, 0, rand() % 18 - 9);
+			AddObject(new MaterialDrawableObjectDecorator(
+				new SimpleDrawableObject(
+					BushesModel::GetInstance(),
+					color_shader_program,
+					new Transformation(transformationBuilder.Build())),
+				bushMaterial));
 		}
 	}
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 25; i++)
 	{
-		auto base = transformationBuilder
-			.AddTranslation(0, 1, -2)
-			->AddTransformation(new RandomDynamcMovement())
-			->AddScale(0.05f);
+		auto base = transformationBuilder.AddRandomDynamicMovvement()
+			->AddScale(0.025f)
+			->AddTranslation(rand() % 18 - 9, 1, rand() % 18 - 9);
 
-		AddObject(new SimpleDrawableObject(
-			SphereObject::GetInstance(),
-			color_shader_program,
-			new Transformation(transformationBuilder.Build())
-		));
+		AddObject(new LightDrawableObjectDecorator(
+			new MaterialDrawableObjectDecorator(
+				new SimpleDrawableObject(
+					SphereObject::GetInstance(),
+					color_shader_program,
+					new Transformation(transformationBuilder.Build())),
+				new Material(glm::vec3(0.5, 0.5, 0))),
+			new Light(glm::vec3(1,1,1))));
 	}
 }

@@ -207,6 +207,7 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 	transformationUniform = "";
 	viewUniform = "";
 	projectionUniform = "";
+	materialColorUniform = "";
 
 	return shaderProgram;
 }

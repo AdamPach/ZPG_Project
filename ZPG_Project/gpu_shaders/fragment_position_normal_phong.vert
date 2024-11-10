@@ -1,5 +1,5 @@
 #version 330
-#define MAX_LIGHTS 1000
+#define MAX_LIGHTS 100
 
 in vec3 FragPos;
 in vec3 Normal;
@@ -18,7 +18,7 @@ out vec4 frag_colour;
 void main () {
 
     float ambientStrength = 0.1;
-    vec3 lightColor = vec3(1.0, 1.0, 1.0);
+    vec3 lightColor = vec3(0.25, 0.25, 0.25);
 
     vec4 ambient = ambientStrength * vec4(lightColor, 1.0);
     vec3 norm = normalize(Normal);
