@@ -1,27 +1,27 @@
 #include "Light.h"
+#include "../../defaults.h"
 
-Light::Light()
+Light::Light(glm::vec3 color)
 {
-	positionSubject = LightPositionSubject();
-	colorSubject = LightColorSubject();
+	this->position = glm::vec3(0, 0, 0);
 }
 
-void Light::SetPosition(float x, float y, float z)
+void Light::SetPosition(glm::vec3 position)
 {
-	positionSubject.SetValue(glm::vec3(x, y, z));
+	if (this->position == position)
+	{
+		return;
+	}
+
+	this->position = position;
+	positionSubject.SetValue(position);
 }
 
-void Light::SetColor(float r, float g, float b)
+std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> Light::GetSubjects()
 {
-	colorSubject.SetValue(glm::vec3(r, g, b));
-}
+	std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> subjects;
 
-UniformVariableSubject<glm::vec3>* Light::GetPositionSubject()
-{
-	return &positionSubject;
-}
+	subjects.push_back(std::pair<UniformVariableSubject<glm::vec3>*, std::string>(&positionSubject, DEFAULT_LIGHT_POSITION_NAME));
 
-UniformVariableSubject<glm::vec3>* Light::GetColorSubject()
-{
-	return &colorSubject;
+	return subjects;
 }

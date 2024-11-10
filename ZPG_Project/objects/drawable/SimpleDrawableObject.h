@@ -12,6 +12,9 @@ public:
 	~SimpleDrawableObject();
 	void Draw() override;
 	ShaderProgram* GetShader() const override;
+	Transformation* GetTransformation() const override;
+	Model* GetModel() const override;
+	std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> GetLightSubjects() override;
 private:
 	Model* model;
 	Transformation* transformation; 

@@ -1,24 +1,36 @@
 #version 330
+#define MAX_LIGHTS 100
 
 in vec3 FragPos;
 in vec3 Normal;
 
-uniform vec3 lightPosition;
-uniform vec3 lightColor;
+struct Light {
+	vec3 lightPosition;
+};
+
+uniform Light lights[MAX_LIGHTS];
+uniform int lightsCount;
+uniform vec3 materialColor;
 
 out vec4 frag_colour;
 
 void main () {
 
     float ambientStrength = 0.1;
+    vec3 lightColor = vec3(1.0, 1.0, 1.0);
     vec4 ambient = ambientStrength * vec4(lightColor, 1.0);
 
     vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(lightPosition - FragPos);
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec4 diffuse = diff * vec4(lightColor, 1.0);
 
-    vec4 objectColor = vec4(0.385, 0.647, 0.812, 1.0);
+    vec4 result = vec4(0.0);
 
-    frag_colour = (diffuse + ambient) * objectColor;
+    for(int i = 0; i < lightsCount; i++) {
+        vec3 lightDir = normalize(lights[i].lightPosition - FragPos);
+        float diff = max(dot(norm, lightDir), 0.0);
+        vec4 diffuse = diff * vec4(lightColor, 1.0);  
+
+        result += diffuse;
+    }
+
+    frag_colour = (result + ambient) * vec4(materialColor, 1);
 };

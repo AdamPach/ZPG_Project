@@ -51,6 +51,16 @@ void ShaderProgram::AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* su
 	}
 }
 
+void ShaderProgram::AddUniformIntVariable(UniformVariableSubject<int>* subject, const char* variable_name)
+{
+	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
+
+	if (uniform_location != -1)
+	{
+		uniformVariables.push_back(new UniformVariableInt(subject, uniform_location));
+	}
+}
+
 ShaderProgram::~ShaderProgram()
 {
 	glDeleteProgram(shader_program);
@@ -69,6 +79,11 @@ void ShaderProgram::Use()
 	{
 		variable->Use();
 	}
+
+	if (uniform_materialColor_location != -1)
+	{
+		glUniform3f(uniform_materialColor_location, materialColor.x, materialColor.y, materialColor.z);
+	}
 }
 
 void ShaderProgram::Use(Transformation* transformation)
@@ -83,15 +98,11 @@ void ShaderProgram::Use(Transformation* transformation)
 
 void ShaderProgram::SetMaterialColor(glm::vec3 color)
 {
-	if (uniform_materialColor_location != -1)
-	{
-		glUniform3f(uniform_materialColor_location, color.x, color.y, color.z);
-	}
+	this->materialColor = color;
 }
 
 void ShaderProgram::SetCamera(Camera* camera)
 {
-
 	if (this->projectionUniform != "")
 	{
 		AddUniformMat4Variable(camera->GetProjectionSubject(), this->projectionUniform.c_str());
@@ -197,6 +208,7 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 	transformationUniform = "";
 	viewUniform = "";
 	projectionUniform = "";
+	materialColorUniform = "";
 
 	return shaderProgram;
 }
