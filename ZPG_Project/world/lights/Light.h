@@ -2,14 +2,17 @@
 
 #include <vector>
 #include <glm/glm.hpp>
-
+#include "LightPositionSubject.h"
+#include <vector>
+#include <string>
 
 class Light
 {
 public:
-	Light();
-
-	void SetPosition(float x, float y, float z);
-	void SetColor(float r, float g, float b);
-
+	Light(glm::vec3 color);
+	void SetPosition(glm::vec3 position);
+	std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> GetSubjects();
+private:
+	LightPositionSubject positionSubject;
+	glm::vec3 position;
 };

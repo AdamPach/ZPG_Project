@@ -32,20 +32,7 @@ Model* DrawableObjectDecorator::GetModel() const
 	return drawableObject->GetModel();
 }
 
-template <typename T>
-bool DrawableObjectDecorator::IsDecoratedBy()
+std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> DrawableObjectDecorator::GetLightSubjects()
 {
-	const DrawableObject* current = this;
-
-	while (const DrawableObjectDecorator* decorator = dynamic_cast<const DrawableObjectDecorator*>(current))
-	{
-		if (typeid(*decorator) == typeid(T))
-		{
-			return true;
-		}
-
-		current = decorator->drawableObject;
-	}
-
-	return false;
+	return drawableObject->GetLightSubjects();
 }

@@ -32,3 +32,8 @@ Model* SimpleDrawableObject::GetModel() const
 {
 	return model;
 }
+
+std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> SimpleDrawableObject::GetLightSubjects()
+{
+	return std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>>();
+}

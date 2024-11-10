@@ -38,4 +38,5 @@ private:
 	MouseHandler* mouseHandler;
 
 	void HandleMovement();
+	void PrepareLights();
 };

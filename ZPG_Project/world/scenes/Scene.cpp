@@ -75,6 +75,24 @@ void Scene::HandleMovement()
 	camera->ProcessMouseMovement(mouseHandler->GetXOffset(), mouseHandler->GetYOffset());
 }
 
+void Scene::PrepareLights()
+{
+	for (int i = 0; i < objects.size(); i++)
+	{
+		auto object = objects[i];
+
+		for (auto subjectPair : object->GetLightSubjects())
+		{
+			for (auto shaderProgram : shaderPrograms)
+			{
+				std::string name = DEFAULT_LIGHTS_NAME;
+				name += "[" + std::to_string(i) + "]." + subjectPair.second;
+				shaderProgram.second->AddUniformVec3Variable(subjectPair.first, name.c_str());
+			}
+		}
+	}
+}
+
 void Scene::Draw()
 {
 	HandleMovement();
@@ -89,6 +107,8 @@ Scene* Scene::Init()
 {
 	InitShaders();
 	InitScene();
+
+	PrepareLights();
 
 	return this;
 }

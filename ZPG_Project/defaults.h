@@ -16,3 +16,5 @@
 #define DEFAULT_LIGHT_COLOR_NAME "lightColor"
 #define DEFAULT_CAMERA_POSITION_NAME "cameraPosition"
 #define DEFAULT_MATERIAL_COLOR_NAME "materialColor"
+
+#define DEFAULT_LIGHTS_NAME "lights"
