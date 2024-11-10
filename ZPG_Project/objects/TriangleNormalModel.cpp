@@ -28,3 +28,26 @@ void TriangleNormalModel::DrawModel()
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLES, 0, length / 6);
 }
+
+glm::vec3 TriangleNormalModel::GetModelCenter()
+{
+	if (model_center != glm::vec3(-1, -1, -1))
+	{
+		return model_center;
+	}
+
+	model_center = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	for (int i = 0; i < length; i += 6)
+	{
+		model_center.x += model_points[i];
+		model_center.y += model_points[i + 1];
+		model_center.z += model_points[i + 2];
+	}
+
+	model_center.x /= length / 6;
+	model_center.y /= length / 6;
+	model_center.z /= length / 6;
+
+	return model_center;
+}

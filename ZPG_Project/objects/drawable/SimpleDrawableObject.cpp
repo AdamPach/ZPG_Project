@@ -22,3 +22,13 @@ ShaderProgram* SimpleDrawableObject::GetShader() const
 {
 	return shader;
 }
+
+Transformation* SimpleDrawableObject::GetTransformation() const
+{
+	return transformation;
+}
+
+Model* SimpleDrawableObject::GetModel() const
+{
+	return model;
+}

@@ -135,6 +135,7 @@
     <ClCompile Include="handlers\KeyboardHandler.cpp" />
     <ClCompile Include="handlers\MouseHandler.cpp" />
     <ClCompile Include="objects\drawable\DrawableObjectDecorator.cpp" />
+    <ClCompile Include="objects\drawable\LightDrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\drawable\MaterialDrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\materials\Material.cpp" />
     <ClCompile Include="objects\SphereObject.cpp" />
@@ -156,8 +157,6 @@
     <ClCompile Include="world\cameras\CameraProjectionSubject.cpp" />
     <ClCompile Include="world\cameras\CameraViewSubject.cpp" />
     <ClCompile Include="world\lights\Light.cpp" />
-    <ClCompile Include="world\lights\LightColorSubject.cpp" />
-    <ClCompile Include="world\lights\LightPositionSubject.cpp" />
     <ClCompile Include="world\projections\OrthoProjection.cpp" />
     <ClCompile Include="world\projections\PrespectiveProjection.cpp" />
     <ClCompile Include="world\scenes\DefaultScene.cpp" />
@@ -183,6 +182,7 @@
     <ClInclude Include="handlers\MouseHandler.h" />
     <ClInclude Include="objects\drawable\DrawableObject.h" />
     <ClInclude Include="objects\drawable\DrawableObjectDecorator.h" />
+    <ClInclude Include="objects\drawable\LightDrawableObjectDecorator.h" />
     <ClInclude Include="objects\drawable\MaterialDrawableObjectDecorator.h" />
     <ClInclude Include="objects\materials\Material.h" />
     <ClInclude Include="objects\SphereObject.h" />
@@ -207,8 +207,6 @@
     <ClInclude Include="world\cameras\CameraProjectionSubject.h" />
     <ClInclude Include="world\cameras\CameraViewSubject.h" />
     <ClInclude Include="world\lights\Light.h" />
-    <ClInclude Include="world\lights\LightColorSubject.h" />
-    <ClInclude Include="world\lights\LightPositionSubject.h" />
     <ClInclude Include="world\projections\OrthoProjection.h" />
     <ClInclude Include="world\projections\PrespectiveProjection.h" />
     <ClInclude Include="world\projections\Projection.h" />

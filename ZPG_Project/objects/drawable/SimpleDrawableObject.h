@@ -12,6 +12,8 @@ public:
 	~SimpleDrawableObject();
 	void Draw() override;
 	ShaderProgram* GetShader() const override;
+	Transformation* GetTransformation() const override;
+	Model* GetModel() const override;
 private:
 	Model* model;
 	Transformation* transformation; 

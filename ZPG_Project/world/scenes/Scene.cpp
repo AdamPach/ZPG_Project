@@ -42,43 +42,6 @@ ShaderProgram* Scene::GetShaderProgram(const char* programName)
 	return shaderPrograms[programName];
 }
 
-void Scene::UseLight(LightSettings lightSettings)
-{
-	if (light == nullptr)
-	{
-		light = new Light();
-	}
-	
-	for (auto shaderProgram : shaderPrograms)
-	{
-		switch (lightSettings)
-		{
-		case Position:
-			shaderProgram.second->AddUniformVec3Variable(light->GetPositionSubject(), DEFAULT_LIGHT_POSITION_NAME);
-			break;
-		case Color:
-			shaderProgram.second->AddUniformVec3Variable(light->GetColorSubject(), DEFAULT_LIGHT_COLOR_NAME);
-			break;
-		case Both:
-			shaderProgram.second->AddUniformVec3Variable(light->GetPositionSubject(), DEFAULT_LIGHT_POSITION_NAME);
-			shaderProgram.second->AddUniformVec3Variable(light->GetColorSubject(), DEFAULT_LIGHT_COLOR_NAME);
-			break;
-		default:
-			break;
-		}
-	}
-}
-
-void Scene::SetLigthPosition(float x, float y, float z)
-{
-	light->SetPosition(x, y, z);
-}
-
-void Scene::SetLightColor(float r, float g, float b)
-{
-	light->SetColor(r, g, b);
-}
-
 void Scene::UseCameraPosition()
 {
 	for (auto shaderProgram : shaderPrograms)

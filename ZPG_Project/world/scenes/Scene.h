@@ -8,9 +8,6 @@
 #include "../cameras/Camera.h"
 #include "../../handlers/KeyboardHandler.h"
 #include "../../handlers/MouseHandler.h"
-#include "../lights/Light.h"
-
-enum LightSettings{ Position, Color, Both };
 
 class Scene
 {
@@ -26,10 +23,6 @@ protected:
 	void AddShaderProgram(ShaderProgram* shaderProgram, const char * programName);
 	ShaderProgram* GetShaderProgram(const char* programName);
 
-	void UseLight(LightSettings lightSettings);
-	void SetLigthPosition(float x, float y, float z);
-	void SetLightColor(float r, float g, float b);
-
 	void UseCameraPosition();
 
 	virtual void InitShaders() = 0;
@@ -40,7 +33,6 @@ private:
 	std::map<std::string, ShaderProgram*> shaderPrograms;
 
 	Camera* camera = nullptr;
-	Light* light = nullptr;
 
 	KeyboardHandler* keyboardHandler;
 	MouseHandler* mouseHandler;

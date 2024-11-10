@@ -52,10 +52,6 @@ void SuziWorldScene::InitScene()
 	auto blinnShaderProgram = GetShaderProgram("blinn_shader");
 	auto constantShaderProgram = GetShaderProgram("constant_shader");
 
-	UseLight(Both);
-	SetLigthPosition(0, 5, -7.5f);
-	SetLightColor(1, 1, 1);
-
 	UseCameraPosition();
 
 	TransformationsBuilder transformationBuilder;
