@@ -51,6 +51,16 @@ void ShaderProgram::AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* su
 	}
 }
 
+void ShaderProgram::AddUniformIntVariable(UniformVariableSubject<int>* subject, const char* variable_name)
+{
+	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
+
+	if (uniform_location != -1)
+	{
+		uniformVariables.push_back(new UniformVariableInt(subject, uniform_location));
+	}
+}
+
 ShaderProgram::~ShaderProgram()
 {
 	glDeleteProgram(shader_program);

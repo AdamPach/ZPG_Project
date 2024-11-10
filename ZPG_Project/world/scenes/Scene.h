@@ -8,6 +8,7 @@
 #include "../cameras/Camera.h"
 #include "../../handlers/KeyboardHandler.h"
 #include "../../handlers/MouseHandler.h"
+#include "../lights/LightsCountSubject.h"
 
 class Scene
 {
@@ -36,6 +37,7 @@ private:
 
 	KeyboardHandler* keyboardHandler;
 	MouseHandler* mouseHandler;
+	LightsCountSubject lightsCountSubject;
 
 	void HandleMovement();
 	void PrepareLights();

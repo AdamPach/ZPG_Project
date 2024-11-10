@@ -1,5 +1,5 @@
 #version 330
-#define MAX_LIGHTS 2
+#define MAX_LIGHTS 1000
 
 in vec3 FragPos;
 in vec3 Normal;
@@ -9,6 +9,7 @@ struct Light {
 };
 
 uniform Light lights[MAX_LIGHTS];
+uniform int lightsCount;
 uniform vec3 cameraPosition;
 uniform vec3 materialColor;
 
@@ -25,7 +26,7 @@ void main () {
 
     vec4 result = vec4(0.0);
 
-    for(int i = 0; i < MAX_LIGHTS; i++)
+    for(int i = 0; i < lightsCount; i++)
     {
         vec3 lightDir = normalize(lights[i].lightPosition - FragPos);
         float diff = max(dot(norm, lightDir), 0.0);

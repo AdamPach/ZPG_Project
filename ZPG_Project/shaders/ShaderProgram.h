@@ -8,6 +8,7 @@
 #include "../world/cameras/Camera.h"
 #include "UniformVariableVec3.h"
 #include "UniformVariableMat4.h"
+#include "UniformVariableInt.h"
 
 class ShaderProgram
 {
@@ -19,6 +20,7 @@ public:
 	void SetCamera(Camera* camera);
 	void AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
 	void AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name);
+	void AddUniformIntVariable(UniformVariableSubject<int>* subject, const char* variable_name);
 
 	class ShaderProgramBuilder
 	{

@@ -35,6 +35,8 @@ void Scene::AddShaderProgram(ShaderProgram* shaderProgram, const char* programNa
 	shaderPrograms[programName] = shaderProgram;
 
 	shaderProgram->SetCamera(this->camera);
+
+	shaderProgram->AddUniformIntVariable(&lightsCountSubject, DEFAULT_LIGHTS_COUNT_NAME);
 }
 
 ShaderProgram* Scene::GetShaderProgram(const char* programName)
@@ -92,6 +94,8 @@ void Scene::PrepareLights()
 			counter++;
 		}
 	}
+
+	lightsCountSubject.SetValue(counter);
 }
 
 void Scene::Draw()

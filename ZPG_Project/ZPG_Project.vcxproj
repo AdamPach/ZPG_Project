@@ -142,6 +142,7 @@
     <ClCompile Include="objects\SuziFlatModel.cpp" />
     <ClCompile Include="objects\SuziSmoothModel.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
+    <ClCompile Include="shaders\UniformVariableInt.cpp" />
     <ClCompile Include="shaders\UniformVariableMat4.cpp" />
     <ClCompile Include="shaders\UniformVariableVec3.cpp" />
     <ClCompile Include="transformations\RandomDynamicMovement.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="world\cameras\CameraViewSubject.cpp" />
     <ClCompile Include="world\lights\Light.cpp" />
     <ClCompile Include="world\lights\LightPositionSubject.cpp" />
+    <ClCompile Include="world\lights\LightsCountSubject.cpp" />
     <ClCompile Include="world\projections\OrthoProjection.cpp" />
     <ClCompile Include="world\projections\PrespectiveProjection.cpp" />
     <ClCompile Include="world\scenes\DefaultScene.cpp" />
@@ -190,6 +192,7 @@
     <ClInclude Include="objects\SuziFlatModel.h" />
     <ClInclude Include="objects\SuziSmoothModel.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
+    <ClInclude Include="shaders\UniformVariableInt.h" />
     <ClInclude Include="shaders\UniformVariableMat4.h" />
     <ClInclude Include="shaders\UniformVariableVec3.h" />
     <ClInclude Include="shaders\UniformVarianble.h" />
@@ -209,6 +212,7 @@
     <ClInclude Include="world\cameras\CameraViewSubject.h" />
     <ClInclude Include="world\lights\Light.h" />
     <ClInclude Include="world\lights\LightPositionSubject.h" />
+    <ClInclude Include="world\lights\LightsCountSubject.h" />
     <ClInclude Include="world\projections\OrthoProjection.h" />
     <ClInclude Include="world\projections\PrespectiveProjection.h" />
     <ClInclude Include="world\projections\Projection.h" />
