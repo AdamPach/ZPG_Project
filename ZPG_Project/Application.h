@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include "objects/DrawableObject.h"
+#include "objects/drawable/DrawableObject.h"
 #include "shaders/ShaderProgram.h"
 #include "world/scenes/Scene.h"
 #include "handlers/KeyboardHandler.h"

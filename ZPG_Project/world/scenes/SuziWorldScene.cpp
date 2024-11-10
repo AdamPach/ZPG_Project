@@ -2,7 +2,7 @@
 #include "../../transformations/TransformationsBuilder.h"
 #include "../../objects/SuziFlatModel.h"
 #include "../../objects/SuziSmoothModel.h"
-#include "../../objects/DrawableObject.h"
+#include "../../objects/drawable/DrawableObject.h"
 
 SuziWorldScene::SuziWorldScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler	)
 {
@@ -70,7 +70,7 @@ void SuziWorldScene::InitScene()
 		.AddTransformation(smoothTransformation)
 		->AddTransformation(baseMovement);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		SuziFlatModel::GetInstance(),
 		phongShaderProgram,
 		new Transformation(transformationBuilder.Build())));
@@ -80,7 +80,7 @@ void SuziWorldScene::InitScene()
 		->AddTransformation(baseMovement)
 		->AddTransformation(baseMovement);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		SuziFlatModel::GetInstance(),
 		lambertShaderProgram,
 		new Transformation(transformationBuilder.Build())));
@@ -91,7 +91,7 @@ void SuziWorldScene::InitScene()
 		->AddTransformation(baseMovement)
 		->AddTransformation(baseMovement);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		SuziFlatModel::GetInstance(),
 		constantShaderProgram,
 		new Transformation(transformationBuilder.Build())));
@@ -103,7 +103,7 @@ void SuziWorldScene::InitScene()
 		->AddTransformation(baseMovement)
 		->AddTransformation(baseMovement);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		SuziFlatModel::GetInstance(),
 		blinnShaderProgram,
 		new Transformation(transformationBuilder.Build())));
@@ -116,7 +116,7 @@ void SuziWorldScene::InitScene()
 		.AddTransformation(flatTransformation)
 		->AddTransformation(baseMovement);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		SuziSmoothModel::GetInstance(),
 		phongShaderProgram,
 		new Transformation(transformationBuilder.Build())));
@@ -126,7 +126,7 @@ void SuziWorldScene::InitScene()
 		->AddTransformation(baseMovement)
 		->AddTransformation(baseMovement);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		SuziSmoothModel::GetInstance(),
 		lambertShaderProgram,
 		new Transformation(transformationBuilder.Build())));
@@ -137,7 +137,7 @@ void SuziWorldScene::InitScene()
 		->AddTransformation(baseMovement)
 		->AddTransformation(baseMovement);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		SuziSmoothModel::GetInstance(),
 		constantShaderProgram,
 		new Transformation(transformationBuilder.Build())));
@@ -149,7 +149,7 @@ void SuziWorldScene::InitScene()
 		->AddTransformation(baseMovement)
 		->AddTransformation(baseMovement);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		SuziSmoothModel::GetInstance(),
 		blinnShaderProgram,
 		new Transformation(transformationBuilder.Build())));

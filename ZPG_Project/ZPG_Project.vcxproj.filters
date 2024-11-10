@@ -27,7 +27,7 @@
     <ClCompile Include="shaders\ShaderProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\DrawableObject.cpp">
+    <ClCompile Include="objects\drawable\SimpleDrawableObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="objects\PlainModel.cpp">
@@ -138,7 +138,10 @@
     <ClCompile Include="objects\materials\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\MaterialDrawableObject.cpp">
+    <ClCompile Include="objects\drawable\DrawableObjectDecorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="objects\drawable\MaterialDrawableObjectDecorator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,7 +173,7 @@
     <ClInclude Include="objects\models\tree.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="objects\DrawableObject.h">
+    <ClInclude Include="objects\drawable\SimpleDrawableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="objects\Model.h">
@@ -299,7 +302,13 @@
     <ClInclude Include="objects\materials\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\MaterialDrawableObject.h">
+    <ClInclude Include="objects\drawable\DrawableObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objects\drawable\DrawableObjectDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objects\drawable\MaterialDrawableObjectDecorator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

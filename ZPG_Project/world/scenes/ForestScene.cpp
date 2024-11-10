@@ -38,7 +38,7 @@ void ForestScene::InitScene()
 	transformationBuilder.AddScale(20.0f)
 		->AddTranslation(0, -0.5f, 0);
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		PlainModel::GetInstance(),
 		color_shader_program,
 		new Transformation(transformationBuilder.Build())));
@@ -54,7 +54,7 @@ void ForestScene::InitScene()
 		for (int j = 0; j < 10; j++)
 		{
 			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 38 - 19, 0, rand() % 38 - 19);
-			AddObject(new DrawableObject(
+			AddObject(new SimpleDrawableObject(
 				TreeModel::GetInstance(),
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())));
@@ -72,7 +72,7 @@ void ForestScene::InitScene()
 		for (int j = 0; j < 10; j++)
 		{
 			transformationBuilder.AddTransformation(base)->AddTranslation(rand() % 38 - 19, 0, rand() % 38 - 19);
-			AddObject(new DrawableObject(
+			AddObject(new SimpleDrawableObject(
 				BushesModel::GetInstance(),
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())));
@@ -86,7 +86,7 @@ void ForestScene::InitScene()
 			->AddTransformation(new RandomDynamcMovement())
 			->AddScale(0.05f);
 
-		AddObject(new DrawableObject(
+		AddObject(new SimpleDrawableObject(
 			SphereObject::GetInstance(),
 			color_shader_program,
 			new Transformation(transformationBuilder.Build())

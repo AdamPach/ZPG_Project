@@ -3,7 +3,8 @@
 #include "../../shaders/ShaderProgram.h"
 #include "../../transformations/TransformationsBuilder.h"
 #include "../../objects/SphereObject.h"
-#include "../../objects/MaterialDrawableObject.h"
+#include "../../objects/drawable/SimpleDrawableObject.h"
+#include "../../objects/drawable/MaterialDrawableObjectDecorator.h"
 
 FourSpheresScene::FourSpheresScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
 {
@@ -39,17 +40,17 @@ void FourSpheresScene::InitScene()
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(-1, 0, 0);
 
-	AddObject(new MaterialDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build()), new Material(glm::vec3(0.8f, 0, 0))));
+	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), new Material(glm::vec3(0.8f, 0, 0))));
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(1, 0, 0);
 
-	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
+	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), new Material(glm::vec3(0.3f, 0.5f, 0))));
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, -1, 0);
 
-	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
+	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), new Material(glm::vec3(0, 0.8f, 0.3f))));
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, 1, 0);
 
-	AddObject(new DrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())));
+	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), new Material(glm::vec3(0.8f, 0, 0.8f))));
 }

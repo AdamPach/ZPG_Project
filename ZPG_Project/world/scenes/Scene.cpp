@@ -118,7 +118,7 @@ void Scene::Draw()
 
 	for (auto object : objects)
 	{
-		object->DrawObject();
+		object->Draw();
 	}
 }
 

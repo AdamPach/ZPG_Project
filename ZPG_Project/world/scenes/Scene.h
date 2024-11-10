@@ -3,7 +3,7 @@
 #include <vector>
 #include <map>
 
-#include "../../objects/DrawableObject.h"
+#include "../../objects/drawable/SimpleDrawableObject.h"
 #include "../../shaders/ShaderProgram.h"
 #include "../cameras/Camera.h"
 #include "../../handlers/KeyboardHandler.h"

@@ -33,7 +33,7 @@ void DefaultScene::InitScene()
 
 	TriangleNormalModel* triangleModel = new TriangleNormalModel(triangleVertices, sizeof(triangleVertices));
 
-	AddObject(new DrawableObject(
+	AddObject(new SimpleDrawableObject(
 		triangleModel,
 		color_shader_program,
 		new Transformation(transformationBuilder.Build())));
