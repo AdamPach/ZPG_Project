@@ -79,6 +79,11 @@ void ShaderProgram::Use()
 	{
 		variable->Use();
 	}
+
+	if (uniform_materialColor_location != -1)
+	{
+		glUniform3f(uniform_materialColor_location, materialColor.x, materialColor.y, materialColor.z);
+	}
 }
 
 void ShaderProgram::Use(Transformation* transformation)
@@ -93,15 +98,11 @@ void ShaderProgram::Use(Transformation* transformation)
 
 void ShaderProgram::SetMaterialColor(glm::vec3 color)
 {
-	if (uniform_materialColor_location != -1)
-	{
-		glUniform3f(uniform_materialColor_location, color.x, color.y, color.z);
-	}
+	this->materialColor = color;
 }
 
 void ShaderProgram::SetCamera(Camera* camera)
 {
-
 	if (this->projectionUniform != "")
 	{
 		AddUniformMat4Variable(camera->GetProjectionSubject(), this->projectionUniform.c_str());

@@ -59,7 +59,7 @@ private:
 	GLuint shader_program;
 	GLint uniform_transformation_location = -1, uniform_materialColor_location = -1;
 
-	glm::mat4 view_matrix = glm::mat4(1);
+	glm::vec3 materialColor = glm::vec3(1.0f, 1.0f, 1.0f);
 
 	std::string viewUniform = "";
 	std::string projectionUniform = "";
