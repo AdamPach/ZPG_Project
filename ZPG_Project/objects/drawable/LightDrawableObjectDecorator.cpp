@@ -3,6 +3,8 @@
 LightDrawableObjectDecorator::LightDrawableObjectDecorator(DrawableObject* drawableObject, Light* light) : DrawableObjectDecorator(drawableObject)
 {
 	this->light = light;
+
+	UpdateLightPosition();
 }
 
 LightDrawableObjectDecorator::~LightDrawableObjectDecorator()
@@ -12,7 +14,8 @@ LightDrawableObjectDecorator::~LightDrawableObjectDecorator()
 
 void LightDrawableObjectDecorator::Draw()
 {
-	//light->SetPosition(GetTransformation()->GetTransformationMatrix());
+	UpdateLightPosition();
+	
 	DrawableObjectDecorator::Draw();
 }
 
@@ -24,4 +27,26 @@ std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> LightDra
 	subjects.insert(subjects.end(), lightSubjects.begin(), lightSubjects.end());
 
 	return subjects;
+}
+
+void LightDrawableObjectDecorator::UpdateLightPosition()
+{
+	glm::mat4 currentPosition = GetTransformation()->GetTransformationMatrix();
+
+	if (currentPosition == lastPosition)
+	{
+		return DrawableObjectDecorator::Draw();
+	}
+
+	lastPosition = currentPosition;
+
+	glm::vec4 modelCenterPosition = glm::vec4(GetModel()->GetModelCenter(), 1.0f);
+	glm::vec4 newModelCenterPosition = lastPosition * modelCenterPosition;
+
+	glm::vec3 lightPosition = glm::vec3(
+		newModelCenterPosition.x / newModelCenterPosition.w,
+		newModelCenterPosition.y / newModelCenterPosition.w,
+		newModelCenterPosition.z / newModelCenterPosition.w);
+
+	light->SetPosition(lightPosition);
 }

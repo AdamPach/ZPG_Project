@@ -77,18 +77,19 @@ void Scene::HandleMovement()
 
 void Scene::PrepareLights()
 {
-	for (int i = 0; i < objects.size(); i++)
-	{
-		auto object = objects[i];
+	int counter = 0;
 
+	for (auto object : objects)
+	{
 		for (auto subjectPair : object->GetLightSubjects())
 		{
 			for (auto shaderProgram : shaderPrograms)
 			{
 				std::string name = DEFAULT_LIGHTS_NAME;
-				name += "[" + std::to_string(i) + "]." + subjectPair.second;
+				name += "[" + std::to_string(counter) + "]." + subjectPair.second;
 				shaderProgram.second->AddUniformVec3Variable(subjectPair.first, name.c_str());
 			}
+			counter++;
 		}
 	}
 }

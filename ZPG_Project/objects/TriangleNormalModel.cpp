@@ -3,6 +3,7 @@
 TriangleNormalModel::TriangleNormalModel(float* points, int length)
 {
 	this->length = length;
+	this->points = points;
 
 	glGenBuffers(1, &VBO); 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -40,9 +41,9 @@ glm::vec3 TriangleNormalModel::GetModelCenter()
 
 	for (int i = 0; i < length; i += 6)
 	{
-		model_center.x += model_points[i];
-		model_center.y += model_points[i + 1];
-		model_center.z += model_points[i + 2];
+		model_center.x += points[i];
+		model_center.y += points[i + 1];
+		model_center.z += points[i + 2];
 	}
 
 	model_center.x /= length / 6;
