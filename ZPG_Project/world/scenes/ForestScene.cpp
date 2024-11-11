@@ -40,6 +40,16 @@ void ForestScene::InitScene()
 
 	TransformationsBuilder transformationBuilder;
 
+	transformationBuilder.AddScale(20.0f)
+		->AddTranslation(0, -0.5f, 0);
+
+	AddObject(new MaterialDrawableObjectDecorator( 
+		new SimpleDrawableObject(
+			PlainModel::GetInstance(),
+			color_shader_program,
+			new Transformation(transformationBuilder.Build())),
+		new Material(glm::vec3(0.5f))));
+
 	auto treeMaterial = new Material(glm::vec3(0, 0.5, 0));
 	auto bushMaterial = new Material(glm::vec3(0.5, 0.25, 0.05));
 
