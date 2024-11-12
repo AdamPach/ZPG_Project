@@ -20,7 +20,7 @@ void ForestScene::InitShaders()
 	ShaderProgram::ShaderProgramBuilder builder;
 
 	builder.AddVertexShader("vertext_position_normal_light_base.vert")
-		->AddFragmentShader("fragment_position_normal_phong.vert")
+		->AddFragmentShader("fragment_position_normal_attenuation_phong.vert")
 		->AddTransformationUniform("modelMatrix")
 		->AddViewUniform("viewMatrix")
 		->AddProjectionUniform("projectionMatrix")
@@ -93,7 +93,7 @@ void ForestScene::InitScene()
 		}
 	}
 
-	for (int i = 0; i < 25; i++)
+	for (int i = 0; i < 200; i++)
 	{
 		auto base = transformationBuilder.AddRandomDynamicMovvement()
 			->AddScale(0.025f)

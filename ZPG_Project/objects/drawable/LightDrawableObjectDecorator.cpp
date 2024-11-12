@@ -35,7 +35,7 @@ void LightDrawableObjectDecorator::UpdateLightPosition()
 
 	if (currentPosition == lastPosition)
 	{
-		return DrawableObjectDecorator::Draw();
+		return;
 	}
 
 	lastPosition = currentPosition;
