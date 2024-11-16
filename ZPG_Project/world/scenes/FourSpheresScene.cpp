@@ -21,8 +21,6 @@ void FourSpheresScene::InitShaders()
 	shaderBuilder->AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_phong.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddViewUniform("viewMatrix")
-		->AddProjectionUniform("projectionMatrix")
 		->AddMaterialColorUniform(DEFAULT_MATERIAL_COLOR_NAME);
 
 	AddShaderProgram(shaderBuilder->Build(), "phong_shader");

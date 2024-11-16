@@ -18,17 +18,13 @@ void DefaultScene::InitShaders()
 
 	shaderBuilder.AddVertexShader("vertext_position_color.vert")
 		->AddFragmentShader("fragment_position_color.vert")
-		->AddTransformationUniform("modelMatrix")
-		->AddViewUniform("viewMatrix")
-		->AddProjectionUniform("projectionMatrix");
+		->AddTransformationUniform("modelMatrix");
 
 	AddShaderProgram(shaderBuilder.Build(), "basic_shader");
 
 	shaderBuilder.AddVertexShader("vertext_position_color.vert")
 		->AddFragmentShader("fragment_position_color.vert")
-		->AddTransformationUniform("modelMatrix")
-		->AddViewUniform("viewMatrix")
-		->AddProjectionUniform("projectionMatrix");
+		->AddTransformationUniform("modelMatrix");
 
 	AddShaderProgram(shaderBuilder.Build(), "basic_shader_2");
 }

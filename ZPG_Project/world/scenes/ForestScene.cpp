@@ -22,8 +22,6 @@ void ForestScene::InitShaders()
 	builder.AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_attenuation_phong.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddViewUniform("viewMatrix")
-		->AddProjectionUniform("projectionMatrix")
 		->AddMaterialColorUniform(DEFAULT_MATERIAL_COLOR_NAME);
 
 	auto color_shader_program = builder.Build();

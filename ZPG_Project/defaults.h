@@ -12,6 +12,9 @@
 
 #define GPU_SHADER_PATH "./gpu_shaders/"
 
+#define DEFAULT_VIEW_MATRIX_NAME "viewMatrix"
+#define DEFAULT_PROJECTION_MATRIX_NAME "projectionMatrix"
+
 #define DEFAULT_LIGHT_POSITION_NAME "lightPosition"
 #define DEFAULT_LIGHT_COLOR_NAME "lightColor"
 #define DEFAULT_CAMERA_POSITION_NAME "cameraPosition"

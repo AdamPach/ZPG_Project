@@ -34,7 +34,9 @@ void Scene::AddShaderProgram(ShaderProgram* shaderProgram, const char* programNa
 {
 	shaderPrograms[programName] = shaderProgram;
 
-	shaderProgram->SetCamera(this->camera);
+	shaderProgram->AddUniformMat4Variable(camera->GetViewSubject(), DEFAULT_VIEW_MATRIX_NAME);
+
+	shaderProgram->AddUniformMat4Variable(camera->GetProjectionSubject(), DEFAULT_PROJECTION_MATRIX_NAME);
 
 	shaderProgram->AddUniformIntVariable(&lightsCountSubject, DEFAULT_LIGHTS_COUNT_NAME);
 }

@@ -16,16 +16,6 @@ void ShaderProgram::AddTransformationUniform(std::string uniform)
 	uniform_transformation_location = glGetUniformLocation(shader_program, uniform.c_str());
 }
 
-void ShaderProgram::AddViewUniform(std::string uniform)
-{
-	viewUniform = uniform;
-}
-
-void ShaderProgram::AddProjectionUniform(std::string uniform)
-{
-	projectionUniform = uniform;
-}
-
 void ShaderProgram::AddMaterialColorUniform(std::string uniform)
 {
 	uniform_materialColor_location = glGetUniformLocation(shader_program, uniform.c_str());
@@ -99,19 +89,6 @@ void ShaderProgram::SetMaterial(Material* material)
 	}
 }
 
-void ShaderProgram::SetCamera(Camera* camera)
-{
-	if (this->projectionUniform != "")
-	{
-		AddUniformMat4Variable(camera->GetProjectionSubject(), this->projectionUniform.c_str());
-	}
-
-	if (this->viewUniform != "")
-	{
-		AddUniformMat4Variable(camera->GetViewSubject(), this->viewUniform.c_str());
-	}
-}
-
 void ShaderProgram::Check()
 {
 	GLint status;
@@ -148,20 +125,6 @@ ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddTra
 	return this;
 }
 
-ShaderProgram::ShaderProgramBuilder * ShaderProgram::ShaderProgramBuilder::AddViewUniform(const char* uniform)
-{
-	this->viewUniform = uniform;
-
-	return this;
-}
-
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddProjectionUniform(const char* uniform)
-{
-	this->projectionUniform = uniform;
-
-	return this;
-}
-
 ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddMaterialColorUniform(const char* uniform)
 {
 	this->materialColorUniform = uniform;
@@ -185,16 +148,6 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 		shaderProgram->AddTransformationUniform(this->transformationUniform);
 	}
 
-	if (this->viewUniform != "")
-	{
-		shaderProgram->AddViewUniform(this->viewUniform);
-	}
-
-	if (this->projectionUniform != "")
-	{
-		shaderProgram->AddProjectionUniform(this->projectionUniform);
-	}
-
 	if (this->materialColorUniform != "")
 	{
 		shaderProgram->AddMaterialColorUniform(this->materialColorUniform);
@@ -204,8 +157,6 @@ ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
 	fragmentShaderFileName = "";
 
 	transformationUniform = "";
-	viewUniform = "";
-	projectionUniform = "";
 	materialColorUniform = "";
 
 	return shaderProgram;
