@@ -153,6 +153,9 @@
     <ClCompile Include="shaders\UniformVarianble.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="objects\EmptyModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -324,6 +327,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\lights\LightsCountSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objects\EmptyModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

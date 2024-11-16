@@ -1,4 +1,5 @@
 #include "SimpleDrawableObject.h"
+#include "../EmptyModel.h"
 
 SimpleDrawableObject::SimpleDrawableObject(Model* model, ShaderProgram* shader, Transformation* transformation)
 {
@@ -14,6 +15,13 @@ SimpleDrawableObject::~SimpleDrawableObject()
 
 void SimpleDrawableObject::Draw()
 {
+	auto emptyModel = dynamic_cast<EmptyModel*>(model);
+
+	if(emptyModel != nullptr)
+	{
+		return;
+	}
+
 	shader->SetTransformation(transformation);
 	shader->Use();
 	model->DrawModel();
