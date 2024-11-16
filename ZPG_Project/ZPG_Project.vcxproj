@@ -142,7 +142,9 @@
     <ClCompile Include="objects\SphereObject.cpp" />
     <ClCompile Include="objects\SuziFlatModel.cpp" />
     <ClCompile Include="objects\SuziSmoothModel.cpp" />
+    <ClCompile Include="shaders\MaterialShaderProgram.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
+    <ClCompile Include="shaders\ShaderProgramBuilder.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableInt.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableMat4.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableVec3.cpp" />
@@ -194,7 +196,9 @@
     <ClInclude Include="objects\SphereObject.h" />
     <ClInclude Include="objects\SuziFlatModel.h" />
     <ClInclude Include="objects\SuziSmoothModel.h" />
+    <ClInclude Include="shaders\MaterialShaderProgram.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
+    <ClInclude Include="shaders\ShaderProgramBuilder.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableInt.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableMat4.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableVec3.h" />

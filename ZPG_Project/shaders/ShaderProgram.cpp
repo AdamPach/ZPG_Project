@@ -1,24 +1,24 @@
 #include "ShaderProgram.h"
-#include "ShaderLoader.h"
 
-
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::CreateBuilder()
+ShaderProgram::ShaderProgram(GLuint shader_program, GLint uniform_transformation_location)
 {
-	return new ShaderProgramBuilder();
+	this->shader_program = shader_program;
+	this->uniform_transformation_location = uniform_transformation_location;
 }
 
-ShaderProgram::ShaderProgram()
+ShaderProgram::~ShaderProgram()
 {
+	glDeleteProgram(shader_program);
+
+	for (auto observer : uniformVariables)
+	{
+		delete observer;
+	}
 }
 
 void ShaderProgram::AddTransformationUniform(std::string uniform)
 {
 	uniform_transformation_location = glGetUniformLocation(shader_program, uniform.c_str());
-}
-
-void ShaderProgram::AddMaterialColorUniform(std::string uniform)
-{
-	uniform_materialColor_location = glGetUniformLocation(shader_program, uniform.c_str());
 }
 
 void ShaderProgram::AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name)
@@ -51,16 +51,6 @@ void ShaderProgram::AddUniformIntVariable(UniformVariableSubject<int>* subject, 
 	}
 }
 
-ShaderProgram::~ShaderProgram()
-{
-	glDeleteProgram(shader_program);
-
-	for (auto observer : uniformVariables)
-	{
-		delete observer;
-	}
-}
-
 void ShaderProgram::Use()
 {
 	glUseProgram(shader_program);
@@ -79,16 +69,6 @@ void ShaderProgram::SetTransformation(Transformation* transformation)
 	}
 }
 
-void ShaderProgram::SetMaterial(Material* material)
-{
-	glm::vec3 color = material->GetColor();
-
-	if (uniform_materialColor_location != -1)
-	{
-		glProgramUniform3f(shader_program, uniform_materialColor_location, color.x, color.y, color.z);
-	}
-}
-
 void ShaderProgram::Check()
 {
 	GLint status;
@@ -102,62 +82,4 @@ void ShaderProgram::Check()
 		fprintf(stderr, "Linker failure: %s\n", strInfoLog);
 		delete[] strInfoLog;
 	}
-}
-
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddVertexShader(const char* shader_file_name)
-{
-	vertexShaderFileName = shader_file_name;
-
-	return this;
-}
-
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddFragmentShader(const char* shader_file_name)
-{
-	fragmentShaderFileName = shader_file_name;
-
-	return this;
-}
-
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddTransformationUniform(const char* uniform)
-{
-	this->transformationUniform = uniform;
-
-	return this;
-}
-
-ShaderProgram::ShaderProgramBuilder* ShaderProgram::ShaderProgramBuilder::AddMaterialColorUniform(const char* uniform)
-{
-	this->materialColorUniform = uniform;
-
-	return this;
-}
-
-ShaderProgram* ShaderProgram::ShaderProgramBuilder::Build()
-{
-	ShaderProgram* shaderProgram =  new ShaderProgram();
-	ShaderLoader loader;
-
-	shaderProgram->shader_program = loader.loadShader(
-		(SHADER_PATH + vertexShaderFileName).c_str(),
-		(SHADER_PATH + fragmentShaderFileName).c_str());
-
-	shaderProgram->Check();
-
-	if (this->transformationUniform != "")
-	{
-		shaderProgram->AddTransformationUniform(this->transformationUniform);
-	}
-
-	if (this->materialColorUniform != "")
-	{
-		shaderProgram->AddMaterialColorUniform(this->materialColorUniform);
-	}
-
-	vertexShaderFileName = "";
-	fragmentShaderFileName = "";
-
-	transformationUniform = "";
-	materialColorUniform = "";
-
-	return shaderProgram;
 }

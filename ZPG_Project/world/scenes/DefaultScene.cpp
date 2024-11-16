@@ -14,7 +14,7 @@ DefaultScene::DefaultScene(KeyboardHandler* keyboardHander, MouseHandler* mouseH
 
 void DefaultScene::InitShaders()
 {
-	auto shaderBuilder = ShaderProgram::ShaderProgramBuilder();
+	auto shaderBuilder = ShaderProgramBuilder();
 
 	shaderBuilder.AddVertexShader("vertext_position_color.vert")
 		->AddFragmentShader("fragment_position_color.vert")

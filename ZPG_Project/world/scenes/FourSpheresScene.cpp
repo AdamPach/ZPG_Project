@@ -16,16 +16,14 @@ FourSpheresScene::FourSpheresScene(KeyboardHandler* keyboardHander, MouseHandler
 
 void FourSpheresScene::InitShaders()
 {
-	auto shaderBuilder = ShaderProgram::CreateBuilder();
+	ShaderProgramBuilder shaderBuilder;
 
-	shaderBuilder->AddVertexShader("vertext_position_normal_light_base.vert")
+	shaderBuilder.AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_phong.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddMaterialColorUniform(DEFAULT_MATERIAL_COLOR_NAME);
+		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME);
 
-	AddShaderProgram(shaderBuilder->Build(), "phong_shader");
-
-	delete shaderBuilder;
+	AddShaderProgram(shaderBuilder.Build(), "phong_shader");
 }
 
 void FourSpheresScene::InitScene()

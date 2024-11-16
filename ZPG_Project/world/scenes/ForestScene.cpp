@@ -17,12 +17,12 @@ ForestScene::ForestScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHan
 
 void ForestScene::InitShaders()
 {
-	ShaderProgram::ShaderProgramBuilder builder;
+	ShaderProgramBuilder builder;
 
 	builder.AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_attenuation_phong.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddMaterialColorUniform(DEFAULT_MATERIAL_COLOR_NAME);
+		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME);
 
 	auto color_shader_program = builder.Build();
 

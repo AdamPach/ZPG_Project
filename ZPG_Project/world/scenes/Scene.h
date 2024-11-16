@@ -9,6 +9,7 @@
 #include "../../handlers/KeyboardHandler.h"
 #include "../../handlers/MouseHandler.h"
 #include "../lights/LightsCountSubject.h"
+#include "../../shaders/ShaderProgramBuilder.h"
 
 class Scene
 {

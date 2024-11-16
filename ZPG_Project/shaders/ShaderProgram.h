@@ -14,45 +14,20 @@
 class ShaderProgram
 {
 public:
-	~ShaderProgram();
+	ShaderProgram(GLuint shader_program, GLint uniform_transformation_location);
+	virtual ~ShaderProgram();
 	void Use();
 	void Unuse();
+	void Check();
 	void SetTransformation(Transformation* transformation);
-	void SetMaterial(Material* material);
 	void AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
 	void AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name);
 	void AddUniformIntVariable(UniformVariableSubject<int>* subject, const char* variable_name);
-
-	class ShaderProgramBuilder
-	{
-	public:
-		ShaderProgramBuilder* AddVertexShader(const char* shader_file_name);
-		ShaderProgramBuilder* AddFragmentShader(const char* shader_file_name);
-		ShaderProgramBuilder* AddTransformationUniform(const char* uniform);
-		ShaderProgramBuilder* AddMaterialColorUniform(const char* uniform);
-
-		ShaderProgram* Build();
-	private:
-		std::string vertexShaderFileName = "";
-		std::string fragmentShaderFileName = "";
-
-		std::string transformationUniform = "";
-		std::string materialColorUniform = "";
-
-		const std::string SHADER_PATH = GPU_SHADER_PATH;
-	};
-
-	static ShaderProgramBuilder* CreateBuilder();
 private:
-	ShaderProgram();
 
 	void AddTransformationUniform(std::string uniform);
-	void AddMaterialColorUniform(std::string uniform);
-
-	void Check();
-
 	GLuint shader_program;
-	GLint uniform_transformation_location = -1, uniform_materialColor_location = -1;
+	GLint uniform_transformation_location = -1;
 
 	std::vector<UniformVariable*> uniformVariables;
 };

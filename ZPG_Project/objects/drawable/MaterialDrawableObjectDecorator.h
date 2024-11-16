@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../materials/Material.h"
+#include "../../shaders/MaterialShaderProgram.h"
 #include "DrawableObjectDecorator.h"
 
 class MaterialDrawableObjectDecorator : public DrawableObjectDecorator

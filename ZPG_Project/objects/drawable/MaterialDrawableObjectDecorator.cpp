@@ -12,6 +12,14 @@ MaterialDrawableObjectDecorator::~MaterialDrawableObjectDecorator()
 
 void MaterialDrawableObjectDecorator::Draw()
 {
-	GetShader()->SetMaterial(material);
+	ShaderProgram* shader = GetShader();
+
+	MaterialShaderProgram* materialShader = dynamic_cast<MaterialShaderProgram*>(shader);
+
+	if (materialShader != nullptr)
+	{
+		materialShader->SetMaterial(material);
+	}
+
 	DrawableObjectDecorator::Draw();
 }
