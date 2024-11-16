@@ -96,7 +96,7 @@
     <ClCompile Include="abstraction\Subject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shaders\UniformVariableVec3.cpp">
+    <ClCompile Include="shaders\uniforms\UniformVariableVec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\lights\Light.cpp">
@@ -120,7 +120,7 @@
     <ClCompile Include="transformations\RandomDynamicMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shaders\UniformVariableMat4.cpp">
+    <ClCompile Include="shaders\uniforms\UniformVariableMat4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\cameras\CameraProjectionSubject.cpp">
@@ -141,7 +141,7 @@
     <ClCompile Include="objects\drawable\LightDrawableObjectDecorator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shaders\UniformVariableInt.cpp">
+    <ClCompile Include="shaders\uniforms\UniformVariableInt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\lights\LightPositionSubject.cpp">
@@ -150,7 +150,7 @@
     <ClCompile Include="world\lights\LightsCountSubject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shaders\UniformVarianble.cpp">
+    <ClCompile Include="shaders\uniforms\UniformVarianble.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="objects\EmptyModel.cpp">
@@ -266,7 +266,7 @@
     <ClInclude Include="world\lights\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shaders\UniformVariableVec3.h">
+    <ClInclude Include="shaders\uniforms\UniformVariableVec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="abstraction\Subject.h">
@@ -293,10 +293,10 @@
     <ClInclude Include="transformations\RandomDynamicMovement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shaders\UniformVarianble.h">
+    <ClInclude Include="shaders\uniforms\UniformVarianble.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shaders\UniformVariableMat4.h">
+    <ClInclude Include="shaders\uniforms\UniformVariableMat4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\cameras\CameraProjectionSubject.h">
@@ -320,7 +320,7 @@
     <ClInclude Include="objects\drawable\LightDrawableObjectDecorator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shaders\UniformVariableInt.h">
+    <ClInclude Include="shaders\uniforms\UniformVariableInt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\lights\LightPositionSubject.h">

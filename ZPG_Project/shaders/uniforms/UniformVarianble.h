@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-#include "../abstraction/UnifromVariableSubject.h"
+#include "../../abstraction/UnifromVariableSubject.h"
 #include <GL/glew.h>
 
 class UniformVariable : public Observer

@@ -6,9 +6,9 @@
 #include "../transformations/Transformation.h"
 #include "../abstraction/Observer.h" 
 #include "../world/cameras/Camera.h"
-#include "UniformVariableVec3.h"
-#include "UniformVariableMat4.h"
-#include "UniformVariableInt.h"
+#include "uniforms/UniformVariableVec3.h"
+#include "uniforms/UniformVariableMat4.h"
+#include "uniforms/UniformVariableInt.h"
 #include "../objects/materials/Material.h"
 
 class ShaderProgram
@@ -47,8 +47,6 @@ private:
 	ShaderProgram();
 
 	void AddTransformationUniform(std::string uniform);
-	void AddViewUniform(std::string uniform);
-	void AddProjectionUniform(std::string uniform);
 	void AddMaterialColorUniform(std::string uniform);
 
 	void Check();
