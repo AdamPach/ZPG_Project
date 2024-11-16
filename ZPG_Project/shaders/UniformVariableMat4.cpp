@@ -1,11 +1,9 @@
 #include "UniformVariableMat4.h"
 
-UniformVariableMat4::UniformVariableMat4(UniformVariableSubject<glm::mat4>* subject, GLint uniform_location)
+UniformVariableMat4::UniformVariableMat4(UniformVariableSubject<glm::mat4>* subject, GLuint shader_program, GLint uniform_location) : UniformVariable(shader_program, uniform_location)
 {
 	this->subject = subject;
 	this->subject->Subcribe(this);
-
-	this->uniform_location = uniform_location;
 
 	Update();
 }
@@ -17,10 +15,7 @@ UniformVariableMat4::~UniformVariableMat4()
 
 void UniformVariableMat4::Update()
 {
-	value = subject->GetValue();
-}
+	auto value = subject->GetValue();
 
-void UniformVariableMat4::Use()
-{
-	glUniformMatrix4fv(uniform_location, 1, GL_FALSE, &value[0][0]);
+	glProgramUniformMatrix4fv(shader_program, uniform_location, 1, GL_FALSE, &value[0][0]);
 }

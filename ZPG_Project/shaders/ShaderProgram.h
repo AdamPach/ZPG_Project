@@ -9,14 +9,16 @@
 #include "UniformVariableVec3.h"
 #include "UniformVariableMat4.h"
 #include "UniformVariableInt.h"
+#include "../objects/materials/Material.h"
 
 class ShaderProgram
 {
 public:
 	~ShaderProgram();
 	void Use();
-	void Use(Transformation* transformation);
-	void SetMaterialColor(glm::vec3 color);
+	void Unuse();
+	void SetTransformation(Transformation* transformation);
+	void SetMaterial(Material* material);
 	void SetCamera(Camera* camera);
 	void AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
 	void AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name);
@@ -58,8 +60,6 @@ private:
 
 	GLuint shader_program;
 	GLint uniform_transformation_location = -1, uniform_materialColor_location = -1;
-
-	glm::vec3 materialColor = glm::vec3(1.0f, 1.0f, 1.0f);
 
 	std::string viewUniform = "";
 	std::string projectionUniform = "";

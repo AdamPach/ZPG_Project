@@ -37,7 +37,7 @@ void ShaderProgram::AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* su
 
 	if (uniform_location != -1)
 	{
-		uniformVariables.push_back(new UniformVariableVec3(subject, uniform_location));
+		uniformVariables.push_back(new UniformVariableVec3(subject, shader_program, uniform_location));
 	}
 }
 
@@ -47,7 +47,7 @@ void ShaderProgram::AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* su
 
 	if (uniform_location != -1)
 	{
-		uniformVariables.push_back(new UniformVariableMat4(subject, uniform_location));
+		uniformVariables.push_back(new UniformVariableMat4(subject, shader_program, uniform_location));
 	}
 }
 
@@ -57,7 +57,7 @@ void ShaderProgram::AddUniformIntVariable(UniformVariableSubject<int>* subject, 
 
 	if (uniform_location != -1)
 	{
-		uniformVariables.push_back(new UniformVariableInt(subject, uniform_location));
+		uniformVariables.push_back(new UniformVariableInt(subject, shader_program, uniform_location));
 	}
 }
 
@@ -74,31 +74,29 @@ ShaderProgram::~ShaderProgram()
 void ShaderProgram::Use()
 {
 	glUseProgram(shader_program);
+}
 
-	for(auto variable : uniformVariables)
+void ShaderProgram::Unuse()
+{
+	glUseProgram(0);
+}
+
+void ShaderProgram::SetTransformation(Transformation* transformation)
+{
+	if (uniform_transformation_location != -1)
 	{
-		variable->Use();
+		glProgramUniformMatrix4fv(shader_program, uniform_transformation_location, 1, GL_FALSE, &transformation->GetTransformationMatrix()[0][0]);
 	}
+}
+
+void ShaderProgram::SetMaterial(Material* material)
+{
+	glm::vec3 color = material->GetColor();
 
 	if (uniform_materialColor_location != -1)
 	{
-		glUniform3f(uniform_materialColor_location, materialColor.x, materialColor.y, materialColor.z);
+		glProgramUniform3f(shader_program, uniform_materialColor_location, color.x, color.y, color.z);
 	}
-}
-
-void ShaderProgram::Use(Transformation* transformation)
-{
-	Use();
-
-	if (uniform_transformation_location != -1)
-	{
-		glUniformMatrix4fv(uniform_transformation_location, 1, GL_FALSE, &transformation->GetTransformationMatrix()[0][0]);
-	}
-}
-
-void ShaderProgram::SetMaterialColor(glm::vec3 color)
-{
-	this->materialColor = color;
 }
 
 void ShaderProgram::SetCamera(Camera* camera)

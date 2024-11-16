@@ -1,11 +1,9 @@
 #include "UniformVariableInt.h"
 
-UniformVariableInt::UniformVariableInt(UniformVariableSubject<int>* subject, GLint uniform_location)
+UniformVariableInt::UniformVariableInt(UniformVariableSubject<int>* subject, GLuint shader_program, GLint uniform_location) : UniformVariable(shader_program, uniform_location)
 {
 	this->subject = subject;
 	this->subject->Subcribe(this);
-
-	this->uniform_location = uniform_location;
 
 	Update();
 }
@@ -17,10 +15,6 @@ UniformVariableInt::~UniformVariableInt()
 
 void UniformVariableInt::Update()
 {
-	value = subject->GetValue();
-}
-
-void UniformVariableInt::Use()
-{
-	glUniform1i(uniform_location, value);
+	auto value = subject->GetValue();
+	glProgramUniform1i(shader_program, uniform_location, value);
 }

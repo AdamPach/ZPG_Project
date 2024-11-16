@@ -14,8 +14,10 @@ SimpleDrawableObject::~SimpleDrawableObject()
 
 void SimpleDrawableObject::Draw()
 {
-	shader->Use(transformation);
+	shader->SetTransformation(transformation);
+	shader->Use();
 	model->DrawModel();
+	shader->Unuse();
 }
 
 ShaderProgram* SimpleDrawableObject::GetShader() const

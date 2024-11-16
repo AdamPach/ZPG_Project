@@ -7,8 +7,8 @@
 
 class UniformVariable : public Observer
 {
-public:
-	virtual void Use() = 0;
 protected:
+	UniformVariable(GLuint shader_program, GLint uniform_location);
 	GLint uniform_location = -1;
+	GLuint shader_program = -1;
 };

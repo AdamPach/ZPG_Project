@@ -12,6 +12,6 @@ MaterialDrawableObjectDecorator::~MaterialDrawableObjectDecorator()
 
 void MaterialDrawableObjectDecorator::Draw()
 {
-	GetShader()->SetMaterialColor(material->GetColor());
+	GetShader()->SetMaterial(material);
 	DrawableObjectDecorator::Draw();
 }

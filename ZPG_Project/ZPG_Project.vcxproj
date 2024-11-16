@@ -145,6 +145,7 @@
     <ClCompile Include="shaders\UniformVariableInt.cpp" />
     <ClCompile Include="shaders\UniformVariableMat4.cpp" />
     <ClCompile Include="shaders\UniformVariableVec3.cpp" />
+    <ClCompile Include="shaders\UniformVarianble.cpp" />
     <ClCompile Include="transformations\RandomDynamicMovement.cpp" />
     <ClCompile Include="world\cameras\Camera.cpp" />
     <ClCompile Include="objects\BushesModel.cpp" />

@@ -141,6 +141,18 @@
     <ClCompile Include="objects\drawable\LightDrawableObjectDecorator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shaders\UniformVariableInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\lights\LightPositionSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\lights\LightsCountSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shaders\UniformVarianble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -303,6 +315,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="objects\drawable\LightDrawableObjectDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\UniformVariableInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\lights\LightPositionSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\lights\LightsCountSubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
