@@ -163,8 +163,10 @@
     <ClCompile Include="world\cameras\CameraProjectionSubject.cpp" />
     <ClCompile Include="world\cameras\CameraViewSubject.cpp" />
     <ClCompile Include="world\lights\Light.cpp" />
+    <ClCompile Include="world\lights\LightColorSubject.cpp" />
     <ClCompile Include="world\lights\LightPositionSubject.cpp" />
     <ClCompile Include="world\lights\LightsCountSubject.cpp" />
+    <ClCompile Include="world\lights\LightTypeSubject.cpp" />
     <ClCompile Include="world\projections\OrthoProjection.cpp" />
     <ClCompile Include="world\projections\PrespectiveProjection.cpp" />
     <ClCompile Include="world\scenes\DefaultScene.cpp" />
@@ -220,8 +222,10 @@
     <ClInclude Include="world\cameras\CameraProjectionSubject.h" />
     <ClInclude Include="world\cameras\CameraViewSubject.h" />
     <ClInclude Include="world\lights\Light.h" />
+    <ClInclude Include="world\lights\LightColorSubject.h" />
     <ClInclude Include="world\lights\LightPositionSubject.h" />
     <ClInclude Include="world\lights\LightsCountSubject.h" />
+    <ClInclude Include="world\lights\LightTypeSubject.h" />
     <ClInclude Include="world\projections\OrthoProjection.h" />
     <ClInclude Include="world\projections\PrespectiveProjection.h" />
     <ClInclude Include="world\projections\Projection.h" />
@@ -245,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="gpu_shaders\fragment_position_color.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_attenuation_phong.vert" />
     <None Include="gpu_shaders\fragment_position_normal_blinn.vert" />
     <None Include="gpu_shaders\fragment_position_normal_constant.vert" />
     <None Include="gpu_shaders\fragment_position_normal_lambert.vert" />

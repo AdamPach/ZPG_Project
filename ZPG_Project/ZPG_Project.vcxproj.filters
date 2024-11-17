@@ -165,6 +165,12 @@
     <ClCompile Include="transformations\ObservableMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="world\lights\LightColorSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\lights\LightTypeSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -350,6 +356,12 @@
     <ClInclude Include="transformations\ObservableMovement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="world\lights\LightColorSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\lights\LightTypeSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />
@@ -359,6 +371,7 @@
     <None Include="gpu_shaders\fragment_position_normal_lambert.vert" />
     <None Include="gpu_shaders\fragment_position_normal_constant.vert" />
     <None Include="gpu_shaders\vertex_position_normal_constant.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_attenuation_phong.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />

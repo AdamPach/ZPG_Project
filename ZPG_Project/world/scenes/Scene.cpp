@@ -90,16 +90,33 @@ void Scene::PrepareLights()
 
 	for (auto object : objects)
 	{
+		bool isLight = false;
 		for (auto subjectPair : object->GetLightSubjects())
 		{
 			for (auto shaderProgram : shaderPrograms)
 			{
 				std::string name = DEFAULT_LIGHTS_NAME;
 				name += "[" + std::to_string(counter) + "]." + subjectPair.second;
-				shaderProgram.second->AddUniformVec3Variable(subjectPair.first, name.c_str());
+
+				auto vec3Subject = dynamic_cast<TypedDataProviderSubject<glm::vec3>*>(subjectPair.first);
+
+				if (vec3Subject != nullptr)
+				{
+					shaderProgram.second->AddUniformVec3Variable(vec3Subject, name.c_str());
+					continue;
+				}
+
+				auto intSubject = dynamic_cast<TypedDataProviderSubject<int>*>(subjectPair.first);
+
+				if (intSubject != nullptr)
+				{
+					shaderProgram.second->AddUniformIntVariable(intSubject, name.c_str());
+					continue;
+				}
 			}
-			counter++;
+			isLight = true;
 		}
+		counter += isLight ? 1 : 0;
 	}
 
 	lightsCountSubject.SetValue(counter);

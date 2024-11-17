@@ -12,5 +12,5 @@ public:
 	virtual ShaderProgram* GetShader() const = 0;
 	virtual Transformation* GetTransformation() const = 0;
 	virtual Model* GetModel() const = 0;
-	virtual std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>> GetLightSubjects() = 0;
+	virtual std::vector<std::pair<Subject*, std::string>> GetLightSubjects() = 0;
 };

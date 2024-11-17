@@ -5,7 +5,9 @@ in vec3 FragPos;
 in vec3 Normal;
 
 struct Light {
+    int lightType;
 	vec3 lightPosition;
+    vec3 lightColor;
 };
 
 uniform Light lights[MAX_LIGHTS];
@@ -15,32 +17,44 @@ uniform vec3 materialColor;
 
 out vec4 frag_colour;
 
+vec4 calculatePointLight(Light light)
+{
+    float distance = length(light.lightPosition - FragPos);
+    float attenuation = 1.0 / (0.3 + 0.1 * distance + 1.0 * distance * distance);
+
+    vec3 norm = normalize(Normal);
+
+    vec3 lightDir = normalize(light.lightPosition - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec4 diffuse = diff * vec4(light.lightColor, 1.0);
+
+    vec3 viewDir = normalize(cameraPosition - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);
+    float spec = pow(max(dot(reflectDir, viewDir), 0.0), 16);
+
+    float specularStrength = 1;
+
+    vec4 specular = specularStrength * spec * vec4(light.lightColor, 1.0);
+
+    return ((diffuse + specular) * attenuation);
+}
+
+
 void main () {
 
     float ambientStrength = 0.1;
     vec3 lightColor = vec3(0.5, 0.5, 0.5);
 
     vec4 ambient = ambientStrength * vec4(lightColor, 1.0);
-    vec3 norm = normalize(Normal);
-    float specularStrength = 1;
 
     vec4 result = vec4(0.0);
 
     for(int i = 0; i < lightsCount; i++)
     {
-       float distance = length(lights[i].lightPosition - FragPos);
-       float attenuation = 1.0 / (1.0 + 0.1 * distance + 1.0 * distance * distance);
-
-        vec3 lightDir = normalize(lights[i].lightPosition - FragPos);
-        float diff = max(dot(norm, lightDir), 0.0);
-        vec4 diffuse = diff * vec4(lightColor, 1.0);
-
-        vec3 viewDir = normalize(cameraPosition - FragPos);
-        vec3 reflectDir = reflect(-lightDir, norm);
-        float spec = pow(max(dot(reflectDir, viewDir), 0.0), 16);
-        vec4 specular = specularStrength * spec * vec4(lightColor, 1.0);
-
-        result += ((diffuse + specular) * attenuation);
+        if(lights[i].lightType == 1)
+		{
+			result += calculatePointLight(lights[i]);
+		}
     }
 
     frag_colour = (ambient + result) * vec4(materialColor, 1.0);

@@ -43,7 +43,7 @@ Model* SimpleDrawableObject::GetModel() const
 	return model;
 }
 
-std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>> SimpleDrawableObject::GetLightSubjects()
+std::vector<std::pair<Subject*, std::string>> SimpleDrawableObject::GetLightSubjects()
 {
-	return std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>>();
+	return std::vector<std::pair<Subject*, std::string>>();
 }

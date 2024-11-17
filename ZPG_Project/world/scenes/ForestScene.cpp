@@ -120,5 +120,5 @@ void ForestScene::InitScene()
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			new Material(glm::vec3(0.5, 0.5, 0))),
-		new Light(glm::vec3(1, 1, 1))));
+		new Light(glm::vec3(0.5, 0.5, 0.5))));
 }
