@@ -68,17 +68,17 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset)
 }
 
 
-UniformVariableSubject<glm::vec3>* Camera::GetPositionSubject()
+TypedDataProviderSubject<glm::vec3>* Camera::GetPositionSubject()
 {
 	return &positionSubject;
 }
 
-UniformVariableSubject<glm::mat4>* Camera::GetProjectionSubject()
+TypedDataProviderSubject<glm::mat4>* Camera::GetProjectionSubject()
 {
 	return &projectionSubject;
 }
 
-UniformVariableSubject<glm::mat4>* Camera::GetViewSubject()
+TypedDataProviderSubject<glm::mat4>* Camera::GetViewSubject()
 {
 	return &viewSubject;
 }

@@ -8,6 +8,8 @@
 #include "../../transformations/TransformationsBuilder.h"
 #include "../../objects/drawable/MaterialDrawableObjectDecorator.h"
 #include "../../objects/drawable/LightDrawableObjectDecorator.h"
+#include "../../transformations/ObservableMovement.h"
+#include "../../objects/EmptyModel.h"
 
 
 ForestScene::ForestScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
@@ -91,6 +93,7 @@ void ForestScene::InitScene()
 		}
 	}
 
+	/*
 	for (int i = 0; i < 50; i++)
 	{
 		auto base = transformationBuilder.AddRandomDynamicMovvement()
@@ -106,4 +109,16 @@ void ForestScene::InitScene()
 				new Material(glm::vec3(0.5, 0.5, 0))),
 			new Light(glm::vec3(1,1,1))));
 	}
+	*/
+
+	transformationBuilder.AddTransformation(new ObservableMovement(GetCameraPositionSubject()));
+
+	AddObject(new LightDrawableObjectDecorator(
+		new MaterialDrawableObjectDecorator(
+			new SimpleDrawableObject(
+				EmptyModel::GetInstance(),
+				color_shader_program,
+				new Transformation(transformationBuilder.Build())),
+			new Material(glm::vec3(0.5, 0.5, 0))),
+		new Light(glm::vec3(1, 1, 1))));
 }

@@ -32,9 +32,9 @@ public:
 	void ProcessKeyboardMovement(CameraMovement direction);
 	void ProcessMouseMovement(float xoffset, float yoffset);
 
-	UniformVariableSubject<glm::vec3>* GetPositionSubject();
-	UniformVariableSubject<glm::mat4>* GetProjectionSubject();
-	UniformVariableSubject<glm::mat4>* GetViewSubject();
+	TypedDataProviderSubject<glm::vec3>* GetPositionSubject();
+	TypedDataProviderSubject<glm::mat4>* GetProjectionSubject();
+	TypedDataProviderSubject<glm::mat4>* GetViewSubject();
 
 private:
 	Projection* projection;

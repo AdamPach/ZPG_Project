@@ -46,6 +46,11 @@ ShaderProgram* Scene::GetShaderProgram(const char* programName)
 	return shaderPrograms[programName];
 }
 
+TypedDataProviderSubject<glm::vec3>* Scene::GetCameraPositionSubject()
+{
+	return camera->GetPositionSubject();
+}
+
 void Scene::UseCameraPosition()
 {
 	for (auto shaderProgram : shaderPrograms)

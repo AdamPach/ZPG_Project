@@ -1,6 +1,6 @@
 #include "UniformVariableInt.h"
 
-UniformVariableInt::UniformVariableInt(UniformVariableSubject<int>* subject, GLuint shader_program, GLint uniform_location) : UniformVariable(shader_program, uniform_location)
+UniformVariableInt::UniformVariableInt(TypedDataProviderSubject<int>* subject, GLuint shader_program, GLint uniform_location) : UniformVariable(shader_program, uniform_location)
 {
 	this->subject = subject;
 	this->subject->Subcribe(this);

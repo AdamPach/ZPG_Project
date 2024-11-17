@@ -1,6 +1,6 @@
 #include "UniformVariableMat4.h"
 
-UniformVariableMat4::UniformVariableMat4(UniformVariableSubject<glm::mat4>* subject, GLuint shader_program, GLint uniform_location) : UniformVariable(shader_program, uniform_location)
+UniformVariableMat4::UniformVariableMat4(TypedDataProviderSubject<glm::mat4>* subject, GLuint shader_program, GLint uniform_location) : UniformVariable(shader_program, uniform_location)
 {
 	this->subject = subject;
 	this->subject->Subcribe(this);

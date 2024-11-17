@@ -20,9 +20,9 @@ public:
 	void Unuse();
 	void Check();
 	void SetTransformation(Transformation* transformation);
-	void AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name);
-	void AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name);
-	void AddUniformIntVariable(UniformVariableSubject<int>* subject, const char* variable_name);
+	void AddUniformVec3Variable(TypedDataProviderSubject<glm::vec3>* subject, const char* variable_name);
+	void AddUniformMat4Variable(TypedDataProviderSubject<glm::mat4>* subject, const char* variable_name);
+	void AddUniformIntVariable(TypedDataProviderSubject<int>* subject, const char* variable_name);
 private:
 
 	void AddTransformationUniform(std::string uniform);

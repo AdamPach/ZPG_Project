@@ -21,7 +21,7 @@ void ShaderProgram::AddTransformationUniform(std::string uniform)
 	uniform_transformation_location = glGetUniformLocation(shader_program, uniform.c_str());
 }
 
-void ShaderProgram::AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* subject, const char* variable_name)
+void ShaderProgram::AddUniformVec3Variable(TypedDataProviderSubject<glm::vec3>* subject, const char* variable_name)
 {
 	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
 
@@ -31,7 +31,7 @@ void ShaderProgram::AddUniformVec3Variable(UniformVariableSubject<glm::vec3>* su
 	}
 }
 
-void ShaderProgram::AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* subject, const char* variable_name)
+void ShaderProgram::AddUniformMat4Variable(TypedDataProviderSubject<glm::mat4>* subject, const char* variable_name)
 {
 	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
 
@@ -41,7 +41,7 @@ void ShaderProgram::AddUniformMat4Variable(UniformVariableSubject<glm::mat4>* su
 	}
 }
 
-void ShaderProgram::AddUniformIntVariable(UniformVariableSubject<int>* subject, const char* variable_name)
+void ShaderProgram::AddUniformIntVariable(TypedDataProviderSubject<int>* subject, const char* variable_name)
 {
 	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
 

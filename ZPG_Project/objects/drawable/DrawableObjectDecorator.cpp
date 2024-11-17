@@ -32,7 +32,7 @@ Model* DrawableObjectDecorator::GetModel() const
 	return drawableObject->GetModel();
 }
 
-std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> DrawableObjectDecorator::GetLightSubjects()
+std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>> DrawableObjectDecorator::GetLightSubjects()
 {
 	return drawableObject->GetLightSubjects();
 }

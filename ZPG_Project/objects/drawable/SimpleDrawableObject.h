@@ -14,7 +14,7 @@ public:
 	ShaderProgram* GetShader() const override;
 	Transformation* GetTransformation() const override;
 	Model* GetModel() const override;
-	std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> GetLightSubjects() override;
+	std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>> GetLightSubjects() override;
 private:
 	Model* model;
 	Transformation* transformation; 

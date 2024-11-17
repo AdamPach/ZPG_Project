@@ -3,10 +3,10 @@
 #include <glm/glm.hpp>
 #include "../../abstraction/UnifromVariableSubject.h"
 
-class LightsCountSubject : public UniformVariableSubject<int>
+class LightsCountSubject : public TypedDataProviderSubject<int>
 {
 public:
 	LightsCountSubject();
 	virtual int GetValue() override;
-	virtual void SetValue(int value) override;
+	void SetValue(int value);
 };

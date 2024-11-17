@@ -1,6 +1,6 @@
 #include "UniformVariableVec3.h"
 
-UniformVariableVec3::UniformVariableVec3(UniformVariableSubject<glm::vec3>* subject, GLuint shader_program, GLint uniform_location) : UniformVariable(shader_program, uniform_location)
+UniformVariableVec3::UniformVariableVec3(TypedDataProviderSubject<glm::vec3>* subject, GLuint shader_program, GLint uniform_location) : UniformVariable(shader_program, uniform_location)
 {
 	this->subject = subject;
 	this->subject->Subcribe(this);

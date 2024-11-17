@@ -17,11 +17,11 @@ void Light::SetPosition(glm::vec3 position)
 	positionSubject.SetValue(position);
 }
 
-std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> Light::GetSubjects()
+std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>> Light::GetSubjects()
 {
-	std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> subjects;
+	std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>> subjects;
 
-	subjects.push_back(std::pair<UniformVariableSubject<glm::vec3>*, std::string>(&positionSubject, DEFAULT_LIGHT_POSITION_NAME));
+	subjects.push_back(std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>(&positionSubject, DEFAULT_LIGHT_POSITION_NAME));
 
 	return subjects;
 }

@@ -8,9 +8,9 @@
 class UniformVariableVec3 : public UniformVariable
 {
 public:
-	UniformVariableVec3(UniformVariableSubject<glm::vec3>* subject, GLuint shader_program, GLint uniform_location);
+	UniformVariableVec3(TypedDataProviderSubject<glm::vec3>* subject, GLuint shader_program, GLint uniform_location);
 	~UniformVariableVec3();
 	void Update() override;
 private:
-	UniformVariableSubject<glm::vec3>* subject;
+	TypedDataProviderSubject<glm::vec3>* subject;
 };

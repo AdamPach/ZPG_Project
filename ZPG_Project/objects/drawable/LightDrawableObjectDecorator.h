@@ -9,7 +9,7 @@ public:
 	LightDrawableObjectDecorator(DrawableObject* drawableObject, Light* light);
 	~LightDrawableObjectDecorator();
 	void Draw() override;
-	std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> GetLightSubjects() override;
+	std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>> GetLightSubjects() override;
 private:
 	Light* light;
 	glm::mat4 lastPosition;

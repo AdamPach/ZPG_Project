@@ -19,7 +19,7 @@ void LightDrawableObjectDecorator::Draw()
 	DrawableObjectDecorator::Draw();
 }
 
-std::vector<std::pair<UniformVariableSubject<glm::vec3>*, std::string>> LightDrawableObjectDecorator::GetLightSubjects()
+std::vector<std::pair<TypedDataProviderSubject<glm::vec3>*, std::string>> LightDrawableObjectDecorator::GetLightSubjects()
 {
 	auto subjects = DrawableObjectDecorator::GetLightSubjects();
 	auto lightSubjects = light->GetSubjects();
