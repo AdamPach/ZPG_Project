@@ -10,8 +10,8 @@ struct Light {
     vec3 lightColor;
     //Spotlight only
     vec3 lightDirection;
-    float lightCutOff;
-    float lightOuterCutOff;
+    float cutOff;
+    float outerCutOff;
 };
 
 uniform Light lights[MAX_LIGHTS];
@@ -24,7 +24,7 @@ out vec4 frag_colour;
 float calculateAttenuation(vec3 lightPos)
 {
 	float distance = length(lightPos - FragPos);
-	return 1.0 / (0.3 + 0.1 * distance + 1.0 * distance * distance);
+	return 1.0 / (0.3 + 0.3 * distance + 0.3 * distance * distance);
 }
 
 vec4 calculatePointLight(Light light)
@@ -54,7 +54,7 @@ vec4 calculateSpotLight(Light light)
 
     float theta = dot(lightDir, normalize(-light.lightDirection));
 
-    if(theta > 0.95)
+    if(theta > light.cutOff)
 	{
 		float diff = max(dot(norm, lightDir), 0.0);
 		vec4 diffuse = diff * vec4(light.lightColor, 1.0);

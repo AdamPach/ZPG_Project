@@ -51,6 +51,17 @@ void ShaderProgram::AddUniformIntVariable(TypedDataProviderSubject<int>* subject
 	}
 }
 
+void ShaderProgram::AddUniformFloatVariable(TypedDataProviderSubject<float>* subject, const char* variable_name)
+{
+	GLint uniform_location = glGetUniformLocation(shader_program, variable_name);
+
+	if (uniform_location != -1)
+	{
+		uniformVariables.push_back(new UniformVariableFloat(subject, shader_program, uniform_location));
+	}
+
+}
+
 void ShaderProgram::Use()
 {
 	glUseProgram(shader_program);

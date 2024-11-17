@@ -118,6 +118,14 @@ void Scene::PrepareLights()
 					shaderProgram.second->AddUniformIntVariable(intSubject, name.c_str());
 					continue;
 				}
+
+				auto floatSubject = dynamic_cast<TypedDataProviderSubject<float>*>(subjectPair.first);
+
+				if (floatSubject != nullptr)
+				{
+					shaderProgram.second->AddUniformFloatVariable(floatSubject, name.c_str());
+					continue;
+				}
 			}
 			isLight = true;
 		}

@@ -9,6 +9,7 @@
 #include "uniforms/UniformVariableVec3.h"
 #include "uniforms/UniformVariableMat4.h"
 #include "uniforms/UniformVariableInt.h"
+#include "uniforms/UniformVariableFloat.h"
 #include "../objects/materials/Material.h"
 
 class ShaderProgram
@@ -23,6 +24,7 @@ public:
 	void AddUniformVec3Variable(TypedDataProviderSubject<glm::vec3>* subject, const char* variable_name);
 	void AddUniformMat4Variable(TypedDataProviderSubject<glm::mat4>* subject, const char* variable_name);
 	void AddUniformIntVariable(TypedDataProviderSubject<int>* subject, const char* variable_name);
+	void AddUniformFloatVariable(TypedDataProviderSubject<float>* subject, const char* variable_name);
 private:
 
 	void AddTransformationUniform(std::string uniform);

@@ -145,6 +145,7 @@
     <ClCompile Include="shaders\MaterialShaderProgram.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
     <ClCompile Include="shaders\ShaderProgramBuilder.cpp" />
+    <ClCompile Include="shaders\uniforms\UniformVariableFloat.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableInt.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableMat4.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableVec3.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="world\lights\LightTypeSubject.cpp" />
     <ClCompile Include="world\lights\PointLight.cpp" />
     <ClCompile Include="world\lights\SpotLight.cpp" />
+    <ClCompile Include="world\lights\SpotLightCutOffSubject.cpp" />
     <ClCompile Include="world\projections\OrthoProjection.cpp" />
     <ClCompile Include="world\projections\PrespectiveProjection.cpp" />
     <ClCompile Include="world\scenes\DefaultScene.cpp" />
@@ -205,6 +207,7 @@
     <ClInclude Include="shaders\MaterialShaderProgram.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
     <ClInclude Include="shaders\ShaderProgramBuilder.h" />
+    <ClInclude Include="shaders\uniforms\UniformVariableFloat.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableInt.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableMat4.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableVec3.h" />
@@ -232,6 +235,7 @@
     <ClInclude Include="world\lights\LightTypeSubject.h" />
     <ClInclude Include="world\lights\PointLight.h" />
     <ClInclude Include="world\lights\SpotLight.h" />
+    <ClInclude Include="world\lights\SpotLightCutOffSubject.h" />
     <ClInclude Include="world\projections\OrthoProjection.h" />
     <ClInclude Include="world\projections\PrespectiveProjection.h" />
     <ClInclude Include="world\projections\Projection.h" />

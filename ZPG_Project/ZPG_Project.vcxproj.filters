@@ -180,6 +180,12 @@
     <ClCompile Include="world\cameras\CameraFrontSubject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="world\lights\SpotLightCutOffSubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shaders\uniforms\UniformVariableFloat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -378,6 +384,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\cameras\CameraFrontSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\lights\SpotLightCutOffSubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\uniforms\UniformVariableFloat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
