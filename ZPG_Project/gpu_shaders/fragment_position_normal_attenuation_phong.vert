@@ -52,8 +52,7 @@ vec4 calculateSpotLight(Light light)
 
     vec3 lightDir = normalize(light.lightPosition - FragPos);
 
-    vec3 lightDirection = vec3(0,0,-1);
-    float theta = dot(lightDir, normalize(-lightDirection));
+    float theta = dot(lightDir, normalize(-light.lightDirection));
 
     if(theta > 0.95)
 	{
@@ -68,7 +67,7 @@ vec4 calculateSpotLight(Light light)
 
 		vec4 specular = specularStrength * spec * vec4(light.lightColor, 1.0);
 
-		return (diffuse + specular);
+		return ((diffuse + specular) * calculateAttenuation(light.lightPosition));
 	}
     
     return vec4(0.0);
@@ -86,6 +85,10 @@ void main () {
     for(int i = 0; i < lightsCount; i++)
     {
         if(lights[i].lightType == 1)
+		{
+			result += calculatePointLight(lights[i]);
+		}
+        else if(lights[i].lightType == 2)
 		{
 			result += calculateSpotLight(lights[i]);
 		}

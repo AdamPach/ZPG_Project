@@ -122,5 +122,5 @@ void ForestScene::InitScene()
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			new Material(glm::vec3(0.5, 0.5, 0))),
-		new PointLight(glm::vec3(0.5, 0.5, 0.5))));
+		new SpotLight(GetCameraFrontSubject(), glm::vec3(0.5, 0.5, 0.5))));
 }

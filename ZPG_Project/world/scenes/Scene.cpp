@@ -51,6 +51,11 @@ TypedDataProviderSubject<glm::vec3>* Scene::GetCameraPositionSubject()
 	return camera->GetPositionSubject();
 }
 
+TypedDataProviderSubject<glm::vec3>* Scene::GetCameraFrontSubject()
+{
+	return camera->GetFrontSubject();
+}
+
 void Scene::UseCameraPosition()
 {
 	for (auto shaderProgram : shaderPrograms)

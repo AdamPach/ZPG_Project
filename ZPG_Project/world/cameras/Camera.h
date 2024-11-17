@@ -9,6 +9,7 @@
 #include "CameraPositionSubject.h"
 #include "CameraProjectionSubject.h"
 #include "CameraViewSubject.h"
+#include "CameraFrontSubject.h"
 
 enum CameraMovement
 {
@@ -35,6 +36,7 @@ public:
 	TypedDataProviderSubject<glm::vec3>* GetPositionSubject();
 	TypedDataProviderSubject<glm::mat4>* GetProjectionSubject();
 	TypedDataProviderSubject<glm::mat4>* GetViewSubject();
+	TypedDataProviderSubject<glm::vec3>* GetFrontSubject();
 
 private:
 	Projection* projection;
@@ -57,6 +59,7 @@ private:
 	CameraPositionSubject positionSubject;
 	CameraProjectionSubject projectionSubject;
 	CameraViewSubject viewSubject;
+	CameraFrontSubject frontSubject;
 
 	glm::mat4 GetViewMatrix();
 	void UpdateCameraVectors();

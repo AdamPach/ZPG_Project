@@ -83,6 +83,11 @@ TypedDataProviderSubject<glm::mat4>* Camera::GetViewSubject()
 	return &viewSubject;
 }
 
+TypedDataProviderSubject<glm::vec3>* Camera::GetFrontSubject()
+{
+	return &frontSubject;
+}
+
 glm::mat4 Camera::GetViewMatrix()
 {
 	return glm::lookAt(Position, Position + Front, Up);
@@ -95,6 +100,8 @@ void Camera::UpdateCameraVectors()
 	front.y = sin(glm::radians(Pitch));
 	front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
 	Front = glm::normalize(front);
+
+	frontSubject.SetValue(Front);
 
 	Right = glm::normalize(glm::cross(Front, WorldUp));
 	Up = glm::normalize(glm::cross(Right, Front));

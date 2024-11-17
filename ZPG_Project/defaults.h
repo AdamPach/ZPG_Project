@@ -18,6 +18,7 @@
 #define DEFAULT_LIGHT_TYPE_NAME "lightType"
 #define DEFAULT_LIGHT_POSITION_NAME "lightPosition"
 #define DEFAULT_LIGHT_COLOR_NAME "lightColor"
+#define DEFAULT_LIGHT_DIRECTION_NAME "lightDirection" // For spot light, determines a direction of the light
 #define DEFAULT_CAMERA_POSITION_NAME "cameraPosition"
 #define DEFAULT_MATERIAL_COLOR_NAME "materialColor"
 #define DEFAULT_LIGHTS_COUNT_NAME "lightsCount"
