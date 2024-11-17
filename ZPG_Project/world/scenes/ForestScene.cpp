@@ -10,6 +10,8 @@
 #include "../../objects/drawable/LightDrawableObjectDecorator.h"
 #include "../../transformations/ObservableMovement.h"
 #include "../../objects/EmptyModel.h"
+#include "../lights/SpotLight.h"
+#include "../lights/PointLight.h"
 
 
 ForestScene::ForestScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
@@ -120,5 +122,5 @@ void ForestScene::InitScene()
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			new Material(glm::vec3(0.5, 0.5, 0))),
-		new Light(glm::vec3(0.5, 0.5, 0.5))));
+		new PointLight(glm::vec3(0.5, 0.5, 0.5))));
 }

@@ -1,11 +1,11 @@
 #include "Light.h"
 #include "../../defaults.h"
 
-Light::Light(glm::vec3 color)
+Light::Light(int lightType, glm::vec3 color)
 {
 	this->position = glm::vec3(0, 0, 0);
 	colorSubject.SetValue(color);
-	typeSubject.SetValue(1);
+	typeSubject.SetValue(lightType);
 }
 
 void Light::SetPosition(glm::vec3 position)

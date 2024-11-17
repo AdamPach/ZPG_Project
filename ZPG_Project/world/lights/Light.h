@@ -11,13 +11,13 @@
 class Light
 {
 public:
-	Light(glm::vec3 color);
 	void SetPosition(glm::vec3 position);
-	std::vector<std::pair<Subject*, std::string>> GetSubjects();
+	virtual std::vector<std::pair<Subject*, std::string>> GetSubjects();
+protected:
+	Light(int lightType, glm::vec3 color);
 private:
 	LightPositionSubject positionSubject;
 	LightColorSubject colorSubject;
 	LightTypeSubject typeSubject;
-
 	glm::vec3 position;
 };

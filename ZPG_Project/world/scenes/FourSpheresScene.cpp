@@ -9,6 +9,8 @@
 #include "../../objects/SuziSmoothModel.h"
 #include "../../objects/PlainModel.h"
 #include "../../objects/EmptyModel.h"
+#include "../lights/PointLight.h"
+
 
 FourSpheresScene::FourSpheresScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
 {
@@ -62,7 +64,7 @@ void FourSpheresScene::InitScene()
 				shaderProgram,
 				new Transformation(transformationBuilder.Build())),
 			new Material(glm::vec3(0.8f, 0, 0.8f))), 
-		new Light(glm::vec3(1,1,1))));
+		new PointLight(glm::vec3(1,1,1))));
 
 
 	transformationBuilder.AddRotation(90.0f, X)->AddTranslation(0, 0, -3);

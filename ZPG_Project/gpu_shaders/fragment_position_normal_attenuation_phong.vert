@@ -8,6 +8,10 @@ struct Light {
     int lightType;
 	vec3 lightPosition;
     vec3 lightColor;
+    //Spotlight only
+    vec3 lightDirection;
+    float lightCutOff;
+    float lightOuterCutOff;
 };
 
 uniform Light lights[MAX_LIGHTS];
@@ -17,11 +21,14 @@ uniform vec3 materialColor;
 
 out vec4 frag_colour;
 
+float calculateAttenuation(vec3 lightPos)
+{
+	float distance = length(lightPos - FragPos);
+	return 1.0 / (0.3 + 0.1 * distance + 1.0 * distance * distance);
+}
+
 vec4 calculatePointLight(Light light)
 {
-    float distance = length(light.lightPosition - FragPos);
-    float attenuation = 1.0 / (0.3 + 0.1 * distance + 1.0 * distance * distance);
-
     vec3 norm = normalize(Normal);
 
     vec3 lightDir = normalize(light.lightPosition - FragPos);
@@ -36,9 +43,36 @@ vec4 calculatePointLight(Light light)
 
     vec4 specular = specularStrength * spec * vec4(light.lightColor, 1.0);
 
-    return ((diffuse + specular) * attenuation);
+    return ((diffuse + specular) * calculateAttenuation(light.lightPosition));
 }
 
+vec4 calculateSpotLight(Light light)
+{
+    vec3 norm = normalize(Normal);
+
+    vec3 lightDir = normalize(light.lightPosition - FragPos);
+
+    vec3 lightDirection = vec3(0,0,-1);
+    float theta = dot(lightDir, normalize(-lightDirection));
+
+    if(theta > 0.95)
+	{
+		float diff = max(dot(norm, lightDir), 0.0);
+		vec4 diffuse = diff * vec4(light.lightColor, 1.0);
+
+		vec3 viewDir = normalize(cameraPosition - FragPos);
+		vec3 reflectDir = reflect(-lightDir, norm);
+		float spec = pow(max(dot(reflectDir, viewDir), 0.0), 16);
+
+		float specularStrength = 1;
+
+		vec4 specular = specularStrength * spec * vec4(light.lightColor, 1.0);
+
+		return (diffuse + specular);
+	}
+    
+    return vec4(0.0);
+}
 
 void main () {
 
@@ -53,7 +87,7 @@ void main () {
     {
         if(lights[i].lightType == 1)
 		{
-			result += calculatePointLight(lights[i]);
+			result += calculateSpotLight(lights[i]);
 		}
     }
 

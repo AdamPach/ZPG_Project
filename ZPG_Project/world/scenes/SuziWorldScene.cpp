@@ -5,6 +5,7 @@
 #include "../../objects/drawable/DrawableObject.h"
 #include "../../objects/drawable/MaterialDrawableObjectDecorator.h"
 #include "../../objects/drawable/LightDrawableObjectDecorator.h"
+#include "../lights/PointLight.h"
 
 
 SuziWorldScene::SuziWorldScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler	)
@@ -172,5 +173,5 @@ void SuziWorldScene::InitScene()
 		->AddTranslation(0, 3, 0);
 
 	
-	AddObject(new LightDrawableObjectDecorator(new SimpleDrawableObject(SuziFlatModel::GetInstance(), constantShaderProgram, new Transformation(transformationBuilder.Build())), new Light(glm::vec3(1, 1, 1))));
+	AddObject(new LightDrawableObjectDecorator(new SimpleDrawableObject(SuziFlatModel::GetInstance(), constantShaderProgram, new Transformation(transformationBuilder.Build())), new PointLight(glm::vec3(1, 1, 1))));
 }
