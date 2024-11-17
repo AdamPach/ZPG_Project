@@ -94,8 +94,7 @@ void ForestScene::InitScene()
 				bushMaterial));
 		}
 	}
-
-	/*
+	
 	for (int i = 0; i < 50; i++)
 	{
 		auto base = transformationBuilder.AddRandomDynamicMovvement()
@@ -109,10 +108,9 @@ void ForestScene::InitScene()
 					color_shader_program,
 					new Transformation(transformationBuilder.Build())),
 				new Material(glm::vec3(0.5, 0.5, 0))),
-			new Light(glm::vec3(1,1,1))));
+			new PointLight(glm::vec3(0.2, 0.2, 0.2))));
 	}
-	*/
-
+	
 	transformationBuilder.AddTransformation(new ObservableMovement(GetCameraPositionSubject()));
 
 	AddObject(new LightDrawableObjectDecorator(
@@ -122,5 +120,5 @@ void ForestScene::InitScene()
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			new Material(glm::vec3(0.5, 0.5, 0))),
-		new SpotLight(GetCameraFrontSubject(), glm::vec3(0.5, 0.5, 0.5))));
+		new SpotLight(GetCameraFrontSubject(), glm::vec3(1, 1, 1))));
 }

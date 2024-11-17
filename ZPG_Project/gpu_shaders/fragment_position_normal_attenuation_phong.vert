@@ -21,10 +21,10 @@ uniform vec3 materialColor;
 
 out vec4 frag_colour;
 
-float calculateAttenuation(vec3 lightPos)
+float calculateAttenuation(vec3 lightPos, float linear, float quadratic, float cubic)
 {
 	float distance = length(lightPos - FragPos);
-	return 1.0 / (0.3 + 0.3 * distance + 0.3 * distance * distance);
+	return 1.0 / (linear + quadratic * distance + cubic * distance * distance);
 }
 
 vec4 calculatePointLight(Light light)
@@ -43,7 +43,7 @@ vec4 calculatePointLight(Light light)
 
     vec4 specular = specularStrength * spec * vec4(light.lightColor, 1.0);
 
-    return ((diffuse + specular) * calculateAttenuation(light.lightPosition));
+    return ((diffuse + specular) * calculateAttenuation(light.lightPosition, 1, 1, 1));
 }
 
 vec4 calculateSpotLight(Light light)
@@ -54,10 +54,13 @@ vec4 calculateSpotLight(Light light)
 
     float theta = dot(lightDir, normalize(-light.lightDirection));
 
-    if(theta > light.cutOff)
+    if(theta > light.outerCutOff)
 	{
+        float epsilon = light.cutOff - light.outerCutOff;
+        float intensity = (theta - light.outerCutOff) / epsilon;
+
 		float diff = max(dot(norm, lightDir), 0.0);
-		vec4 diffuse = diff * vec4(light.lightColor, 1.0);
+		vec4 diffuse = intensity * diff * vec4(light.lightColor, 1.0);
 
 		vec3 viewDir = normalize(cameraPosition - FragPos);
 		vec3 reflectDir = reflect(-lightDir, norm);
@@ -65,9 +68,9 @@ vec4 calculateSpotLight(Light light)
 
 		float specularStrength = 1;
 
-		vec4 specular = specularStrength * spec * vec4(light.lightColor, 1.0);
+		vec4 specular = intensity * specularStrength * spec * vec4(light.lightColor, 1.0);
 
-		return ((diffuse + specular) * calculateAttenuation(light.lightPosition));
+		return ((diffuse + specular) * calculateAttenuation(light.lightPosition, 0.3, 0.3, 0.3));
 	}
     
     return vec4(0.0);

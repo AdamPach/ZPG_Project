@@ -20,6 +20,7 @@
 #define DEFAULT_LIGHT_COLOR_NAME "lightColor"
 #define DEFAULT_SPOT_LIGHT_DIRECTION_NAME "lightDirection" // For spot light, determines a direction of the light
 #define DEFAULT_SPOT_LIGHT_CUT_OFF_NAME "cutOff"
+#define DEFAULT_SPOT_LIGHT_OUTER_CUT_OFF_NAME "outerCutOff"
 
 #define DEFAULT_CAMERA_POSITION_NAME "cameraPosition"
 #define DEFAULT_MATERIAL_COLOR_NAME "materialColor"

@@ -172,6 +172,7 @@
     <ClCompile Include="world\lights\PointLight.cpp" />
     <ClCompile Include="world\lights\SpotLight.cpp" />
     <ClCompile Include="world\lights\SpotLightCutOffSubject.cpp" />
+    <ClCompile Include="world\lights\SpotLightOuterCutOffSubject.cpp" />
     <ClCompile Include="world\projections\OrthoProjection.cpp" />
     <ClCompile Include="world\projections\PrespectiveProjection.cpp" />
     <ClCompile Include="world\scenes\DefaultScene.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="world\lights\PointLight.h" />
     <ClInclude Include="world\lights\SpotLight.h" />
     <ClInclude Include="world\lights\SpotLightCutOffSubject.h" />
+    <ClInclude Include="world\lights\SpotLightOuterCutOffSubject.h" />
     <ClInclude Include="world\projections\OrthoProjection.h" />
     <ClInclude Include="world\projections\PrespectiveProjection.h" />
     <ClInclude Include="world\projections\Projection.h" />
