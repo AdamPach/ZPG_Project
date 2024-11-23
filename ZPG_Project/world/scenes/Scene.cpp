@@ -1,12 +1,10 @@
 #include "Scene.h"
-#include "../projections/PrespectiveProjection.h"
 #include "../../defaults.h"
 
-Scene::Scene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler)
+Scene::Scene(MouseHandler* mouseHandler)
 {
-	camera = new Camera(new PrespectiveProjection(45, WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 400));
+	camera = new Camera();
 
-	this->keyboardHandler = keyboardHander;
 	this->mouseHandler = mouseHandler;
 }
 
@@ -66,7 +64,7 @@ void Scene::UseCameraPosition()
 
 void Scene::HandleMovement()
 {
-	for (auto key : keyboardHandler->GetPressedKeys())
+	for (auto key : keyboardHandler.GetPressedKeys())
 	{
 		if (key == W)
 		{
@@ -153,4 +151,14 @@ Scene* Scene::Init()
 	PrepareLights();
 
 	return this;
+}
+
+InputMediator* Scene::GetInputMediator(RequestHandler<ChangeSceneRequest>* change_scene_handler, RequestHandler<ExitRequest>* exit_handler)
+{
+	if (inputMediator == nullptr)
+	{
+		inputMediator = new InputMediator(change_scene_handler, exit_handler, camera, &keyboardHandler);
+	}
+
+	return inputMediator;
 }

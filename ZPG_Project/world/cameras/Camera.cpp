@@ -1,7 +1,9 @@
 #include "Camera.h"
 #include <glm/ext/matrix_transform.hpp>
+#include <GL/glew.h>
+#include "../projections/PrespectiveProjection.h"
 
-Camera::Camera(Projection* projection, glm::vec3 position, glm::vec3 up, float yaw, float pitch)
+Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch)
 {
 	Front = glm::vec3(0.0f, 0.0f, -1.0f);
 	Speed = SPEED;
@@ -11,7 +13,7 @@ Camera::Camera(Projection* projection, glm::vec3 position, glm::vec3 up, float y
 	Yaw = yaw;
 	Pitch = pitch;
 
-	this->projection = projection;
+	this->projection = new PrespectiveProjection(45, WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 400);
 	projectionSubject.SetValue(projection->GetProjectionMatrix());
 
 	positionSubject.SetValue(Position);
@@ -70,6 +72,14 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset)
 
 	UpdateCameraVectors();
 	viewSubject.SetValue(GetViewMatrix());
+}
+
+void Camera::HandleRequest(WindowSizeChangedRequest request)
+{
+	delete projection;
+
+	this->projection = new PrespectiveProjection(45, request.GetWidth() / request.GetHeight(), 0.1f, 400);
+	projectionSubject.SetValue(projection->GetProjectionMatrix());
 }
 
 

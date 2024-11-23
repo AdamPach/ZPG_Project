@@ -18,7 +18,7 @@ void Application::key_callback(GLFWwindow* window, int key, int scancode, int ac
 {
 	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
 
-	app->input_controller.HandleKeyInput(key, scancode, action, mods);
+	app->input_controller.HandleKeyboardInput(key, scancode, action, mods);
 }
 
 void Application::mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
@@ -26,6 +26,13 @@ void Application::mouse_move_callback(GLFWwindow* window, double xpos, double yp
 	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
 
 	app->mouse_handler.HandleMouseMove(xpos, ypos);
+}
+
+void Application::framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+
+	app->input_controller.HandleWindowSizeChanged(width, height);
 }
 
 void Application::Init()
@@ -43,9 +50,8 @@ void Application::Init()
 	glfwSetWindowUserPointer(window, this);
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_move_callback);
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-	input_controller.SetMediator(new InputMediator(this, this));
 
 	srand(time(NULL));
 
@@ -56,10 +62,12 @@ void Application::Init()
 
 void Application::AddScenes()
 {
-	scenes.push_back((new DefaultScene(&keyboard_handler, &mouse_handler))->Init());
-	scenes.push_back((new FourSpheresScene(&keyboard_handler, &mouse_handler))->Init());
-	scenes.push_back((new ForestScene(&keyboard_handler, &mouse_handler))->Init());
-	scenes.push_back((new SuziWorldScene(&keyboard_handler, &mouse_handler))->Init());
+	scenes.push_back((new DefaultScene(&mouse_handler))->Init());
+	scenes.push_back((new FourSpheresScene(&mouse_handler))->Init());
+	scenes.push_back((new ForestScene(&mouse_handler))->Init());
+	scenes.push_back((new SuziWorldScene(&mouse_handler))->Init());
+
+	input_controller.SetMediator(scenes[scene_index]->GetInputMediator(this, this));
 }
 
 void Application::Run()
@@ -91,6 +99,8 @@ void Application::HandleRequest(ChangeSceneRequest request)
 	{
 		scene_index = scene_index >= scenes.size() - 1 ? 0 : scene_index + 1;
 	}
+
+	input_controller.SetMediator(scenes[scene_index]->GetInputMediator(this, this));
 }
 
 void Application::HandleRequest(ExitRequest request)

@@ -1,16 +1,15 @@
 #include "KeyboardHandler.h"
 #include <GLFW/glfw3.h>
 
-void KeyboardHandler::HandleKeyboardInput(int key, int scancode, int action, int mods)
+void KeyboardHandler::HandleRequest(KeyActionRequest request)
 {
-
-	if (action == GLFW_PRESS)
+	if (request.GetAction() == KeyActionRequest::KEY_PRESSED)
 	{
-		SetKey(key);
+		SetKey(request.GetKey());
 	}
-	else if (action == GLFW_RELEASE)
+	else if (request.GetAction() == KeyActionRequest::KEY_RELEASED)
 	{
-		ReleaseKey(key);
+		ReleaseKey(request.GetKey());
 	}
 }
 

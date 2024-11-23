@@ -3,6 +3,8 @@
 #include <glm/glm.hpp>
 
 #include "../../abstraction/Subject.h"
+#include "../../abstraction/RequestHandler.h"
+#include "../../input/requests/WindowSizeChangedRequest.h"
 #include "../projections/Projection.h"
 #include "../../defaults.h"
 #include "../../abstraction/UnifromVariableSubject.h"
@@ -25,13 +27,15 @@ const float PITCH = 0.0f;
 const float SPEED = DEFAULT_SPEED;
 const float SENSITIVITY = DEFAULT_SENSITIVITY;
 
-class Camera
+class Camera : public RequestHandler<WindowSizeChangedRequest>
 {
 public:
-	Camera(Projection* projection, glm::vec3 position = glm::vec3(DEFAULT_CAMERA_X, DEFAULT_CAMERA_Y, DEFAULT_CAMERA_Z), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH);
+	Camera(glm::vec3 position = glm::vec3(DEFAULT_CAMERA_X, DEFAULT_CAMERA_Y, DEFAULT_CAMERA_Z), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH);
 	~Camera();
 	void ProcessKeyboardMovement(CameraMovement direction);
 	void ProcessMouseMovement(float xoffset, float yoffset);
+	
+	void HandleRequest(WindowSizeChangedRequest request) override;
 
 	TypedDataProviderSubject<glm::vec3>* GetPositionSubject();
 	TypedDataProviderSubject<glm::mat4>* GetProjectionSubject();

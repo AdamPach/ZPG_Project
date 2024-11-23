@@ -1,6 +1,9 @@
 #include "InputController.h"
 #include "requests/ChangeSceneRequest.h"
 #include "requests/ExitRequest.h"
+#include "requests/WindowSizeChangedRequest.h"
+#include "requests/KeyActionRequest.h"
+
 #include <GLFW/glfw3.h>
 
 void InputController::HandleKeyboardInput(int key, int scancode, int action, int mods)
@@ -29,10 +32,32 @@ void InputController::HandleKeyboardInput(int key, int scancode, int action, int
 			return;
 		}
 	}
+
+	if (action == GLFW_PRESS)
+	{
+		mediator->Send(new KeyActionRequest(key, KeyActionRequest::KEY_PRESSED));
+	}
+	else if (action == GLFW_RELEASE)
+	{
+		mediator->Send(new KeyActionRequest(key, KeyActionRequest::KEY_RELEASED));
+	}
+	
 }
 
 void InputController::HandleMouseMoveInput(double xpos, double ypos)
 {
+}
+
+void InputController::HandleWindowSizeChanged(int width, int height)
+{
+	glViewport(0, 0, width, height);
+
+	if (mediator == nullptr)
+	{
+		return;
+	}
+
+	mediator->Send(new WindowSizeChangedRequest(width, height));
 }
 
 void InputController::SetMediator(Mediator* mediator)

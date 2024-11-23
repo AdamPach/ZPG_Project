@@ -5,7 +5,7 @@
 class DefaultScene : public Scene
 {
 public:
-	DefaultScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler);
+	DefaultScene(MouseHandler* mouseHandler);
 protected:
 	void InitShaders() override;
 	void InitScene() override;

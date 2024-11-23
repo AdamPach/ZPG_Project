@@ -5,7 +5,7 @@
 class FourSpheresScene : public Scene
 {
 public:
-	FourSpheresScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler);
+	FourSpheresScene(MouseHandler* mouseHandler);
 protected:
 	void InitShaders() override;
 	void InitScene() override;

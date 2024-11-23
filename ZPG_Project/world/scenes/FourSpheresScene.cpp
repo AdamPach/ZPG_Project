@@ -12,7 +12,7 @@
 #include "../lights/PointLight.h"
 
 
-FourSpheresScene::FourSpheresScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
+FourSpheresScene::FourSpheresScene(MouseHandler* mouseHandler) : Scene(mouseHandler)
 {
 }
 

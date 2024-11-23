@@ -10,15 +10,17 @@
 #include "../../input/MouseHandler.h"
 #include "../lights/LightsCountSubject.h"
 #include "../../shaders/ShaderProgramBuilder.h"
+#include "../../input/InputMediator.h"
 
 class Scene
 {
 public:
-	Scene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler);
+	Scene(MouseHandler* mouseHandler);
 	~Scene();
 
 	void Draw();
 	Scene* Init();
+	InputMediator* GetInputMediator(RequestHandler<ChangeSceneRequest>* change_scene_handler, RequestHandler<ExitRequest>* exit_handler);
 
 protected:
 	void AddObject(DrawableObject* object);
@@ -38,7 +40,9 @@ private:
 
 	Camera* camera = nullptr;
 
-	KeyboardHandler* keyboardHandler;
+	InputMediator* inputMediator = nullptr;
+
+	KeyboardHandler keyboardHandler;
 	MouseHandler* mouseHandler;
 	LightsCountSubject lightsCountSubject;
 

@@ -14,7 +14,7 @@
 #include "../lights/PointLight.h"
 
 
-ForestScene::ForestScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
+ForestScene::ForestScene(MouseHandler* mouseHandler) : Scene(mouseHandler)
 {
 
 }

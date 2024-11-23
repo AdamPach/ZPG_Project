@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include "requests/KeyActionRequest.h"
 #include "InputMediator.h"
 
 enum Keys {
@@ -10,10 +11,10 @@ enum Keys {
 	D = 3
 };
 
-class KeyboardHandler
+class KeyboardHandler : public RequestHandler<KeyActionRequest>
 {
 public:
-	void HandleKeyboardInput(int key, int scancode, int action, int mods);
+	void HandleRequest(KeyActionRequest request) override;
 	std::vector<Keys> GetPressedKeys();
 private:
 	void SetKey(int key);

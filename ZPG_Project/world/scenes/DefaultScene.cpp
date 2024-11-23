@@ -8,7 +8,7 @@ float triangleVertices[] = {
 	0.0f, 0.5f, 0.0f, 0.73f, 0.18f, 0.66f
 };
 
-DefaultScene::DefaultScene(KeyboardHandler* keyboardHander, MouseHandler* mouseHandler) : Scene(keyboardHander, mouseHandler)
+DefaultScene::DefaultScene(MouseHandler* mouseHandler) : Scene(mouseHandler)
 {
 }
 
