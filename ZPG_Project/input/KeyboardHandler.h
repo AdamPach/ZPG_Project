@@ -15,7 +15,6 @@ class KeyboardHandler
 public:
 	void HandleKeyboardInput(int key, int scancode, int action, int mods);
 	std::vector<Keys> GetPressedKeys();
-	void SetMediator(InputMediator* mediator);
 private:
 	void SetKey(int key);
 	void ReleaseKey(int key);
@@ -24,6 +23,4 @@ private:
 	bool A_pressed = false;
 	bool S_pressed = false;
 	bool D_pressed = false;
-
-	InputMediator* mediator;
 };

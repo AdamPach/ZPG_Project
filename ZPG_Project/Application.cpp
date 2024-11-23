@@ -18,7 +18,7 @@ void Application::key_callback(GLFWwindow* window, int key, int scancode, int ac
 {
 	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
 
-	app->keyboard_handler.HandleKeyboardInput(key, scancode, action, mods);
+	app->input_controller.HandleKeyInput(key, scancode, action, mods);
 }
 
 void Application::mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
@@ -45,7 +45,7 @@ void Application::Init()
 	glfwSetCursorPosCallback(window, mouse_move_callback);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-	keyboard_handler.SetMediator(new InputMediator(this, this));
+	input_controller.SetMediator(new InputMediator(this, this));
 
 	srand(time(NULL));
 

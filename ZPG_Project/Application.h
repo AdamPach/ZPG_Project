@@ -13,6 +13,7 @@
 #include "abstraction/RequestHandler.h"
 #include "input/requests/ChangeSceneRequest.h"
 #include "input/requests/ExitRequest.h"
+#include "input/InputController.h"
 
 class Application : RequestHandler<ChangeSceneRequest>, RequestHandler<ExitRequest>
 {
@@ -29,6 +30,7 @@ private:
 	ShaderProgram* shader_program;
 	KeyboardHandler keyboard_handler;
 	MouseHandler mouse_handler;
+	InputController input_controller;
 
 	static void error_callback(int error, const char* description);
 	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);

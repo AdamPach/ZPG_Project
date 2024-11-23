@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="abstraction\Subject.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="input\InputController.cpp" />
     <ClCompile Include="input\InputMediator.cpp" />
     <ClCompile Include="input\KeyboardHandler.cpp" />
     <ClCompile Include="input\MouseHandler.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="abstraction\UnifromVariableSubject.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="defaults.h" />
+    <ClInclude Include="input\InputController.h" />
     <ClInclude Include="input\InputMediator.h" />
     <ClInclude Include="input\KeyboardHandler.h" />
     <ClInclude Include="input\MouseHandler.h" />
