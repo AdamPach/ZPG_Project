@@ -6,8 +6,8 @@
 #include "../../objects/drawable/SimpleDrawableObject.h"
 #include "../../shaders/ShaderProgram.h"
 #include "../cameras/Camera.h"
-#include "../../handlers/KeyboardHandler.h"
-#include "../../handlers/MouseHandler.h"
+#include "../../input/KeyboardHandler.h"
+#include "../../input/MouseHandler.h"
 #include "../lights/LightsCountSubject.h"
 #include "../../shaders/ShaderProgramBuilder.h"
 

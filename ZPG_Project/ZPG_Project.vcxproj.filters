@@ -69,10 +69,10 @@
     <ClCompile Include="world\cameras\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="handlers\KeyboardHandler.cpp">
+    <ClCompile Include="input\KeyboardHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="handlers\MouseHandler.cpp">
+    <ClCompile Include="input\MouseHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\projections\PrespectiveProjection.cpp">
@@ -189,6 +189,12 @@
     <ClCompile Include="world\lights\SpotLightOuterCutOffSubject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="input\InputMediator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="input\requests\ChangeSceneRequest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -266,10 +272,10 @@
     <ClInclude Include="abstraction\Observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="handlers\KeyboardHandler.h">
+    <ClInclude Include="input\KeyboardHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="handlers\MouseHandler.h">
+    <ClInclude Include="input\MouseHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\projections\PrespectiveProjection.h">
@@ -399,6 +405,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="abstraction\Mediator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\InputMediator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abstraction\Request.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abstraction\RequestHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\requests\ChangeSceneRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\requests\ExitRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

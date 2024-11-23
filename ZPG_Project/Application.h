@@ -8,15 +8,20 @@
 #include "objects/drawable/DrawableObject.h"
 #include "shaders/ShaderProgram.h"
 #include "world/scenes/Scene.h"
-#include "handlers/KeyboardHandler.h"
-#include "handlers/MouseHandler.h"
+#include "input/KeyboardHandler.h"
+#include "input/MouseHandler.h"
+#include "abstraction/RequestHandler.h"
+#include "input/requests/ChangeSceneRequest.h"
+#include "input/requests/ExitRequest.h"
 
-class Application
+class Application : RequestHandler<ChangeSceneRequest>, RequestHandler<ExitRequest>
 {
 public:
 	void Init();
 	void AddScenes();
 	void Run();
+	void HandleRequest(ChangeSceneRequest request) override;
+	void HandleRequest(ExitRequest request) override;
 private:
 	GLFWwindow* window;
 	int scene_index;

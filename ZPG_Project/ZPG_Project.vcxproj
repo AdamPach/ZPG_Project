@@ -132,8 +132,10 @@
   <ItemGroup>
     <ClCompile Include="abstraction\Subject.cpp" />
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="handlers\KeyboardHandler.cpp" />
-    <ClCompile Include="handlers\MouseHandler.cpp" />
+    <ClCompile Include="input\InputMediator.cpp" />
+    <ClCompile Include="input\KeyboardHandler.cpp" />
+    <ClCompile Include="input\MouseHandler.cpp" />
+    <ClCompile Include="input\requests\ChangeSceneRequest.cpp" />
     <ClCompile Include="objects\drawable\DrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\drawable\LightDrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\drawable\MaterialDrawableObjectDecorator.cpp" />
@@ -191,12 +193,17 @@
   <ItemGroup>
     <ClInclude Include="abstraction\Mediator.h" />
     <ClInclude Include="abstraction\Observer.h" />
+    <ClInclude Include="abstraction\Request.h" />
+    <ClInclude Include="abstraction\RequestHandler.h" />
     <ClInclude Include="abstraction\Subject.h" />
     <ClInclude Include="abstraction\UnifromVariableSubject.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="defaults.h" />
-    <ClInclude Include="handlers\KeyboardHandler.h" />
-    <ClInclude Include="handlers\MouseHandler.h" />
+    <ClInclude Include="input\InputMediator.h" />
+    <ClInclude Include="input\KeyboardHandler.h" />
+    <ClInclude Include="input\MouseHandler.h" />
+    <ClInclude Include="input\requests\ChangeSceneRequest.h" />
+    <ClInclude Include="input\requests\ExitRequest.h" />
     <ClInclude Include="objects\drawable\DrawableObject.h" />
     <ClInclude Include="objects\drawable\DrawableObjectDecorator.h" />
     <ClInclude Include="objects\drawable\LightDrawableObjectDecorator.h" />

@@ -18,26 +18,6 @@ void Application::key_callback(GLFWwindow* window, int key, int scancode, int ac
 {
 	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
 
-	if (action == GLFW_PRESS)
-	{
-		
-		if (key == GLFW_KEY_1)
-		{
-			app->scene_index = app->scene_index <= 0 ? app->scenes.size() - 1 : app->scene_index - 1;
-			return;
-		}
-		else if (key == GLFW_KEY_2)
-		{
-			app->scene_index = app->scene_index >= app->scenes.size() - 1 ? 0 : app->scene_index + 1;
-			return;
-		}
-		else if (key == GLFW_KEY_ESCAPE)
-		{
-			glfwSetWindowShouldClose(window, GLFW_TRUE);
-			return;
-		}
-	}
-
 	app->keyboard_handler.HandleKeyboardInput(key, scancode, action, mods);
 }
 
@@ -46,7 +26,6 @@ void Application::mouse_move_callback(GLFWwindow* window, double xpos, double yp
 	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
 
 	app->mouse_handler.HandleMouseMove(xpos, ypos);
-
 }
 
 void Application::Init()
@@ -65,6 +44,8 @@ void Application::Init()
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_move_callback);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	keyboard_handler.SetMediator(new InputMediator(this, this));
 
 	srand(time(NULL));
 
@@ -98,6 +79,23 @@ void Application::Run()
 	glfwDestroyWindow(window);
 
 	glfwTerminate();
+}
+
+void Application::HandleRequest(ChangeSceneRequest request)
+{
+	if (request.GetDirection() == ChangeSceneRequest::CHANGE_LEFT)
+	{
+		scene_index = scene_index <= 0 ? scenes.size() - 1 : scene_index - 1;
+	}
+	else if (request.GetDirection() == ChangeSceneRequest::CHANGE_RIGHT)
+	{
+		scene_index = scene_index >= scenes.size() - 1 ? 0 : scene_index + 1;
+	}
+}
+
+void Application::HandleRequest(ExitRequest request)
+{
+	glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
 void Application::error_callback(int error, const char* description)
