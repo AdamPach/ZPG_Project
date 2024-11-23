@@ -70,7 +70,7 @@ vec4 calculateSpotLight(Light light)
 
 		vec4 specular = intensity * specularStrength * spec * vec4(light.lightColor, 1.0);
 
-		return ((diffuse + specular) * calculateAttenuation(light.lightPosition, 0.3, 0.3, 0.3));
+		return ((diffuse + specular) * calculateAttenuation(light.lightPosition, 0.2, 0.2, 0.2));
 	}
     
     return vec4(0.0);
@@ -78,7 +78,7 @@ vec4 calculateSpotLight(Light light)
 
 void main () {
 
-    float ambientStrength = 0.1;
+    float ambientStrength = 0.0;
     vec3 lightColor = vec3(0.5, 0.5, 0.5);
 
     vec4 ambient = ambientStrength * vec4(lightColor, 1.0);

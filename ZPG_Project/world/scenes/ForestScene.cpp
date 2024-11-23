@@ -95,7 +95,7 @@ void ForestScene::InitScene()
 		}
 	}
 	
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 95; i++)
 	{
 		auto base = transformationBuilder.AddRandomDynamicMovvement()
 			->AddScale(0.025f)

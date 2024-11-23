@@ -398,6 +398,9 @@
     <ClInclude Include="world\lights\SpotLightOuterCutOffSubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="abstraction\Mediator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />

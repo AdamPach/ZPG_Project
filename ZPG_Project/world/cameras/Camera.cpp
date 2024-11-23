@@ -52,6 +52,11 @@ void Camera::ProcessKeyboardMovement(CameraMovement direction)
 
 void Camera::ProcessMouseMovement(float xoffset, float yoffset)
 {
+	if (xoffset == 0.0f && yoffset == 0.0f)
+	{
+		return;
+	}
+
 	xoffset *= SENSITIVITY;
 	yoffset *= SENSITIVITY;
 
