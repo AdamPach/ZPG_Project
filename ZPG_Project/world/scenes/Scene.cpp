@@ -1,11 +1,9 @@
 #include "Scene.h"
 #include "../../defaults.h"
 
-Scene::Scene(MouseHandler* mouseHandler)
+Scene::Scene()
 {
 	camera = new Camera();
-
-	this->mouseHandler = mouseHandler;
 }
 
 Scene::~Scene()
@@ -84,7 +82,7 @@ void Scene::HandleMovement()
 		}
 	}
 
-	camera->ProcessMouseMovement(mouseHandler->GetXOffset(), mouseHandler->GetYOffset());
+	camera->ProcessMouseMovement(mouseHandler.GetXOffset(), mouseHandler.GetYOffset());
 }
 
 void Scene::PrepareLights()
@@ -153,11 +151,11 @@ Scene* Scene::Init()
 	return this;
 }
 
-InputMediator* Scene::GetInputMediator(RequestHandler<ChangeSceneRequest>* change_scene_handler, RequestHandler<ExitRequest>* exit_handler)
+InputMediator* Scene::GetInputMediator(Application* application)
 {
 	if (inputMediator == nullptr)
 	{
-		inputMediator = new InputMediator(change_scene_handler, exit_handler, camera, &keyboardHandler);
+		inputMediator = new InputMediator(application, camera, &keyboardHandler, &mouseHandler);
 	}
 
 	return inputMediator;

@@ -204,6 +204,9 @@
     <ClCompile Include="input\requests\KeyActionRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="input\requests\MouseMoveRequest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -438,6 +441,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="input\requests\KeyActionRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\requests\MouseMoveRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

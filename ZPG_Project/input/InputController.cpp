@@ -3,6 +3,7 @@
 #include "requests/ExitRequest.h"
 #include "requests/WindowSizeChangedRequest.h"
 #include "requests/KeyActionRequest.h"
+#include "requests/MouseMoveRequest.h"
 
 #include <GLFW/glfw3.h>
 
@@ -46,6 +47,12 @@ void InputController::HandleKeyboardInput(int key, int scancode, int action, int
 
 void InputController::HandleMouseMoveInput(double xpos, double ypos)
 {
+	if (mediator == nullptr)
+	{
+		return;
+	}
+
+	mediator->Send(new MouseMoveRequest(xpos, ypos));
 }
 
 void InputController::HandleWindowSizeChanged(int width, int height)

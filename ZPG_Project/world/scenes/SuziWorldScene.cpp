@@ -8,7 +8,7 @@
 #include "../lights/PointLight.h"
 
 
-SuziWorldScene::SuziWorldScene(MouseHandler* mouseHandler) : Scene( mouseHandler)
+SuziWorldScene::SuziWorldScene() : Scene()
 {
 }
 

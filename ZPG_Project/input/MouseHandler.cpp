@@ -1,7 +1,10 @@
 #include "MouseHandler.h"
 
-void MouseHandler::HandleMouseMove(double xpos, double ypos)
+void MouseHandler::HandleRequest(MouseMoveRequest request)
 {
+	int xpos = request.GetX();
+	int ypos = request.GetY();
+
 	if (firstMouse)
 	{
 		lastX = xpos;

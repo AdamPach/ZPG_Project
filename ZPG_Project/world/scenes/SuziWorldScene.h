@@ -5,7 +5,7 @@
 class SuziWorldScene : public Scene
 {
 public:
-	SuziWorldScene(MouseHandler* mouseHandler);
+	SuziWorldScene();
 protected:
 	void InitShaders() override;
 	void InitScene() override;

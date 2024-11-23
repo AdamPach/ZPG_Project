@@ -5,7 +5,7 @@
 class ForestScene : public Scene
 {
 public:
-	ForestScene(MouseHandler* mouseHandler);
+	ForestScene();
 protected:
 	void InitScene() override;
 	void InitShaders() override;

@@ -12,15 +12,17 @@
 #include "../../shaders/ShaderProgramBuilder.h"
 #include "../../input/InputMediator.h"
 
+class Application;
+
 class Scene
 {
 public:
-	Scene(MouseHandler* mouseHandler);
+	Scene();
 	~Scene();
 
 	void Draw();
 	Scene* Init();
-	InputMediator* GetInputMediator(RequestHandler<ChangeSceneRequest>* change_scene_handler, RequestHandler<ExitRequest>* exit_handler);
+	InputMediator* GetInputMediator(Application * application);
 
 protected:
 	void AddObject(DrawableObject* object);
@@ -43,7 +45,7 @@ private:
 	InputMediator* inputMediator = nullptr;
 
 	KeyboardHandler keyboardHandler;
-	MouseHandler* mouseHandler;
+	MouseHandler mouseHandler;
 	LightsCountSubject lightsCountSubject;
 
 	void HandleMovement();

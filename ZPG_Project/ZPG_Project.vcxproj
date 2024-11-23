@@ -138,6 +138,7 @@
     <ClCompile Include="input\MouseHandler.cpp" />
     <ClCompile Include="input\requests\ChangeSceneRequest.cpp" />
     <ClCompile Include="input\requests\KeyActionRequest.cpp" />
+    <ClCompile Include="input\requests\MouseMoveRequest.cpp" />
     <ClCompile Include="input\requests\WindowSizeChangedRequest.cpp" />
     <ClCompile Include="objects\drawable\DrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\drawable\LightDrawableObjectDecorator.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="input\requests\ChangeSceneRequest.h" />
     <ClInclude Include="input\requests\ExitRequest.h" />
     <ClInclude Include="input\requests\KeyActionRequest.h" />
+    <ClInclude Include="input\requests\MouseMoveRequest.h" />
     <ClInclude Include="input\requests\WindowSizeChangedRequest.h" />
     <ClInclude Include="objects\drawable\DrawableObject.h" />
     <ClInclude Include="objects\drawable\DrawableObjectDecorator.h" />

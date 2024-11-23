@@ -2,21 +2,26 @@
 
 #include "../abstraction/Mediator.h"
 #include "../abstraction/RequestHandler.h"
-#include "../world/cameras/Camera.h"
 
 #include "requests/ExitRequest.h"
 #include "requests/ChangeSceneRequest.h"
 #include "requests/WindowSizeChangedRequest.h"
 #include "requests/KeyActionRequest.h"
+#include "requests/MouseMoveRequest.h"
+
+class Application;
+class Camera;
+class KeyboardHandler;
+class MouseHandler;
 
 class InputMediator : public Mediator
 {
 public:
-	InputMediator(RequestHandler<ChangeSceneRequest>* change_scene_handler, RequestHandler<ExitRequest>* exit_handler, Camera* camera, RequestHandler<KeyActionRequest>* keyboard_handler);
+	InputMediator(Application* application, Camera* camera, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler);
 	void Send(Request * request) override;
 private:
-	RequestHandler<ChangeSceneRequest>* change_scene_handler;
-	RequestHandler<ExitRequest>* exit_handler;
+	Application* application;
 	Camera* camera;
-	RequestHandler<KeyActionRequest>* keyboard_handler;
+	KeyboardHandler* keyboard_handler;
+	MouseHandler* mouseHandler;
 };

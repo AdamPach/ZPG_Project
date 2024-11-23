@@ -1,10 +1,12 @@
 #pragma once
 
+#include "../abstraction/RequestHandler.h"
+#include "requests/MouseMoveRequest.h"
 
-class MouseHandler
+class MouseHandler : public RequestHandler<MouseMoveRequest>
 {
 public:
-	void HandleMouseMove(double xpos, double ypos);
+	void HandleRequest(MouseMoveRequest request) override;
 	float GetXOffset();
 	float GetYOffset();
 private:

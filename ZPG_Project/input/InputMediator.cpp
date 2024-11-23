@@ -1,11 +1,12 @@
 #include "InputMediator.h"
+#include "../Application.h"
 
-InputMediator::InputMediator(RequestHandler<ChangeSceneRequest>* change_scene_handler, RequestHandler<ExitRequest>* exit_handler, Camera* camera, RequestHandler<KeyActionRequest>* keyboard_handler)
+InputMediator::InputMediator(Application* application, Camera* camera, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler)
 {
-	this->change_scene_handler = change_scene_handler;
-	this->exit_handler = exit_handler;
+	this->application = application;
 	this->camera = camera;
 	this->keyboard_handler = keyboard_handler;
+	this->mouseHandler = mouseHandler;
 }
 
 void InputMediator::Send(Request * request)
@@ -14,14 +15,14 @@ void InputMediator::Send(Request * request)
 
 	if (change_scene_request != nullptr)
 	{
-		change_scene_handler->HandleRequest(*change_scene_request);
+		application->HandleRequest(*change_scene_request);
 	}
 
 	auto exit_request = dynamic_cast<ExitRequest*>(request);
 
 	if (exit_request != nullptr)
 	{
-		exit_handler->HandleRequest(*exit_request);
+		application->HandleRequest(*exit_request);
 	}
 
 	auto window_size_changed_request = dynamic_cast<WindowSizeChangedRequest*>(request);
@@ -37,6 +38,14 @@ void InputMediator::Send(Request * request)
 	{
 		keyboard_handler->HandleRequest(*key_action_request);
 	}
+
+	auto mouse_move_request = dynamic_cast<MouseMoveRequest*>(request);
+
+	if (mouse_move_request != nullptr)
+	{
+		mouseHandler->HandleRequest(*mouse_move_request);
+	}
+
 
 	delete request;
 }

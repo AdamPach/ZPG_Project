@@ -5,11 +5,8 @@
 
 #include <vector>
 
-#include "objects/drawable/DrawableObject.h"
 #include "shaders/ShaderProgram.h"
 #include "world/scenes/Scene.h"
-#include "input/KeyboardHandler.h"
-#include "input/MouseHandler.h"
 #include "abstraction/RequestHandler.h"
 #include "input/requests/ChangeSceneRequest.h"
 #include "input/requests/ExitRequest.h"
@@ -27,7 +24,6 @@ private:
 	GLFWwindow* window;
 	int scene_index;
 	std::vector<Scene*> scenes;
-	MouseHandler mouse_handler;
 	InputController input_controller;
 
 	static void error_callback(int error, const char* description);
