@@ -30,7 +30,7 @@
     <ClCompile Include="objects\drawable\SimpleDrawableObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\PlainModel.cpp">
+    <ClCompile Include="objects\normaled\PlainModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="transformations\Rotation.cpp">
@@ -48,16 +48,16 @@
     <ClCompile Include="transformations\Translation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\TreeModel.cpp">
+    <ClCompile Include="objects\normaled\TreeModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\TriangleNormalModel.cpp">
+    <ClCompile Include="objects\abstraction\TriangleNormalModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\scenes\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\BushesModel.cpp">
+    <ClCompile Include="objects\normaled\BushesModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="transformations\TransformationComposite.cpp">
@@ -90,7 +90,7 @@
     <ClCompile Include="world\scenes\FourSpheresScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\SphereObject.cpp">
+    <ClCompile Include="objects\normaled\SphereObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="abstraction\Subject.cpp">
@@ -108,10 +108,10 @@
     <ClCompile Include="world\scenes\DefaultScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\SuziSmoothModel.cpp">
+    <ClCompile Include="objects\normaled\SuziSmoothModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objects\SuziFlatModel.cpp">
+    <ClCompile Include="objects\normaled\SuziFlatModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\scenes\SuziWorldScene.cpp">
@@ -242,10 +242,10 @@
     <ClInclude Include="objects\drawable\SimpleDrawableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\Model.h">
+    <ClInclude Include="objects\abstraction\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\PlainModel.h">
+    <ClInclude Include="objects\normaled\PlainModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="transformations\Rotation.h">
@@ -266,16 +266,16 @@
     <ClInclude Include="transformations\Translation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\TreeModel.h">
+    <ClInclude Include="objects\normaled\TreeModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\TriangleNormalModel.h">
+    <ClInclude Include="objects\abstraction\TriangleNormalModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\scenes\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\BushesModel.h">
+    <ClInclude Include="objects\normaled\BushesModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="transformations\TransformationComposite.h">
@@ -314,7 +314,7 @@
     <ClInclude Include="world\scenes\FourSpheresScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\SphereObject.h">
+    <ClInclude Include="objects\normaled\SphereObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\lights\Light.h">
@@ -335,10 +335,10 @@
     <ClInclude Include="world\scenes\DefaultScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\SuziFlatModel.h">
+    <ClInclude Include="objects\normaled\SuziFlatModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\SuziSmoothModel.h">
+    <ClInclude Include="objects\normaled\SuziSmoothModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\scenes\SuziWorldScene.h">
@@ -462,6 +462,8 @@
     <None Include="gpu_shaders\fragment_position_normal_constant.vert" />
     <None Include="gpu_shaders\vertex_position_normal_constant.vert" />
     <None Include="gpu_shaders\fragment_position_normal_attenuation_phong.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_attenuation_texture_phong.vert" />
+    <None Include="gpu_shaders\vertext_position_normal_light_base_texture.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />

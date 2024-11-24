@@ -1,6 +1,6 @@
 #include "SphereObject.h"
 
-#include "models/sphere.h"
+#include "../models/sphere.h"
 
 SphereObject::SphereObject() : TriangleNormalModel(sphere, sizeof(sphere))
 {

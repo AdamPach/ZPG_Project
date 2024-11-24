@@ -1,6 +1,6 @@
 #include "DefaultScene.h"
 #include "../../transformations/TransformationsBuilder.h"
-#include "../../objects/TriangleNormalModel.h"
+#include "../../objects/abstraction/TriangleNormalModel.h"
 
 float triangleVertices[] = {
 	-0.5f, -0.5f, 0.0f, 0.73f, 0.18f, 0.66f,

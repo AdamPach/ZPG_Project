@@ -1,5 +1,5 @@
 #include "SuziFlatModel.h"
-#include "models/suzi_flat.h"
+#include "../models/suzi_flat.h"
 
 SuziFlatModel::SuziFlatModel() : TriangleNormalModel(suziFlat, sizeof(suziFlat))
 {

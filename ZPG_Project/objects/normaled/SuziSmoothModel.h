@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TriangleNormalModel.h"
+#include "../abstraction/TriangleNormalModel.h"
 
 class SuziSmoothModel : public TriangleNormalModel
 {

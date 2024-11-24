@@ -1,5 +1,5 @@
 #include "SuziSmoothModel.h"
-#include "models/suzi_smooth.h"
+#include "../models/suzi_smooth.h"
 
 SuziSmoothModel::SuziSmoothModel() : TriangleNormalModel(suziSmooth, sizeof(suziSmooth))
 {

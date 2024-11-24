@@ -146,9 +146,9 @@
     <ClCompile Include="objects\drawable\MaterialDrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\EmptyModel.cpp" />
     <ClCompile Include="objects\materials\Material.cpp" />
-    <ClCompile Include="objects\SphereObject.cpp" />
-    <ClCompile Include="objects\SuziFlatModel.cpp" />
-    <ClCompile Include="objects\SuziSmoothModel.cpp" />
+    <ClCompile Include="objects\normaled\SphereObject.cpp" />
+    <ClCompile Include="objects\normaled\SuziFlatModel.cpp" />
+    <ClCompile Include="objects\normaled\SuziSmoothModel.cpp" />
     <ClCompile Include="shaders\MaterialShaderProgram.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
     <ClCompile Include="shaders\ShaderProgramBuilder.cpp" />
@@ -160,10 +160,10 @@
     <ClCompile Include="transformations\ObservableMovement.cpp" />
     <ClCompile Include="transformations\RandomDynamicMovement.cpp" />
     <ClCompile Include="world\cameras\Camera.cpp" />
-    <ClCompile Include="objects\BushesModel.cpp" />
+    <ClCompile Include="objects\normaled\BushesModel.cpp" />
     <ClCompile Include="objects\drawable\SimpleDrawableObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="objects\PlainModel.cpp" />
+    <ClCompile Include="objects\normaled\PlainModel.cpp" />
     <ClCompile Include="transformations\Rotation.cpp" />
     <ClCompile Include="transformations\Scale.cpp" />
     <ClCompile Include="transformations\TransformationBasic.cpp" />
@@ -192,8 +192,8 @@
     <ClCompile Include="transformations\TransformationComposite.cpp" />
     <ClCompile Include="transformations\TransformationsBuilder.cpp" />
     <ClCompile Include="transformations\Translation.cpp" />
-    <ClCompile Include="objects\TreeModel.cpp" />
-    <ClCompile Include="objects\TriangleNormalModel.cpp" />
+    <ClCompile Include="objects\normaled\TreeModel.cpp" />
+    <ClCompile Include="objects\abstraction\TriangleNormalModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstraction\Mediator.h" />
@@ -220,9 +220,9 @@
     <ClInclude Include="objects\drawable\MaterialDrawableObjectDecorator.h" />
     <ClInclude Include="objects\EmptyModel.h" />
     <ClInclude Include="objects\materials\Material.h" />
-    <ClInclude Include="objects\SphereObject.h" />
-    <ClInclude Include="objects\SuziFlatModel.h" />
-    <ClInclude Include="objects\SuziSmoothModel.h" />
+    <ClInclude Include="objects\normaled\SphereObject.h" />
+    <ClInclude Include="objects\normaled\SuziFlatModel.h" />
+    <ClInclude Include="objects\normaled\SuziSmoothModel.h" />
     <ClInclude Include="shaders\MaterialShaderProgram.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
     <ClInclude Include="shaders\ShaderProgramBuilder.h" />
@@ -235,12 +235,12 @@
     <ClInclude Include="transformations\RandomDynamicMovement.h" />
     <ClInclude Include="world\cameras\Camera.h" />
     <ClInclude Include="objects\models\bushes.h" />
-    <ClInclude Include="objects\BushesModel.h" />
+    <ClInclude Include="objects\normaled\BushesModel.h" />
     <ClInclude Include="objects\drawable\SimpleDrawableObject.h" />
     <ClInclude Include="objects\models\gift.h" />
-    <ClInclude Include="objects\Model.h" />
+    <ClInclude Include="objects\abstraction\Model.h" />
     <ClInclude Include="objects\models\plain.h" />
-    <ClInclude Include="objects\PlainModel.h" />
+    <ClInclude Include="objects\normaled\PlainModel.h" />
     <ClInclude Include="transformations\Rotation.h" />
     <ClInclude Include="transformations\Scale.h" />
     <ClInclude Include="world\cameras\CameraFrontSubject.h" />
@@ -274,17 +274,19 @@
     <ClInclude Include="transformations\TransformationsBuilder.h" />
     <ClInclude Include="transformations\Translation.h" />
     <ClInclude Include="objects\models\tree.h" />
-    <ClInclude Include="objects\TreeModel.h" />
-    <ClInclude Include="objects\TriangleNormalModel.h" />
+    <ClInclude Include="objects\normaled\TreeModel.h" />
+    <ClInclude Include="objects\abstraction\TriangleNormalModel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="gpu_shaders\fragment_position_color.vert" />
     <None Include="gpu_shaders\fragment_position_normal_attenuation_phong.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_attenuation_texture_phong.vert" />
     <None Include="gpu_shaders\fragment_position_normal_blinn.vert" />
     <None Include="gpu_shaders\fragment_position_normal_constant.vert" />
     <None Include="gpu_shaders\fragment_position_normal_lambert.vert" />
     <None Include="gpu_shaders\fragment_position_normal_phong.vert" />
     <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />
+    <None Include="gpu_shaders\vertext_position_normal_light_base_texture.vert" />
     <None Include="gpu_shaders\vertex_position_normal_constant.vert" />
   </ItemGroup>
   <ItemGroup>

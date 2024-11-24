@@ -2,12 +2,12 @@
 
 #include "../../shaders/ShaderProgram.h"
 #include "../../transformations/TransformationsBuilder.h"
-#include "../../objects/SphereObject.h"
+#include "../../objects/normaled/SphereObject.h"
 #include "../../objects/drawable/SimpleDrawableObject.h"
 #include "../../objects/drawable/MaterialDrawableObjectDecorator.h"
 #include "../../objects/drawable/LightDrawableObjectDecorator.h"
-#include "../../objects/SuziSmoothModel.h"
-#include "../../objects/PlainModel.h"
+#include "../../objects/normaled/SuziSmoothModel.h"
+#include "../../objects/normaled/PlainModel.h"
 #include "../../objects/EmptyModel.h"
 #include "../lights/PointLight.h"
 
