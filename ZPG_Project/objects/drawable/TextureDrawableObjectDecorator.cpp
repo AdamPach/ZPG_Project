@@ -11,7 +11,9 @@ TextureDrawableObjectDecorator::TextureDrawableObjectDecorator(DrawableObject* d
 
 void TextureDrawableObjectDecorator::Draw()
 {
-	auto shaderProgram = dynamic_cast<TextureShaderProgram*>(GetShader());
+	ShaderProgram* shader = GetShader();
+
+	auto shaderProgram = dynamic_cast<TextureShaderProgram*>(shader);
 
 	if (shaderProgram != nullptr)
 	{

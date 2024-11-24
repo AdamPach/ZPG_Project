@@ -4,7 +4,6 @@
 #include <SOIL.h>
 #include <GL/glew.h>
 
-
 Texture2D::Texture2D(int texture_unit, const char* texture_name) : Texture(texture_unit)
 {
 	std::string texturePath = TEXTURE_PATH;
@@ -19,4 +18,5 @@ Texture2D::Texture2D(int texture_unit, const char* texture_name) : Texture(textu
 	}
 
 	glBindTexture(GL_TEXTURE_2D, textureId);
+	glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 }

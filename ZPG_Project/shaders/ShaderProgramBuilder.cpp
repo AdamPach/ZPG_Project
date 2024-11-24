@@ -56,16 +56,14 @@ ShaderProgram* ShaderProgramBuilder::Build()
 
 	ShaderProgram* shaderProgram;
 
-	if (materialColorUniformLocation != -1)
+	if (textureUnitUniformLocation != -1)
 	{
-		if (textureUnitUniformLocation != -1)
-		{
-			shaderProgram = new TextureShaderProgram(program, transformationUniformLocation, materialColorUniformLocation, textureUnitUniformLocation);
-		}
-		else
-		{
-			shaderProgram = new MaterialShaderProgram(program, transformationUniformLocation, materialColorUniformLocation);
-		}
+		shaderProgram = new TextureShaderProgram(program, transformationUniformLocation, materialColorUniformLocation, textureUnitUniformLocation);
+	}
+
+	else if (materialColorUniformLocation != -1)
+	{
+		shaderProgram = new MaterialShaderProgram(program, transformationUniformLocation, materialColorUniformLocation);
 	}
 	else
 	{

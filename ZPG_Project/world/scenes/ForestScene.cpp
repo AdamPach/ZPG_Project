@@ -38,8 +38,8 @@ void ForestScene::InitShaders()
 
 	AddShaderProgram(color_shader_program, "basic_shader");
 
-	builder.AddVertexShader("vertext_position_normal_light_base_texture.vert")
-		->AddFragmentShader("fragment_position_normal_attenuation_texture_phong.vert")
+	builder.AddVertexShader("vertext_position_normal_light_base_texture2d.vert")
+		->AddFragmentShader("fragment_position_normal_attenuation_texture2d_phong.vert")
 		->AddTransformationUniform(DEFAULT_MODEL_MATRIX_NAME)
 		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME)
 		->AddTextureUnitUniform(DEFAULT_TEXTURE_UNIT_NAME);

@@ -228,6 +228,12 @@
     <ClCompile Include="objects\textures\Texture2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="objects\textures\TextureCubeMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="objects\abstraction\PositionModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -491,6 +497,15 @@
     <ClInclude Include="objects\textures\Texture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="objects\textures\TextureCubeMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objects\abstraction\PositionModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objects\models\cube_only_points.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />
@@ -501,14 +516,34 @@
     <None Include="gpu_shaders\fragment_position_normal_constant.vert" />
     <None Include="gpu_shaders\vertex_position_normal_constant.vert" />
     <None Include="gpu_shaders\fragment_position_normal_attenuation_phong.vert" />
-    <None Include="gpu_shaders\fragment_position_normal_attenuation_texture_phong.vert" />
-    <None Include="gpu_shaders\vertext_position_normal_light_base_texture.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_attenuation_texture2d_phong.vert" />
+    <None Include="gpu_shaders\vertext_position_normal_light_base_texture2d.vert" />
+    <None Include="gpu_shaders\fragment_position_cubemap.vert" />
+    <None Include="gpu_shaders\vertext_position_cubemap.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\grass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\negx.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\negy.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\negz.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\posx.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\posy.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\posz.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
