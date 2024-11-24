@@ -2,7 +2,6 @@
 #include "../../defaults.h"
 #include "../../transformations/TransformationsBuilder.h"
 #include "../../objects/abstraction/TriangleNormalModel.h"
-#include "../../objects/models/cube_only_points.h"
 #include "../../objects/abstraction/PositionModel.h"
 #include "../../objects/drawable/TextureDrawableObjectDecorator.h"
 #include "../../objects/textures/TexturesManager.h"
@@ -55,13 +54,4 @@ void DefaultScene::InitScene()
 		triangleModel,
 		color_shader_program,
 		new Transformation(transformationBuilder.Build())));
-
-	auto cubeModel = new PositionModel(cube, sizeof(cube));
-
-	AddObject(new TextureDrawableObjectDecorator(
-		new SimpleDrawableObject(
-			cubeModel,
-			cubemap_shader_program,
-			new Transformation(transformationBuilder.Build())),
-		TexturesManager::GetInstance()->GetSkycube()));
 }

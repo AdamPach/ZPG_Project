@@ -234,6 +234,9 @@
     <ClCompile Include="objects\abstraction\PositionModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="world\scenes\SkyCubeScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -504,6 +507,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="objects\models\cube_only_points.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\scenes\SkyCubeScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

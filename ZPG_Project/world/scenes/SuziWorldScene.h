@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scene.h"
+#include "SkyCubeScene.h"
 
-class SuziWorldScene : public Scene
+class SuziWorldScene : public SkyCubeScene
 {
 public:
 	SuziWorldScene();

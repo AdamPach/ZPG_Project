@@ -1,0 +1,42 @@
+#include "SkyCubeScene.h"
+#include "../../objects/drawable/TextureDrawableObjectDecorator.h"
+#include "../../objects/models/cube_only_points.h"
+#include "../../objects/abstraction/PositionModel.h"
+#include "../../transformations/TransformationsBuilder.h"
+#include "../../transformations/ObservableMovement.h"
+
+SkyCubeScene::SkyCubeScene(TextureCubeMap* skyCube_texture)
+{
+	auto cubeModel = new PositionModel(cube, sizeof(cube));
+
+	ShaderProgramBuilder shaderBuilder;
+
+	shaderBuilder.AddVertexShader("vertext_position_cubemap.vert")
+		->AddFragmentShader("fragment_position_cubemap.vert")
+		->AddTransformationUniform(DEFAULT_MODEL_MATRIX_NAME)
+		->AddTextureUnitUniform(DEFAULT_TEXTURE_UNIT_NAME);
+
+	auto cubemap_shader_program = shaderBuilder.Build();
+
+	AddShaderProgram(cubemap_shader_program, "cubemap_shader");
+
+	TransformationsBuilder transformationBuilder;
+
+	transformationBuilder.AddTransformation(new ObservableMovement(GetCameraPositionSubject()));
+
+	skyCube = new TextureDrawableObjectDecorator(
+		new SimpleDrawableObject(
+			cubeModel,
+			cubemap_shader_program,
+			new Transformation(transformationBuilder.Build())),
+		skyCube_texture);
+}
+
+void SkyCubeScene::Draw()
+{
+	skyCube->Draw();
+
+	glClear(GL_DEPTH_BUFFER_BIT);
+
+	Scene::Draw();
+}

@@ -6,9 +6,10 @@
 #include "../../objects/drawable/MaterialDrawableObjectDecorator.h"
 #include "../../objects/drawable/LightDrawableObjectDecorator.h"
 #include "../lights/PointLight.h"
+#include "../../objects/textures/TexturesManager.h"
 
 
-SuziWorldScene::SuziWorldScene() : Scene()
+SuziWorldScene::SuziWorldScene() : SkyCubeScene(TexturesManager::GetInstance()->GetSkycube())
 {
 }
 

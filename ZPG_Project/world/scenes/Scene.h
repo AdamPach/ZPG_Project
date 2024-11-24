@@ -17,14 +17,14 @@ class Application;
 class Scene
 {
 public:
-	Scene();
 	~Scene();
 
-	void Draw();
+	virtual void Draw();
 	Scene* Init();
 	InputMediator* GetInputMediator(Application * application);
 
 protected:
+	Scene();
 	void AddObject(DrawableObject* object);
 	void AddShaderProgram(ShaderProgram* shaderProgram, const char * programName);
 	ShaderProgram* GetShaderProgram(const char* programName);

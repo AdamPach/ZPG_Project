@@ -1,6 +1,5 @@
 #include "TexturesManager.h"
 #include "Texture2D.h"
-#include "TextureCubeMap.h"
 
 TexturesManager* TexturesManager::GetInstance()
 {
@@ -22,7 +21,7 @@ Texture* TexturesManager::GetGrassTexture()
 	return grassTexture;
 }
 
-Texture* TexturesManager::GetSkycube()
+TextureCubeMap* TexturesManager::GetSkycube()
 {
 	if (skycube == nullptr)
 	{
