@@ -151,6 +151,7 @@
     <ClCompile Include="objects\normaled\SphereObject.cpp" />
     <ClCompile Include="objects\normaled\SuziFlatModel.cpp" />
     <ClCompile Include="objects\normaled\SuziSmoothModel.cpp" />
+    <ClCompile Include="objects\textures\Texture2D.cpp" />
     <ClCompile Include="objects\textures\Texture.cpp" />
     <ClCompile Include="objects\textures\TexturesManager.cpp" />
     <ClCompile Include="shaders\MaterialShaderProgram.cpp" />
@@ -231,6 +232,7 @@
     <ClInclude Include="objects\normaled\SphereObject.h" />
     <ClInclude Include="objects\normaled\SuziFlatModel.h" />
     <ClInclude Include="objects\normaled\SuziSmoothModel.h" />
+    <ClInclude Include="objects\textures\Texture2D.h" />
     <ClInclude Include="objects\textures\Texture.h" />
     <ClInclude Include="objects\textures\TexturesManager.h" />
     <ClInclude Include="shaders\MaterialShaderProgram.h" />

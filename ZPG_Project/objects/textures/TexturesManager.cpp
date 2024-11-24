@@ -1,4 +1,5 @@
 #include "TexturesManager.h"
+#include "Texture2D.h"
 
 TexturesManager* TexturesManager::GetInstance()
 {
@@ -14,7 +15,7 @@ Texture* TexturesManager::GetGrassTexture()
 {
 	if (grassTexture == nullptr)
 	{
-		grassTexture = new Texture("grass.png", 0);
+		grassTexture = new Texture2D(0, "grass.png");
 	}
 
 	return grassTexture;

@@ -3,9 +3,11 @@
 class Texture
 {
 public:
-	Texture(const char* texture_name, int texture_unit);
+	virtual ~Texture();
 
 	int GetTextureUnit();
+protected:
+	Texture(int texture_unit);
 private:
 	int texture_unit;
 };
