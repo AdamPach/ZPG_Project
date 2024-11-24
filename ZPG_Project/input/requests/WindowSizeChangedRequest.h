@@ -5,6 +5,7 @@
 class WindowSizeChangedRequest : public Request
 {
 public:
+	WindowSizeChangedRequest();
 	WindowSizeChangedRequest(int width, int height);
 	int GetWidth();
 	int GetHeight();

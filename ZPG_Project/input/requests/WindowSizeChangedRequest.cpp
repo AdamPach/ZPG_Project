@@ -1,5 +1,11 @@
 #include "WindowSizeChangedRequest.h"
 
+WindowSizeChangedRequest::WindowSizeChangedRequest()
+{
+	this->width = 0;
+	this->height = 0;
+}
+
 WindowSizeChangedRequest::WindowSizeChangedRequest(int width, int height)
 {
 	this->width = width;

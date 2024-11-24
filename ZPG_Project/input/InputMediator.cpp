@@ -1,12 +1,13 @@
 #include "InputMediator.h"
 #include "../Application.h"
+#include "WindowSizeHandler.h"
 
-InputMediator::InputMediator(Application* application, Camera* camera, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler)
+InputMediator::InputMediator(Application* application, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler)
 {
 	this->application = application;
-	this->camera = camera;
 	this->keyboard_handler = keyboard_handler;
 	this->mouseHandler = mouseHandler;
+	this->window_size_handler = WindowSizeHandler::GetInstance();
 }
 
 void InputMediator::Send(Request * request)
@@ -29,7 +30,7 @@ void InputMediator::Send(Request * request)
 
 	if (window_size_changed_request != nullptr)
 	{
-		camera->HandleRequest(*window_size_changed_request);
+		window_size_handler->HandleRequest(*window_size_changed_request);
 	}
 
 	auto key_action_request = dynamic_cast<KeyActionRequest*>(request);

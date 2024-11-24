@@ -3,11 +3,11 @@
 #include <glm/glm.hpp>
 
 #include "../../abstraction/Subject.h"
-#include "../../abstraction/RequestHandler.h"
 #include "../../input/requests/WindowSizeChangedRequest.h"
 #include "../projections/Projection.h"
 #include "../../defaults.h"
 #include "../../abstraction/UnifromVariableSubject.h"
+#include "../../input/WindowSizeHandler.h"
 #include "CameraPositionSubject.h"
 #include "CameraProjectionSubject.h"
 #include "CameraViewSubject.h"
@@ -27,7 +27,7 @@ const float PITCH = 0.0f;
 const float SPEED = DEFAULT_SPEED;
 const float SENSITIVITY = DEFAULT_SENSITIVITY;
 
-class Camera : public RequestHandler<WindowSizeChangedRequest>
+class Camera : public Observer
 {
 public:
 	Camera(glm::vec3 position = glm::vec3(DEFAULT_CAMERA_X, DEFAULT_CAMERA_Y, DEFAULT_CAMERA_Z), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH);
@@ -35,7 +35,7 @@ public:
 	void ProcessKeyboardMovement(CameraMovement direction);
 	void ProcessMouseMovement(float xoffset, float yoffset);
 	
-	void HandleRequest(WindowSizeChangedRequest request) override;
+	void Update() override;
 
 	TypedDataProviderSubject<glm::vec3>* GetPositionSubject();
 	TypedDataProviderSubject<glm::mat4>* GetProjectionSubject();
@@ -64,6 +64,8 @@ private:
 	CameraProjectionSubject projectionSubject;
 	CameraViewSubject viewSubject;
 	CameraFrontSubject frontSubject;
+
+	WindowSizeHandler* windowSizeHandler;
 
 	glm::mat4 GetViewMatrix();
 	void UpdateCameraVectors();

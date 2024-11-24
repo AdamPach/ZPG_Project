@@ -13,7 +13,10 @@ Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch)
 	Yaw = yaw;
 	Pitch = pitch;
 
-	this->projection = new PrespectiveProjection(45, WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 400);
+	windowSizeHandler = WindowSizeHandler::GetInstance();
+	windowSizeHandler->Subcribe(this);
+
+	this->projection = new PrespectiveProjection(45, windowSizeHandler->GetValue(), 0.1f, 400);
 	projectionSubject.SetValue(projection->GetProjectionMatrix());
 
 	positionSubject.SetValue(Position);
@@ -74,14 +77,14 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset)
 	viewSubject.SetValue(GetViewMatrix());
 }
 
-void Camera::HandleRequest(WindowSizeChangedRequest request)
+void Camera::Update()
 {
 	delete projection;
 
-	this->projection = new PrespectiveProjection(45, request.GetWidth() / request.GetHeight(), 0.1f, 400);
+	this->projection = new PrespectiveProjection(45, windowSizeHandler->GetValue(), 0.1f, 400);
 	projectionSubject.SetValue(projection->GetProjectionMatrix());
+	viewSubject.SetValue(GetViewMatrix());
 }
-
 
 TypedDataProviderSubject<glm::vec3>* Camera::GetPositionSubject()
 {

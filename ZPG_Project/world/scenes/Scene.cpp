@@ -155,7 +155,7 @@ InputMediator* Scene::GetInputMediator(Application* application)
 {
 	if (inputMediator == nullptr)
 	{
-		inputMediator = new InputMediator(application, camera, &keyboardHandler, &mouseHandler);
+		inputMediator = new InputMediator(application, &keyboardHandler, &mouseHandler);
 	}
 
 	return inputMediator;

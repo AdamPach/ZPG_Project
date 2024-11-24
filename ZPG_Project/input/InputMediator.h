@@ -10,18 +10,18 @@
 #include "requests/MouseMoveRequest.h"
 
 class Application;
-class Camera;
+class WindowSizeHandler;
 class KeyboardHandler;
 class MouseHandler;
 
 class InputMediator : public Mediator
 {
 public:
-	InputMediator(Application* application, Camera* camera, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler);
+	InputMediator(Application* application, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler);
 	void Send(Request * request) override;
 private:
 	Application* application;
-	Camera* camera;
+	WindowSizeHandler* window_size_handler;
 	KeyboardHandler* keyboard_handler;
 	MouseHandler* mouseHandler;
 };

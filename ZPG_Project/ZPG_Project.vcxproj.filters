@@ -207,6 +207,9 @@
     <ClCompile Include="input\requests\MouseMoveRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="input\WindowSizeHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -444,6 +447,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="input\requests\MouseMoveRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\WindowSizeHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
