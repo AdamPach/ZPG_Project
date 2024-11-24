@@ -13,6 +13,7 @@ public:
 	ShaderProgramBuilder* AddFragmentShader(const char* shader_file_name);
 	ShaderProgramBuilder* AddTransformationUniform(const char* uniform);
 	ShaderProgramBuilder* AddMaterialUniform(const char* uniform);
+	ShaderProgramBuilder* AddTextureUnitUniform(const char* uniform);
 
 	ShaderProgram* Build();
 private:
@@ -21,6 +22,7 @@ private:
 
 	std::string transformationUniform = "";
 	std::string materialColorUniform = "";
+	std::string textureUnitUniform = "";
 
 	const std::string SHADER_PATH = GPU_SHADER_PATH;
 };

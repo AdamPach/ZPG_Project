@@ -11,6 +11,7 @@
 #define DEFAULT_SENSITIVITY 0.2f
 
 #define GPU_SHADER_PATH "./gpu_shaders/"
+#define TEXTURE_PATH "./assets/"
 
 #define DEFAULT_VIEW_MATRIX_NAME "viewMatrix"
 #define DEFAULT_PROJECTION_MATRIX_NAME "projectionMatrix"
@@ -22,8 +23,10 @@
 #define DEFAULT_SPOT_LIGHT_CUT_OFF_NAME "cutOff"
 #define DEFAULT_SPOT_LIGHT_OUTER_CUT_OFF_NAME "outerCutOff"
 
+#define DEFAULT_MODEL_MATRIX_NAME "modelMatrix"
 #define DEFAULT_CAMERA_POSITION_NAME "cameraPosition"
 #define DEFAULT_MATERIAL_COLOR_NAME "materialColor"
 #define DEFAULT_LIGHTS_COUNT_NAME "lightsCount"
+#define DEFAULT_TEXTURE_UNIT_NAME "textureUnitID"
 
 #define DEFAULT_LIGHTS_NAME "lights"

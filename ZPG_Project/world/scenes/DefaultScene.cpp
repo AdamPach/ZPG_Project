@@ -21,12 +21,6 @@ void DefaultScene::InitShaders()
 		->AddTransformationUniform("modelMatrix");
 
 	AddShaderProgram(shaderBuilder.Build(), "basic_shader");
-
-	shaderBuilder.AddVertexShader("vertext_position_color.vert")
-		->AddFragmentShader("fragment_position_color.vert")
-		->AddTransformationUniform("modelMatrix");
-
-	AddShaderProgram(shaderBuilder.Build(), "basic_shader_2");
 }
 
 void DefaultScene::InitScene()
@@ -42,12 +36,10 @@ void DefaultScene::InitScene()
 		color_shader_program,
 		new Transformation(transformationBuilder.Build())));
 
-	auto color_shader_program_2 = GetShaderProgram("basic_shader_2");
-
 	transformationBuilder.AddTranslation(1.0f, 0, 0);
 
 	AddObject(new SimpleDrawableObject(
 		triangleModel,
-		color_shader_program_2,
+		color_shader_program,
 		new Transformation(transformationBuilder.Build())));
 }

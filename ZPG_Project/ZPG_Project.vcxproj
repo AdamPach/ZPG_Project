@@ -141,17 +141,22 @@
     <ClCompile Include="input\requests\MouseMoveRequest.cpp" />
     <ClCompile Include="input\requests\WindowSizeChangedRequest.cpp" />
     <ClCompile Include="input\WindowSizeHandler.cpp" />
+    <ClCompile Include="objects\abstraction\TriangleNormalTexturedModel.cpp" />
     <ClCompile Include="objects\drawable\DrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\drawable\LightDrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\drawable\MaterialDrawableObjectDecorator.cpp" />
+    <ClCompile Include="objects\drawable\TextureDrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\EmptyModel.cpp" />
     <ClCompile Include="objects\materials\Material.cpp" />
     <ClCompile Include="objects\normaled\SphereObject.cpp" />
     <ClCompile Include="objects\normaled\SuziFlatModel.cpp" />
     <ClCompile Include="objects\normaled\SuziSmoothModel.cpp" />
+    <ClCompile Include="objects\textures\Texture.cpp" />
+    <ClCompile Include="objects\textures\TexturesManager.cpp" />
     <ClCompile Include="shaders\MaterialShaderProgram.cpp" />
     <ClCompile Include="shaders\ShaderLoader.cpp" />
     <ClCompile Include="shaders\ShaderProgramBuilder.cpp" />
+    <ClCompile Include="shaders\TextureShaderProgram.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableFloat.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableInt.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableMat4.cpp" />
@@ -214,18 +219,24 @@
     <ClInclude Include="input\requests\MouseMoveRequest.h" />
     <ClInclude Include="input\requests\WindowSizeChangedRequest.h" />
     <ClInclude Include="input\WindowSizeHandler.h" />
+    <ClInclude Include="objects\abstraction\TriangleNormalTexturedModel.h" />
     <ClInclude Include="objects\drawable\DrawableObject.h" />
     <ClInclude Include="objects\drawable\DrawableObjectDecorator.h" />
     <ClInclude Include="objects\drawable\LightDrawableObjectDecorator.h" />
     <ClInclude Include="objects\drawable\MaterialDrawableObjectDecorator.h" />
+    <ClInclude Include="objects\drawable\TextureDrawableObjectDecorator.h" />
     <ClInclude Include="objects\EmptyModel.h" />
     <ClInclude Include="objects\materials\Material.h" />
+    <ClInclude Include="objects\models\plain_textured.h" />
     <ClInclude Include="objects\normaled\SphereObject.h" />
     <ClInclude Include="objects\normaled\SuziFlatModel.h" />
     <ClInclude Include="objects\normaled\SuziSmoothModel.h" />
+    <ClInclude Include="objects\textures\Texture.h" />
+    <ClInclude Include="objects\textures\TexturesManager.h" />
     <ClInclude Include="shaders\MaterialShaderProgram.h" />
     <ClInclude Include="shaders\ShaderLoader.h" />
     <ClInclude Include="shaders\ShaderProgramBuilder.h" />
+    <ClInclude Include="shaders\TextureShaderProgram.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableFloat.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableInt.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableMat4.h" />
@@ -291,6 +302,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\grass.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

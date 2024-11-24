@@ -1,4 +1,5 @@
 #include "ShaderProgramBuilder.h"
+#include "TextureShaderProgram.h"
 
 ShaderProgramBuilder* ShaderProgramBuilder::AddVertexShader(const char* shader_file_name)
 {
@@ -28,6 +29,13 @@ ShaderProgramBuilder* ShaderProgramBuilder::AddMaterialUniform(const char* unifo
 	return this;
 }
 
+ShaderProgramBuilder* ShaderProgramBuilder::AddTextureUnitUniform(const char* uniform)
+{
+	textureUnitUniform = uniform;
+
+	return this;
+}
+
 ShaderProgram* ShaderProgramBuilder::Build()
 {
 	ShaderLoader loader;
@@ -38,15 +46,31 @@ ShaderProgram* ShaderProgramBuilder::Build()
 
 	GLint transformationUniformLocation = glGetUniformLocation(program, transformationUniform.c_str());
 	GLint materialColorUniformLocation = glGetUniformLocation(program, materialColorUniform.c_str());
+	GLint textureUnitUniformLocation = glGetUniformLocation(program, textureUnitUniform.c_str());
 
 	vertexShaderFileName = "";
 	fragmentShaderFileName = "";
 	transformationUniform = "";
 	materialColorUniform = "";
+	textureUnitUniform = "";
 
-	ShaderProgram* shaderProgram = materialColorUniformLocation != -1 ?
-		new MaterialShaderProgram(program, transformationUniformLocation, materialColorUniformLocation) :
-		new ShaderProgram(program, transformationUniformLocation);
+	ShaderProgram* shaderProgram;
+
+	if (materialColorUniformLocation != -1)
+	{
+		if (textureUnitUniformLocation != -1)
+		{
+			shaderProgram = new TextureShaderProgram(program, transformationUniformLocation, materialColorUniformLocation, textureUnitUniformLocation);
+		}
+		else
+		{
+			shaderProgram = new MaterialShaderProgram(program, transformationUniformLocation, materialColorUniformLocation);
+		}
+	}
+	else
+	{
+		shaderProgram = new ShaderProgram(program, transformationUniformLocation);
+	}
 
 	shaderProgram->Check();
 

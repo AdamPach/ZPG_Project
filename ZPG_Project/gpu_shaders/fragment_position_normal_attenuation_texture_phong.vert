@@ -18,7 +18,6 @@ struct Light {
 uniform Light lights[MAX_LIGHTS];
 uniform int lightsCount;
 uniform vec3 cameraPosition;
-uniform vec3 materialColor;
 uniform sampler2D textureUnitID;
 
 out vec4 frag_colour;
