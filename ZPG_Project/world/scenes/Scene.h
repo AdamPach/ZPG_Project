@@ -21,7 +21,7 @@ public:
 
 	virtual void Draw();
 	Scene* Init();
-	InputMediator* GetInputMediator(Application * application);
+	virtual InputMediator* GetInputMediator(Application * application);
 
 protected:
 	Scene();

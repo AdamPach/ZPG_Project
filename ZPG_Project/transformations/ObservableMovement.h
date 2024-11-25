@@ -10,7 +10,7 @@ public:
 	~ObservableMovement();
 
 	glm::mat4 GetMatrix() override;
-	void Update() override;
+	virtual void Update() override;
 	bool IsDynamic() override;
 private:
 	TypedDataProviderSubject<glm::vec3>* positionSubject;

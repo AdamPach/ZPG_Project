@@ -10,6 +10,11 @@ InputMediator::InputMediator(Application* application, KeyboardHandler* keyboard
 	this->window_size_handler = WindowSizeHandler::GetInstance();
 }
 
+void InputMediator::SetSwitchObservingHandler(RequestHandler<SwitchObservingRequest>* handler)
+{
+	switchObservingHandler = handler;
+}
+
 void InputMediator::Send(Request * request)
 {
 	auto change_scene_request = dynamic_cast<ChangeSceneRequest*>(request);
@@ -47,6 +52,12 @@ void InputMediator::Send(Request * request)
 		mouseHandler->HandleRequest(*mouse_move_request);
 	}
 
+	auto switch_observing_request = dynamic_cast<SwitchObservingRequest*>(request);
+
+	if (switch_observing_request != nullptr && switchObservingHandler != nullptr)
+	{
+		switchObservingHandler->HandleRequest(*switch_observing_request);
+	}
 
 	delete request;
 }

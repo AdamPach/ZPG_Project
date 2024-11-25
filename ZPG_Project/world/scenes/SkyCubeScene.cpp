@@ -3,7 +3,7 @@
 #include "../../objects/models/cube_only_points.h"
 #include "../../objects/abstraction/PositionModel.h"
 #include "../../transformations/TransformationsBuilder.h"
-#include "../../transformations/ObservableMovement.h"
+#include "../../transformations/ObservableOffMovement.h"
 
 SkyCubeScene::SkyCubeScene(TextureCubeMap* skyCube_texture)
 {
@@ -22,7 +22,9 @@ SkyCubeScene::SkyCubeScene(TextureCubeMap* skyCube_texture)
 
 	TransformationsBuilder transformationBuilder;
 
-	transformationBuilder.AddTransformation(new ObservableMovement(GetCameraPositionSubject()));
+	observableOffMovement = new ObservableOffMovement(GetCameraPositionSubject());
+
+	transformationBuilder.AddTransformation(observableOffMovement);
 
 	skyCube = new TextureDrawableObjectDecorator(
 		new SimpleDrawableObject(
@@ -39,4 +41,13 @@ void SkyCubeScene::Draw()
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	Scene::Draw();
+}
+
+InputMediator* SkyCubeScene::GetInputMediator(Application* application)
+{
+	auto inputMediator = Scene::GetInputMediator(application);
+
+	inputMediator->SetSwitchObservingHandler(observableOffMovement);
+
+	return inputMediator;
 }

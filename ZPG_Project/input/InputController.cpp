@@ -4,6 +4,8 @@
 #include "requests/WindowSizeChangedRequest.h"
 #include "requests/KeyActionRequest.h"
 #include "requests/MouseMoveRequest.h"
+#include "requests/SwitchObservingRequest.h"
+
 
 #include <GLFW/glfw3.h>
 
@@ -30,6 +32,11 @@ void InputController::HandleKeyboardInput(int key, int scancode, int action, int
 		else if (key == GLFW_KEY_ESCAPE)
 		{
 			mediator->Send(new ExitRequest());
+			return;
+		}
+		else if (key == GLFW_KEY_O)
+		{
+			mediator->Send(new SwitchObservingRequest());
 			return;
 		}
 	}

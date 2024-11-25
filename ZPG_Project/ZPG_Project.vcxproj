@@ -166,6 +166,7 @@
     <ClCompile Include="shaders\uniforms\UniformVariableVec3.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVarianble.cpp" />
     <ClCompile Include="transformations\ObservableMovement.cpp" />
+    <ClCompile Include="transformations\ObservableOffMovement.cpp" />
     <ClCompile Include="transformations\RandomDynamicMovement.cpp" />
     <ClCompile Include="world\cameras\Camera.cpp" />
     <ClCompile Include="objects\normaled\BushesModel.cpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="input\requests\ExitRequest.h" />
     <ClInclude Include="input\requests\KeyActionRequest.h" />
     <ClInclude Include="input\requests\MouseMoveRequest.h" />
+    <ClInclude Include="input\requests\SwitchObservingRequest.h" />
     <ClInclude Include="input\requests\WindowSizeChangedRequest.h" />
     <ClInclude Include="input\WindowSizeHandler.h" />
     <ClInclude Include="objects\abstraction\PositionModel.h" />
@@ -251,6 +253,7 @@
     <ClInclude Include="shaders\uniforms\UniformVariableVec3.h" />
     <ClInclude Include="shaders\uniforms\UniformVarianble.h" />
     <ClInclude Include="transformations\ObservableMovement.h" />
+    <ClInclude Include="transformations\ObservableOffMovement.h" />
     <ClInclude Include="transformations\RandomDynamicMovement.h" />
     <ClInclude Include="world\cameras\Camera.h" />
     <ClInclude Include="objects\models\bushes.h" />

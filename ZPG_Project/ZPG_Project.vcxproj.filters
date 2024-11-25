@@ -237,6 +237,9 @@
     <ClCompile Include="world\scenes\SkyCubeScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="transformations\ObservableOffMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -510,6 +513,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\scenes\SkyCubeScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transformations\ObservableOffMovement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\requests\SwitchObservingRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

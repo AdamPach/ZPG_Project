@@ -8,6 +8,7 @@
 #include "requests/WindowSizeChangedRequest.h"
 #include "requests/KeyActionRequest.h"
 #include "requests/MouseMoveRequest.h"
+#include "requests/SwitchObservingRequest.h"
 
 class Application;
 class WindowSizeHandler;
@@ -18,10 +19,13 @@ class InputMediator : public Mediator
 {
 public:
 	InputMediator(Application* application, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler);
+
+	void SetSwitchObservingHandler(RequestHandler<SwitchObservingRequest>* handler);
 	void Send(Request * request) override;
 private:
 	Application* application;
 	WindowSizeHandler* window_size_handler;
 	KeyboardHandler* keyboard_handler;
 	MouseHandler* mouseHandler;
+	RequestHandler<SwitchObservingRequest>* switchObservingHandler = nullptr;
 };
