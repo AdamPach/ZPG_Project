@@ -535,30 +535,34 @@
     <None Include="gpu_shaders\vertext_position_normal_light_base_texture2d.vert" />
     <None Include="gpu_shaders\fragment_position_cubemap.vert" />
     <None Include="gpu_shaders\vertext_position_cubemap.vert" />
+    <None Include="assets\models\house.mtl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\grass.png">
+    <Image Include="assets\textures\grass.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\negx.jpg">
+    <Image Include="assets\textures\negx.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\negy.jpg">
+    <Image Include="assets\textures\negy.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\negz.jpg">
+    <Image Include="assets\textures\negz.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\posx.jpg">
+    <Image Include="assets\textures\posx.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\posy.jpg">
+    <Image Include="assets\textures\posy.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\posz.jpg">
+    <Image Include="assets\textures\posz.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\house.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -104,13 +104,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\lib\glew\include;..\lib\glm;..\lib\glfw\include;..\lib\soil\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lib\glew\include;..\lib\glm;..\lib\glfw\include;..\lib\soil\include;..\lib\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\adamp\source\repos\ZPG_Project\lib\soil\lib-vc2012\Platform_x64;..\lib\glew\lib\Release\x64;..\lib\glfw\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib\soil\lib-vc2012\Platform_x64;..\lib\glew\lib\Release\x64;..\lib\glfw\lib-vc2022;..\lib\assimp\lib\x64\v141\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -301,6 +301,7 @@
     <ClInclude Include="objects\abstraction\TriangleNormalModel.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\models\house.mtl" />
     <None Include="gpu_shaders\fragment_position_color.vert" />
     <None Include="gpu_shaders\fragment_position_cubemap.vert" />
     <None Include="gpu_shaders\fragment_position_normal_attenuation_phong.vert" />
@@ -318,13 +319,14 @@
     <Text Include="gpu_shaders\vertext_position_color.vert" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\grass.png" />
-    <Image Include="assets\negx.jpg" />
-    <Image Include="assets\negy.jpg" />
-    <Image Include="assets\negz.jpg" />
-    <Image Include="assets\posx.jpg" />
-    <Image Include="assets\posy.jpg" />
-    <Image Include="assets\posz.jpg" />
+    <Image Include="assets\textures\grass.png" />
+    <Image Include="assets\textures\house.png" />
+    <Image Include="assets\textures\negx.jpg" />
+    <Image Include="assets\textures\negy.jpg" />
+    <Image Include="assets\textures\negz.jpg" />
+    <Image Include="assets\textures\posx.jpg" />
+    <Image Include="assets\textures\posy.jpg" />
+    <Image Include="assets\textures\posz.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,7 +11,7 @@
 #define DEFAULT_SENSITIVITY 0.2f
 
 #define GPU_SHADER_PATH "./gpu_shaders/"
-#define TEXTURE_PATH "./assets/"
+#define TEXTURE_PATH "./assets/textures/"
 
 #define DEFAULT_VIEW_MATRIX_NAME "viewMatrix"
 #define DEFAULT_PROJECTION_MATRIX_NAME "projectionMatrix"
