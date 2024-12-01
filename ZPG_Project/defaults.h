@@ -12,6 +12,7 @@
 
 #define GPU_SHADER_PATH "./gpu_shaders/"
 #define TEXTURE_PATH "./assets/textures/"
+#define MODELS_PATH "./assets/models/"
 
 #define DEFAULT_VIEW_MATRIX_NAME "viewMatrix"
 #define DEFAULT_PROJECTION_MATRIX_NAME "projectionMatrix"

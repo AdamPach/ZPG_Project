@@ -31,6 +31,16 @@ TextureCubeMap* TexturesManager::GetSkycube()
 	return skycube;
 }
 
+Texture* TexturesManager::GetHouseTexture()
+{
+	if (houseTexture == nullptr)
+	{
+		houseTexture = new Texture2D(2, "house.png");
+	}
+
+	return houseTexture;
+}
+
 TexturesManager::TexturesManager()
 {
 }

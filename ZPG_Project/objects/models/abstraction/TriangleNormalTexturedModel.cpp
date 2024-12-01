@@ -3,7 +3,9 @@
 TriangleNormalTexturedModel::TriangleNormalTexturedModel(float* points, int length)
 {
 	this->length = length;
-	this->points = points;
+	this->points = new float[this->length];
+
+	std::memcpy(this->points, points, this->length);
 
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -26,6 +28,8 @@ TriangleNormalTexturedModel::TriangleNormalTexturedModel(float* points, int leng
 
 TriangleNormalTexturedModel::~TriangleNormalTexturedModel()
 {
+	delete[] points;
+
 	glDeleteBuffers(1, &VBO);
 	glDeleteVertexArrays(1, &VAO);
 }

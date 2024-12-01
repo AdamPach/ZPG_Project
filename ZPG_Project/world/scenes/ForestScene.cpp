@@ -14,6 +14,7 @@
 #include "../lights/SpotLight.h"
 #include "../lights/PointLight.h"
 #include "../../objects/textures/TexturesManager.h"
+#include "../../objects/models/builder/ModelBuilder.h"
 
 #include "../../assets/models/plain_textured.h"
 #include "../../objects/models/abstraction/TriangleNormalTexturedModel.h"
@@ -55,10 +56,16 @@ void ForestScene::InitScene()
 	auto texture_shader_program = GetShaderProgram("texture_shader");
 
 	UseCameraPosition();
-
+	
 	TransformationsBuilder transformationBuilder;
 
-	auto texture = new TriangleNormalTexturedModel(plain_textured, sizeof(plain_textured));
+	auto modelBuilder = ModelBuilder::Create();
+	
+	auto texture = modelBuilder->FromPoints(plain_textured, sizeof(plain_textured))
+		->HasPosition()
+		->HasNormals()
+		->HasTextureCoordinates()
+		->Build();
 
 	for (int x = -10; x < 10; x++)
 	{
@@ -144,4 +151,30 @@ void ForestScene::InitScene()
 				new Transformation(transformationBuilder.Build())),
 			new Material(glm::vec3(0.5, 0.5, 0))),
 		new SpotLight(GetCameraFrontSubject(), glm::vec3(1, 1, 1))));
+		
+	auto house = modelBuilder->FromFile("house.obj")
+		->Build();
+
+	transformationBuilder.AddScale(0.4f)
+		->AddTranslation(0,-0.5f,13);
+
+	AddObject(new TextureDrawableObjectDecorator(
+		new SimpleDrawableObject(
+			house,
+			texture_shader_program,
+			new Transformation(transformationBuilder.Build())),
+		TexturesManager::GetInstance()->GetHouseTexture()));
+
+	auto login = modelBuilder->FromFile("login.obj")
+		->Build();
+
+	transformationBuilder.AddRotation(180, Axis::Y)
+		->AddTranslation(-5, -0.5f, 13);
+
+	AddObject(new TextureDrawableObjectDecorator(
+		new SimpleDrawableObject(
+			login,
+			texture_shader_program,
+			new Transformation(transformationBuilder.Build())),
+		TexturesManager::GetInstance()->GetGrassTexture()));
 }

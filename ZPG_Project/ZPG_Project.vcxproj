@@ -149,6 +149,7 @@
     <ClCompile Include="objects\drawable\TextureDrawableObjectDecorator.cpp" />
     <ClCompile Include="objects\EmptyModel.cpp" />
     <ClCompile Include="objects\materials\Material.cpp" />
+    <ClCompile Include="objects\models\builder\ModelBuilder.cpp" />
     <ClCompile Include="objects\models\normaled\SphereObject.cpp" />
     <ClCompile Include="objects\models\normaled\SuziFlatModel.cpp" />
     <ClCompile Include="objects\models\normaled\SuziSmoothModel.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="objects\materials\Material.h" />
     <ClInclude Include="assets\models\cube_only_points.h" />
     <ClInclude Include="assets\models\plain_textured.h" />
+    <ClInclude Include="objects\models\builder\ModelBuilder.h" />
     <ClInclude Include="objects\models\normaled\SphereObject.h" />
     <ClInclude Include="objects\models\normaled\SuziFlatModel.h" />
     <ClInclude Include="objects\models\normaled\SuziSmoothModel.h" />
