@@ -8,17 +8,23 @@ struct Light {
 	vec3 lightPosition;
 };
 
+struct Material {
+    vec3 color;
+    float specular;
+    float ambiente;
+    float diffuse;
+};
+
 uniform Light lights[MAX_LIGHTS];
 uniform int lightsCount;
-uniform vec3 materialColor;
+uniform Material material;
 
 out vec4 frag_colour;
 
 void main () {
 
-    float ambientStrength = 0.1;
     vec3 lightColor = vec3(1.0, 1.0, 1.0);
-    vec4 ambient = ambientStrength * vec4(lightColor, 1.0);
+    vec4 ambient = material.ambiente * vec4(lightColor, 1.0);
 
     vec3 norm = normalize(Normal);
 
@@ -27,10 +33,10 @@ void main () {
     for(int i = 0; i < lightsCount; i++) {
         vec3 lightDir = normalize(lights[i].lightPosition - FragPos);
         float diff = max(dot(norm, lightDir), 0.0);
-        vec4 diffuse = diff * vec4(lightColor, 1.0);  
+        vec4 diffuse = material.diffuse * diff * vec4(lightColor, 1.0);  
 
         result += diffuse;
     }
 
-    frag_colour = (result + ambient) * vec4(materialColor, 1);
+    frag_colour = (result + ambient) * vec4(material.color, 1);
 };

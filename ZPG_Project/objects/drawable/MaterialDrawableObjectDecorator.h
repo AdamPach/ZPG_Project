@@ -7,9 +7,9 @@
 class MaterialDrawableObjectDecorator : public DrawableObjectDecorator
 {
 public:
-	MaterialDrawableObjectDecorator(DrawableObject* drawableObject, Material* material);
+	MaterialDrawableObjectDecorator(DrawableObject* drawableObject, MaterialGetter* material);
 	~MaterialDrawableObjectDecorator();
 	void Draw() override;
 private:
-	Material* material;
+	MaterialGetter* material;
 };

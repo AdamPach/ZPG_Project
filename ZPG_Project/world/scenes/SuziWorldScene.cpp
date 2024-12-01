@@ -20,28 +20,28 @@ void SuziWorldScene::InitShaders()
 	shaderBuilder.AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_phong.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME);
+		->AddMaterialUniform(DEFAULT_MATERIAL_NAME);
 
 	AddShaderProgram(shaderBuilder.Build(), "phong_shader");
 
 	shaderBuilder.AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_lambert.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME);
+		->AddMaterialUniform(DEFAULT_MATERIAL_NAME);
 
 	AddShaderProgram(shaderBuilder.Build(), "lambert_shader");
 
 	shaderBuilder.AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_blinn.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME);
+		->AddMaterialUniform(DEFAULT_MATERIAL_NAME);
 
 	AddShaderProgram(shaderBuilder.Build(), "blinn_shader");
 
 	shaderBuilder.AddVertexShader("vertex_position_normal_constant.vert")
 		->AddFragmentShader("fragment_position_normal_constant.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME);
+		->AddMaterialUniform(DEFAULT_MATERIAL_NAME);
 
 	AddShaderProgram(shaderBuilder.Build(), "constant_shader");
 }
@@ -62,7 +62,7 @@ void SuziWorldScene::InitScene()
 		->Build();
 
 	auto baseMovement = transformationBuilder.AddTranslation(0, 0, -3.0f)->Build();
-	auto material = new Material(glm::vec3(0.8f, 0, 0));
+	auto material = (new Material())->SetColor(glm::vec3(0.8f, 0, 0));
 
 	transformationBuilder
 		.AddTransformation(smoothTransformation)
@@ -73,7 +73,7 @@ void SuziWorldScene::InitScene()
 			SuziFlatModel::GetInstance(),
 			phongShaderProgram,
 			new Transformation(transformationBuilder.Build())),
-		new Material(glm::vec3(0.8f, 0, 0))));
+		material));
 	
 	transformationBuilder
 		.AddTransformation(smoothTransformation)

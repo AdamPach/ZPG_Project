@@ -1,6 +1,6 @@
 #include "MaterialDrawableObjectDecorator.h"
 
-MaterialDrawableObjectDecorator::MaterialDrawableObjectDecorator(DrawableObject* drawableObject, Material* material) : DrawableObjectDecorator(drawableObject)
+MaterialDrawableObjectDecorator::MaterialDrawableObjectDecorator(DrawableObject* drawableObject, MaterialGetter* material) : DrawableObjectDecorator(drawableObject)
 {
 	this->material = material;
 }
@@ -22,4 +22,9 @@ void MaterialDrawableObjectDecorator::Draw()
 	}
 
 	DrawableObjectDecorator::Draw();
+
+	if (materialShader != nullptr)
+	{
+		materialShader->UnsetMaterial();
+	}
 }

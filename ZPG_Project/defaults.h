@@ -26,8 +26,12 @@
 
 #define DEFAULT_MODEL_MATRIX_NAME "modelMatrix"
 #define DEFAULT_CAMERA_POSITION_NAME "cameraPosition"
-#define DEFAULT_MATERIAL_COLOR_NAME "materialColor"
 #define DEFAULT_LIGHTS_COUNT_NAME "lightsCount"
 #define DEFAULT_TEXTURE_UNIT_NAME "textureUnitID"
+#define DEFAULT_MATERIAL_NAME "material"
+#define DEFAULT_MATERIAL_AMBIENT_NAME "ambiente"
+#define DEFAULT_MATERIAL_DIFFUSE_NAME "diffuse"
+#define DEFAULT_MATERIAL_SPECULAR_NAME "specular"
+#define DEFAULT_MATERIAL_COLOR_NAME "color"
 
 #define DEFAULT_LIGHTS_NAME "lights"

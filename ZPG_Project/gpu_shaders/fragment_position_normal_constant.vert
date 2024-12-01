@@ -3,15 +3,21 @@
 in vec3 FragPos;
 in vec3 Normal;
 
-uniform vec3 materialColor;
+struct Material {
+    vec3 color;
+    float specular;
+    float ambiente;
+    float diffuse;
+};
+
+uniform Material material;
 
 out vec4 frag_colour;
 
 void main () {
 
-    float ambientStrength = 0.3;
     vec3 lightColor = vec3(1.0, 1.0, 1.0);
-    vec4 ambient = ambientStrength * vec4(lightColor, 1.0);
+    vec4 ambient = material.ambiente * vec4(lightColor, 1.0);
 
-    frag_colour = ambient * vec4(materialColor, 1);
+    frag_colour = ambient * vec4(material.color, 1);
 };

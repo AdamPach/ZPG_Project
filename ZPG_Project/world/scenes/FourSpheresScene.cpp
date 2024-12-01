@@ -23,7 +23,7 @@ void FourSpheresScene::InitShaders()
 	shaderBuilder.AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_phong.vert")
 		->AddTransformationUniform("modelMatrix")
-		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME);
+		->AddMaterialUniform(DEFAULT_MATERIAL_NAME);
 
 	AddShaderProgram(shaderBuilder.Build(), "phong_shader");
 }
@@ -40,40 +40,30 @@ void FourSpheresScene::InitScene()
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(-1, 0, 0);
 
-	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), new Material(glm::vec3(0.8f, 0, 0))));
+	auto material = (new Material())->SetColor(glm::vec3(0.8f, 0, 0))->SetAmbient(0.1f)->SetSpecular(1);
+
+	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), material));
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(1, 0, 0);
 
-	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), new Material(glm::vec3(0.3f, 0.5f, 0))));
+	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), material));
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, -1, 0);
 
-	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), new Material(glm::vec3(0, 0.8f, 0.3f))));
+	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), material));
 
 	transformationBuilder.AddTransformation(baseTransformation)->AddTranslation(0, 1, 0);
 
-	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), new Material(glm::vec3(0.8f, 0, 0.8f))));
+	AddObject(new MaterialDrawableObjectDecorator(new SimpleDrawableObject(SphereObject::GetInstance(), shaderProgram, new Transformation(transformationBuilder.Build())), material));
 
 	transformationBuilder.AddScale(0.01f)->AddTranslation(0, 0, -1);
 
 
 	AddObject(new LightDrawableObjectDecorator(
-		new MaterialDrawableObjectDecorator(
 			new SimpleDrawableObject(
 				EmptyModel::GetInstance(),
 				shaderProgram,
-				new Transformation(transformationBuilder.Build())),
-			new Material(glm::vec3(0.8f, 0, 0.8f))), 
+				new Transformation(transformationBuilder.Build())), 
 		new PointLight(glm::vec3(1,1,1))));
-
-
-	transformationBuilder.AddRotation(90.0f, X)->AddTranslation(0, 0, -3);
-
-	AddObject(new MaterialDrawableObjectDecorator(
-		new SimpleDrawableObject(
-			PlainModel::GetInstance(),
-			shaderProgram,
-			new Transformation(transformationBuilder.Build())),
-		new Material(glm::vec3(0.5f))));
 
 }

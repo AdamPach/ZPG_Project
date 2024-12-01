@@ -8,21 +8,26 @@ struct Light {
 	vec3 lightPosition;
 };
 
+struct Material {
+    vec3 color;
+    float specular;
+    float ambiente;
+    float diffuse;
+};
+
 uniform Light lights[MAX_LIGHTS];
 uniform int lightsCount;
 uniform vec3 cameraPosition;
-uniform vec3 materialColor;
+uniform Material material;
 
 out vec4 frag_colour;
 
 void main () {
 
-    float ambientStrength = 0.1;
     vec3 lightColor = vec3(0.5, 0.5, 0.5);
 
-    vec4 ambient = ambientStrength * vec4(lightColor, 1.0);
+    vec4 ambient = material.ambiente * vec4(lightColor, 1.0);
     vec3 norm = normalize(Normal);
-    float specularStrength = 1;
 
     vec4 result = vec4(0.0);
 
@@ -30,16 +35,16 @@ void main () {
     {
         vec3 lightDir = normalize(lights[i].lightPosition - FragPos);
         float diff = max(dot(norm, lightDir), 0.0);
-        vec4 diffuse = diff * vec4(lightColor, 1.0);
+        vec4 diffuse = material.diffuse * diff * vec4(lightColor, 1.0);
 
         vec3 viewDir = normalize(cameraPosition - FragPos);
         vec3 halfWayDir = normalize(lightDir + viewDir);
         float spec = pow(max(dot(norm, halfWayDir), 0.0), 16);
-        vec4 specular = specularStrength * spec * vec4(lightColor, 1.0);
+        vec4 specular = material.specular * spec * vec4(lightColor, 1.0);
 
         result += (diffuse + specular);
 		
 	}
 
-    frag_colour = (result + ambient) * vec4(materialColor, 1);
+    frag_colour = (result + ambient) * vec4(material.color, 1);
 };

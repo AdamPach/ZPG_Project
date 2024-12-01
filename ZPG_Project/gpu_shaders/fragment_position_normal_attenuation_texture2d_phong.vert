@@ -15,10 +15,17 @@ struct Light {
     float outerCutOff;
 };
 
+struct Material {
+    float specular;
+    float ambiente;
+    float diffuse;
+};
+
 uniform Light lights[MAX_LIGHTS];
 uniform int lightsCount;
 uniform vec3 cameraPosition;
 uniform sampler2D textureUnitID;
+uniform Material material;
 
 out vec4 frag_colour;
 
@@ -34,15 +41,13 @@ vec4 calculatePointLight(Light light)
 
     vec3 lightDir = normalize(light.lightPosition - FragPos);
     float diff = max(dot(norm, lightDir), 0.0);
-    vec4 diffuse = diff * vec4(light.lightColor, 1.0);
+    vec4 diffuse = material.diffuse * diff * vec4(light.lightColor, 1.0);
 
     vec3 viewDir = normalize(cameraPosition - FragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
     float spec = pow(max(dot(reflectDir, viewDir), 0.0), 16);
 
-    float specularStrength = 1;
-
-    vec4 specular = specularStrength * spec * vec4(light.lightColor, 1.0);
+    vec4 specular = material.specular * spec * vec4(light.lightColor, 1.0);
 
     return ((diffuse + specular) * calculateAttenuation(light.lightPosition, 1, 1, 1));
 }
@@ -61,15 +66,13 @@ vec4 calculateSpotLight(Light light)
         float intensity = (theta - light.outerCutOff) / epsilon;
 
 		float diff = max(dot(norm, lightDir), 0.0);
-		vec4 diffuse = intensity * diff * vec4(light.lightColor, 1.0);
+		vec4 diffuse = intensity * material.diffuse * diff * vec4(light.lightColor, 1.0);
 
 		vec3 viewDir = normalize(cameraPosition - FragPos);
 		vec3 reflectDir = reflect(-lightDir, norm);
 		float spec = pow(max(dot(reflectDir, viewDir), 0.0), 16);
 
-		float specularStrength = 1;
-
-		vec4 specular = intensity * specularStrength * spec * vec4(light.lightColor, 1.0);
+		vec4 specular = intensity * material.specular * spec * vec4(light.lightColor, 1.0);
 
 		return ((diffuse + specular) * calculateAttenuation(light.lightPosition, 0.2, 0.2, 0.2));
 	}
@@ -79,10 +82,9 @@ vec4 calculateSpotLight(Light light)
 
 void main () {
 
-    float ambientStrength = 0.0;
     vec3 lightColor = vec3(0.5, 0.5, 0.5);
 
-    vec4 ambient = ambientStrength * vec4(lightColor, 1.0);
+    vec4 ambient = material.ambiente * vec4(lightColor, 1.0);
 
     vec4 result = vec4(0.0);
 

@@ -33,7 +33,7 @@ void ForestScene::InitShaders()
 	builder.AddVertexShader("vertext_position_normal_light_base.vert")
 		->AddFragmentShader("fragment_position_normal_attenuation_phong.vert")
 		->AddTransformationUniform(DEFAULT_MODEL_MATRIX_NAME)
-		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME);
+		->AddMaterialUniform(DEFAULT_MATERIAL_NAME);
 
 	auto color_shader_program = builder.Build();
 
@@ -42,7 +42,7 @@ void ForestScene::InitShaders()
 	builder.AddVertexShader("vertext_position_normal_light_base_texture2d.vert")
 		->AddFragmentShader("fragment_position_normal_attenuation_texture2d_phong.vert")
 		->AddTransformationUniform(DEFAULT_MODEL_MATRIX_NAME)
-		->AddMaterialUniform(DEFAULT_MATERIAL_COLOR_NAME)
+		->AddMaterialUniform(DEFAULT_MATERIAL_NAME)
 		->AddTextureUnitUniform(DEFAULT_TEXTURE_UNIT_NAME);
 
 	auto texture_shader_program = builder.Build();
@@ -60,6 +60,8 @@ void ForestScene::InitScene()
 	TransformationsBuilder transformationBuilder;
 
 	auto modelBuilder = ModelBuilder::Create();
+
+	auto textureMaterial = (new Material());
 	
 	auto texture = modelBuilder->FromPoints(plain_textured, sizeof(plain_textured))
 		->HasPosition()
@@ -73,17 +75,19 @@ void ForestScene::InitScene()
 		{
 			transformationBuilder.AddTranslation(x * 2, -0.5f, z * 2);
 
-			AddObject(new TextureDrawableObjectDecorator(
-				new SimpleDrawableObject(
-					texture,
-					texture_shader_program,
-					new Transformation(transformationBuilder.Build())),
-				TexturesManager::GetInstance()->GetGrassTexture()));
+			AddObject(new MaterialDrawableObjectDecorator(
+				new TextureDrawableObjectDecorator(
+					new SimpleDrawableObject(
+						texture,
+						texture_shader_program,
+						new Transformation(transformationBuilder.Build())),
+					TexturesManager::GetInstance()->GetGrassTexture()),
+			textureMaterial));
 		}
 	}
 
-	auto treeMaterial = new Material(glm::vec3(0, 0.5, 0));
-	auto bushMaterial = new Material(glm::vec3(0.5, 0.25, 0.05));
+	auto treeMaterial = (new Material())->SetColor(glm::vec3(0, 0.5, 0))->SetAmbient(0.05f);
+	auto bushMaterial = (new Material())->SetColor(glm::vec3(0.5, 0.25, 0.05))->SetAmbient(0.05f);
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -137,7 +141,7 @@ void ForestScene::InitScene()
 					SphereObject::GetInstance(),
 					color_shader_program,
 					new Transformation(transformationBuilder.Build())),
-				new Material(glm::vec3(0.5, 0.5, 0))),
+				(new Material())->SetColor(glm::vec3(0.5, 0.5, 0))),
 			new PointLight(glm::vec3(0.2, 0.2, 0.2))));
 	}
 	
@@ -149,7 +153,7 @@ void ForestScene::InitScene()
 				EmptyModel::GetInstance(),
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())),
-			new Material(glm::vec3(0.5, 0.5, 0))),
+			(new Material())->SetColor(glm::vec3(0.5, 0.5, 0))),
 		new SpotLight(GetCameraFrontSubject(), glm::vec3(1, 1, 1))));
 		
 	auto house = modelBuilder->FromFile("house.obj")
@@ -158,12 +162,14 @@ void ForestScene::InitScene()
 	transformationBuilder.AddScale(0.4f)
 		->AddTranslation(0,-0.5f,13);
 
-	AddObject(new TextureDrawableObjectDecorator(
-		new SimpleDrawableObject(
-			house,
-			texture_shader_program,
-			new Transformation(transformationBuilder.Build())),
-		TexturesManager::GetInstance()->GetHouseTexture()));
+	AddObject(new MaterialDrawableObjectDecorator(
+		new TextureDrawableObjectDecorator(
+			new SimpleDrawableObject(
+				house,
+				texture_shader_program,
+				new Transformation(transformationBuilder.Build())),
+			TexturesManager::GetInstance()->GetHouseTexture()),
+		textureMaterial));
 
 	auto login = modelBuilder->FromFile("login.obj")
 		->Build();
@@ -171,10 +177,12 @@ void ForestScene::InitScene()
 	transformationBuilder.AddRotation(180, Axis::Y)
 		->AddTranslation(-5, -0.5f, 13);
 
-	AddObject(new TextureDrawableObjectDecorator(
-		new SimpleDrawableObject(
-			login,
-			texture_shader_program,
-			new Transformation(transformationBuilder.Build())),
-		TexturesManager::GetInstance()->GetGrassTexture()));
+	AddObject(new MaterialDrawableObjectDecorator(
+		new TextureDrawableObjectDecorator(
+			new SimpleDrawableObject(
+				login,
+				texture_shader_program,
+				new Transformation(transformationBuilder.Build())),
+			TexturesManager::GetInstance()->GetGrassTexture()),
+		textureMaterial));
 }

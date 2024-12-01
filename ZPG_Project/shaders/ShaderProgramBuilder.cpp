@@ -45,7 +45,10 @@ ShaderProgram* ShaderProgramBuilder::Build()
 		(SHADER_PATH + fragmentShaderFileName).c_str());
 
 	GLint transformationUniformLocation = glGetUniformLocation(program, transformationUniform.c_str());
-	GLint materialColorUniformLocation = glGetUniformLocation(program, materialColorUniform.c_str());
+	GLint materialColorUniformLocation = glGetUniformLocation(program, std::string(materialColorUniform).append(".").append(DEFAULT_MATERIAL_COLOR_NAME).c_str());
+	GLint materialSpecularUniformLocation = glGetUniformLocation(program, std::string(materialColorUniform).append(".").append(DEFAULT_MATERIAL_SPECULAR_NAME).c_str());
+	GLint materialAmbientUniformLocation = glGetUniformLocation(program, std::string(materialColorUniform).append(".").append(DEFAULT_MATERIAL_AMBIENT_NAME).c_str());
+	GLint materialDiffuseUniformLocation = glGetUniformLocation(program, std::string(materialColorUniform).append(".").append(DEFAULT_MATERIAL_DIFFUSE_NAME).c_str());
 	GLint textureUnitUniformLocation = glGetUniformLocation(program, textureUnitUniform.c_str());
 
 	vertexShaderFileName = "";
@@ -58,12 +61,21 @@ ShaderProgram* ShaderProgramBuilder::Build()
 
 	if (textureUnitUniformLocation != -1)
 	{
-		shaderProgram = new TextureShaderProgram(program, transformationUniformLocation, materialColorUniformLocation, textureUnitUniformLocation);
+		auto materialShader = new TextureShaderProgram(program, transformationUniformLocation, textureUnitUniformLocation);
+		materialShader->SetColorLocation(materialColorUniformLocation);
+		materialShader->SetAmbientLocation(materialAmbientUniformLocation);
+		materialShader->SetDiffuseLocation(materialDiffuseUniformLocation);
+		materialShader->SetSpecularLocation(materialSpecularUniformLocation);
+		shaderProgram = materialShader;
 	}
-
-	else if (materialColorUniformLocation != -1)
+	else if (materialColorUniformLocation != -1 || materialAmbientUniformLocation != -1 || materialDiffuseUniformLocation != -1 || materialSpecularUniformLocation != -1)
 	{
-		shaderProgram = new MaterialShaderProgram(program, transformationUniformLocation, materialColorUniformLocation);
+		auto materialShader = new MaterialShaderProgram(program, transformationUniformLocation);
+		materialShader->SetColorLocation(materialColorUniformLocation);
+		materialShader->SetAmbientLocation(materialAmbientUniformLocation);
+		materialShader->SetDiffuseLocation(materialDiffuseUniformLocation);
+		materialShader->SetSpecularLocation(materialSpecularUniformLocation);
+		shaderProgram = materialShader;
 	}
 	else
 	{
