@@ -1,6 +1,6 @@
 #include "SkyCubeScene.h"
 #include "../../objects/drawable/TextureDrawableObjectDecorator.h"
-#include "../../objects/models/cube_only_points.h"
+#include "../../assets/models/cube_only_points.h"
 #include "../../objects/abstraction/PositionModel.h"
 #include "../../transformations/TransformationsBuilder.h"
 #include "../../transformations/ObservableOffMovement.h"

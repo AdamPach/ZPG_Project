@@ -248,25 +248,25 @@
     <ClInclude Include="shaders\ShaderProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\bushes.h">
+    <ClInclude Include="assets\models\bushes.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\gift.h">
+    <ClInclude Include="assets\models\gift.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\plain.h">
+    <ClInclude Include="assets\models\plain.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\sphere.h">
+    <ClInclude Include="assets\models\sphere.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\suzi_flat.h">
+    <ClInclude Include="assets\models\suzi_flat.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\suzi_smooth.h">
+    <ClInclude Include="assets\models\suzi_smooth.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\tree.h">
+    <ClInclude Include="assets\models\tree.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="objects\drawable\SimpleDrawableObject.h">
@@ -485,7 +485,7 @@
     <ClInclude Include="objects\abstraction\TriangleNormalTexturedModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\plain_textured.h">
+    <ClInclude Include="assets\models\plain_textured.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="objects\drawable\TextureDrawableObjectDecorator.h">
@@ -509,7 +509,7 @@
     <ClInclude Include="objects\abstraction\PositionModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objects\models\cube_only_points.h">
+    <ClInclude Include="assets\models\cube_only_points.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\scenes\SkyCubeScene.h">

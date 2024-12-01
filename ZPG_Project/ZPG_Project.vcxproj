@@ -234,8 +234,8 @@
     <ClInclude Include="objects\drawable\TextureDrawableObjectDecorator.h" />
     <ClInclude Include="objects\EmptyModel.h" />
     <ClInclude Include="objects\materials\Material.h" />
-    <ClInclude Include="objects\models\cube_only_points.h" />
-    <ClInclude Include="objects\models\plain_textured.h" />
+    <ClInclude Include="assets\models\cube_only_points.h" />
+    <ClInclude Include="assets\models\plain_textured.h" />
     <ClInclude Include="objects\normaled\SphereObject.h" />
     <ClInclude Include="objects\normaled\SuziFlatModel.h" />
     <ClInclude Include="objects\normaled\SuziSmoothModel.h" />
@@ -256,12 +256,12 @@
     <ClInclude Include="transformations\ObservableOffMovement.h" />
     <ClInclude Include="transformations\RandomDynamicMovement.h" />
     <ClInclude Include="world\cameras\Camera.h" />
-    <ClInclude Include="objects\models\bushes.h" />
+    <ClInclude Include="assets\models\bushes.h" />
     <ClInclude Include="objects\normaled\BushesModel.h" />
     <ClInclude Include="objects\drawable\SimpleDrawableObject.h" />
-    <ClInclude Include="objects\models\gift.h" />
+    <ClInclude Include="assets\models\gift.h" />
     <ClInclude Include="objects\abstraction\Model.h" />
-    <ClInclude Include="objects\models\plain.h" />
+    <ClInclude Include="assets\models\plain.h" />
     <ClInclude Include="objects\normaled\PlainModel.h" />
     <ClInclude Include="transformations\Rotation.h" />
     <ClInclude Include="transformations\Scale.h" />
@@ -288,15 +288,15 @@
     <ClInclude Include="world\scenes\FourSpheresScene.h" />
     <ClInclude Include="world\scenes\Scene.h" />
     <ClInclude Include="shaders\ShaderProgram.h" />
-    <ClInclude Include="objects\models\sphere.h" />
-    <ClInclude Include="objects\models\suzi_flat.h" />
-    <ClInclude Include="objects\models\suzi_smooth.h" />
+    <ClInclude Include="assets\models\sphere.h" />
+    <ClInclude Include="assets\models\suzi_flat.h" />
+    <ClInclude Include="assets\models\suzi_smooth.h" />
     <ClInclude Include="transformations\Transformation.h" />
     <ClInclude Include="transformations\TransformationBasic.h" />
     <ClInclude Include="transformations\TransformationComposite.h" />
     <ClInclude Include="transformations\TransformationsBuilder.h" />
     <ClInclude Include="transformations\Translation.h" />
-    <ClInclude Include="objects\models\tree.h" />
+    <ClInclude Include="assets\models\tree.h" />
     <ClInclude Include="objects\normaled\TreeModel.h" />
     <ClInclude Include="objects\abstraction\TriangleNormalModel.h" />
   </ItemGroup>

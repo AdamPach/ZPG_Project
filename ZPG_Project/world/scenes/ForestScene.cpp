@@ -15,7 +15,7 @@
 #include "../lights/PointLight.h"
 #include "../../objects/textures/TexturesManager.h"
 
-#include "../../objects/models/plain_textured.h"
+#include "../../assets/models/plain_textured.h"
 #include "../../objects/abstraction/TriangleNormalTexturedModel.h"
 
 

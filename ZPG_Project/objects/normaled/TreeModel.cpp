@@ -1,5 +1,5 @@
 #include "TreeModel.h"
-#include "../models/tree.h"
+#include "../../assets/models/tree.h"
 
 TreeModel::TreeModel() : TriangleNormalModel(tree, sizeof(tree))
 {
