@@ -1,10 +1,10 @@
 #include "ForestScene.h"
 
 #include "../../shaders/ShaderProgram.h"
-#include "../../objects/normaled/PlainModel.h"
-#include "../../objects/normaled/TreeModel.h"
-#include "../../objects/normaled/BushesModel.h"
-#include "../../objects/normaled/SphereObject.h"
+#include "../../objects/models/normaled/PlainModel.h"
+#include "../../objects/models/normaled/TreeModel.h"
+#include "../../objects/models/normaled/BushesModel.h"
+#include "../../objects/models/normaled/SphereObject.h"
 #include "../../transformations/TransformationsBuilder.h"
 #include "../../objects/drawable/MaterialDrawableObjectDecorator.h"
 #include "../../objects/drawable/TextureDrawableObjectDecorator.h"
@@ -16,7 +16,7 @@
 #include "../../objects/textures/TexturesManager.h"
 
 #include "../../assets/models/plain_textured.h"
-#include "../../objects/abstraction/TriangleNormalTexturedModel.h"
+#include "../../objects/models/abstraction/TriangleNormalTexturedModel.h"
 
 
 

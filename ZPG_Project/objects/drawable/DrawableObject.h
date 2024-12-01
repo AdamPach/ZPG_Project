@@ -2,7 +2,7 @@
 
 #include "../../shaders/ShaderProgram.h"
 #include "../../transformations/Transformation.h"
-#include "../abstraction/Model.h"
+#include "../models/abstraction/Model.h"
 #include <vector>
 
 class DrawableObject

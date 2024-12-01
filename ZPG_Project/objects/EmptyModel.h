@@ -1,6 +1,6 @@
 #pragma once
 
-#include "abstraction/Model.h"
+#include "models/abstraction/Model.h"
 
 class EmptyModel : public Model
 {

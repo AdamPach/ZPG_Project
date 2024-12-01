@@ -1,5 +1,5 @@
 #include "BushesModel.h"
-#include "../../assets/models/bushes.h"
+#include "../../../assets/models/bushes.h"
 
 BushesModel::BushesModel() : TriangleNormalModel(bushes, sizeof(bushes))
 {

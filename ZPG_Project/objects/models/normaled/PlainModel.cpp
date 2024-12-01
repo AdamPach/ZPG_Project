@@ -1,5 +1,5 @@
 #include "PlainModel.h"
-#include "../../assets/models/plain.h"
+#include "../../../assets/models/plain.h"
 
 PlainModel::PlainModel() : TriangleNormalModel(plain, sizeof(plain))
 {

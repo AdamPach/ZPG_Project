@@ -1,8 +1,8 @@
 #include "DefaultScene.h"
 #include "../../defaults.h"
 #include "../../transformations/TransformationsBuilder.h"
-#include "../../objects/abstraction/TriangleNormalModel.h"
-#include "../../objects/abstraction/PositionModel.h"
+#include "../../objects/models/abstraction/TriangleNormalModel.h"
+#include "../../objects/models/abstraction/PositionModel.h"
 #include "../../objects/drawable/TextureDrawableObjectDecorator.h"
 #include "../../objects/textures/TexturesManager.h"
 
