@@ -30,6 +30,13 @@ void Application::framebuffer_size_callback(GLFWwindow* window, int width, int h
 	app->input_controller.HandleWindowSizeChanged(width, height);
 }
 
+void Application::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+
+	app->input_controller.HandleMouseClickInput(button, action);
+}
+
 void Application::Init()
 {
 	glfwSetErrorCallback(error_callback);
@@ -46,7 +53,7 @@ void Application::Init()
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_move_callback);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
 	srand(time(NULL));
 
@@ -101,6 +108,19 @@ void Application::HandleRequest(ChangeSceneRequest request)
 void Application::HandleRequest(ExitRequest request)
 {
 	glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
+
+void Application::HandleRequest(SwitchCursorLockStateRequest request)
+{
+	cursor_locked = !cursor_locked;
+	if (cursor_locked)
+	{
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	}
+	else
+	{
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
 }
 
 void Application::error_callback(int error, const char* description)

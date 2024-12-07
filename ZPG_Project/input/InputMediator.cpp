@@ -2,6 +2,7 @@
 #include "../Application.h"
 #include "WindowSizeHandler.h"
 
+
 InputMediator::InputMediator(Application* application, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler)
 {
 	this->application = application;
@@ -57,6 +58,20 @@ void InputMediator::Send(Request * request)
 	if (switch_observing_request != nullptr && switchObservingHandler != nullptr)
 	{
 		switchObservingHandler->HandleRequest(*switch_observing_request);
+	}
+
+	auto switch_cursor_lock_state_request = dynamic_cast<SwitchCursorLockStateRequest*>(request);
+
+	if (switch_cursor_lock_state_request != nullptr)
+	{
+		application->HandleRequest(*switch_cursor_lock_state_request);
+	}
+
+	auto mouse_clicked_request = dynamic_cast<MouseClickedRequest*>(request);
+
+	if (mouse_clicked_request != nullptr)
+	{
+		mouseHandler->HandleRequest(*mouse_clicked_request);
 	}
 
 	delete request;

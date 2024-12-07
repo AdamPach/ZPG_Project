@@ -9,6 +9,7 @@
 #include "requests/KeyActionRequest.h"
 #include "requests/MouseMoveRequest.h"
 #include "requests/SwitchObservingRequest.h"
+#include "requests/MouseClickedRequest.h"
 
 class Application;
 class WindowSizeHandler;

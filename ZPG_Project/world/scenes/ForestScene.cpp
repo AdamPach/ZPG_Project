@@ -61,7 +61,7 @@ void ForestScene::InitScene()
 
 	auto modelBuilder = ModelBuilder::Create();
 
-	auto textureMaterial = (new Material());
+	auto textureMaterial = (new Material())->SetAmbient(0.3f)->SetDiffuse(0.7f);
 	
 	auto texture = modelBuilder->FromPoints(plain_textured, sizeof(plain_textured))
 		->HasPosition()

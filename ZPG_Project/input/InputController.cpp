@@ -5,6 +5,8 @@
 #include "requests/KeyActionRequest.h"
 #include "requests/MouseMoveRequest.h"
 #include "requests/SwitchObservingRequest.h"
+#include "requests/SwitchCursorLockStateRequest.h"
+#include "requests/MouseClickedRequest.h"
 
 
 #include <GLFW/glfw3.h>
@@ -39,6 +41,10 @@ void InputController::HandleKeyboardInput(int key, int scancode, int action, int
 			mediator->Send(new SwitchObservingRequest());
 			return;
 		}
+		else if (key == GLFW_KEY_L)
+		{
+			mediator->Send(new SwitchCursorLockStateRequest());
+		}
 	}
 
 	if (action == GLFW_PRESS)
@@ -60,6 +66,23 @@ void InputController::HandleMouseMoveInput(double xpos, double ypos)
 	}
 
 	mediator->Send(new MouseMoveRequest(xpos, ypos));
+}
+
+void InputController::HandleMouseClickInput(int button, int action)
+{
+	if (mediator == nullptr)
+	{
+		return;
+	}
+
+	if (action == GLFW_PRESS)
+	{
+		mediator->Send(new MouseClickedRequest(button, MouseClickedRequest::MOUSE_PRESSED));
+	}
+	else if (action == GLFW_RELEASE)
+	{
+		mediator->Send(new MouseClickedRequest(button, MouseClickedRequest::MOUSE_RELEASED));
+	}
 }
 
 void InputController::HandleWindowSizeChanged(int width, int height)

@@ -110,32 +110,6 @@ void ModelBuilder::LoadPointsFromFile()
 		vertexSize += 2;
 		hasTextureCoordinates = true;
 	}
-	/*
-	points = new float[mesh->mNumVertices * vertexSize];
-	length = mesh->mNumVertices * vertexSize * sizeof(float);
-
-	for (unsigned int j = 0; j < mesh->mNumVertices; j++)
-	{
-		if (hasPosition)
-		{
-			points[j * vertexSize] = mesh->mVertices[mesh->mFaces].x;
-			points[j * vertexSize + 1] = mesh->mVertices[j].y;
-			points[j * vertexSize + 2] = mesh->mVertices[j].z;
-		}
-		if (hasNormals)
-		{
-			points[j * vertexSize + 3] = mesh->mNormals[j].x;
-			points[j * vertexSize + 4] = mesh->mNormals[j].y;
-			points[j * vertexSize + 5] = mesh->mNormals[j].z;
-		}
-		if (hasTextureCoordinates)
-		{
-			points[j * vertexSize + 6] = mesh->mTextureCoords[0][j].x;
-			points[j * vertexSize + 7] = mesh->mTextureCoords[0][j].y;
-		}
-	}
-
-	*/
 
 	std::vector<float> vertices;
 

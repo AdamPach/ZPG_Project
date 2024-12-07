@@ -243,6 +243,9 @@
     <ClCompile Include="objects\models\builder\ModelBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="input\requests\MouseClickedRequest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -525,6 +528,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="objects\models\builder\ModelBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\requests\SwitchCursorLockStateRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\requests\MouseClickedRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

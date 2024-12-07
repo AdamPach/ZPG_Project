@@ -1,4 +1,7 @@
 #include "MouseHandler.h"
+#include <iostream>
+#include <GL/glew.h>
+#include "../defaults.h"
 
 void MouseHandler::HandleRequest(MouseMoveRequest request)
 {
@@ -17,6 +20,16 @@ void MouseHandler::HandleRequest(MouseMoveRequest request)
 
 	lastX = xpos;
 	lastY = ypos;
+}
+
+void MouseHandler::HandleRequest(MouseClickedRequest request)
+{
+	if (request.GetAction() == MouseClickedRequest::MOUSE_PRESSED)
+	{
+		GLfloat d;
+		glReadPixels(lastX, lastY, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &d);
+		std::cout << "Depth: " << d << std::endl;
+	}
 }
 
 float MouseHandler::GetXOffset()
