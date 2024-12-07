@@ -10,16 +10,18 @@
 #include "requests/MouseMoveRequest.h"
 #include "requests/SwitchObservingRequest.h"
 #include "requests/MouseClickedRequest.h"
+#include "requests/MouseClickReactionRequest.h"
 
 class Application;
 class WindowSizeHandler;
 class KeyboardHandler;
 class MouseHandler;
+class Scene;
 
 class InputMediator : public Mediator
 {
 public:
-	InputMediator(Application* application, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler);
+	InputMediator(Application* application, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler, Scene* scene);
 
 	void SetSwitchObservingHandler(RequestHandler<SwitchObservingRequest>* handler);
 	void Send(Request * request) override;
@@ -28,5 +30,6 @@ private:
 	WindowSizeHandler* window_size_handler;
 	KeyboardHandler* keyboard_handler;
 	MouseHandler* mouseHandler;
+	Scene* scene;
 	RequestHandler<SwitchObservingRequest>* switchObservingHandler = nullptr;
 };

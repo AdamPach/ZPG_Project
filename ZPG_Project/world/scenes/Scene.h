@@ -11,10 +11,12 @@
 #include "../lights/LightsCountSubject.h"
 #include "../../shaders/ShaderProgramBuilder.h"
 #include "../../input/InputMediator.h"
+#include "../../abstraction/RequestHandler.h"
+#include "../../input/requests/MouseClickReactionRequest.h"
 
 class Application;
 
-class Scene
+class Scene : public RequestHandler<MouseClickedReactionRequest>
 {
 public:
 	~Scene();
@@ -22,6 +24,7 @@ public:
 	virtual void Draw();
 	Scene* Init();
 	virtual InputMediator* GetInputMediator(Application * application);
+	virtual void HandleRequest(MouseClickedReactionRequest request) override;
 
 protected:
 	Scene();

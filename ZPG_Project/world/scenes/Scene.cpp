@@ -157,8 +157,14 @@ InputMediator* Scene::GetInputMediator(Application* application)
 {
 	if (inputMediator == nullptr)
 	{
-		inputMediator = new InputMediator(application, &keyboardHandler, &mouseHandler);
+		inputMediator = new InputMediator(application, &keyboardHandler, &mouseHandler, this);
+		mouseHandler.SetMediator(inputMediator);
 	}
 
 	return inputMediator;
+}
+
+void Scene::HandleRequest(MouseClickedReactionRequest request)
+{
+	std::cout << "Mouse clicked at: " << request.GetX() << " " << request.GetY() << std::endl;
 }

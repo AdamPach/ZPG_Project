@@ -3,12 +3,13 @@
 #include "WindowSizeHandler.h"
 
 
-InputMediator::InputMediator(Application* application, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler)
+InputMediator::InputMediator(Application* application, KeyboardHandler* keyboard_handler, MouseHandler* mouseHandler, Scene* scene)
 {
 	this->application = application;
 	this->keyboard_handler = keyboard_handler;
 	this->mouseHandler = mouseHandler;
 	this->window_size_handler = WindowSizeHandler::GetInstance();
+	this->scene = scene;
 }
 
 void InputMediator::SetSwitchObservingHandler(RequestHandler<SwitchObservingRequest>* handler)
@@ -72,6 +73,13 @@ void InputMediator::Send(Request * request)
 	if (mouse_clicked_request != nullptr)
 	{
 		mouseHandler->HandleRequest(*mouse_clicked_request);
+	}
+
+	auto mouse_clicked_reaction_request = dynamic_cast<MouseClickedReactionRequest*>(request);
+
+	if (mouse_clicked_reaction_request != nullptr)
+	{
+		scene->HandleRequest(*mouse_clicked_reaction_request);
 	}
 
 	delete request;

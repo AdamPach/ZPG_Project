@@ -3,6 +3,7 @@
 #include <GL/glew.h>
 #include "../defaults.h"
 #include "WindowSizeHandler.h"
+#include "requests/MouseClickReactionRequest.h"
 
 void MouseHandler::HandleRequest(MouseMoveRequest request)
 {
@@ -33,6 +34,11 @@ void MouseHandler::HandleRequest(MouseClickedRequest request)
 
 		glReadPixels(lastX, newy, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &d);
 		std::cout << "Depth: " << d << std::endl;
+
+		if (mediator != nullptr)
+		{
+			mediator->Send(new MouseClickedReactionRequest(lastX, newy));
+		}
 	}
 }
 
@@ -52,4 +58,9 @@ float MouseHandler::GetYOffset()
 	this->yoffset = 0;
 
 	return static_cast<float>(offset);
+}
+
+void MouseHandler::SetMediator(Mediator* mediator)
+{
+	this->mediator = mediator;
 }

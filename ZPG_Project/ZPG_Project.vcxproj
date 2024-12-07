@@ -139,6 +139,7 @@
     <ClCompile Include="input\requests\ChangeSceneRequest.cpp" />
     <ClCompile Include="input\requests\KeyActionRequest.cpp" />
     <ClCompile Include="input\requests\MouseClickedRequest.cpp" />
+    <ClCompile Include="input\requests\MouseClickReactionRequest.cpp" />
     <ClCompile Include="input\requests\MouseMoveRequest.cpp" />
     <ClCompile Include="input\requests\WindowSizeChangedRequest.cpp" />
     <ClCompile Include="input\WindowSizeHandler.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="input\requests\ExitRequest.h" />
     <ClInclude Include="input\requests\KeyActionRequest.h" />
     <ClInclude Include="input\requests\MouseClickedRequest.h" />
+    <ClInclude Include="input\requests\MouseClickReactionRequest.h" />
     <ClInclude Include="input\requests\MouseMoveRequest.h" />
     <ClInclude Include="input\requests\SwitchCursorLockStateRequest.h" />
     <ClInclude Include="input\requests\SwitchObservingRequest.h" />

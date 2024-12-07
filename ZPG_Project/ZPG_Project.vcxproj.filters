@@ -246,6 +246,9 @@
     <ClCompile Include="input\requests\MouseClickedRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="input\requests\MouseClickReactionRequest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -534,6 +537,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="input\requests\MouseClickedRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="input\requests\MouseClickReactionRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
