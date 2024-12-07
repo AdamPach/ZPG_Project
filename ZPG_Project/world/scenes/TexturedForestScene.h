@@ -11,4 +11,7 @@ public:
 protected:
 	void InitScene() override;
 	void InitShaders() override;
+private:
+	Material* defaultMaterial;
+	Model* tree;
 };

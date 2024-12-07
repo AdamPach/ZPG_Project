@@ -36,6 +36,8 @@ protected:
 	TypedDataProviderSubject<glm::vec3>* GetCameraPositionSubject();
 	TypedDataProviderSubject<glm::vec3>* GetCameraFrontSubject();
 
+	glm::mat4 GetViewMatrix();
+	glm::mat4 GetProjectionMatrix();
 
 	void UseCameraPosition();
 

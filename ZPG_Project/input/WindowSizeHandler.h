@@ -12,6 +12,7 @@ public:
 	void HandleRequest(WindowSizeChangedRequest request) override;
 	float GetValue() override;
 	int GetHeight() const;
+	int GetWidth() const;
 
 	static WindowSizeHandler* GetInstance();
 	WindowSizeHandler();

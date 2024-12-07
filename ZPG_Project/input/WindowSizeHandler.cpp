@@ -20,6 +20,11 @@ int WindowSizeHandler::GetHeight() const
 	return height;
 }
 
+int WindowSizeHandler::GetWidth() const
+{
+	return width;
+}
+
 WindowSizeHandler* WindowSizeHandler::GetInstance()
 {
 	if (instance == nullptr)

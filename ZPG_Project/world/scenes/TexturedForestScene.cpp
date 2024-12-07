@@ -58,9 +58,9 @@ void TexturedForestScene::InitScene()
 
 	auto modelBuilder = ModelBuilder::Create();
 
-	Material* defaulMaterial = new Material();
+	defaultMaterial = new Material();
 
-	defaulMaterial
+	defaultMaterial
 		->SetColor(glm::vec3(0.25, 0.9, 0.25))
 		->SetAmbient(0.3f)
 		->SetDiffuse(0.5f)
@@ -77,7 +77,7 @@ void TexturedForestScene::InitScene()
 				teren,
 				color_shader_program,
 				new Transformation(transformationBuilder.Build())),
-		defaulMaterial));
+		defaultMaterial));
 	
 	auto house = modelBuilder
 		->FromFile("house.obj")
@@ -92,9 +92,9 @@ void TexturedForestScene::InitScene()
 				texture_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetHouseTexture()),
-		defaulMaterial));
+		defaultMaterial));
 
-	auto tree = modelBuilder
+	tree = modelBuilder
 		->FromFile("tree.obj")
 		->Build();
 
@@ -108,7 +108,7 @@ void TexturedForestScene::InitScene()
 				texture_shader_program, 
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetTreeTexture()),
-		defaulMaterial));
+		defaultMaterial));
 
 	transformationBuilder.AddScale(0.2f)
 		->AddTranslation(7, -0.5f, 18.0f);
@@ -120,7 +120,7 @@ void TexturedForestScene::InitScene()
 				texture_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetTreeTexture()),
-		defaulMaterial));
+		defaultMaterial));
 
 	transformationBuilder.AddScale(0.2f)
 		->AddTranslation(-3, -0.5f, 24.0f);
@@ -132,7 +132,7 @@ void TexturedForestScene::InitScene()
 				texture_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetTreeTexture()),
-		defaulMaterial));
+		defaultMaterial));
 
 	transformationBuilder.AddScale(0.2f)
 		->AddTranslation(4, -0.5f, 22.0f);
@@ -144,7 +144,7 @@ void TexturedForestScene::InitScene()
 				texture_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetTreeTexture()),
-		defaulMaterial));
+		defaultMaterial));
 
 	transformationBuilder.AddScale(0.2f)
 		->AddTranslation(-8, -0.5f, -22.0f);
@@ -156,7 +156,7 @@ void TexturedForestScene::InitScene()
 				texture_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetTreeTexture()),
-		defaulMaterial));
+		defaultMaterial));
 
 	transformationBuilder.AddScale(0.2f)
 		->AddTranslation(9, -0.5f, -18.0f);
@@ -168,7 +168,7 @@ void TexturedForestScene::InitScene()
 				texture_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetTreeTexture()),
-		defaulMaterial));
+		defaultMaterial));
 
 	transformationBuilder.AddScale(0.2f)
 		->AddTranslation(-5, -0.5f, -14.0f);
@@ -180,14 +180,57 @@ void TexturedForestScene::InitScene()
 				texture_shader_program,
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetTreeTexture()),
-		defaulMaterial));
+		defaultMaterial));
 }
 
 void TexturedForestScene::HandleRequest(MouseClickedReactionRequest request)
 {
-	GLuint id;
 
-	glReadPixels(request.GetX(), request.GetY(), 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &id);
+	if (request.GetButton() == MouseClickedReactionRequest::LEFT)
+	{
+		GLuint id;
 
-	RemoveObject(id);
+		glReadPixels(request.GetX(), request.GetY(), 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &id);
+
+		RemoveObject(id);
+
+		return;
+	}
+	else if (request.GetButton() == MouseClickedReactionRequest::RIGHT)
+	{
+		GLfloat depth;
+		GLuint index;
+
+		glReadPixels(request.GetX(), request.GetY(), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &depth);
+		glReadPixels(request.GetX(), request.GetY(), 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+
+		glm::vec3 screenX = glm::vec3(request.GetX(), request.GetY(), depth);
+
+		glm::vec4 viewport = glm::vec4(0, 0, WindowSizeHandler::GetInstance()->GetWidth(), WindowSizeHandler::GetInstance()->GetHeight());
+
+		glm::vec3 pos = glm::unProject(screenX, GetViewMatrix(), GetProjectionMatrix(), viewport);
+
+		auto treeMaterial = (new Material())->SetColor(glm::vec3(0, 0.5, 0))->SetAmbient(0.05f);
+
+		Material* defaulMaterial = new Material();
+
+		defaulMaterial
+			->SetColor(glm::vec3(0.25, 0.9, 0.25))
+			->SetAmbient(0.3f)
+			->SetDiffuse(0.5f)
+			->SetSpecular(0.1f);
+
+		TransformationsBuilder transformationBuilder;
+
+		transformationBuilder.AddScale(0.15f)->AddTranslation(pos.x, pos.y, pos.z);
+
+		AddObject(new MaterialDrawableObjectDecorator(
+			new TextureDrawableObjectDecorator(
+				new SimpleDrawableObject(
+					tree,
+					GetShaderProgram("texture_shader"),
+					new Transformation(transformationBuilder.Build())),
+				TexturesManager::GetInstance()->GetTreeTexture()),
+			defaulMaterial));
+	}
 }

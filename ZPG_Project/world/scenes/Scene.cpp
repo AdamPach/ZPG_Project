@@ -77,6 +77,16 @@ TypedDataProviderSubject<glm::vec3>* Scene::GetCameraFrontSubject()
 	return camera->GetFrontSubject();
 }
 
+glm::mat4 Scene::GetViewMatrix()
+{
+	return camera->GetViewSubject()->GetValue();
+}
+
+glm::mat4 Scene::GetProjectionMatrix()
+{
+	return camera->GetProjectionSubject()->GetValue();
+}
+
 void Scene::UseCameraPosition()
 {
 	for (auto shaderProgram : shaderPrograms)

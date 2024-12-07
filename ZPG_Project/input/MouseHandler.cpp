@@ -4,6 +4,7 @@
 #include "../defaults.h"
 #include "WindowSizeHandler.h"
 #include "requests/MouseClickReactionRequest.h"
+#include <GLFW/glfw3.h>
 
 void MouseHandler::HandleRequest(MouseMoveRequest request)
 {
@@ -37,7 +38,12 @@ void MouseHandler::HandleRequest(MouseClickedRequest request)
 
 		if (mediator != nullptr)
 		{
-			mediator->Send(new MouseClickedReactionRequest(lastX, newy));
+			if (request.GetButton() == GLFW_MOUSE_BUTTON_LEFT)
+				mediator->Send(new MouseClickedReactionRequest(lastX, newy, MouseClickedReactionRequest::LEFT));
+			else if (request.GetButton() == GLFW_MOUSE_BUTTON_RIGHT)
+				mediator->Send(new MouseClickedReactionRequest(lastX, newy, MouseClickedReactionRequest::RIGHT));
+			else if (request.GetButton() == GLFW_MOUSE_BUTTON_MIDDLE)
+				mediator->Send(new MouseClickedReactionRequest(lastX, newy, MouseClickedReactionRequest::MIDDLE));
 		}
 	}
 }
