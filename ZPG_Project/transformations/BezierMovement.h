@@ -13,4 +13,5 @@ private:
 	glm::mat4 bezierMatrix;
 	float duration;
 	float t = 0;
+	bool tRising = true;
 };

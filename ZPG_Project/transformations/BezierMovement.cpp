@@ -20,9 +20,21 @@ bool BezierMovement::IsDynamic()
 
 glm::mat4 BezierMovement::GetMatrix()
 {
-	if(t < 1)
+	if(t < 1 && tRising)
 	{
 		t += 0.003f;
+	}
+	else if (tRising)
+	{
+		tRising = false;
+	}
+	else if (t > 0 && !tRising)
+	{
+		t -= 0.003f;
+	}
+	else if (!tRising)
+	{
+		tRising = true;
 	}
 
 	glm::vec4 tVec = glm::vec4(t * t * t, t * t, t, 1);
