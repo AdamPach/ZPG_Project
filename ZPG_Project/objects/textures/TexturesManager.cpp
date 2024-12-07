@@ -41,6 +41,26 @@ Texture* TexturesManager::GetHouseTexture()
 	return houseTexture;
 }
 
+Texture* TexturesManager::GetTreeTexture()
+{
+	if (treeTexture == nullptr)
+	{
+		treeTexture = new Texture2D(3, "tree.png");
+	}
+
+	return treeTexture;
+}
+
+Texture* TexturesManager::GetZombieTexture()
+{
+	if (zombieTexture == nullptr)
+	{
+		zombieTexture = new Texture2D(4, "zombie.png");
+	}
+
+	return zombieTexture;
+}
+
 TexturesManager::TexturesManager()
 {
 }

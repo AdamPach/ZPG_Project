@@ -19,8 +19,6 @@
 #include "../../assets/models/plain_textured.h"
 #include "../../objects/models/abstraction/TriangleNormalTexturedModel.h"
 
-
-
 ForestScene::ForestScene() : Scene()
 {
 

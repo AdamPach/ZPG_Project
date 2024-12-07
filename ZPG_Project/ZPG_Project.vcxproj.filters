@@ -249,6 +249,9 @@
     <ClCompile Include="input\requests\MouseClickReactionRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="world\scenes\TexturedForestScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -542,6 +545,9 @@
     <ClInclude Include="input\requests\MouseClickReactionRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="world\scenes\TexturedForestScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />
@@ -557,6 +563,7 @@
     <None Include="gpu_shaders\fragment_position_cubemap.vert" />
     <None Include="gpu_shaders\vertext_position_cubemap.vert" />
     <None Include="assets\models\house.mtl" />
+    <None Include="gpu_shaders\fragment_position_normal_texture2d_phong.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="gpu_shaders\vertext_position_color.vert" />

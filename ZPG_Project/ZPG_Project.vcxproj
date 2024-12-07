@@ -207,6 +207,7 @@
     <ClCompile Include="transformations\Translation.cpp" />
     <ClCompile Include="objects\models\normaled\TreeModel.cpp" />
     <ClCompile Include="objects\models\abstraction\TriangleNormalModel.cpp" />
+    <ClCompile Include="world\scenes\TexturedForestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstraction\Mediator.h" />
@@ -306,6 +307,7 @@
     <ClInclude Include="assets\models\tree.h" />
     <ClInclude Include="objects\models\normaled\TreeModel.h" />
     <ClInclude Include="objects\models\abstraction\TriangleNormalModel.h" />
+    <ClInclude Include="world\scenes\TexturedForestScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\models\house.mtl" />
@@ -317,6 +319,7 @@
     <None Include="gpu_shaders\fragment_position_normal_constant.vert" />
     <None Include="gpu_shaders\fragment_position_normal_lambert.vert" />
     <None Include="gpu_shaders\fragment_position_normal_phong.vert" />
+    <None Include="gpu_shaders\fragment_position_normal_texture2d_phong.vert" />
     <None Include="gpu_shaders\vertext_position_normal_light_base.vert" />
     <None Include="gpu_shaders\vertext_position_cubemap.vert" />
     <None Include="gpu_shaders\vertext_position_normal_light_base_texture2d.vert" />

@@ -3,6 +3,7 @@
 #include "world/scenes/ForestScene.h"
 #include "world/scenes/FourSpheresScene.h"
 #include "world/scenes/SuziWorldScene.h"
+#include "world/scenes/TexturedForestScene.h"
 #include "defaults.h"
 
 #include <time.h>
@@ -70,6 +71,7 @@ void Application::AddScenes()
 	scenes.push_back((new DefaultScene())->Init());
 	scenes.push_back((new FourSpheresScene())->Init());
 	scenes.push_back((new ForestScene())->Init());
+	scenes.push_back((new TexturedForestScene())->Init());
 	scenes.push_back((new SuziWorldScene())->Init());
 
 	input_controller.SetMediator(scenes[scene_index]->GetInputMediator(this));
