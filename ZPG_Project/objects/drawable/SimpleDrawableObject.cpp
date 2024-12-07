@@ -24,6 +24,7 @@ void SimpleDrawableObject::Draw()
 
 	shader->SetTransformation(transformation);
 	shader->Use();
+	glStencilFunc(GL_ALWAYS, id, 0xFF);
 	model->DrawModel();
 	shader->Unuse();
 }
@@ -46,4 +47,14 @@ Model* SimpleDrawableObject::GetModel() const
 std::vector<std::pair<Subject*, std::string>> SimpleDrawableObject::GetLightSubjects()
 {
 	return std::vector<std::pair<Subject*, std::string>>();
+}
+
+void SimpleDrawableObject::SetId(int id)
+{
+	this->id = id;
+}
+
+int SimpleDrawableObject::GetId() const
+{
+	return id;
 }

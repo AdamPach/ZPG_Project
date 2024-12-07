@@ -7,7 +7,7 @@ MaterialDrawableObjectDecorator::MaterialDrawableObjectDecorator(DrawableObject*
 
 MaterialDrawableObjectDecorator::~MaterialDrawableObjectDecorator()
 {
-	delete material;
+
 }
 
 void MaterialDrawableObjectDecorator::Draw()

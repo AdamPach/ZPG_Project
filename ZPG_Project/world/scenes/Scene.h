@@ -30,9 +30,12 @@ protected:
 	Scene();
 	void AddObject(DrawableObject* object);
 	void AddShaderProgram(ShaderProgram* shaderProgram, const char * programName);
+	void RemoveObject(int index);
+
 	ShaderProgram* GetShaderProgram(const char* programName);
 	TypedDataProviderSubject<glm::vec3>* GetCameraPositionSubject();
 	TypedDataProviderSubject<glm::vec3>* GetCameraFrontSubject();
+
 
 	void UseCameraPosition();
 

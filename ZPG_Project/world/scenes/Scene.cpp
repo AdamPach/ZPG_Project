@@ -23,6 +23,7 @@ Scene::~Scene()
 
 void Scene::AddObject(DrawableObject* object)
 {
+	object->SetId(objects.size() + 1);
 	objects.push_back(object);
 }
 
@@ -35,6 +36,30 @@ void Scene::AddShaderProgram(ShaderProgram* shaderProgram, const char* programNa
 	shaderProgram->AddUniformMat4Variable(camera->GetProjectionSubject(), DEFAULT_PROJECTION_MATRIX_NAME);
 
 	shaderProgram->AddUniformIntVariable(&lightsCountSubject, DEFAULT_LIGHTS_COUNT_NAME);
+}
+
+void Scene::RemoveObject(int index)
+{
+	DrawableObject* object = nullptr;
+	int idx = 0;
+
+	for (int i = 0; i < objects.size(); i++)
+	{
+		if (objects[i]->GetId() == index)
+		{
+			object = objects[i];
+			idx = i;
+			break;
+		}
+	}
+
+	if (object == nullptr)
+	{
+		return;
+	}
+
+	objects.erase(objects.begin() + idx);
+	delete object;
 }
 
 ShaderProgram* Scene::GetShaderProgram(const char* programName)
@@ -137,9 +162,7 @@ void Scene::Draw()
 
 	for (int i = 0; i < objects.size(); i++)
 	{
-		auto object = objects[i];
-		glStencilFunc(GL_ALWAYS, i, 0xFF);
-		object->Draw();
+		objects[i]->Draw();
 	}
 }
 

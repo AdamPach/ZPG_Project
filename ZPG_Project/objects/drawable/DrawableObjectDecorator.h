@@ -13,6 +13,8 @@ public:
 	Transformation* GetTransformation() const override;
 	Model* GetModel() const override;
 	std::vector<std::pair<Subject*, std::string>> GetLightSubjects() override;
+	void SetId(int id) override;
+	int GetId() const override;
 
 protected:
 	DrawableObject* drawableObject;

@@ -8,9 +8,12 @@
 class DrawableObject
 {
 public:
+	virtual ~DrawableObject() {};
 	virtual void Draw() = 0;
 	virtual ShaderProgram* GetShader() const = 0;
 	virtual Transformation* GetTransformation() const = 0;
 	virtual Model* GetModel() const = 0;
 	virtual std::vector<std::pair<Subject*, std::string>> GetLightSubjects() = 0;
+	virtual void SetId(int id) = 0;
+	virtual int GetId() const = 0;
 };

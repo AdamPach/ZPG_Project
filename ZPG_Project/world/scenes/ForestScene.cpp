@@ -69,6 +69,21 @@ void ForestScene::InitScene()
 		->HasTextureCoordinates()
 		->Build();
 
+	auto house = modelBuilder->FromFile("house.obj")
+		->Build();
+
+	transformationBuilder.AddScale(0.4f)
+		->AddTranslation(0, -0.5f, 13);
+
+	AddObject(new MaterialDrawableObjectDecorator(
+		new TextureDrawableObjectDecorator(
+			new SimpleDrawableObject(
+				house,
+				texture_shader_program,
+				new Transformation(transformationBuilder.Build())),
+			TexturesManager::GetInstance()->GetHouseTexture()),
+		textureMaterial));
+
 	for (int x = -10; x < 10; x++)
 	{
 		for (int z = -10; z < 10; z++)
@@ -155,21 +170,6 @@ void ForestScene::InitScene()
 				new Transformation(transformationBuilder.Build())),
 			(new Material())->SetColor(glm::vec3(0.5, 0.5, 0))),
 		new SpotLight(GetCameraFrontSubject(), glm::vec3(1, 1, 1))));
-		
-	auto house = modelBuilder->FromFile("house.obj")
-		->Build();
-
-	transformationBuilder.AddScale(0.4f)
-		->AddTranslation(0,-0.5f,13);
-
-	AddObject(new MaterialDrawableObjectDecorator(
-		new TextureDrawableObjectDecorator(
-			new SimpleDrawableObject(
-				house,
-				texture_shader_program,
-				new Transformation(transformationBuilder.Build())),
-			TexturesManager::GetInstance()->GetHouseTexture()),
-		textureMaterial));
 
 	auto login = modelBuilder->FromFile("login.obj")
 		->Build();

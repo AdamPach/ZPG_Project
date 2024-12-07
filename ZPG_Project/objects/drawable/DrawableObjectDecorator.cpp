@@ -36,3 +36,13 @@ std::vector<std::pair<Subject*, std::string>> DrawableObjectDecorator::GetLightS
 {
 	return drawableObject->GetLightSubjects();
 }
+
+void DrawableObjectDecorator::SetId(int id)
+{
+	drawableObject->SetId(id);
+}
+
+int DrawableObjectDecorator::GetId() const
+{
+	return drawableObject->GetId();
+}
