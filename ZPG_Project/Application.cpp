@@ -60,6 +60,8 @@ void Application::Init()
 	this->scene_index = 0;
 
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_STENCIL_TEST);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 }
 
 void Application::AddScenes()

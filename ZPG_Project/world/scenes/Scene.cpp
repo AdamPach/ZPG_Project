@@ -135,8 +135,10 @@ void Scene::Draw()
 {
 	HandleMovement();
 
-	for (auto object : objects)
+	for (int i = 0; i < objects.size(); i++)
 	{
+		auto object = objects[i];
+		glStencilFunc(GL_ALWAYS, i, 0xFF);
 		object->Draw();
 	}
 }

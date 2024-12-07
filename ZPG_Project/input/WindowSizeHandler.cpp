@@ -2,13 +2,22 @@
 
 void WindowSizeHandler::HandleRequest(WindowSizeChangedRequest request)
 {
-	value = static_cast<float>(request.GetWidth()) / request.GetHeight();
+	width = request.GetWidth();
+	height = request.GetHeight();
+
+	value = static_cast<float>(width) / height;
+
 	Notify();
 }
 
 float WindowSizeHandler::GetValue()
 {
 	return value;
+}
+
+int WindowSizeHandler::GetHeight() const
+{
+	return height;
 }
 
 WindowSizeHandler* WindowSizeHandler::GetInstance()
@@ -23,7 +32,10 @@ WindowSizeHandler* WindowSizeHandler::GetInstance()
 
 WindowSizeHandler::WindowSizeHandler()
 {
-	value = WINDOW_WIDTH / WINDOW_HEIGHT;
+	width = WINDOW_WIDTH;
+	height = WINDOW_HEIGHT;
+
+	value = static_cast<float>(width) / height;
 }
 
 WindowSizeHandler* WindowSizeHandler::instance = nullptr;

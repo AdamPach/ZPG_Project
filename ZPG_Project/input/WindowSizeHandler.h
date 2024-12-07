@@ -11,10 +11,12 @@ class WindowSizeHandler : public RequestHandler<WindowSizeChangedRequest>, publi
 public:
 	void HandleRequest(WindowSizeChangedRequest request) override;
 	float GetValue() override;
+	int GetHeight() const;
 
 	static WindowSizeHandler* GetInstance();
 	WindowSizeHandler();
 private:
 
 	static WindowSizeHandler* instance;
+	int width, height;
 };
