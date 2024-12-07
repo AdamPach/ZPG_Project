@@ -168,6 +168,7 @@
     <ClCompile Include="shaders\uniforms\UniformVariableMat4.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVariableVec3.cpp" />
     <ClCompile Include="shaders\uniforms\UniformVarianble.cpp" />
+    <ClCompile Include="transformations\BezierMovement.cpp" />
     <ClCompile Include="transformations\ObservableMovement.cpp" />
     <ClCompile Include="transformations\ObservableOffMovement.cpp" />
     <ClCompile Include="transformations\RandomDynamicMovement.cpp" />
@@ -260,6 +261,7 @@
     <ClInclude Include="shaders\uniforms\UniformVariableMat4.h" />
     <ClInclude Include="shaders\uniforms\UniformVariableVec3.h" />
     <ClInclude Include="shaders\uniforms\UniformVarianble.h" />
+    <ClInclude Include="transformations\BezierMovement.h" />
     <ClInclude Include="transformations\ObservableMovement.h" />
     <ClInclude Include="transformations\ObservableOffMovement.h" />
     <ClInclude Include="transformations\RandomDynamicMovement.h" />

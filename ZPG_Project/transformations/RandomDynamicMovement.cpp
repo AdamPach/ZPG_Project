@@ -14,8 +14,6 @@ glm::mat4 RandomDynamcMovement::GetMatrix()
 	return transformationMatrix;
 }
 
-
-
 bool RandomDynamcMovement::IsDynamic()
 {
 	return true;

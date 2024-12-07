@@ -8,6 +8,7 @@
 #include "../../objects/drawable/TextureDrawableObjectDecorator.h"
 #include "../lights/PointLight.h"
 #include "../../objects/models/builder/ModelBuilder.h"
+#include "../../transformations/BezierMovement.h"
 
 
 TexturedForestScene::TexturedForestScene() : SkyCubeScene(TexturesManager::GetInstance()->GetSkycube())
@@ -181,6 +182,10 @@ void TexturedForestScene::InitScene()
 				new Transformation(transformationBuilder.Build())),
 			TexturesManager::GetInstance()->GetTreeTexture()),
 		defaultMaterial));
+
+	zombie = modelBuilder
+		->FromFile("zombie.obj")
+		->Build();
 }
 
 void TexturedForestScene::HandleRequest(MouseClickedReactionRequest request)
@@ -196,6 +201,33 @@ void TexturedForestScene::HandleRequest(MouseClickedReactionRequest request)
 
 		return;
 	}
+	else if (request.GetButton() == MouseClickedReactionRequest::MIDDLE)
+	{
+		GLfloat depth;
+		GLuint index;
+
+		glReadPixels(request.GetX(), request.GetY(), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &depth);
+		glReadPixels(request.GetX(), request.GetY(), 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+
+		glm::vec3 screenX = glm::vec3(request.GetX(), request.GetY(), depth);
+
+		glm::vec4 viewport = glm::vec4(0, 0, WindowSizeHandler::GetInstance()->GetWidth(), WindowSizeHandler::GetInstance()->GetHeight());
+
+		glm::vec3 pos = glm::unProject(screenX, GetViewMatrix(), GetProjectionMatrix(), viewport);
+
+		TransformationsBuilder transformationBuilder;
+
+		transformationBuilder.AddScale(0.15f)->AddTranslation(pos.x, pos.y, pos.z);
+
+		AddObject(new MaterialDrawableObjectDecorator(
+			new TextureDrawableObjectDecorator(
+				new SimpleDrawableObject(
+					tree,
+					GetShaderProgram("texture_shader"),
+					new Transformation(transformationBuilder.Build())),
+				TexturesManager::GetInstance()->GetTreeTexture()),
+			defaultMaterial));
+	}
 	else if (request.GetButton() == MouseClickedReactionRequest::RIGHT)
 	{
 		GLfloat depth;
@@ -210,27 +242,30 @@ void TexturedForestScene::HandleRequest(MouseClickedReactionRequest request)
 
 		glm::vec3 pos = glm::unProject(screenX, GetViewMatrix(), GetProjectionMatrix(), viewport);
 
-		auto treeMaterial = (new Material())->SetColor(glm::vec3(0, 0.5, 0))->SetAmbient(0.05f);
+		bezierPoints.push_back(pos);
 
-		Material* defaulMaterial = new Material();
+		if (bezierPoints.size() == 4)
+		{
 
-		defaulMaterial
-			->SetColor(glm::vec3(0.25, 0.9, 0.25))
-			->SetAmbient(0.3f)
-			->SetDiffuse(0.5f)
-			->SetSpecular(0.1f);
+			TransformationsBuilder transformationBuilder;
 
-		TransformationsBuilder transformationBuilder;
+			transformationBuilder.AddTransformation(new BezierMovement(
+					bezierPoints[0],
+					bezierPoints[1],
+					bezierPoints[2], 
+					bezierPoints[3],
+					1));
 
-		transformationBuilder.AddScale(0.15f)->AddTranslation(pos.x, pos.y, pos.z);
+			AddObject(new MaterialDrawableObjectDecorator(
+				new TextureDrawableObjectDecorator(
+					new SimpleDrawableObject(
+						zombie,
+						GetShaderProgram("texture_shader"),
+						new Transformation(transformationBuilder.Build())),
+					TexturesManager::GetInstance()->GetZombieTexture()),
+				defaultMaterial));
 
-		AddObject(new MaterialDrawableObjectDecorator(
-			new TextureDrawableObjectDecorator(
-				new SimpleDrawableObject(
-					tree,
-					GetShaderProgram("texture_shader"),
-					new Transformation(transformationBuilder.Build())),
-				TexturesManager::GetInstance()->GetTreeTexture()),
-			defaulMaterial));
+			bezierPoints.clear();
+		}
 	}
 }

@@ -14,4 +14,7 @@ protected:
 private:
 	Material* defaultMaterial;
 	Model* tree;
+	Model* zombie;
+
+	std::vector<glm::vec3> bezierPoints;
 };
